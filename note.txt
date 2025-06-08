@@ -1,0 +1,3 @@
+change default view after login and registration
+Assign roles in user model
+create logistics company profile and quotes
