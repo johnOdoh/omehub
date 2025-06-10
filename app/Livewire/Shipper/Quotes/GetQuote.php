@@ -5,19 +5,24 @@ namespace App\Livewire\Shipper\Quotes;
 use App\Models\Request;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\On;
 
 class GetQuote extends Component
 {
     public $countries;
+    public $index = 0;
     public $origin;
     public $destination;
     public $type;
     public $freight;
+    public $currency;
+    public $hs_code;
+    public $incoterm;
     public $mode;
-    public $qty = 1;
-    public $weight;
-    public $volume;
-    public $container_type;
+    public $qty = [];
+    public $weight = [];
+    public $volume = [];
+    public $container_type = [];
 
     public function mount()
     {
@@ -25,52 +30,69 @@ class GetQuote extends Component
         $this->dispatch('load-countries', 0);
     }
 
-    public function resetFields($propertyName)
-    {
-        // $this->dispatch('load-countries', 0);
-    }
-
     public function requestQuote()
     {
-        // dd($this->mode);
         $this->validate([
             'origin' => 'required',
             'destination' => 'required',
             'type' => 'required',
+            'currency' => 'required',
+            'hs_code' => 'required',
+            'incoterm' => 'required',
             'freight' => 'required',
             'mode' => 'required'
         ], [
             'mode.required' => 'Please select a container type.'
         ]);
+        array_splice($this->qty, $this->index+1);
+        array_splice($this->container_type, $this->index+1);
         if ($this->mode === 'FCL') {
             $this->validate([
-                'qty' => 'required|integer|min:1',
-                'container_type' => 'required'
+                'qty' => 'required||array',
+                'qty.*' => 'required|integer|min:1',
+                'container_type' => 'required|array',
+                'container_type.*' => 'required|string'
             ]);
-            $dimension = implode(',', [
-                $this->qty,
-                $this->container_type
-            ]);
+            $dimensions = [];
+            for ($i=0; $i < count($this->qty); $i++) {
+                $dimensions[] = implode(',', [
+                    $this->qty[$i],
+                    $this->container_type[$i],
+                ]);
+            }
+            $dimensions = implode(';', $dimensions);
         } else {
+            array_splice($this->weight, $this->index+1);
+            array_splice($this->volume, $this->index+1);
             $this->validate([
-                'qty' => 'required|integer|min:1',
-                'weight' => 'required|numeric',
-                'volume' => 'required|numeric'
+                'qty' => 'required|array',
+                'qty.*' => 'required|integer|min:1',
+                'weight' => 'required|array',
+                'weight.*' => 'required|numeric',
+                'volume' => 'required|array',
+                'volume.*' => 'required|numeric'
             ]);
-            $dimension = implode(',', [
-                $this->qty,
-                $this->weight,
-                $this->volume
-            ]);
+            $dimensions = [];
+            for ($i=0; $i < count($this->qty); $i++) {
+                $dimensions[] = implode(',', [
+                    $this->qty[$i],
+                    $this->weight[$i],
+                    $this->volume[$i]
+                ]);
+            }
+            $dimensions = implode(';', $dimensions);
         }
         Request::create([
             'user_id' => request()->user()->id,
             'pickup' => $this->origin,
             'destination' => $this->destination,
             'cargo_type' => $this->type,
+            'currency' => $this->currency,
+            'hs_code' => $this->hs_code,
+            'incoterm' => $this->incoterm,
             'freight_type' => $this->freight,
             'container_type' => $this->mode,
-            'dimensions' => $dimension
+            'dimensions' => $dimensions
         ]);
         $this->resetExcept('countries');
         request()->session()->flash('submitted');

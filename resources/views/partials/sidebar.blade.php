@@ -1,16 +1,12 @@
 @php
-$logisticsQuoteDropdown = [
-    0 => ['name' => 'Quote Requests', 'route' => 'logistics.quote-requests'],
-    1 => ['name' => 'Quotes Sent', 'route' => 'logistics.quotes-sent']
-];
-$shipperQuoteDropdown = [
-    0 => ['name' => 'Request Quote', 'route' => 'shipper.get-quotes'],
-    1 => ['name' => 'Quote Requests', 'route' => 'shipper.quote-requests'],
-];
-$studentDropdown = [
-    0 => ['name' => 'Create Student', 'route' => 'admin.student.create'],
-    1 => ['name' => 'All Students', 'route' => 'admin.students'],
-]
+    $logisticsQuoteDropdown = [
+        0 => ['name' => 'Quote Requests', 'route' => 'logistics.quote-requests'],
+        1 => ['name' => 'My Quotes', 'route' => 'logistics.quotes-sent']
+    ];
+    $shipperQuoteDropdown = [
+        0 => ['name' => 'Request Quote', 'route' => 'shipper.get-quotes'],
+        1 => ['name' => 'Quote Requests', 'route' => 'shipper.quote-requests'],
+    ];
 @endphp
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">

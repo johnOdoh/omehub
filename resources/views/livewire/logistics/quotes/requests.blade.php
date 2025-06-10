@@ -59,7 +59,7 @@
                         </div>
                         <hr class="mb-0">
                         @php
-                            $dimension = explode(',', $request->dimensions);
+                            $items = explode(';', $request->dimensions);
                         @endphp
                         <div class="card-body">
                             <ul class="list-unstyled mb-0">
@@ -78,7 +78,7 @@
                                     </div>
                                 </li>
                                 <li class="d-flex align-items-center gap-2 mb-2">
-                                    <i class="fas fa-shipping-fast fa-fw me-1"></i>
+                                    <i class="fas fa-ship fa-fw me-1"></i>
                                     <div>
                                         <div class="text-muted small">Freight Type</div>
                                         <div class="fw-bold">{{ $request->freight_type }}</div>
@@ -92,43 +92,83 @@
                                     </div>
                                 </li>
                                 <li class="d-flex align-items-center gap-2 mb-2">
+                                    <i class="fas fa-code fa-fw me-1"></i>
+                                    <div>
+                                        <div class="text-muted small">HS/Tariff Code</div>
+                                        <div class="fw-bold">{{ $request->hs_code }}</div>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center gap-2 mb-2">
+                                    <i class="fas fa-handshake fa-fw me-1"></i>
+                                    <div>
+                                        <div class="text-muted small">Incoterm</div>
+                                        <div class="fw-bold">{{ $request->incoterm }}</div>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center gap-2 mb-2">
+                                    <i class="fas fa-money-bill fa-fw me-1"></i>
+                                    <div>
+                                        <div class="text-muted small">Currency</div>
+                                        <div class="fw-bold">{{ $request->currency }}</div>
+                                    </div>
+                                </li>
+                                <li class="d-flex align-items-center gap-2 mb-2">
                                     <i class="fas fa-box fa-fw me-1"></i>
                                     <div>
                                         <div class="text-muted small">Container Type</div>
                                         <div class="fw-bold">{{ $request->container_type }}</div>
                                     </div>
                                 </li>
-                                <li class="d-flex align-items-center gap-2 mb-2">
+                                <hs>Item(s)</hs>
+                                <hr class="my-1">
+                                <li class="d-flex align-items-center gap-2 mb-2 w-100">
                                     <i class="fas fa-sort-numeric-up fa-fw me-1"></i>
-                                    <div>
-                                        <div class="text-muted small">Quantity</div>
-                                        <div class="fw-bold">{{ $dimension[0] }}</div>
-                                    </div>
+                                    @if ($request->container_type == 'LCL')
+                                        <table class="table table-responsive table-striped table-sm mb-0 w-100">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Qty</th>
+                                                    <th>Weight(KG)</th>
+                                                    <th>Volume(CBM)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($items as $item)
+                                                    @php $dimension = explode(',', $item); @endphp
+                                                    <tr>
+                                                        <td class="text-muted">{{ $loop->iteration }}</td>
+                                                        <td class="text-muted">{{ $dimension[0] }}</td>
+                                                        <td class="text-muted">{{ $dimension[1] }}</td>
+                                                        <td class="text-muted">{{ $dimension[2] }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    @else
+                                        <table class="table table-responsive table-striped table-sm mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Qty</th>
+                                                    <th>Container Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($items as $item)
+                                                    @php
+                                                        $dimension = explode(',', $item);
+                                                    @endphp
+                                                    <tr>
+                                                        <td class="text-muted">{{ $loop->iteration }}</td>
+                                                        <td class="text-muted">{{ $dimension[0] }}</td>
+                                                        <td class="text-muted">{{ $dimension[1] }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    @endif
                                 </li>
-                                @if ($request->container_type == 'FCL')
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-box fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Container Type</div>
-                                            <div class="fw-bold">{{ $dimension[1] }}</div>
-                                        </div>
-                                    </li>
-                                @else
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-weight-hanging fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Weight</div>
-                                            <div class="fw-bold">{{ $dimension[1] }}KG</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-cube fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Volume</div>
-                                            <div class="fw-bold">{{ $dimension[2] }}CBM</div>
-                                        </div>
-                                    </li>
-                                @endif
                             </ul>
                             <div class="float-end mt-2">
                                 <button type="button" class="btn btn-sm btn-primary" wire:click='toggle_quote()'>Submit Quote</button>
@@ -147,7 +187,7 @@
                     </div>
                     <hr class="mb-0">
                     @php
-                        $dimension = explode(',', $request->dimensions);
+                        $items = explode(';', $request->dimensions);
                     @endphp
                     <div class="card-body">
                         <ul class="list-unstyled mb-0">
@@ -166,7 +206,7 @@
                                 </div>
                             </li>
                             <li class="d-flex align-items-center gap-2 mb-2">
-                                <i class="fas fa-shipping-fast fa-fw me-1"></i>
+                                <i class="fas fa-ship fa-fw me-1"></i>
                                 <div>
                                     <div class="text-muted small">Freight Type</div>
                                     <div class="fw-bold">{{ $request->freight_type }}</div>
@@ -180,43 +220,83 @@
                                 </div>
                             </li>
                             <li class="d-flex align-items-center gap-2 mb-2">
+                                <i class="fas fa-code fa-fw me-1"></i>
+                                <div>
+                                    <div class="text-muted small">HS/Tariff Code</div>
+                                    <div class="fw-bold">{{ $request->hs_code }}</div>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center gap-2 mb-2">
+                                <i class="fas fa-handshake fa-fw me-1"></i>
+                                <div>
+                                    <div class="text-muted small">Incoterm</div>
+                                    <div class="fw-bold">{{ $request->incoterm }}</div>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center gap-2 mb-2">
+                                <i class="fas fa-money-bill fa-fw me-1"></i>
+                                <div>
+                                    <div class="text-muted small">Currency</div>
+                                    <div class="fw-bold">{{ $request->currency }}</div>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center gap-2 mb-2">
                                 <i class="fas fa-box fa-fw me-1"></i>
                                 <div>
                                     <div class="text-muted small">Container Type</div>
                                     <div class="fw-bold">{{ $request->container_type }}</div>
                                 </div>
                             </li>
-                            <li class="d-flex align-items-center gap-2 mb-2">
+                            <hs>Item(s)</hs>
+                            <hr class="my-1">
+                            <li class="d-flex align-items-center gap-2 mb-2 w-100">
                                 <i class="fas fa-sort-numeric-up fa-fw me-1"></i>
-                                <div>
-                                    <div class="text-muted small">Quantity</div>
-                                    <div class="fw-bold">{{ $dimension[0] }}</div>
-                                </div>
+                                @if ($request->container_type == 'LCL')
+                                    <table class="table table-responsive table-striped table-sm mb-0 w-100">
+                                            <thead>
+                                                <tr>
+                                                <th>#</th>
+                                                <th>Qty</th>
+                                                <th>Weight(KG)</th>
+                                                <th>Volume(CBM)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($items as $item)
+                                                @php $dimension = explode(',', $item); @endphp
+                                                <tr>
+                                                    <td class="text-muted">{{ $loop->iteration }}</td>
+                                                    <td class="text-muted">{{ $dimension[0] }}</td>
+                                                    <td class="text-muted">{{ $dimension[1] }}</td>
+                                                    <td class="text-muted">{{ $dimension[2] }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <table class="table table-responsive table-striped table-sm mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Qty</th>
+                                                <th>Container Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($items as $item)
+                                                @php
+                                                    $dimension = explode(',', $item);
+                                                @endphp
+                                                <tr>
+                                                    <td class="text-muted">{{ $loop->iteration }}</td>
+                                                    <td class="text-muted">{{ $dimension[0] }}</td>
+                                                    <td class="text-muted">{{ $dimension[1] }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
                             </li>
-                            @if ($request->container_type == 'FCL')
-                                <li class="d-flex align-items-center gap-2 mb-2">
-                                    <i class="fas fa-box fa-fw me-1"></i>
-                                    <div>
-                                        <div class="text-muted small">Container Type</div>
-                                        <div class="fw-bold">{{ $dimension[1] }}</div>
-                                    </div>
-                                </li>
-                            @else
-                                <li class="d-flex align-items-center gap-2 mb-2">
-                                    <i class="fas fa-weight-hanging fa-fw me-1"></i>
-                                    <div>
-                                        <div class="text-muted small">Weight</div>
-                                        <div class="fw-bold">{{ $dimension[1] }}KG</div>
-                                    </div>
-                                </li>
-                                <li class="d-flex align-items-center gap-2 mb-2">
-                                    <i class="fas fa-cube fa-fw me-1"></i>
-                                    <div>
-                                        <div class="text-muted small">Volume</div>
-                                        <div class="fw-bold">{{ $dimension[2] }}CBM</div>
-                                    </div>
-                                </li>
-                            @endif
                         </ul>
                     </div>
                 </div>
@@ -230,9 +310,9 @@
                     <div class="card-body">
                         <form wire:submit="submitQuote" class="p-0">
                             <div class="mb-3">
-                                <label class="form-label fw-bold">Freight Charges(USD)</label>
+                                <label class="form-label fw-bold">Freight Charges({{ $request->currency }})</label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="fa fa-dollar me-1"></i></span>
+                                    <span class="input-group-text"><i class="fa fa-money-bill me-1"></i></span>
                                     <input type="number" class="form-control" placeholder="Freight Cost" step="0.01" required wire:model="cost">
                                 </div>
                                 @error('cost')
@@ -240,9 +320,9 @@
                                 @enderror
                             </div>
                             <div class="my-3">
-                                <label class="form-label fw-bold">Custom Clearance Charges(USD)</label>
+                                <label class="form-label fw-bold">Custom Clearance Charges({{ $request->currency }})</label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="fa fa-dollar me-1"></i></span>
+                                    <span class="input-group-text"><i class="fa fa-money-bill me-1"></i></span>
                                     <input type="number" class="form-control" placeholder="Custom Charges" step="0.01" required wire:model="custom">
                                 </div>
                                 @error('custom')

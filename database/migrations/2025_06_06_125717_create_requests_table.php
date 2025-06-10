@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('destination');
             $table->string('cargo_type');
             $table->string('freight_type');
+            $table->string('hs_code');
+            $table->string('incoterm');
+            $table->string('currency');
             $table->string('container_type');
             $table->string('dimensions');
             $table->boolean('is_closed')->default(false);
