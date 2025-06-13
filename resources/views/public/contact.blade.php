@@ -5,7 +5,7 @@
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/page-title-bg.jpg);">
+    <div class="page-title dark-background" data-aos="fade" style="background-image: url({{ asset('assets/img/page-title-bg.jpg') }});">
       <div class="container position-relative">
         <h1>Contact</h1>
         <p>We are available 24/7 to answer any questions you may have</p>
