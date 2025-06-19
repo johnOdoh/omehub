@@ -6,9 +6,9 @@ use App\Livewire\Logistics\Dashboard as LogisticsDashboard;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Logistics\Profile\Main as LogisticsProfileMain;
 use App\Livewire\Shipper\Profile\Main;
-use App\Livewire\Shipper\Quotes\GetQuote;
 use App\Livewire\Logistics\Quotes\Requests;
 use App\Livewire\Shipper\Quotes\QuoteRequests;
+use App\Livewire\Shipper\Quotes\RequestQuote;
 
 Route::get('/', function () {
     return view('public.index');
@@ -29,7 +29,7 @@ Route::get('/contact', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('shipper/dashboard', Dashboard::class)->name('shipper.dashboard');
     Route::get('shipper/profile', Main::class)->name('shipper.profile');
-    Route::get('shipper/get-quotes', GetQuote::class)->name('shipper.get-quotes');
+    Route::get('shipper/get-quotes',RequestQuote::class)->name('shipper.get-quotes');
     Route::get('shipper/quote-requests', QuoteRequests::class)->name('shipper.quote-requests');
 
     Route::get('logistics/dashboard', LogisticsDashboard::class)->name('logistics.dashboard');

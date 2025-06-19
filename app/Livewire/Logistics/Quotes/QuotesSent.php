@@ -17,6 +17,7 @@ class QuotesSent extends Component
     public $show_submit_quote = false;
     public $duration;
     public $custom;
+    public $insurance;
     public $cost;
     public $date;
     public $id;
@@ -26,6 +27,7 @@ class QuotesSent extends Component
         $this->request = $request;
         $quote = $request->quotes()->where('user_id', request()->user()->id)->first();
         $this->custom = $quote->custom;
+        $this->insurance = $quote->insurance;
         $this->cost = $quote->cost;
         $this->date = $quote->departure_date->format('Y-m-d');
         $this->duration = $quote->duration;
@@ -41,12 +43,14 @@ class QuotesSent extends Component
     {
         $this->validate([
             'custom' => 'required|numeric|min:1',
+            'insurance' => 'required|numeric|min:1',
             'cost' => 'required|numeric|min:1',
             'date' => 'required|date',
             'duration' => 'required|integer|min:1',
         ]);
         Quote::find( $this->id)->update([
             'custom' => $this->custom,
+            'insurance' => $this->insurance,
             'cost' => $this->cost,
             'departure_date' => $this->date,
             'duration' => $this->duration,

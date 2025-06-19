@@ -5,9 +5,8 @@ namespace App\Livewire\Shipper\Quotes;
 use App\Models\Request;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\On;
 
-class GetQuote extends Component
+class RequestQuote extends Component
 {
     public $countries;
     public $index = 0;
@@ -26,7 +25,7 @@ class GetQuote extends Component
 
     public function mount()
     {
-        $this->countries = DB::table('countries')->get('name');
+        $this->countries = DB::table('countries')->orderBy('name')->get('name');
         $this->dispatch('load-countries', 0);
     }
 
@@ -100,6 +99,6 @@ class GetQuote extends Component
 
     public function render()
     {
-        return view('livewire.shipper.quotes.get-quote');
+        return view('livewire.shipper.quotes.request-quote');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use GeoIp2\Database\Reader;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 function getUserRealIp()
 {
@@ -33,7 +34,7 @@ function getCountryFromIp()
 function getCountryFromCode()
 {
     $code = getCountryFromIp()->isoCode;
-    $countryCodes = collect(json_decode(file_get_contents(resource_path('data/country-codes.json'))));
+    $countryCodes = DB::table('countries')->get();
     $country = $countryCodes->firstWhere('code', $code);
     if ($country) return $country;
     return null;

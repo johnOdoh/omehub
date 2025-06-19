@@ -62,6 +62,23 @@
             .no-spinner {
                 -moz-appearance: textfield;
             }
+
+            /* Global scrollbar styling for WebKit browsers */
+            ::-webkit-scrollbar {
+            width: 6px;
+            }
+
+            ::-webkit-scrollbar-track {
+            background: transparent;
+            }
+
+            ::-webkit-scrollbar-thumb {
+            background-color: #b3b3b3;  /* light gray */
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            }
+
         </style>
     </head>
     <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
@@ -80,7 +97,7 @@
                         <div class="row text-muted">
                             <div class="col-6 text-start">
                                 <p class="mb-0">
-                                    <a href="#" target="_blank" class="text-muted"><strong>Omehub</strong></a> &copy;
+                                    <a href="#" target="_blank" class="text-muted"><strong>{{ config('app.name') }}</strong></a> &copy;
                                 </p>
                             </div>
                             <div class="col-6 text-end">

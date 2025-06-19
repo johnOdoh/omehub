@@ -179,7 +179,7 @@
                             </div>
                             <div class="float-end toggler">
                                 {{-- <a href="" wire:click.prevent="$dispatch('removeFCL', 0)" class="me-2 remove-btn">Remove</a> --}}
-                                <a href="" wire:click.prevent="$dispatch('addLCL')">Add more</a>
+                                <a href="#" wire:click.prevent="$dispatch('addLCL')">Add more</a>
                             </div>
                         </div>
                     @endif

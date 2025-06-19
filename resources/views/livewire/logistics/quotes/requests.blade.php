@@ -310,9 +310,9 @@
                     <div class="card-body">
                         <form wire:submit="submitQuote" class="p-0">
                             <div class="mb-3">
-                                <label class="form-label fw-bold">Freight Charges({{ $request->currency }})</label>
+                                <label class="form-label fw-bold">Freight Charges</label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="fa fa-money-bill me-1"></i></span>
+                                    <span class="input-group-text">{{ $request->currency }}</span>
                                     <input type="number" class="form-control" placeholder="Freight Cost" step="0.01" required wire:model="cost">
                                 </div>
                                 @error('cost')
@@ -320,9 +320,19 @@
                                 @enderror
                             </div>
                             <div class="my-3">
-                                <label class="form-label fw-bold">Custom Clearance Charges({{ $request->currency }})</label>
+                                <label class="form-label fw-bold">Insurance Charges</label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="fa fa-money-bill me-1"></i></span>
+                                    <span class="input-group-text">{{ $request->currency }}</span>
+                                    <input type="number" class="form-control" placeholder="Insurance Charges" step="0.01" required wire:model="insurance">
+                                </div>
+                                @error('insurance')
+                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                @enderror
+                            </div>
+                            <div class="my-3">
+                                <label class="form-label fw-bold">Custom Clearance Charges</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">{{ $request->currency }}</span>
                                     <input type="number" class="form-control" placeholder="Custom Charges" step="0.01" required wire:model="custom">
                                 </div>
                                 @error('custom')

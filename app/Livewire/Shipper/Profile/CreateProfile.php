@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Shipper\Profile;
 
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -24,7 +25,7 @@ class CreateProfile extends Component
 
     public function mount()
     {
-        $this->countryCodes = json_decode(file_get_contents(resource_path('data/country-codes.json')));
+        $this->countryCodes = DB::table('countries')->orderBy('name')->get();
         $this->currentCountry = getCountryFromCode();
         $this->dial_code = $this->currentCountry->dial_code;
         $this->name = $this->user->name;

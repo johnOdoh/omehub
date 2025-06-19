@@ -17,6 +17,7 @@ class Requests extends Component
     public $show_submit_quote = false;
     public int $duration = 1;
     public $custom;
+    public $insurance;
     public $cost;
     public $date;
 
@@ -40,6 +41,7 @@ class Requests extends Component
     {
         $this->validate([
             'custom' => 'required|numeric|min:1',
+            'insurance' => 'required|numeric|min:1',
             'cost' => 'required|numeric|min:1',
             'date' => 'required|date',
             'duration' => 'required|integer|min:1',
@@ -48,6 +50,7 @@ class Requests extends Component
             'request_id' => $this->request->id,
             'user_id' => request()->user()->id,
             'custom' => $this->custom,
+            'insurance' => $this->insurance,
             'cost' => $this->cost,
             'departure_date' => $this->date,
             'duration' => $this->duration,
