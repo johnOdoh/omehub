@@ -12,8 +12,8 @@
                 @endif
                 <div class="card-body text-center">
                     <div class="text-center">
-                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 60px; height: 60px; font-size: 1.2rem;">{{ $user->initials() }}</div>
-                        <h5 class="fw-bold mt-2 mb-2">{{ $user->name }}</h5>
+                        <livewire:common.profile-image-update :$user />
+                        <h5 class="fw-bold mt-2 mb-0">{{ $user->name }}</h5>
                         <div class="mb-2">{{ $user->email }}</div>
                     </div>
                 </div>

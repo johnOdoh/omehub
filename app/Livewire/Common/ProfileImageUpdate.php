@@ -13,22 +13,21 @@ class ProfileImageUpdate extends Component
 
     #[Rule("required|image|max:5120")]
     public $image;
-
     public $user;
 
-    public function mount()
+    public function mount($user)
     {
-        $this->user = Auth::user();
+        $this->user = $user;
     }
 
     public function save()
     {
         $this->validate();
         $file = $this->image;
-        $name = $this->user->name. '.' .$file->extension();
-        $this->user->update(['image' => $file->storeAs($this->role, $name, 'public')]);
+        $name = $this->user->email. '.' .$file->extension();
+        $this->user->logistic_provider()->update(['logo' => $file->storeAs('logos', $name, 'public')]);
         $this->reset('image');
-        request()->session()->flash("image");
+        session()->flash("image");
     }
 
     public function render()

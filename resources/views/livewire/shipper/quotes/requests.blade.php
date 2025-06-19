@@ -91,7 +91,9 @@
                 <div class="col-md-6 col-12">
                     <div class="card mb-4 p-0 rounded-4">
                         <div class="card-body">
-                            <h5 class="text-center py-1 fw-bold">{{ $quote->user->name }}</h5>
+                            <h3 class="text-center py-1 fw-bold">
+                                <img src="{{ asset('storage/'.$quote->user->logistic_provider->logo) }}" alt="" width="100" height="50" class="me-2">{{ $quote->user->name }}
+                            </h3>
                             <hr class="mb-0">
                             {{-- <div class="d-flex justify-content-around align-items-center">
                                 <div><strong>{{ $request->pickup }}</strong></div>
