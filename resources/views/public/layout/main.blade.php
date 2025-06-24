@@ -44,7 +44,7 @@
 
       <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="{{ asset('assets/img/logo.png') }}" alt="">
+        <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
         {{-- <h1 class="sitename">{{ config('app.name') }}</h1> --}}
       </a>
 
@@ -73,7 +73,9 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">{{ config('app.name') }}</span>
+            <span class="sitename">
+                <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
+            </span>
           </a>
           <p>We are on the mission to reduce waste in global supply chains and make global shipping more efficient and transparent.</p>
           <div class="social-links d-flex mt-4">
