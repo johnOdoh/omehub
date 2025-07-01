@@ -21,4 +21,9 @@ class Request extends Model
     {
         return $this->hasMany(Quote::class);
     }
+
+    public function insurance_quotes()
+    {
+        return $this->hasMany(InsuranceQuote::class);
+    }
 }

@@ -310,43 +310,32 @@
                     <div class="card-body">
                         <form wire:submit="submitQuote" class="p-0">
                             <div class="mb-3">
-                                <label class="form-label fw-bold">Freight Charges</label>
+                                <label class="form-label fw-bold">Insurance Cost</label>
                                 <div class="input-group">
                                     <span class="input-group-text">{{ $request->currency }}</span>
-                                    <input type="number" class="form-control" placeholder="Freight Cost" step="0.01" required wire:model="cost">
+                                    <input type="number" class="form-control" placeholder="Coverage Cost" step="0.01" required wire:model="charge">
                                 </div>
-                                @error('cost')
+                                @error('charge')
                                     <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                                 @enderror
                             </div>
                             <div class="my-3">
-                                <label class="form-label fw-bold">Custom Clearance Charges</label>
+                                <label class="form-label fw-bold">Maximum Possible Payout</label>
                                 <div class="input-group">
                                     <span class="input-group-text">{{ $request->currency }}</span>
-                                    <input type="number" class="form-control" placeholder="Custom Charges" step="0.01" required wire:model="custom">
+                                    <input type="number" class="form-control" placeholder="Max Possible Payout" step="0.01" required wire:model="max">
                                 </div>
-                                @error('custom')
+                                @error('max')
                                     <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                                 @enderror
                             </div>
                             <div class="my-3">
-                                <label class="form-label fw-bold">Date of Departure</label>
+                                <label class="form-label fw-bold">Coverage Details <i class="small">*{pdf, doc or docx}</i></label>
                                 <div class="input-group">
-                                    <span class="input-group-text"><i class="fa fa-calendar me-1"></i></span>
-                                    <input type="date" class="form-control" required wire:model="date">
+                                    <span class="input-group-text"><i class="fa fa-file"></i></span>
+                                    <input type="file" class="form-control" required wire:model="file">
                                 </div>
-                                @error('date')
-                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                                @enderror
-                            </div>
-                            <div class="my-3">
-                                <label class="form-label fw-bold">Estimated Freight Duration</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fa fa-hourglass-half me-1"></i></span>
-                                    <input type="number" class="form-control" placeholder="Duration" min="1" required wire:model="duration">
-                                    <span class="input-group-text">days</span>
-                                </div>
-                                @error('duration')
+                                @error('file')
                                     <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                                 @enderror
                             </div>

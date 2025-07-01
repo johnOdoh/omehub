@@ -30,8 +30,11 @@ class QuoteRequests extends Component
 
     public function close_request()
     {
-        $this->request = null;
-        $this->codes = [];
+        if($this->quote_id) $this->quote_id = null;
+        else {
+            $this->request = null;
+            $this->codes = [];
+        }
     }
 
     #[On('selectQuote')]

@@ -171,16 +171,6 @@
                                 @enderror
                             </div>
                             <div class="my-3">
-                                <label class="form-label fw-bold">Insurance Charges</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">{{ $request->currency }}</span>
-                                    <input type="number" class="form-control" placeholder="Insurance Charges" step="0.01" required wire:model="insurance">
-                                </div>
-                                @error('insurance')
-                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                                @enderror
-                            </div>
-                            <div class="my-3">
                                 <label class="form-label fw-bold">Custom Clearance Charges</label>
                                 <div class="input-group">
                                     <span class="input-group-text">{{ $request->currency }}</span>

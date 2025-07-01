@@ -65,18 +65,18 @@
 
             /* Global scrollbar styling for WebKit browsers */
             ::-webkit-scrollbar {
-            width: 6px;
+                width: 6px;
             }
 
             ::-webkit-scrollbar-track {
-            background: transparent;
+                background: transparent;
             }
 
             ::-webkit-scrollbar-thumb {
-            background-color: #b3b3b3;  /* light gray */
-            border-radius: 10px;
-            border: 2px solid transparent;
-            background-clip: padding-box;
+                background-color: #b3b3b3;  /* light gray */
+                border-radius: 10px;
+                border: 2px solid transparent;
+                background-clip: padding-box;
             }
 
         </style>

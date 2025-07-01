@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('request_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->decimal('insurance', 10, 2);
             $table->decimal('custom', 10, 2);
             $table->decimal('cost', 10, 2);
             $table->date('departure_date');

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Logistics\Profile\Main as LogisticsProfileMain;
 use App\Livewire\Shipper\Profile\Main;
 use App\Livewire\Logistics\Quotes\Requests;
+use App\Livewire\Insurance\Quotes\Requests as InsuranceRequests;
 use App\Livewire\Shipper\Quotes\QuoteRequests;
 use App\Livewire\Shipper\Quotes\RequestQuote;
 
@@ -36,6 +37,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logistics/profile', LogisticsProfileMain::class)->name('logistics.profile');
     Route::get('logistics/quote-requests', Requests::class)->name('logistics.quote-requests');
     Route::get('logistics/quotes-sent', QuotesSent::class)->name('logistics.quotes-sent');
+
+    Route::get('insurance/quote-requests', InsuranceRequests::class)->name('insurance.quote-requests');
 });
 
 require __DIR__.'/auth.php';

@@ -78,9 +78,10 @@
             </div>
         </div>
         <hr>
-        <livewire:shipper.quotes.quote-list :request="$request">
         @if ($quote_id)
             <livewire:shipper.quotes.book :quote="$quote_id">
+        @else
+            <livewire:shipper.quotes.quote-list :request="$request">
         @endif
     @endif
 
