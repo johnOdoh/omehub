@@ -10,6 +10,7 @@ class Request extends Model
 
     protected $casts = [
         'is_closed' => 'boolean',
+        'needs_insurance' => 'boolean',
     ];
 
     public function user()

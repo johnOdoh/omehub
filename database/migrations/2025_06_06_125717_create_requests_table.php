@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('freight_type');
             $table->string('hs_code');
             $table->string('incoterm');
+            $table->boolean('needs_insurance');
             $table->string('currency');
             $table->string('container_type');
             $table->string('dimensions');

@@ -68,7 +68,9 @@
                 <div class="row mb-2">
                     <div class="mb-3 col-md-6">
                         <label class="form-label">HS code/Tariff code
-                            <a href="#" target="_blank" title="What is HS code/Tariff code?"><i class="fa fa-question-circle"></i></a>
+                            <a href="#" target="_blank" title="What is HS code/Tariff code?" data-bs-toggle="tooltip" data-bs-placement="right">
+                                <i class="fa fa-question-circle"></i>
+                            </a>
                         </label>
                         <input type="text" class="form-control" wire:model="hs_code" required>
                         @error('hs_code')
@@ -77,7 +79,9 @@
                     </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">Incoterm
-                            <a href="#" target="_blank" title="What are Incoterms?"><i class="fa fa-question-circle"></i></a>
+                            <a href="#" target="_blank" title="What are Incoterms?" data-bs-toggle="tooltip" data-bs-placement="right">
+                                <i class="fa fa-question-circle"></i>
+                            </a>
                         </label>
                         <select class="form-select" wire:model="incoterm" required>
                             <option value="">Select...</option>
@@ -113,6 +117,19 @@
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
+                        <label class="form-label">Do you need Insurance? <i class="fa fa-info-circle" title="Choose yes if you also need insurance quotes" data-bs-toggle="tooltip" data-bs-placement="top"></i></label>
+                        <select class="form-select" wire:model="insurance" required>
+                            <option value="">Select...</option>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                        @error('insurance')
+                            <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="row mb-2" id="insert">
+                    <div class="mb-3 col-md-6">
                         <label class="form-label">What volume of container do you need?</label>
                         <select class="form-select" wire:model.lazy="mode" required>
                             <option value="">Select...</option>
@@ -123,8 +140,6 @@
                             <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                         @enderror
                     </div>
-                </div>
-                <div class="row mb-2" id="insert">
                     @if ($mode == 'FCL')
                         <div class="mb-3 col-md-6 fcl">
                             <div class="input-group">
@@ -206,6 +221,12 @@
 ></span> --}}
     @script
         <script>
+            setTimeout(() => {
+                const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                tooltipTriggerList.map(function (tooltipTriggerEl) {
+                    return new bootstrap.Tooltip(tooltipTriggerEl)
+                });
+            }, 500);
             const fcl = document.getElementsByClassName("fcl")
             const lcl = document.getElementsByClassName("lcl")
             const wrapper = document.getElementById("insert")

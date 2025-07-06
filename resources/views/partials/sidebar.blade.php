@@ -9,7 +9,7 @@
     ];
     $shipperQuoteDropdown = [
         0 => ['name' => 'Request Quote', 'route' => 'shipper.get-quotes'],
-        1 => ['name' => 'Quote Requests', 'route' => 'shipper.quote-requests'],
+        1 => ['name' => 'My Requests', 'route' => 'shipper.quote-requests'],
     ];
 @endphp
 <nav id="sidebar" class="sidebar js-sidebar">

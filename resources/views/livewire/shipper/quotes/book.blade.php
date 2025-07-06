@@ -27,38 +27,40 @@
     </div>
     <div class="row">
         <div class="col-xl-8">
-            <div class="card mb-3">
-                <div class="card-header pb-0">
-                    <h5 class="card-title mb-0 text-dark fw-bold">Insurance Quotes</h5>
-                </div>
-                <hr class="mb-0">
-                <div class="card-body">
-                    <div class="row g-3 px-2">
-                        @foreach ($quote->request->insurance_quotes as $insurance)
-                            <div class="col-12 cursor-pointer p-0 {{ $selectedInsurance && $insurance->id == $selectedInsurance->id ? 'bg-light' : '' }}" wire:click="toggleInsurance({{ $insurance->id }})">
-                                <div class="iq p-2 border border-1">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ asset('storage/'.$quote->user->logistic_provider->logo) ?? '' }}"  width="50" height="50" class="rounded-circle me-2" alt="logo">
-                                            <div>
-                                                <strong>{{ $insurance->user->name }}</strong>
-                                                <p class="small text-muted mb-0">Insurance cover of up to
-                                                    <strong>{{ $quote->request->currency }} {{ number_format($insurance->max_payout, 2) }}</strong>
-                                                </p>
-                                                <a href="{{ asset('storage/'.$insurance->file_url) }}" target="_blank" class="small">View coverage details</a>
+            @if ($quote->request->needs_insurance)
+                <div class="card mb-3">
+                    <div class="card-header pb-0">
+                        <h5 class="card-title mb-0 text-dark fw-bold">Insurance Quotes</h5>
+                    </div>
+                    <hr class="mb-0">
+                    <div class="card-body">
+                        <div class="row g-3 px-2">
+                            @foreach ($quote->request->insurance_quotes as $insurance)
+                                <div class="col-12 cursor-pointer p-0 {{ $selectedInsurance && $insurance->id == $selectedInsurance->id ? 'bg-light' : '' }}" wire:click="toggleInsurance({{ $insurance->id }})">
+                                    <div class="iq p-2 border border-1">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{ asset('storage/'.$quote->user->logistic_provider->logo) ?? '' }}"  width="50" height="50" class="rounded-circle me-2" alt="logo">
+                                                <div>
+                                                    <strong>{{ $insurance->user->name }}</strong>
+                                                    <p class="small text-muted mb-0">Insurance cover of up to
+                                                        <strong>{{ $quote->request->currency }} {{ number_format($insurance->max_payout, 2) }}</strong>
+                                                    </p>
+                                                    <a href="{{ asset('storage/'.$insurance->file_url) }}" target="_blank" class="small">View coverage details</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <p class="fw-bold mb-1">Coverage Charge</p>
-                                            <strong class="text-primary small w-100 text-right">{{ $quote->request->currency }} {{ number_format($insurance->charge, 2) }}</strong>
+                                            <div class="ms-auto">
+                                                <p class="fw-bold mb-1">Coverage Charge</p>
+                                                <strong class="text-primary small w-100 text-right">{{ $quote->request->currency }} {{ number_format($insurance->charge, 2) }}</strong>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
             <div class="card">
                 <div class="card-header pb-0">
                     <h5 class="card-title mb-0 text-dark fw-bold">Carbon Emission</h5>

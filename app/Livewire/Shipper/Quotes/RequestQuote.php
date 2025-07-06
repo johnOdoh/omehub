@@ -17,6 +17,7 @@ class RequestQuote extends Component
     public $currency;
     public $hs_code;
     public $incoterm;
+    public $insurance;
     public $mode;
     public $qty = [];
     public $weight = [];
@@ -38,6 +39,7 @@ class RequestQuote extends Component
             'currency' => 'required',
             'hs_code' => 'required',
             'incoterm' => 'required',
+            'insurance' => 'required',
             'freight' => 'required',
             'mode' => 'required'
         ], [
@@ -90,6 +92,7 @@ class RequestQuote extends Component
             'hs_code' => $this->hs_code,
             'incoterm' => $this->incoterm,
             'freight_type' => $this->freight,
+            'needs_insurance' => $this->insurance === 'Yes' ? true : false,
             'container_type' => $this->mode,
             'dimensions' => $dimensions
         ]);
