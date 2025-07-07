@@ -8,7 +8,7 @@ use Livewire\Component;
 class EditProfile extends Component
 {
     public $user;
-    public $countryCodes = [];
+    public $countryCodes;
     public $currentCountry;
     public string $name = '';
     public string $account_type = '';
@@ -24,10 +24,10 @@ class EditProfile extends Component
     {
         $this->dispatch('load-countries-plugin');
         $this->countryCodes = DB::table('countries')->orderBy('name')->get();
-        $this->currentCountry = getCountryFromCode();
-        $this->dial_code = $this->currentCountry->dial_code;
-        $this->name = $this->user->name;
         $this->fill($this->user->shipper);
+        $this->currentCountry = $this->countryCodes->firstWhere('name', $this->country);
+        $this->dial_code = $this->currentCountry->code;
+        $this->name = $this->user->name;
         $this->dispatch('load-defaults');
     }
 

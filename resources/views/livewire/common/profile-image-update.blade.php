@@ -1,10 +1,10 @@
 <form wire:submit="save" method="POST">
     <div class="text-center" x-data="{ showEdit: false, image: $wire.entangle('image').live }">
-        @if (!$user->logistic_provider->logo && !$image)
+        @if (!$profile->logo && !$image)
             <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 110px; height: 110px; font-size: 1.5rem;">{{ $user->initials() }}</div>
         @else
             <div>
-                <img alt="{{ $user->name }}" src="{{ $image ? $image->temporaryUrl() : asset('storage/'.$user->logistic_provider->logo).'?v='.rand() }}" class="rounded-circle img-responsive mt-2" width="128" height="128" />
+                <img alt="{{ $user->name }}" src="{{ $image ? $image->temporaryUrl() : asset('storage/'.$profile->logo).'?v='.rand() }}" class="rounded-circle img-responsive mt-2" width="128" height="128" />
             </div>
         @endif
         <div class="mt-2 w-75 mx-auto" x-show="showEdit">

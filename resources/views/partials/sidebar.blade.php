@@ -1,7 +1,7 @@
 @php
     $insuranceQuoteDropdown = [
         0 => ['name' => 'Quote Requests', 'route' => 'insurance.quote-requests'],
-        1 => ['name' => 'My Quotes', 'route' => 'logistics.quotes-sent']
+        1 => ['name' => 'My Quotes', 'route' => 'insurance.quotes-sent']
     ];
     $logisticsQuoteDropdown = [
         0 => ['name' => 'Quote Requests', 'route' => 'logistics.quote-requests'],
@@ -56,9 +56,9 @@
             <li class="sidebar-header">
                 Insurance
             </li>
-            <x-sidebar-item route="logistics.dashboard" name="Dashboard" icon="sliders" />
-            <x-sidebar-item route="logistics.profile" name="Profile" icon="user" />
-            <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
+            <x-sidebar-item route="insurance.dashboard" name="Dashboard" icon="sliders" />
+            <x-sidebar-item route="insurance.profile" name="Profile" icon="user" />
+            <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
         </ul>
     </div>
 </nav>

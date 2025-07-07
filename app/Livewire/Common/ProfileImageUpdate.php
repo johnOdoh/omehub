@@ -14,10 +14,18 @@ class ProfileImageUpdate extends Component
     #[Rule("required|image|max:5120")]
     public $image;
     public $user;
+    public $profile;
 
     public function mount($user)
     {
         $this->user = $user;
+        match ($user->role) {
+            'Logistics Provider' => $this->profile = $user->logistic_provider,
+            'Insurance Provider' => $this->profile = $user->insurance_provider,
+            'Shipper' => $this->profile = $user->shipper, // Assuming Shipper has a profile
+            'Admin' => $this->profile = $user->admin, // Assuming Admin has
+            default => $this->profile = null, // Handle other roles if necessary
+        };
     }
 
     public function save()

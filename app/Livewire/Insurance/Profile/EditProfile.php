@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Logistics\Profile;
+namespace App\Livewire\Insurance\Profile;
 
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -22,7 +22,7 @@ class EditProfile extends Component
     {
         $this->dispatch('load-countries-plugin');
         $this->countryCodes = DB::table('countries')->orderBy('name')->get();
-        $this->fill($this->user->logistic_provider);
+        $this->fill($this->user->insurance_provider);
         $this->currentCountry = $this->countryCodes->firstWhere('name', $this->country);
         $this->dial_code = $this->currentCountry->code;
         $this->name = $this->user->name;
@@ -40,7 +40,7 @@ class EditProfile extends Component
             'zip' => 'required|string'
         ]);
         $validated['phone'] = $validated['phone']/1;
-        $this->user->logistic_provider()->update($validated);
+        $this->user->insurance_provider()->update($validated);
         request()->session()->flash("updated");
         $this->dispatch('profile-updated');
     }
@@ -52,6 +52,6 @@ class EditProfile extends Component
 
     public function render()
     {
-        return view('livewire.logistics.profile.edit-profile');
+        return view('livewire.insurance.profile.edit-profile');
     }
 }

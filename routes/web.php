@@ -1,15 +1,18 @@
 <?php
 
-use App\Livewire\Logistics\Quotes\QuotesSent;
 use App\Livewire\Shipper\Dashboard;
-use App\Livewire\Logistics\Dashboard as LogisticsDashboard;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Logistics\Profile\Main as LogisticsProfileMain;
 use App\Livewire\Shipper\Profile\Main;
 use App\Livewire\Logistics\Quotes\Requests;
-use App\Livewire\Insurance\Quotes\Requests as InsuranceRequests;
-use App\Livewire\Shipper\Quotes\QuoteRequests;
+use App\Livewire\Logistics\Quotes\QuotesSent;
+use App\Livewire\Insurance\Quotes\QuotesSent as InsuranceQuotesSent;
 use App\Livewire\Shipper\Quotes\RequestQuote;
+use App\Livewire\Shipper\Quotes\QuoteRequests;
+use App\Livewire\Logistics\Dashboard as LogisticsDashboard;
+use App\Livewire\Insurance\Dashboard as InsuranceDashboard;
+use App\Livewire\Insurance\Quotes\Requests as InsuranceRequests;
+use App\Livewire\Logistics\Profile\Main as LogisticsProfileMain;
+use App\Livewire\Insurance\Profile\Main as InsuranceProfileMain;
 
 Route::get('/', function () {
     return view('public.index');
@@ -38,7 +41,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logistics/quote-requests', Requests::class)->name('logistics.quote-requests');
     Route::get('logistics/quotes-sent', QuotesSent::class)->name('logistics.quotes-sent');
 
+    Route::get('insurance/dashboard', InsuranceDashboard::class)->name('insurance.dashboard');
+    Route::get('insurance/profile', InsuranceProfileMain::class)->name('insurance.profile');
     Route::get('insurance/quote-requests', InsuranceRequests::class)->name('insurance.quote-requests');
+    Route::get('insurance/quotes-sent', InsuranceQuotesSent::class)->name('insurance.quotes-sent');
 });
 
 require __DIR__.'/auth.php';
