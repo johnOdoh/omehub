@@ -24,7 +24,7 @@
                                 <button type="button" class="btn btn-primary" x-on:click="$wire.createProfile()">Create Profile</button>
                             </div>
                         @else
-                            <div class="card-body">
+                            <div class="card-body" wire:transition>
                                 <ul class="list-unstyled mb-0">
                                     <li class="d-flex align-items-center gap-2 mb-2">
                                         <i class="fas fa-briefcase fa-fw me-1"></i>

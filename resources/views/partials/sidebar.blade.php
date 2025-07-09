@@ -11,6 +11,10 @@
         0 => ['name' => 'Request Quote', 'route' => 'shipper.get-quotes'],
         1 => ['name' => 'My Requests', 'route' => 'shipper.quote-requests'],
     ];
+    $blogDropdown = [
+        0 => ['name' => 'Create Post', 'route' => 'user.blog.create'],
+        1 => ['name' => 'My Posts', 'route' => 'user.blog.posts'],
+    ];
 @endphp
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
@@ -47,6 +51,7 @@
             <x-sidebar-item route="shipper.dashboard" name="Dashboard" icon="sliders" />
             <x-sidebar-item route="shipper.profile" name="Profile" icon="user" />
             <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
+            <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
             <li class="sidebar-header">
                 Logistics
             </li>

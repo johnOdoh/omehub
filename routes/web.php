@@ -1,5 +1,8 @@
 <?php
 
+use App\Livewire\Common\Blog\CreatePost;
+use App\Livewire\Common\Blog\PostList;
+use App\Livewire\Common\Blog\ViewPost;
 use App\Livewire\Shipper\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Shipper\Profile\Main;
@@ -45,6 +48,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('insurance/profile', InsuranceProfileMain::class)->name('insurance.profile');
     Route::get('insurance/quote-requests', InsuranceRequests::class)->name('insurance.quote-requests');
     Route::get('insurance/quotes-sent', InsuranceQuotesSent::class)->name('insurance.quotes-sent');
+
+    Route::get('user/blog/create', CreatePost::class)->name('user.blog.create');
+    Route::get('user/blog/{post}/edit', CreatePost::class)->name('user.blog.edit');
+    Route::get('user/blog/posts', PostList::class)->name('user.blog.posts');
+    Route::get('user/blog/{post}', ViewPost::class)->name('user.blog.post');
 });
 
 require __DIR__.'/auth.php';

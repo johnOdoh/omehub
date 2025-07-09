@@ -63,6 +63,12 @@
                 -moz-appearance: textfield;
             }
 
+            ::placeholder {
+                color: #a0a0a0;
+                opacity: 1; /* Ensures the placeholder is fully opaque */
+                font-style: italic
+            }
+
             /* Global scrollbar styling for WebKit browsers */
             ::-webkit-scrollbar {
                 width: 6px;
@@ -122,6 +128,7 @@
             </div>
         </div>
         <script src="{{ asset('portal-assets/js/app.js') }}"></script>
+        @stack('scripts')
         <script>
             function notify(message) {
                 window.notyf.open({
