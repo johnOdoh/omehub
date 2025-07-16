@@ -10,7 +10,7 @@
 @endphp
 <li class="sidebar-item {{ $show ? 'active' : '' }}">
     <a data-bs-target="#{{ $id }}" data-bs-toggle="collapse" class="sidebar-link">
-        <i class="align-middle fa fa-{{ $icon }}"></i> <span class="align-middle">{{ $name }}</span>
+        <i class="align-middle fa fa-{{ $icon }} fa-fw"></i> <span class="align-middle">{{ $name }}</span>
     </a>
     <ul id="{{ $id }}" class="sidebar-dropdown list-unstyled collapse {{ $show ? 'show' : '' }}" data-bs-parent="#sidebar">
         @foreach ($items as $item)

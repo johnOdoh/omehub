@@ -47,6 +47,27 @@ class Book extends Component
         }
     }
 
+    public function book()
+    {
+        // dd('dfsdf');
+        request()->user()->shipments()->create([
+            'quote_id' => $this->quote->id,
+            'insurance_quote_id' => $this->selectedInsurance ? $this->selectedInsurance->id : null,
+            'carbon_offset' => $this->offset_emission ? $this->carbon_offset : null,
+            'amount' => $this->total,
+            'status' => 'processing',
+            'tracking_number' => date('Y').rand(10000, 99999).request()->user()->initials(),
+            'updates' => [
+                [
+                    'message' => 'Your shipment is being processed.',
+                    'timestamp' => now()->toDateTimeString()
+                ]
+            ]
+        ]);
+        $this->redirect(route('shipper.shipments',[] , absolute: false), navigate: true);
+        session()->flash('booked');
+    }
+
     public function render()
     {
         return view('livewire.shipper.quotes.book');

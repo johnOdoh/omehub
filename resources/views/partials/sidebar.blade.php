@@ -51,6 +51,7 @@
             <x-sidebar-item route="shipper.dashboard" name="Dashboard" icon="sliders" />
             <x-sidebar-item route="shipper.profile" name="Profile" icon="user" />
             <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
+            <x-sidebar-item route="shipper.shipments" name="My Shipments" icon="ship" />
             <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
             <li class="sidebar-header">
                 Logistics

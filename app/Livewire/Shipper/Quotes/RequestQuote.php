@@ -97,7 +97,7 @@ class RequestQuote extends Component
             'dimensions' => $dimensions
         ]);
         $this->resetExcept('countries');
-        request()->session()->flash('submitted');
+        session()->flash('submitted');
     }
 
     public function render()

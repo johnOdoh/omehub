@@ -16,6 +16,7 @@ use App\Livewire\Insurance\Dashboard as InsuranceDashboard;
 use App\Livewire\Insurance\Quotes\Requests as InsuranceRequests;
 use App\Livewire\Logistics\Profile\Main as LogisticsProfileMain;
 use App\Livewire\Insurance\Profile\Main as InsuranceProfileMain;
+use App\Livewire\Shipper\Shipments\ShipmentList;
 
 Route::get('/', function () {
     return view('public.index');
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('shipper/profile', Main::class)->name('shipper.profile');
     Route::get('shipper/get-quotes',RequestQuote::class)->name('shipper.get-quotes');
     Route::get('shipper/quote-requests', QuoteRequests::class)->name('shipper.quote-requests');
+    Route::get('shipper/shipments', ShipmentList::class)->name('shipper.shipments');
 
     Route::get('logistics/dashboard', LogisticsDashboard::class)->name('logistics.dashboard');
     Route::get('logistics/profile', LogisticsProfileMain::class)->name('logistics.profile');

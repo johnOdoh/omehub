@@ -128,8 +128,13 @@
                 </div>
             </div>
             <div class="d-flex w-100 mt-3">
-                <button class="btn btn-success w-100 py-2 fw-bold">Proceed to Payment</button>
+                <button class="btn btn-success w-100 py-2 fw-bold" wire:click="book()">Proceed to Payment</button>
             </div>
+        </div>
+    </div>
+    <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:1000;" wire:loading>
+        <div class="spinner-grow text-info me-2" role="status" style="position:absolute;top:50%;left:50%">
+            <span class="visually-hidden">Loading...</span>
         </div>
     </div>
     @script

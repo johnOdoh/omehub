@@ -45,7 +45,7 @@ class Login extends Component
 
         $user = Auth::user();
 
-        $this->redirect(route($user->dashboard(), absolute: true), navigate: false);
+        $this->redirect(route($user->dashboard()));
     }
 
     /**

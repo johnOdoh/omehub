@@ -99,6 +99,11 @@ class User extends Authenticatable
         return $this->hasMany(Request::class);
     }
 
+    public function shipments()
+    {
+        return $this->hasMany(Shipment::class);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);
