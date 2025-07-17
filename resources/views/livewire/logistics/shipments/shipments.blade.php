@@ -13,7 +13,6 @@
                                 <th>S/N</th>
                                 <th>Tracking Number</th>
                                 <th>Status</th>
-                                <th>Current Location</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -23,10 +22,9 @@
                                     <td>{{ $shipments->firstItem() + $loop->index }}</td>
                                     <td>{{ $shipment->tracking_number }}</td>
                                     <td><span class="badge bg-warning">{{ $shipment->status }}</span></td>
-                                    <td>{{ $shipment->current_location ?? '-' }}</td>
                                     <td class="d-flex gap-2">
                                         <button class="btn btn-info btn-sm" wire:click="viewShipment({{ $shipment->id }})">View Shipment</button>
-                                        <button class="btn btn-primary btn-sm" wire:click="viewShipment({{ $shipment->id }}, 1)">Track Shipment</button>
+                                        <button class="btn btn-primary btn-sm" wire:click="viewShipment({{ $shipment->id }}, 1)">Update Tracking</button>
                                     </td>
                                 </tr>
                             @empty
@@ -39,7 +37,7 @@
             </div>
         </div>
     @else
-        <livewire:shipper.shipments.track :shipment="$shipmentId" :track="$track" />
+        <livewire:logistics.shipments.details :shipment="$shipmentId" :track="$track" />
     @endif
     <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:1000;" wire:loading>
         <div class="spinner-grow text-info me-2" role="status" style="position:absolute;top:50%;left:50%">

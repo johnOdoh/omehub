@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('insurance_quote_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('tracking_number')->unique();
             $table->string('current_location')->nullable();
-            $table->enum('status', ['processing', 'in transit', 'delivered', 'delayed'])->default('processing');
+            $table->enum('status', ['Processing', 'In Transit', 'Delivered', 'Delayed', 'Arrived'])->default('processing');
             $table->decimal('carbon_offset')->nullable();
             $table->decimal('amount', 10, 2);
             $table->json('updates');

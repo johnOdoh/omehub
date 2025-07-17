@@ -59,6 +59,7 @@
             <x-sidebar-item route="logistics.dashboard" name="Dashboard" icon="sliders" />
             <x-sidebar-item route="logistics.profile" name="Profile" icon="user" />
             <x-sidebar-dropdown :items="$logisticsQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
+            <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
             <li class="sidebar-header">
                 Insurance
             </li>
