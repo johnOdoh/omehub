@@ -6,43 +6,63 @@
 
     <form wire:submit="register" class="flex flex-col gap-6">
         <!-- Name -->
-        <flux:input
-            wire:model="name"
-            :label="__('Name')"
-            type="text"
-            required
-            autofocus
-            autocomplete="name"
-            :placeholder="__('Full name')"
-        />
+        <div>
+            <flux:input
+                wire:model="name"
+                :label="__('Name')"
+                type="text"
+                required
+                autofocus
+                autocomplete="name"
+                :placeholder="__('Full name')"
+            />
+            @error('name')
+                <div style="color: red"><small><i>{{ $message }}</i></small></div>
+            @enderror
+        </div>
 
         <!-- Email Address -->
-        <flux:input
-            wire:model="email"
-            :label="__('Email address')"
-            type="email"
-            required
-            autocomplete="email"
-            placeholder="email@example.com"
-        />
+        <div>
+            <flux:input
+                wire:model="email"
+                :label="__('Email address')"
+                type="email"
+                required
+                autocomplete="email"
+                placeholder="email@example.com"
+            />
+            @error('email')
+                <div style="color: red"><small><i>{{ $message }}</i></small></div>
+            @enderror
+        </div>
 
-        <flux:select wire:model="role" label="Role" placeholder="Choose Role..." required>
-            {{-- <flux:select.option value="Admin">Admin</flux:select.option> --}}
-            <flux:select.option value="Shipper">Shipper</flux:select.option>
-            <flux:select.option value="Logistics Provider">Logistics Provider</flux:select.option>
-            {{-- <flux:select.option value="Insurance Provider">Insurance Provider</flux:select.option> --}}
-        </flux:select>
+        <div>
+            <flux:select wire:model="role" label="Role" placeholder="Choose Role..." required>
+                <flux:select.option value="Admin">Admin</flux:select.option>
+                <flux:select.option value="Shipper">Shipper</flux:select.option>
+                <flux:select.option value="Logistics Provider">Logistics Provider</flux:select.option>
+                <flux:select.option value="Insurance Provider">Insurance Provider</flux:select.option>
+            </flux:select>
+            @error('role')
+                <div style="color: red"><small><i>{{ $message }}</i></small></div>
+            @enderror
+        </div>
 
         <!-- Password -->
-        <flux:input
-            wire:model="password"
-            :label="__('Password')"
-            type="password"
-            required
-            autocomplete="new-password"
-            :placeholder="__('Password')"
-            viewable
-        />
+        <div>
+            <flux:input
+                wire:model="password"
+                :label="__('Password')"
+                type="password"
+                required
+                autocomplete="new-password"
+                :placeholder="__('Password')"
+                viewable
+            />
+            @error('password')
+                <div style="color: red"><small><i>{{ $message }}</i></small></div>
+            @enderror
+        </div>
 
         <!-- Confirm Password -->
         <flux:input

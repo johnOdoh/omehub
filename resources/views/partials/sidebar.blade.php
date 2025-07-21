@@ -45,32 +45,43 @@
         </div>
 
         <ul class="sidebar-nav">
-            <li class="sidebar-header">
-                Admin
-            </li>
-            <x-sidebar-item route="admin.dashboard" name="Dashboard" icon="sliders" />
-            <x-sidebar-item route="admin.users" name="Users" icon="users" />
-            <li class="sidebar-header">
-                Shipper
-            </li>
-            <x-sidebar-item route="shipper.dashboard" name="Dashboard" icon="sliders" />
-            <x-sidebar-item route="shipper.profile" name="Profile" icon="user" />
-            <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
-            <x-sidebar-item route="shipper.shipments" name="My Shipments" icon="ship" />
-            <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
-            <li class="sidebar-header">
-                Logistics
-            </li>
-            <x-sidebar-item route="logistics.dashboard" name="Dashboard" icon="sliders" />
-            <x-sidebar-item route="logistics.profile" name="Profile" icon="user" />
-            <x-sidebar-dropdown :items="$logisticsQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
-            <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
-            <li class="sidebar-header">
-                Insurance
-            </li>
-            <x-sidebar-item route="insurance.dashboard" name="Dashboard" icon="sliders" />
-            <x-sidebar-item route="insurance.profile" name="Profile" icon="user" />
-            <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
+            @if (auth()->user()->role == 'Admin')
+                {{-- <li class="sidebar-header">
+                    Admin
+                </li> --}}
+                <x-sidebar-item route="admin.dashboard" name="Dashboard" icon="sliders" />
+                <x-sidebar-item route="admin.users" name="Users" icon="users" />
+            @elseif (auth()->user()->role == 'Shipper')
+                {{-- <li class="sidebar-header">
+                    Shipper
+                </li> --}}
+                <x-sidebar-item route="shipper.dashboard" name="Dashboard" icon="sliders" />
+                <x-sidebar-item route="shipper.profile" name="Profile" icon="user" />
+                <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
+                <x-sidebar-item route="shipper.shipments" name="My Shipments" icon="ship" />
+                <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
+            @elseif (auth()->user()->role == 'Logistics Provider')
+                {{-- <li class="sidebar-header">
+                    Logistics
+                </li> --}}
+                <x-sidebar-item route="logistics.dashboard" name="Dashboard" icon="sliders" />
+                <x-sidebar-item route="logistics.profile" name="Profile" icon="user" />
+                <x-sidebar-dropdown :items="$logisticsQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
+                <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
+                <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
+            @elseif (auth()->user()->role == 'Insurance Provider')
+                {{-- <li class="sidebar-header">
+                    Insurance
+                </li> --}}
+                <x-sidebar-item route="insurance.dashboard" name="Dashboard" icon="sliders" />
+                <x-sidebar-item route="insurance.profile" name="Profile" icon="user" />
+                <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
+                <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
+            @else
+                <li class="sidebar-header">
+                    No Role
+                </li>
+            @endif
         </ul>
     </div>
 </nav>

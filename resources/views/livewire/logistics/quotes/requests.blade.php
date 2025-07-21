@@ -4,54 +4,63 @@
     </div>
     @if (session('submitted')) <span x-show="notify('Quote Submitted')"></span> @endif
     @if (!$show_submit_quote)
-        <div class="row">
-            <div class="col-xl-{{ $request ? '7' : '12' }}">
-                <div class="card">
-                    <div class="card-header pb-0">
-                        <h5 class="card-title mb-0">Requests</h5>
-                    </div>
-                    <hr class="mb-0">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>S/N</th>
-                                        <th>Origin</th>
-                                        <th>Destination</th>
-                                        <th>Freight Type</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($requests as $quote_request)
+        @if (!auth()->user()->logistic_provider || !auth()->user()->logistic_provider->is_verified)
+            <div class="alert alert-warning" role="alert">
+                <div class="alert-message d-flex">
+                    <strong class="me-2">Note:</strong>
+                    <div>You will not be able to see quote requests until your profile is completed and your documents are verified</div>
+                </div>
+            </div>
+        @else
+            <div class="row">
+                <div class="col-xl-{{ $request ? '7' : '12' }}">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <h5 class="card-title mb-0">Requests</h5>
+                        </div>
+                        <hr class="mb-0">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $requests->firstItem() + $loop->index }}</td>
-                                            <td>{{ $quote_request->pickup }}</td>
-                                            <td>{{ $quote_request->destination }}</td>
-                                            <td>{{ $quote_request->freight_type }}</td>
-                                            <td>
-                                                <button class="btn btn-info btn-sm" wire:click="viewRequest({{ $quote_request->id }})">View</button>
-                                            </td>
+                                            <th>S/N</th>
+                                            <th>Origin</th>
+                                            <th>Destination</th>
+                                            <th>Freight Type</th>
+                                            <th>Actions</th>
                                         </tr>
-                                    @empty
-                                        <tr><td colspan="5"><h5>No Requests Yet</h5></td></tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                            {{ $requests->links() }}
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($requests as $quote_request)
+                                            <tr>
+                                                <td>{{ $requests->firstItem() + $loop->index }}</td>
+                                                <td>{{ $quote_request->pickup }}</td>
+                                                <td>{{ $quote_request->destination }}</td>
+                                                <td>{{ $quote_request->freight_type }}</td>
+                                                <td>
+                                                    <button class="btn btn-info btn-sm" wire:click="viewRequest({{ $quote_request->id }})">View</button>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr><td colspan="5"><h5>No Requests Yet</h5></td></tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                {{ $requests->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @if ($request)
-                <div class="col-xl-5" x-ref="request" x-on:request-changed.window="$refs.request.scrollIntoView({ behaviour: 'smooth' })">
-                    <div x-init="$refs.request.scrollIntoView({ behaviour: 'smooth' })">
-                        <x-request-details :$request :has-button="true" />
+                @if ($request)
+                    <div class="col-xl-5" x-ref="request" x-on:request-changed.window="$refs.request.scrollIntoView({ behaviour: 'smooth' })">
+                        <div x-init="$refs.request.scrollIntoView({ behaviour: 'smooth' })">
+                            <x-request-details :$request :has-button="true" />
+                        </div>
                     </div>
-                </div>
-            @endif
-        </div>
+                @endif
+            </div>
+        @endif
     @else
         <div class="row">
             <div class="col-xl-6">
