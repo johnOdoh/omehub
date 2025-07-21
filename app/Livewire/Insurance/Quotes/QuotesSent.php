@@ -23,7 +23,7 @@ class QuotesSent extends Component
     public $fileUrl;
     public $id;
 
-    public function view_request(Request $request)
+    public function viewRequest(Request $request)
     {
         $this->request = $request;
         $quote = $request->insurance_quotes()->where('user_id', request()->user()->id)->first();
@@ -33,7 +33,7 @@ class QuotesSent extends Component
         $this->id = $quote->id;
     }
 
-    public function close_request()
+    public function closeRequest()
     {
         $this->request = null;
     }
@@ -63,11 +63,11 @@ class QuotesSent extends Component
 
     public function render()
     {
-        $requests = Request::withWhereHas('insurance_quotes', function ($query) {
-                $query->where('user_id', request()->user()->id);
+        $requests = Request::where('is_closed', false)
+            ->whereHas('insurance_quotes', function ($q) {
+                $q->where('user_id', request()->user()->id);
             })
-            ->where('is_closed', false)
-            ->orderByDesc('created_at')
+            ->latest()
             ->paginate(2);
         return view('livewire.insurance.quotes.quotes-sent', ['requests' => $requests]);
     }

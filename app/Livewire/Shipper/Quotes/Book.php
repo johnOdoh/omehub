@@ -64,6 +64,7 @@ class Book extends Component
                 ]
             ]
         ]);
+        $this->quote->request()->update(['is_closed' => true]);
         $this->redirect(route('shipper.shipments',[] , absolute: false), navigate: true);
         session()->flash('booked');
     }

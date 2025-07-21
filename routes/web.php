@@ -36,6 +36,9 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('admin/dashboard', \App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');
+    Route::get('admin/users', \App\Livewire\Admin\Users\UsersList::class)->name('admin.users');
+
     Route::get('shipper/dashboard', Dashboard::class)->name('shipper.dashboard');
     Route::get('shipper/profile', Main::class)->name('shipper.profile');
     Route::get('shipper/get-quotes',RequestQuote::class)->name('shipper.get-quotes');

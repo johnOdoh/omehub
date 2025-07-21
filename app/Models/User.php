@@ -94,6 +94,11 @@ class User extends Authenticatable
         return $this->hasMany(Quote::class);
     }
 
+    public function insuranceQuotes()
+    {
+        return $this->hasMany(InsuranceQuote::class);
+    }
+
     public function requests()
     {
         return $this->hasMany(Request::class);

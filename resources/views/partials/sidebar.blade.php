@@ -46,6 +46,11 @@
 
         <ul class="sidebar-nav">
             <li class="sidebar-header">
+                Admin
+            </li>
+            <x-sidebar-item route="admin.dashboard" name="Dashboard" icon="sliders" />
+            <x-sidebar-item route="admin.users" name="Users" icon="users" />
+            <li class="sidebar-header">
                 Shipper
             </li>
             <x-sidebar-item route="shipper.dashboard" name="Dashboard" icon="sliders" />

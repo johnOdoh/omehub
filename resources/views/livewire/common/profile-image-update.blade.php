@@ -21,8 +21,10 @@
                 <div class="text-danger"><small><i>{{ $message }}</i></small></div>
             @enderror
         </div>
-        <div x-show="!showEdit"><small><a href="#" wire:click.prevent @click="showEdit = true">Edit</a></small></div>
-        <div x-show="showEdit"><small><a href="#" wire:click.prevent @click="showEdit = false, image = null">Cancel</a></small></div>
+        @if ($allowEdit)
+            <div x-show="!showEdit"><small><a href="#" wire:click.prevent @click="showEdit = true">Edit</a></small></div>
+            <div x-show="showEdit"><small><a href="#" wire:click.prevent @click="showEdit = false, image = null">Cancel</a></small></div>
+        @endif
         @if (session('image')) <span x-show="notify('Profile Image Updated')"></span> @endif
     </div>
 </form>

@@ -22,10 +22,10 @@
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class='dropdown-item' href=''>
+                    {{-- <a class='dropdown-item' href="">
                         <i class="align-middle me-1" data-feather="user"></i> Profile
                     </a>
-                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider"></div> --}}
                     <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
                     <form method="POST" id="logout-form" action="{{ route('logout') }}" class="d-none">
                         @csrf

@@ -20,18 +20,18 @@ class Requests extends Component
     public $cost;
     public $date;
 
-    public function view_request(Request $request)
+    public function viewRequest(Request $request)
     {
         $this->request = $request;
         $this->dispatch('request-changed');
     }
 
-    public function close_request()
+    public function closeRequest()
     {
         $this->request = null;
     }
 
-    public function toggle_quote()
+    public function toggleQuote()
     {
         $this->show_submit_quote = !$this->show_submit_quote;
     }
@@ -59,14 +59,13 @@ class Requests extends Component
 
     public function render()
     {
-        $requests = Request::with('quotes')
+        $requests = Request::where('is_closed', false)
             ->where(function ($query) {
                 $query->whereHas('quotes', function ($q) {
                     $q->where('user_id', '!=', request()->user()->id);
                 })->orDoesntHave('quotes');
             })
-            ->where('is_closed', false)
-            ->orderByDesc('created_at')
+            ->latest()
             ->paginate(2);
         return view('livewire.logistics.quotes.requests', ['requests' => $requests]);
     }

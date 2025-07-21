@@ -2,8 +2,8 @@
     <div class="mb-3">
         <h1 class="h3 d-inline align-middle">Quotes Sent</h1>
     </div>
-    @if (session(key: 'updated')) <span x-show="notify('Quote Updated')"></span> @endif
-    @if (session(key: 'deleted')) <span x-show="notify('Quote Deleted')"></span> @endif
+    @if (session('updated')) <span x-show="notify('Quote Updated')"></span> @endif
+    @if (session('deleted')) <span x-show="notify('Quote Deleted')"></span> @endif
     @if (!$request)
         <div class="row">
             <div class="col-xl-12">
@@ -50,104 +50,7 @@
         <p class="fw-bold text-secondary"><a href="#" wire:click.prevent="close_request" class="text-decoration-none">< Back</a></p>
         <div class="row">
             <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-header pb-0">
-                        <h5 class="card-title mb-0">Request Details</h5>
-                    </div>
-                    <hr class="mb-0">
-                    @php
-                        $items = explode(';', $request->dimensions);
-                    @endphp
-                    <div class="card-body">
-                        <ul class="list-unstyled mb-0">
-                            <li class="d-flex align-items-center gap-2 mb-2">
-                                <i class="fas fa-map-marker fa-fw me-1"></i>
-                                <div>
-                                    <div class="text-muted small">Pickup</div>
-                                    <div class="fw-bold">{{ $request->pickup }}</div>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-center gap-2 mb-2">
-                                <i class="fas fa-location-arrow fa-fw me-1"></i>
-                                <div>
-                                    <div class="text-muted small">Destination</div>
-                                    <div class="fw-bold">{{ $request->destination }}</div>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-center gap-2 mb-2">
-                                <i class="fas fa-shipping-fast fa-fw me-1"></i>
-                                <div>
-                                    <div class="text-muted small">Freight Type</div>
-                                    <div class="fw-bold">{{ $request->freight_type }}</div>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-center gap-2 mb-2">
-                                <i class="fas fa-boxes fa-fw me-1"></i>
-                                <div>
-                                    <div class="text-muted small">Cargo Type</div>
-                                    <div class="fw-bold">{{ $request->cargo_type }}</div>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-center gap-2 mb-2">
-                                <i class="fas fa-box fa-fw me-1"></i>
-                                <div>
-                                    <div class="text-muted small">Container Type</div>
-                                    <div class="fw-bold">{{ $request->container_type }}</div>
-                                </div>
-                            </li>
-                            <hs>Item(s)</hs>
-                            <hr class="my-1">
-                            <li class="d-flex align-items-center gap-2 mb-2 w-100">
-                                <i class="fas fa-sort-numeric-up fa-fw me-1"></i>
-                                @if ($request->container_type == 'LCL')
-                                    <table class="table table-responsive table-striped table-sm mb-0 w-100">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Qty</th>
-                                                <th>Weight(KG)</th>
-                                                <th>Volume(CBM)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($items as $item)
-                                                @php $dimension = explode(',', $item); @endphp
-                                                <tr>
-                                                    <td class="text-muted">{{ $loop->iteration }}</td>
-                                                    <td class="text-muted">{{ $dimension[0] }}</td>
-                                                    <td class="text-muted">{{ $dimension[1] }}</td>
-                                                    <td class="text-muted">{{ $dimension[2] }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @else
-                                    <table class="table table-responsive table-striped table-sm mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Qty</th>
-                                                <th>Container Type</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($items as $item)
-                                                @php
-                                                    $dimension = explode(',', $item);
-                                                @endphp
-                                                <tr>
-                                                    <td class="text-muted">{{ $loop->iteration }}</td>
-                                                    <td class="text-muted">{{ $dimension[0] }}</td>
-                                                    <td class="text-muted">{{ $dimension[1] }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @endif
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <x-request-details :$request :has-button="false" />
             </div>
             <div class="col-xl-6">
                 <div class="card">

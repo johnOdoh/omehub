@@ -15,10 +15,12 @@ class ProfileImageUpdate extends Component
     public $image;
     public $user;
     public $profile;
+    public $allowEdit;
 
-    public function mount($user)
+    public function mount($user, $allowEdit = true)
     {
         $this->user = $user;
+        $this->allowEdit = $allowEdit;
         match ($user->role) {
             'Logistics Provider' => $this->profile = $user->logistic_provider,
             'Insurance Provider' => $this->profile = $user->insurance_provider,
