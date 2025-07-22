@@ -6,7 +6,7 @@
         <div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <div class="alert-message d-flex">
-                <strong class="me-2">Note:</strong>
+                <strong class="me-2"><i class="fa fa-warning"></i></strong>
                 <div>You are yet to complete your profile. <a href="{{ route('shipper.profile') }}" wire:navigate>Click here</a> to complete your profile to be able to enjoy our services.</div>
             </div>
         </div>
@@ -14,7 +14,7 @@
         <div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <div class="alert-message d-flex">
-                <strong class="me-2">Note:</strong>
+                <strong class="me-2"><i class="fa fa-warning"></i></strong>
                 <div>Your documents are under review by our team. You will be notified when soon when your documents are approved.</div>
             </div>
         </div>

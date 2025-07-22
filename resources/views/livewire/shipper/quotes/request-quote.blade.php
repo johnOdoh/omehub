@@ -6,7 +6,7 @@
                 <div class="alert alert-warning alert-dismissible" role="alert">
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     <div class="alert-message d-flex">
-                        <strong class="me-2">Note:</strong>
+                        <strong class="me-2"><i class="fa fa-warning"></i></strong>
                         <div>You will not be able to request quotes until your profile is completed and your documents are verified</div>
                     </div>
                 </div>

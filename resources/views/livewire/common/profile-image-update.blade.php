@@ -1,6 +1,6 @@
 <form wire:submit="save" method="POST">
     <div class="text-center" x-data="{ showEdit: false, image: $wire.entangle('image').live }">
-        @if (!$profile)
+        @if (!$profile || !$profile->logo)
             <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 110px; height: 110px; font-size: 1.5rem;">{{ $user->initials() }}</div>
         @else
             <div>

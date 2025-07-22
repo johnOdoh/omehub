@@ -7,7 +7,7 @@
         @if (!auth()->user()->insurance_provider || !auth()->user()->insurance_provider->is_verified)
             <div class="alert alert-warning" role="alert">
                 <div class="alert-message d-flex">
-                    <strong class="me-2">Note:</strong>
+                    <strong class="me-2"><i class="fa fa-warning"></i></strong>
                     <div>You will not be able to see quote requests until your profile is completed and your documents are verified</div>
                 </div>
             </div>
