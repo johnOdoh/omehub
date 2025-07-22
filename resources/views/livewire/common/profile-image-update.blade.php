@@ -1,6 +1,6 @@
 <form wire:submit="save" method="POST">
     <div class="text-center" x-data="{ showEdit: false, image: $wire.entangle('image').live }">
-        @if (!$profile->logo && !$image)
+        @if (!$profile)
             <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 110px; height: 110px; font-size: 1.5rem;">{{ $user->initials() }}</div>
         @else
             <div>
@@ -21,7 +21,7 @@
                 <div class="text-danger"><small><i>{{ $message }}</i></small></div>
             @enderror
         </div>
-        @if ($allowEdit)
+        @if ($allowEdit && $profile)
             <div x-show="!showEdit"><small><a href="#" wire:click.prevent @click="showEdit = true">Edit</a></small></div>
             <div x-show="showEdit"><small><a href="#" wire:click.prevent @click="showEdit = false, image = null">Cancel</a></small></div>
         @endif

@@ -40,6 +40,13 @@ class UserInfo extends Component
         }
     }
 
+    public function verifyUser()
+    {
+        $this->profile->is_verified = true;
+        $this->profile->save();
+        session()->flash('message', 'User approved successfully.');
+    }
+
     public function render()
     {
         return view('livewire.admin.users.user-info');

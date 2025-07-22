@@ -59,7 +59,15 @@
                                     <td><span class="badge bg-{{ $profile && $profile->is_verified ? 'success' : 'warning' }}">{{ $profile && $profile->is_verified ? 'Verified' : 'Unverified' }}</span></td>
                                     <td><span class="badge bg-{{ $user->status == 'Active' ? 'success' : 'warning' }}">{{ $user->status }}</span></td>
                                     <td class="table-action">
-                                        <a href="#" class="me-2" wire:click.prevent='selectUser({{ $user->id }})'><i class="fa fa-eye"></i></a>
+                                        @if ($profile)
+                                            <a href="#" class="me-2" wire:click.prevent='selectUser({{ $user->id }})'>
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                        @else
+                                            <span class="me-2" data-bs-toggle="tooltip" data-bs-placement="left" title="User has not created a profile yet">
+                                                <i class="fa fa-low-vision"></i>
+                                            </span>
+                                        @endif
                                         <div class="dropdown position-relative d-inline">
                                             <a href="#" data-bs-toggle="dropdown" data-bs-display="static">
                                                 <i class="fa fa-ellipsis-h"></i>
@@ -92,4 +100,16 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
+    @script
+        <script>
+            $wire.on('loadJs', () => {
+                setTimeout(() => {
+                    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                    tooltipTriggerList.map(function (tooltipTriggerEl) {
+                        return new bootstrap.Tooltip(tooltipTriggerEl)
+                    });
+                }, 500);
+            })
+        </script>
+    @endscript
 </div>

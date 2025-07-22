@@ -35,7 +35,9 @@ class ProfileImageUpdate extends Component
         $this->validate();
         $file = $this->image;
         $name = $this->user->email. '.' .$file->extension();
-        $this->user->logistic_provider()->update(['logo' => $file->storeAs('logos', $name, 'public')]);
+        $this->profile->logo = $file->storeAs('logos', $name, 'public');
+        $this->profile->save();
+        // $this->user->logistic_provider()->update(['logo' => $file->storeAs('logos', $name, 'public')]);
         $this->reset('image');
         session()->flash("image");
     }

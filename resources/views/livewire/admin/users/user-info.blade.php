@@ -16,14 +16,17 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="stat">
-                                        <i class="fa fa-asterisk"></i>
+                                        <i class="fa fa-life-ring"></i>
                                     </div>
                                 </div>
                             </div>
                             <p class="fw-bold text-{{ $profile->is_verified ? 'success' : 'warning' }}">{{ $profile->is_verified ? 'Verified' : 'Not Verified' }}</p>
-                            <div class="float-end">
-                                <a href="{{ route('logistics.quotes-sent') }}" wire:navigate>My Quotes</a>
-                            </div>
+                            @if (!$profile->is_verified)
+                                <div class="text-end my-1">
+                                    <a href="{{ asset('storage/' . $profile->document) }}" class="px-3" target="_blank">View Document</a>
+                                    <button type="button" class="btn btn-primary" wire:confirm='Are you sure you want to verify this user?' wire:click="verifyUser()">Approve</button>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

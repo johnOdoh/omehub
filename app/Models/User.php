@@ -63,6 +63,8 @@ class User extends Authenticatable
     {
         if ($this->role === 'Shipper') $route = 'shipper.dashboard';
         elseif ($this->role === 'Logistics Provider') $route = 'logistics.dashboard';
+        elseif ($this->role === 'Insurance Provider') $route = 'insurance.dashboard';
+        elseif ($this->role === 'Admin') $route = 'admin.dashboard';
         else $route = 'home';
         return $route;
     }
