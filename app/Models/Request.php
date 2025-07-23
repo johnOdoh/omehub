@@ -11,6 +11,7 @@ class Request extends Model
     protected $casts = [
         'is_closed' => 'boolean',
         'needs_insurance' => 'boolean',
+        'expires_at' => 'datetime'
     ];
 
     public function user()

@@ -143,15 +143,18 @@
                     }
                 });
             }
-
-            const delBtn = document.getElementsByClassName('delBtn');
-            for (i = 0; i < delBtn.length; i++) {
-                delBtn[i].addEventListener('click', (event) => {
-                    var confirmation = confirm("Are you sure you want to proceed?");
-                    if (confirmation == false) {
-                        event.preventDefault();
+            function error(message) {
+                window.notyf.open({
+                    type: 'error',
+                    message: message,
+                    duration: 2500,
+                    ripple: true,
+                    dismissible: true,
+                    position: {
+                        x: 'right',
+                        y: 'top'
                     }
-                })
+                });
             }
         </script>
 

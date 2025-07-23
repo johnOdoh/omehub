@@ -66,7 +66,7 @@
                         </div> --}}
                         <div class="text-end my-2">
                             <a href="#" class="px-3" @click.prevent="$dispatch('loadJs', { 'cost': {{ $quote->cost }}, 'custom': {{ $quote->custom }} })">Show details and charges</a>
-                            <button type="button" class="btn btn-primary" @click="$dispatch('selectQuote', { id: {{ $quote->id }} })">Select</button>
+                            <button type="button" class="btn btn-primary" wire:click="$parent.selectQuote({{ $quote->id }})">Select</button>
                         </div>
                     </div>
                 </div>

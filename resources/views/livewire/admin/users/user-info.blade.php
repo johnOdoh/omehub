@@ -21,12 +21,12 @@
                                 </div>
                             </div>
                             <p class="fw-bold text-{{ $profile->is_verified ? 'success' : 'warning' }}">{{ $profile->is_verified ? 'Verified' : 'Not Verified' }}</p>
-                            @if (!$profile->is_verified)
-                                <div class="text-end my-1">
-                                    <a href="{{ asset('storage/' . $profile->document) }}" class="px-3" target="_blank">View Document</a>
+                            <div class="text-end my-1">
+                                <a href="{{ asset('storage/' . $profile->document) }}" class="px-3" target="_blank">View Document</a>
+                                @if (!$profile->is_verified)
                                     <button type="button" class="btn btn-primary" wire:confirm='Are you sure you want to verify this user?' wire:click="verifyUser()">Approve</button>
-                                </div>
-                            @endif
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>

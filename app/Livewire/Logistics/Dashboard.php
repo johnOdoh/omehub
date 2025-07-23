@@ -16,12 +16,13 @@ class Dashboard extends Component
     {
         $this->requestsCount = Request::where('is_closed', false)->count();
         $this->quotesCount = request()->user()->quotes()->whereHas('request', function ($q) {
-                $q->where('is_closed', false);
-            })->count();
+            $q->where('is_closed', false);
+        })->count();
         $this->shipmentsCount = Shipment::whereHas('quote', function ($q) {
-                $q->where('user_id', request()->user()->id);
-            })->count();
+            $q->where('user_id', request()->user()->id);
+        })->count();
     }
+
     public function render()
     {
         return view('livewire.logistics.dashboard', [

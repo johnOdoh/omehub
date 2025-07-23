@@ -35,7 +35,7 @@
                     </div>
                     <p class="my-2">Swift and dependable international shipping for a full or half container.</p>
                     <div class="float-end">
-                        <a href="">Get Quote</a>
+                        <a href="{{ route('shipper.get-quotes') }}" wire:navigate>Get Quote</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     </div>
                     <p class="my-2">Cost-effect solution for shipping boxes and loose cargo internationally.</p>
                     <div class="float-end">
-                        <a href="">Get Quote</a>
+                        <a href="{{ route('shipper.get-quotes') }}" wire:navigate>Get Quote</a>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                     </div>
                     <p class="my-2">Get your cargo shipped Faster with our secure and reliable air freight services.</p>
                     <div class="float-end">
-                        <a href="">Get Quote</a>
+                        <a href="{{ route('shipper.get-quotes') }}" wire:navigate>Get Quote</a>
                     </div>
                 </div>
             </div>

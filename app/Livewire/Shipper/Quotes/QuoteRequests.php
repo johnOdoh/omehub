@@ -20,7 +20,7 @@ class QuoteRequests extends Component
     public $dimensions = [];
     public $codes = [];
 
-    public function view_request(Request $request)
+    public function viewRequest(Request $request)
     {
         $this->request = $request;
         $this->dimensions = explode(';', $request->dimensions);
@@ -28,7 +28,13 @@ class QuoteRequests extends Component
         $this->codes[] = DB::table('countries')->where('name', $request->destination)->firstOrFail('code');
     }
 
-    public function close_request()
+    public function deleteRequest(Request $request)
+    {
+        $request->delete();
+        session()->flash('deleted');
+    }
+
+    public function closeRequest()
     {
         if($this->quote_id) $this->quote_id = null;
         else {
@@ -37,15 +43,15 @@ class QuoteRequests extends Component
         }
     }
 
-    #[On('selectQuote')]
-    public function select_quote($id)
+    // #[On('selectQuote')]
+    public function selectQuote($id)
     {
         $this->quote_id = $id;
     }
 
     public function render()
     {
-        $requests = request()->user()->requests()->where('is_closed', false)->orderByDesc('created_at')->paginate(2);
+        $requests = request()->user()->requests()->where('is_closed', false)->orderByDesc('created_at')->paginate(10);
         return view('livewire.shipper.quotes.requests', ['requests' => $requests]);
     }
 }

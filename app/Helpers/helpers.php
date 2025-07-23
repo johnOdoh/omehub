@@ -39,3 +39,15 @@ function getCountryFromCode()
     if ($country) return $country;
     return null;
 }
+
+function getProfile()
+{
+    $user = request()->user();
+    return match ($user->role) {
+        'Logistics Provider' => $user->logistic_provider,
+        'Insurance Provider' => $user->insurance_provider,
+        'Shipper' => $user->shipper, // Assuming Shipper has a profile
+        'Admin' => $user->admin, // Assuming Admin has
+        default => null, // Handle other roles if necessary
+    };
+}

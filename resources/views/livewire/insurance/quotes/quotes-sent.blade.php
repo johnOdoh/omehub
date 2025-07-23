@@ -32,7 +32,7 @@
                                             <td>{{ $quote_request->destination }}</td>
                                             <td>{{ $quote_request->freight_type }}</td>
                                             <td>
-                                                <button class="btn btn-info btn-sm" wire:click="view_request({{ $quote_request->id }})">View</button>
+                                                <button class="btn btn-info btn-sm" wire:click="viewRequest({{ $quote_request->id }})">View</button>
                                             </td>
                                         </tr>
                                     @empty
@@ -47,7 +47,7 @@
             </div>
         </div>
     @else
-        <p class="fw-bold text-secondary"><a href="#" wire:click.prevent="close_request" class="text-decoration-none">< Back</a></p>
+        <p class="fw-bold text-secondary"><a href="#" wire:click.prevent="closeRequest" class="text-decoration-none">< Back</a></p>
         <div class="row">
             <div class="col-xl-6">
                 <x-request-details :$request :has-button="false" />

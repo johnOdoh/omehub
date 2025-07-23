@@ -5,7 +5,6 @@ namespace App\Livewire\Common;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Auth;
 
 class ProfileImageUpdate extends Component
 {
@@ -21,13 +20,7 @@ class ProfileImageUpdate extends Component
     {
         $this->user = $user;
         $this->allowEdit = $allowEdit;
-        match ($user->role) {
-            'Logistics Provider' => $this->profile = $user->logistic_provider,
-            'Insurance Provider' => $this->profile = $user->insurance_provider,
-            'Shipper' => $this->profile = $user->shipper, // Assuming Shipper has a profile
-            'Admin' => $this->profile = $user->admin, // Assuming Admin has
-            default => $this->profile = null, // Handle other roles if necessary
-        };
+        $this->profile = getProfile();
     }
 
     public function save()

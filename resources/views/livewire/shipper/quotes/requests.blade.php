@@ -19,6 +19,7 @@
                                         <th>Origin</th>
                                         <th>Destination</th>
                                         <th>Freight Type</th>
+                                        <th>Expires In</th>
                                         <th>No of Quotes</th>
                                         <th>Actions</th>
                                     </tr>
@@ -30,9 +31,15 @@
                                             <td>{{ $quote_request->pickup }}</td>
                                             <td>{{ $quote_request->destination }}</td>
                                             <td>{{ $quote_request->freight_type }}</td>
+                                            @if($quote_request->expires_at->isPast())
+                                                <td><span class="badge bg-danger">Expired</span></td>
+                                            @else
+                                                <td class="fw-bold text-info">{{ $quote_request->expires_at->diffAsCarbonInterval()->forHumans() }}</td>
+                                            @endif
                                             <td>{{ $quote_request->quotes->count() }}</td>
-                                            <td>
-                                                <button class="btn btn-info btn-sm" wire:click="view_request({{ $quote_request->id }})">View</button>
+                                            <td class="d-flex gap-2">
+                                                <button class="btn btn-info btn-sm" wire:click="viewRequest({{ $quote_request->id }})">View</button>
+                                                <button class="btn btn-danger btn-sm" wire:confirm="Are you sure you want to delete this request?" wire:click="deleteRequest({{ $quote_request->id }})">Delete</button>
                                             </td>
                                         </tr>
                                     @empty
@@ -47,7 +54,7 @@
             </div>
         </div>
     @else
-        <p class="fw-bold text-secondary"><a href="#" wire:click.prevent="close_request" class="text-decoration-none">< Back</a></p>
+        <p class="fw-bold text-secondary"><a href="#" wire:click.prevent="closeRequest" class="text-decoration-none">< Back</a></p>
         <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
             <div class="d-flex flex-wrap align-items-center gap-2 text-dark fs-6 flex-grow-1">
                 <!-- Origin -->
@@ -81,7 +88,7 @@
         @if ($quote_id)
             <livewire:shipper.quotes.book :quote="$quote_id">
         @else
-            <livewire:shipper.quotes.quote-list :request="$request">
+            <livewire:shipper.quotes.quote-list :$request>
         @endif
     @endif
 

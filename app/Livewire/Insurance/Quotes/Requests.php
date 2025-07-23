@@ -39,6 +39,10 @@ class Requests extends Component
 
     public function submitQuote()
     {
+        if ($this->request->expires_at->isPast()) {
+            session()->flash('expired');
+            return;
+        }
         $this->validate([
             'charge' => 'required|numeric|min:1',
             'max' => 'required|numeric|min:1',
@@ -59,15 +63,6 @@ class Requests extends Component
 
     public function render()
     {
-        $requests = Request::where('is_closed', false)
-            ->where('needs_insurance', true)
-            ->where(function ($query) {
-                $query->whereHas('insurance_quotes', function ($q) {
-                    $q->where('user_id', '!=', request()->user()->id);
-                })->orDoesntHave('insurance_quotes');
-            })
-            ->latest()
-            ->paginate(2);
-        return view('livewire.insurance.quotes.requests', ['requests' => $requests]);
+        return view('livewire.insurance.quotes.requests');
     }
 }

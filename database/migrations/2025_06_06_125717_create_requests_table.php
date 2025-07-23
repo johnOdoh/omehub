@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('container_type');
             $table->string('dimensions');
             $table->boolean('is_closed')->default(false);
+            $table->timestamp('expires_at');
             $table->timestamps();
         });
     }

@@ -32,6 +32,9 @@ class RequestQuote extends Component
 
     public function requestQuote()
     {
+        if(!request()->user()->shipper || !request()->user()->shipper->is_verified) {
+            return;
+        }
         $this->validate([
             'origin' => 'required',
             'destination' => 'required',
@@ -94,7 +97,8 @@ class RequestQuote extends Component
             'freight_type' => $this->freight,
             'needs_insurance' => $this->insurance === 'Yes' ? true : false,
             'container_type' => $this->mode,
-            'dimensions' => $dimensions
+            'dimensions' => $dimensions,
+            'expires_at' => now()->addHour()
         ]);
         $this->resetExcept('countries');
         session()->flash('submitted');

@@ -11,14 +11,13 @@ class Book extends Component
     public $quote;
     public $selectedInsurance;
     public $total;
-    public $carbon_offset;
+    public $carbon_offset = 5.00;
     public $offset_emission = false;
 
     public function mount(Quote $quote)
     {
         $this->quote = $quote;
         $this->total = $quote->cost + $quote->custom;
-        $this->carbon_offset = $this->total/10;
     }
 
     public function toggleInsurance(InsuranceQuote $insuranceQuote)

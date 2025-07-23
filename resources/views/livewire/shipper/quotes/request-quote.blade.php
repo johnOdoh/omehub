@@ -12,7 +12,7 @@
                 </div>
             @endif
             @if (session('submitted'))
-                <div class="alert alert-primary alert-dismissible" role="alert">
+                <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     <div class="alert-icon">
                         <i class="fa fa-fw fa-check"></i>

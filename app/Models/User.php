@@ -61,12 +61,13 @@ class User extends Authenticatable
 
     public function dashboard(): string
     {
-        if ($this->role === 'Shipper') $route = 'shipper.dashboard';
-        elseif ($this->role === 'Logistics Provider') $route = 'logistics.dashboard';
-        elseif ($this->role === 'Insurance Provider') $route = 'insurance.dashboard';
-        elseif ($this->role === 'Admin') $route = 'admin.dashboard';
-        else $route = 'home';
-        return $route;
+        return match ($this->role) {
+        'Logistics Provider' => 'logistics.dashboard',
+        'Insurance Provider' => 'insurance.dashboard',
+        'Shipper' => 'shipper.dashboard',
+        'Admin' => 'admin.dashboard',
+        default => 'home'
+    };
     }
 
     public function firstname(): string
