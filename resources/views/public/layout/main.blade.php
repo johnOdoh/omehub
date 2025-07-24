@@ -61,7 +61,7 @@
         <a class="btn-getstarted" href="{{ route(auth()->user()->dashboard()) }}">Dashboard</a>
       @else
         <a class="btn-getstarted" href="{{ route('register') }}">Sign Up</a>
-        <a class="cta-btn" href="{{ route('login') }}">Sign In</a>
+        <a class="ct-btn" href="{{ route('login') }}">Sign In</a>
       @endauth
     </div>
   </header>
@@ -78,7 +78,7 @@
                 <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
             </span>
           </a>
-          <p>We are on the mission to reduce waste in global supply chains and make global shipping more efficient and transparent.</p>
+          <p>We have a vision to become the world’s most trusted digital gateway for international trade, where logistics, finance, compliance, and sustainability converge — simply and seamlessly.</p>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
@@ -93,8 +93,8 @@
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('about') }}">About us</a></li>
             <li><a href="{{ route('services') }}">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="{{ route('terms') }}">Terms of service</a></li>
+            <li><a href="{{ route('privacy') }}">Privacy policy</a></li>
           </ul>
         </div>
 
@@ -112,11 +112,16 @@
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
-          <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p>United States</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-          <p><strong>Email:</strong> <span>info@example.com</span></p>
+          <div class="mb-4">
+              <p>Unity warehouse, Toyota Bus Stop, Ladipo Mushin,</p>
+              <p>Lagos, Nigeria.</p>
+          </div>
+          <div class="mb-4">
+              <p>Zone C New Market Express,</p>
+              <p>Enugu, Nigeria.</p>
+          </div>
+          {{-- <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p> --}}
+          <p><strong>Email:</strong> <span>support@omefreight.com</span></p>
         </div>
 
       </div>

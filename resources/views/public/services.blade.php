@@ -42,19 +42,19 @@
             </div>
           </div><!-- End Service Item -->
 
+          <div class="col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon flex-shrink-0"><i class="bi bi-gift"></i></div>
+            <div>
+              <h4 class="title">Trade Finance</h4>
+              <p class="description">Access to financing options for your shipments</p>
+            </div>
+          </div><!-- End Service Item -->
+
           <div class="col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="icon flex-shrink-0"><i class="bi bi-headset"></i></div>
             <div>
               <h4 class="title">Dedicated Support</h4>
-              <p class="description">Paperwork, customs, real-time assistance</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon flex-shrink-0"><i class="bi bi-gift"></i></div>
-            <div>
-              <h4 class="title">Totally Freet</h4>
-              <p class="description">No extra charges. Pay only for your booking</p>
+              <p class="description">Professional support staff to handle your shipping needs</p>
             </div>
           </div><!-- End Service Item -->
 

@@ -1,21 +1,2 @@
 Tooltip resetting in admin users list
-
-You can try by navigating to the /ome folder from SSH.
-
-Clone your GitHub repo into the /ome folder
-git clone < https://github.com/your-username/your-repo.git > .
-(Don't forget the dot (.) at the end — this clones into the current folder, not a subfolder.)
-
-If you already cloned it before, and just want to pull updates:
-git pull origin main
-
-Replace main with your actual branch name if it's different.
-
-After pulling, use:
-ls -lah
-
-To see your deployed files inside the ome folder.
-
-Since this falls outside our standard support scope, it would require a developer to examine it in depth.
-
-I recommend reaching out to your developer for further investigation.
+Implement message sending on contact page
