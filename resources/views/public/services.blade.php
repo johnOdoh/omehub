@@ -64,14 +64,14 @@
 
     </section>
 
-    <!-- Services Section -->
+     <!-- Services Section -->
     <section id="services" class="services section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <span>Our Services<br></span>
-        <h2>Our ServiceS</h2>
-        <p>{{ config('app.name') }} provides a wide range of services to help you find the best global transport options</p>
+        <h2>What We Do</h2>
+        <p>{{ config('app.name') }} brings together every essential trade service under one roof</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -81,63 +81,72 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="card">
               <div class="card-img">
-                <img src="{{ asset('assets/img/services/air-service.webp') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/services/quote-and-book.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'air-freight']) }}" class="stretched-link">Air Freight</a></h3>
-              <p>When time is of the essence, our air freight service ensures your goods reach their destination quickly and efficiently.</p>
+              <h3><a href="{{ route('service', ['service' => 'air-freight']) }}" class="stretched-link">Quote & Book Freight</a></h3>
+              <p>Quickly compare and book shipping options from trusted logistics providers across all freight modes, sea, air, road, and rail - all in one place. </p>
             </div>
           </div><!-- End Card Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="card">
               <div class="card-img">
-                <img src="{{ asset('assets/img/services/ocean-service.webp') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/services/track.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'ocean-freight']) }}" class="stretched-link">Ocean Freight</a></h3>
-              <p>For larger cargo quantities with flexible transit times, our ocean freight services provide global coverage. Choose between Less-than-Container Load (LCL) and Full Container Load (FCL) options.</p>
+              <h3><a href="{{ route('service', ['service' => 'ocean-freight']) }}" class="stretched-link">Track Shipment</a></h3>
+              <p>Stay informed with real-time tracking updates from pickup to final delivery, visible right from your dashboard.</p>
             </div>
           </div><!-- End Card Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="card">
               <div class="card-img">
-                <img src="{{ asset('assets/img/services/cargo-service.webp') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/services/finance.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'cargo-insurance']) }}" class="stretched-link">Cargo Insurance</a></h3>
-              <p>Protect your shipments with our comprehensive cargo insurance. Rest easy knowing your goods are covered, and explore options for additional full cargo insurance.</p>
+              <h3><a href="{{ route('service', ['service' => 'cargo-insurance']) }}" class="stretched-link">Apply for Trade Finance</a></h3>
+              <p>Secure short-term financial support to fund your shipment, with flexible payment options available based on your business or individual profile. </p>
             </div>
           </div><!-- End Card Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="card">
               <div class="card-img">
-                <img src="{{ asset('assets/img/services/road-service.webp') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/services/access-insurance.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'road-freight']) }}" class="stretched-link">Road Freight</a></h3>
-              <p>Efficient road freight services for cargo transportation within Europe. Whether it’s Less-Truck-Load (LTL) or Full-Truck-Load (FTL), we ensure timely deliveries across the continent.</p>
+              <h3><a href="{{ route('service', ['service' => 'road-freight']) }}" class="stretched-link">Access Insurance</a></h3>
+              <p>Protect your cargo with affordable, tailored insurance solutions offered directly through the platform.</p>
             </div>
           </div><!-- End Card Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="card">
                 <div class="card-img">
-                    <img src="{{ asset('assets/img/services/rail-service.webp') }}" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/services/resolve-disputes.webp') }}" alt="" class="img-fluid">
                 </div>
-                <h3><a href="{{ route('service', ['service' => 'rail-freight']) }}" class="stretched-link">Rail Freight</a></h3>
-                <p>Streamline border crossings with our customs brokerage services. Our experts handle the paperwork, so you don’t have to. Say goodbye to administrative hassles.</p>
+                <h3><a href="{{ route('service', ['service' => 'rail-freight']) }}" class="stretched-link">Resolve Disputes & Claims</a></h3>
+                <p>Get fast legal support for any issues during your shipment. Raise claims directly and have them handled professionally through OmeHub’s legal partners.</p>
             </div>
           </div><!-- End Card Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="card">
               <div class="card-img">
-                <img src="{{ asset('assets/img/services/courier-service.webp') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/services/offset.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'courier-service']) }}" class="stretched-link">Courier Service</a></h3>
-              <p>Swift, reliable door-to-door delivery for documents, luggage, and parcels worldwide. Track your shipments effortlessly through our intuitive platform.</p>
+              <h3><a href="{{ route('service', ['service' => 'courier-service']) }}" class="stretched-link">Offset CO₂ Emissions</a></h3>
+              <p>Choose to offset your shipment’s carbon footprint through OmeHub’s built-in sustainability feature — and receive a certified annual report of your impact. </p>
             </div>
           </div><!-- End Card Item -->
 
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
+            <div class="card">
+              <div class="card-img">
+                <img src="{{ asset('assets/img/services/community.webp') }}" alt="" class="img-fluid">
+              </div>
+              <h3><a href="{{ route('service', ['service' => 'courier-service']) }}" class="stretched-link">Engage in a Trade Community Feed</a></h3>
+              <p>Post updates, share market news, and interact with others in the global trade community — with a limit of one post per day per stakeholder to keep content focused.</p>
+            </div>
+          </div><!-- End Card Item -->
         </div>
 
       </div>

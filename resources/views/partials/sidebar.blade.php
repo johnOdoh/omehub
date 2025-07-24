@@ -45,13 +45,13 @@
         </div>
 
         <ul class="sidebar-nav">
-            @if (auth()->user()->role == 'Admin')
+            {{-- @if (auth()->user()->role == 'Admin') --}}
                 {{-- <li class="sidebar-header">
                     Admin
                 </li> --}}
                 <x-sidebar-item route="admin.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="admin.users" name="Users" icon="users" />
-            @elseif (auth()->user()->role == 'Shipper')
+            {{-- @elseif (auth()->user()->role == 'Shipper') --}}
                 {{-- <li class="sidebar-header">
                     Shipper
                 </li> --}}
@@ -60,7 +60,7 @@
                 <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
                 <x-sidebar-item route="shipper.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
-            @elseif (auth()->user()->role == 'Logistics Provider')
+            {{-- @elseif (auth()->user()->role == 'Logistics Provider') --}}
                 {{-- <li class="sidebar-header">
                     Logistics
                 </li> --}}
@@ -69,7 +69,7 @@
                 <x-sidebar-dropdown :items="$logisticsQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
                 <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
-            @elseif (auth()->user()->role == 'Insurance Provider')
+            {{-- @elseif (auth()->user()->role == 'Insurance Provider') --}}
                 {{-- <li class="sidebar-header">
                     Insurance
                 </li> --}}
@@ -77,11 +77,11 @@
                 <x-sidebar-item route="insurance.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
-            @else
+            {{-- @else --}}
                 <li class="sidebar-header">
                     No Role
                 </li>
-            @endif
+            {{-- @endif --}}
         </ul>
     </div>
 </nav>

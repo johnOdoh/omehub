@@ -31,11 +31,11 @@
             </div>
 
             <div class="col-lg-6 content order-last order-lg-first" data-aos="fade-up" data-aos-delay="100">
-                <h3>About Us</h3>
-                <p class="fst-italic">
-                    We are on the mission to reduce waste in global supply chains and make global shipping more efficient and transparent.
-                </p>
-                <p>{{ config('app.name') }} was born out of frustration with the lack of global digital logistics solutions available in the industry. As long-time logistics professionals, the founders saw the need for companies for a better way to manage shipments. So they set out to build the ultimate logistics platform from scratch. They wanted to simplify ordering and managing shipments across all freight modes and make it easy for users to compare different options and find the most suitable and cost-effective solutions in seconds, so they would not have to waste days communicating with logistics providers over e-mails.</p>
+                <h3>About {{ config('app.name') }}</h3>
+                <p>{{ config('app.name') }} is a smart, all-in-one digital logistics marketplace designed to revolutionize how individuals and businesses manage international trade. Our mission is simple: to make global shipping accessible, transparent, and efficient, without compromising on compliance, sustainability, or user control.</p>
+                <p>Whether you're an SME exporting goods, an individual shipping personal items, or a logistics provider offering services, OmeHub connects you directly through one streamlined, intelligent platform.</p>
+                <h5 class="fw-bold">Our Vision</h5>
+                <p>We have a vision to become the world’s most trusted digital gateway for international trade, where logistics, finance, compliance, and sustainability converge — simply and seamlessly.</p>
             </div>
         </div>
 
@@ -48,12 +48,66 @@
             </div>
 
             <div class="col-lg-6 content order-last order-lg-last" data-aos="fade-up" data-aos-delay="100">
-                <h3>Connecting global supply chain</h3>
-                <p class="fst-italic">
-                With real-time global freight pricing, booking and procurement across hundreds of carriers, thousands of forwarders and tens of thousands of importers and exporters around the world, big and small.
-                </p>
+                <h3>What We Do</h3>
+                <p class="fst-italic">{{ config('app.name') }} brings together every essential trade service under one roof.</p>
                 <p>
-                    {{ config('app.name') }} was born out of frustration with the lack of global digital logistics solutions available in the industry. As long-time logistics professionals, the founders saw the need for companies for a better way to manage shipments. So they set out to build the ultimate logistics platform from scratch. They wanted to simplify ordering and managing shipments across all freight modes and make it easy for users to compare different options and find the most suitable and cost-effective solutions in seconds, so they would not have to waste days communicating with logistics providers over e-mails.
+                    <ul>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Quote & Book Freight from verified logistics providers worldwide </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Track Shipments with real-time visibility and updates </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Apply for Trade Finance or flexible payment options </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Access Insurance tailored to your cargo </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Resolve Disputes & Claims with in-platform legal support</span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Offset CO₂ Emissions through verified green contributions </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Get Trade Compliance Info with AI-powered search </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Engage in a Trade Community Feed to share updates and market news</span></li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="row gy-4 mt-5">
+
+            <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img">
+                    <img src="assets/img/features-4.jpg" alt="" class="img-fluid">
+                </div>
+            </div>
+
+            <div class="col-lg-6 content order-last order-lg-first" data-aos="fade-up" data-aos-delay="100">
+                <h3>Driving Sustainable Trade</h3>
+                <p class="fst-italic">We are building a platform grounded in security, transparency, and compliance. </p>
+                <p>We believe logistics shouldn’t come at the expense of the planet. OmeHub calculates your shipment’s carbon footprint and offers you the opportunity to offset it directly during checkout. At year-end, you’ll receive a personalized carbon offset certificate, recognizing your contribution to greener global trade. </p>
+                <h5 class="fw-bold">Our Promise</h5>
+                <p>
+                    <ul>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>All users are verified via ID and KYC checks </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Embargoed destinations are automatically blocked </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Users must declare their goods as legal and non-restricted before booking </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Payments are held and released only after service delivery </span></li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="row gy-4 mt-5">
+
+            <div class="col-lg-6 position-relative align-self-start order-first" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img">
+                    <img src="assets/img/features-5.jpg" alt="" class="img-fluid">
+                </div>
+            </div>
+
+            <div class="col-lg-6 content order-last" data-aos="fade-up" data-aos-delay="100">
+                <h3>Where We Operate </h3>
+                <p>{{ config('app.name') }} is global by design. Our platform supports shipments to and from most countries around the world, with automated compliance screening and region-specific services. Whether you're in Africa, Europe, Asia, South, or North America, OmeHub brings the trade world to your fingertips. </p>
+                <h5 class="fw-bold">Built For All</h5>
+                <p>
+                    <ul>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span><strong>Individuals: </strong>Ship with confidence and flexibility</span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span><strong>Companies: </strong>Manage teams, track multiple shipments, access finance and insurance </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span><strong>Logistics Partners: </strong>Gain more visibility, automate quotes, and reduce manual work </span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span><strong>Finance & Legal Providers: </strong>Connect to verified clients with structured workflows </span></li>
+                    </ul>
                 </p>
             </div>
         </div>
@@ -89,7 +143,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/features-4.jpg" alt="" class="img-fluid">
+                    <img src="assets/img/features-3.jpg" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -132,7 +186,7 @@
           {{-- <div class="col-lg-3 col-md-6">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Support</p>
+              <p>Support</p>Individuals: Ship with confidence and flexibility
             </div>
           </div><!-- End Stats Item --> --}}
 

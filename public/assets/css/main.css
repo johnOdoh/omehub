@@ -18,7 +18,7 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root {
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #001973; /* Color for headings, subheadings and title throughout the website */
@@ -271,12 +271,19 @@ h6 {
 
   .header .btn-getstarted {
     order: 2;
+    /* margin: 0 15px 0 0; */
+    padding: 6px 15px;
+  }
+
+  #header .cta-btn {
+    order: 2;
     margin: 0 15px 0 0;
     padding: 6px 15px;
   }
 
   .header .navmenu {
     order: 3;
+    margin: 0 0 0 5px;
   }
 }
 
@@ -1190,6 +1197,23 @@ section,
 .call-to-action .cta-btn:hover {
   background: var(--accent-color);
   border: 2px solid var(--accent-color);
+}
+
+#header .cta-btn {
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 25px;
+  margin: 0 0 0 15px;
+  border-radius: 4px;
+  transition: 0.5s;
+  border: 1px solid var(--contrast-color);
+  color: var(--contrast-color);
+}
+
+#header .cta-btn:hover {
+  background: var(--accent-color);
+  border: 1px solid var(--accent-color);
 }
 
 /*--------------------------------------------------------------

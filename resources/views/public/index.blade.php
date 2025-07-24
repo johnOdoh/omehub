@@ -89,11 +89,11 @@
             </div>
 
             <div class="col-lg-6 content order-last order-lg-first" data-aos="fade-up" data-aos-delay="100">
-                <h3>About Us</h3>
-                <p class="fst-italic">
-                    We are on the mission to reduce waste in global supply chains and make global shipping more efficient and transparent.
-                </p>
-                <p>{{ config('app.name') }} was born out of frustration with the lack of global digital logistics solutions available in the industry. As long-time logistics professionals, the founders saw the need for companies for a better way to manage shipments. So they set out to build the ultimate logistics platform from scratch. They wanted to simplify ordering and managing shipments across all freight modes and make it easy for users to compare different options and find the most suitable and cost-effective solutions in seconds, so they would not have to waste days communicating with logistics providers over e-mails.</p>
+                <h3>About {{ config('app.name') }}</h3>
+                <p>{{ config('app.name') }} is a smart, all-in-one digital logistics marketplace designed to revolutionize how individuals and businesses manage international trade. Our mission is simple: to make global shipping accessible, transparent, and efficient, without compromising on compliance, sustainability, or user control.</p>
+                <p>Whether you're an SME exporting goods, an individual shipping personal items, or a logistics provider offering services, OmeHub connects you directly through one streamlined, intelligent platform.</p>
+                <h5 class="fw-bold">Our Vision</h5>
+                <p>We have a vision to become the world’s most trusted digital gateway for international trade, where logistics, finance, compliance, and sustainability converge — simply and seamlessly.</p>
                 <a href="#" class="readmore"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
@@ -129,7 +129,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-first order-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/features-4.jpg" alt="" class="img-fluid">
+                    <img src="assets/img/features-2.jpg" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -144,8 +144,8 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <span>Our Services<br></span>
-        <h2>Our ServiceS</h2>
-        <p>{{ config('app.name') }} provides a wide range of services to help you find the best global transport options</p>
+        <h2>What We Do</h2>
+        <p>{{ config('app.name') }} brings together every essential trade service under one roof</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -155,63 +155,72 @@
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="card">
               <div class="card-img">
-                <img src="{{ asset('assets/img/services/air-service.webp') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/services/quote-and-book.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'air-freight']) }}" class="stretched-link">Air Freight</a></h3>
-              <p>When time is of the essence, our air freight service ensures your goods reach their destination quickly and efficiently.</p>
+              <h3><a href="{{ route('service', ['service' => 'air-freight']) }}" class="stretched-link">Quote & Book Freight</a></h3>
+              <p>Quickly compare and book shipping options from trusted logistics providers across all freight modes, sea, air, road, and rail - all in one place. </p>
             </div>
           </div><!-- End Card Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="card">
               <div class="card-img">
-                <img src="{{ asset('assets/img/services/ocean-service.webp') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/services/track.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'ocean-freight']) }}" class="stretched-link">Ocean Freight</a></h3>
-              <p>For larger cargo quantities with flexible transit times, our ocean freight services provide global coverage. Choose between Less-than-Container Load (LCL) and Full Container Load (FCL) options.</p>
+              <h3><a href="{{ route('service', ['service' => 'ocean-freight']) }}" class="stretched-link">Track Shipment</a></h3>
+              <p>Stay informed with real-time tracking updates from pickup to final delivery, visible right from your dashboard.</p>
             </div>
           </div><!-- End Card Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="card">
               <div class="card-img">
-                <img src="{{ asset('assets/img/services/cargo-service.webp') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/services/finance.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'cargo-insurance']) }}" class="stretched-link">Cargo Insurance</a></h3>
-              <p>Protect your shipments with our comprehensive cargo insurance. Rest easy knowing your goods are covered, and explore options for additional full cargo insurance.</p>
+              <h3><a href="{{ route('service', ['service' => 'cargo-insurance']) }}" class="stretched-link">Apply for Trade Finance</a></h3>
+              <p>Secure short-term financial support to fund your shipment, with flexible payment options available based on your business or individual profile. </p>
             </div>
           </div><!-- End Card Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="card">
               <div class="card-img">
-                <img src="{{ asset('assets/img/services/road-service.webp') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/services/access-insurance.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'road-freight']) }}" class="stretched-link">Road Freight</a></h3>
-              <p>Efficient road freight services for cargo transportation within Europe. Whether it’s Less-Truck-Load (LTL) or Full-Truck-Load (FTL), we ensure timely deliveries across the continent.</p>
+              <h3><a href="{{ route('service', ['service' => 'road-freight']) }}" class="stretched-link">Access Insurance</a></h3>
+              <p>Protect your cargo with affordable, tailored insurance solutions offered directly through the platform.</p>
             </div>
           </div><!-- End Card Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="card">
                 <div class="card-img">
-                    <img src="{{ asset('assets/img/services/rail-service.webp') }}" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/services/resolve-disputes.webp') }}" alt="" class="img-fluid">
                 </div>
-                <h3><a href="{{ route('service', ['service' => 'rail-freight']) }}" class="stretched-link">Rail Freight</a></h3>
-                <p>Streamline border crossings with our customs brokerage services. Our experts handle the paperwork, so you don’t have to. Say goodbye to administrative hassles.</p>
+                <h3><a href="{{ route('service', ['service' => 'rail-freight']) }}" class="stretched-link">Resolve Disputes & Claims</a></h3>
+                <p>Get fast legal support for any issues during your shipment. Raise claims directly and have them handled professionally through OmeHub’s legal partners.</p>
             </div>
           </div><!-- End Card Item -->
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
             <div class="card">
               <div class="card-img">
-                <img src="{{ asset('assets/img/services/courier-service.webp') }}" alt="" class="img-fluid">
+                <img src="{{ asset('assets/img/services/offset.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'courier-service']) }}" class="stretched-link">Courier Service</a></h3>
-              <p>Swift, reliable door-to-door delivery for documents, luggage, and parcels worldwide. Track your shipments effortlessly through our intuitive platform.</p>
+              <h3><a href="{{ route('service', ['service' => 'courier-service']) }}" class="stretched-link">Offset CO₂ Emissions</a></h3>
+              <p>Choose to offset your shipment’s carbon footprint through OmeHub’s built-in sustainability feature — and receive a certified annual report of your impact. </p>
             </div>
           </div><!-- End Card Item -->
 
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="700">
+            <div class="card">
+              <div class="card-img">
+                <img src="{{ asset('assets/img/services/community.webp') }}" alt="" class="img-fluid">
+              </div>
+              <h3><a href="{{ route('service', ['service' => 'courier-service']) }}" class="stretched-link">Engage in a Trade Community Feed</a></h3>
+              <p>Post updates, share market news, and interact with others in the global trade community — with a limit of one post per day per stakeholder to keep content focused.</p>
+            </div>
+          </div><!-- End Card Item -->
         </div>
 
       </div>
@@ -229,7 +238,11 @@
             <div class="text-center">
               <h3>Help Deliver the Freight Revolution</h3>
               <p>We are bringing global freight online with the only vendor-neutral global freight booking and payment platform. Ready to impact the way the world moves?</p>
-              <a class="cta-btn" href="#">Get Started</a>
+              @auth
+                <a class="cta-btn" href="{{ route(auth()->user()->dashboard()) }}">Dashboard</a>
+              @else
+                <a class="cta-btn" href="{{ route('register') }}">Get Started</a>
+              @endauth
             </div>
           </div>
         </div>

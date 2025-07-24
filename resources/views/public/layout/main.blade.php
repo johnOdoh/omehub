@@ -57,11 +57,12 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      @if (auth()->check())
+      @auth
         <a class="btn-getstarted" href="{{ route(auth()->user()->dashboard()) }}">Dashboard</a>
       @else
-        <a class="btn-getstarted" href="{{ route('register') }}">Get Started</a>
-      @endif
+        <a class="btn-getstarted" href="{{ route('register') }}">Sign Up</a>
+        <a class="cta-btn" href="{{ route('login') }}">Sign In</a>
+      @endauth
     </div>
   </header>
 
