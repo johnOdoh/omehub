@@ -94,7 +94,7 @@
                 <p>Whether you're an SME exporting goods, an individual shipping personal items, or a logistics provider offering services, OmeHub connects you directly through one streamlined, intelligent platform.</p>
                 <h5 class="fw-bold">Our Vision</h5>
                 <p>We have a vision to become the world’s most trusted digital gateway for international trade, where logistics, finance, compliance, and sustainability converge — simply and seamlessly.</p>
-                <a href="#" class="readmore"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
+                <a href="{{ route('about') }}" class="readmore"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
             </div>
         </div>
 
