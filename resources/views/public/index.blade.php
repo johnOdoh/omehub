@@ -7,7 +7,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg" data-aos="fade-in">
+      <img src="{{ asset('assets/img/world-dotted-map.png') }}" alt="" class="hero-bg" data-aos="fade-in">
 
       <div class="container">
         <div class="row gy-4 d-flex justify-content-between">
@@ -15,16 +15,10 @@
             <h2 data-aos="fade-up">Get rates for international shipments instantly 24/7</h2>
             <ul>
               <li>Stress-free global shipping for all freight modes</li>
-              <li>Instant quotes & flexible pricing9</li>
+              <li>Instant quotes & flexible pricing</li>
               <li>Access to trade financing & Insurance</li>
             </ul>
-
           </div>
-
-          <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-            <img src="assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="">
-          </div>
-
         </div>
       </div>
 
@@ -157,7 +151,7 @@
               <div class="card-img">
                 <img src="{{ asset('assets/img/services/quote-and-book.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'air-freight']) }}" class="stretched-link">Quote & Book Freight</a></h3>
+              <h3><a href="{{ route('service', ['service' => 'book-freight']) }}" class="stretched-link">Quote & Book Freight</a></h3>
               <p>Quickly compare and book shipping options from trusted logistics providers across all freight modes, sea, air, road, and rail - all in one place. </p>
             </div>
           </div><!-- End Card Item -->
@@ -167,7 +161,7 @@
               <div class="card-img">
                 <img src="{{ asset('assets/img/services/track.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'ocean-freight']) }}" class="stretched-link">Track Shipment</a></h3>
+              <h3><a href="{{ route('service', ['service' => 'track-shipment']) }}" class="stretched-link">Track Shipment</a></h3>
               <p>Stay informed with real-time tracking updates from pickup to final delivery, visible right from your dashboard.</p>
             </div>
           </div><!-- End Card Item -->
@@ -177,7 +171,7 @@
               <div class="card-img">
                 <img src="{{ asset('assets/img/services/finance.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'cargo-insurance']) }}" class="stretched-link">Apply for Trade Finance</a></h3>
+              <h3><a href="{{ route('service', ['service' => 'trade-finance']) }}" class="stretched-link">Trade Finance</a></h3>
               <p>Secure short-term financial support to fund your shipment, with flexible payment options available based on your business or individual profile. </p>
             </div>
           </div><!-- End Card Item -->
@@ -187,7 +181,7 @@
               <div class="card-img">
                 <img src="{{ asset('assets/img/services/access-insurance.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'road-freight']) }}" class="stretched-link">Access Insurance</a></h3>
+              <h3><a href="{{ route('service', ['service' => 'access-insurance']) }}" class="stretched-link">Access Insurance</a></h3>
               <p>Protect your cargo with affordable, tailored insurance solutions offered directly through the platform.</p>
             </div>
           </div><!-- End Card Item -->
@@ -197,7 +191,7 @@
                 <div class="card-img">
                     <img src="{{ asset('assets/img/services/resolve-disputes.webp') }}" alt="" class="img-fluid">
                 </div>
-                <h3><a href="{{ route('service', ['service' => 'rail-freight']) }}" class="stretched-link">Resolve Disputes & Claims</a></h3>
+                <h3><a href="{{ route('service', ['service' => 'resolve-disputes']) }}" class="stretched-link">Resolve Disputes & Claims</a></h3>
                 <p>Get fast legal support for any issues during your shipment. Raise claims directly and have them handled professionally through OmeHub’s legal partners.</p>
             </div>
           </div><!-- End Card Item -->
@@ -207,7 +201,7 @@
               <div class="card-img">
                 <img src="{{ asset('assets/img/services/offset.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'courier-service']) }}" class="stretched-link">Offset CO₂ Emissions</a></h3>
+              <h3><a href="{{ route('service', ['service' => 'offset-carbon-emission']) }}" class="stretched-link">Offset CO₂ Emissions</a></h3>
               <p>Choose to offset your shipment’s carbon footprint through OmeHub’s built-in sustainability feature — and receive a certified annual report of your impact. </p>
             </div>
           </div><!-- End Card Item -->
@@ -217,7 +211,7 @@
               <div class="card-img">
                 <img src="{{ asset('assets/img/services/community.webp') }}" alt="" class="img-fluid">
               </div>
-              <h3><a href="{{ route('service', ['service' => 'courier-service']) }}" class="stretched-link">Engage in a Trade Community Feed</a></h3>
+              <h3><a href="{{ route('service', ['service' => 'community-feed']) }}" class="stretched-link">Engage in a Trade Community Feed</a></h3>
               <p>Post updates, share market news, and interact with others in the global trade community — with a limit of one post per day per stakeholder to keep content focused.</p>
             </div>
           </div><!-- End Card Item -->
@@ -257,7 +251,7 @@
 
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
-            <img src="{{ asset('assets/img/features-1.jpg') }}" class="img-fluid" alt="">
+            <img src="{{ asset('assets/img/features-9.jpg') }}" class="img-fluid" alt="">
           </div>
           <div class="col-md-7 content" data-aos="fade-up" data-aos-delay="100">
             <h3>Professional support from logistics experts</h3>
@@ -321,15 +315,15 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                {{-- <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
                 <h3>Saul Goodman</h3>
                 <h4>Ceo &amp; Founder</h4>
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
+                </div> --}}
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
+                  <span>Ship smarter, not harder — {{ config('app.name') }} connects your cargo to the world in clicks, not calls.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -337,15 +331,15 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                {{-- <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                 <h3>Sara Wilsson</h3>
                 <h4>Designer</h4>
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
+                </div> --}}
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
+                  <span>Trade without borders, stress, or surprises — all from one hub.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -353,15 +347,15 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                {{-- <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                 <h3>Jena Karlis</h3>
                 <h4>Store Owner</h4>
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
+                </div> --}}
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
+                  <span>From booking to delivery, {{ config('app.name') }} keeps your business in motion.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -369,15 +363,15 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                {{-- <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
                 <h3>Matt Brandon</h3>
                 <h4>Freelancer</h4>
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
+                </div> --}}
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
+                  <span>One login. Every freight, finance, and fix — {{ config('app.name') }} has you covered.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -385,15 +379,15 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                {{-- <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
                 <h3>John Larson</h3>
                 <h4>Entrepreneur</h4>
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
+                </div> --}}
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
+                  <span>{{ config('app.name') }} isn’t just logistics, it’s your trade command centre.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>

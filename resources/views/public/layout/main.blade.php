@@ -52,8 +52,8 @@
         <ul>
           <li><a href="{{ route('home') }}" class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home<br></a></li>
           <li><a href="{{ route('about') }}" class="{{ Route::currentRouteName() == 'about' ? 'active' : '' }}">About</a></li>
-          <li><a href="{{ route('services') }}" class="{{ Route::currentRouteName() == 'services' || Route::currentRouteName() == 'service' ? 'active' : '' }}">Services</a></li>
-          <li><a href="{{ route('contact') }}" class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a></li>
+          <li><a href="{{ route('stakeholders') }}" class="{{ Route::currentRouteName() == 'stakeholders' ? 'active' : '' }}">Our Stakeholders</a></li>
+          <li><a href="{{ route('contact') }}" class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact Us</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -92,7 +92,7 @@
           <ul>
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('about') }}">About us</a></li>
-            <li><a href="{{ route('services') }}">Services</a></li>
+            <li><a href="{{ route('stakeholders') }}">Our Stakeholders</a></li>
             <li><a href="{{ route('terms') }}">Terms of service</a></li>
             <li><a href="{{ route('privacy') }}">Privacy policy</a></li>
           </ul>
@@ -101,12 +101,13 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><a href="{{ route('service', ['service' => 'air-freight']) }}">Air Freight</a></li>
-            <li><a href="{{ route('service', ['service' => 'ocean-freight']) }}">Ocean Freight</a></li>
-            <li><a href="{{ route('service', ['service' => 'road-freight']) }}">Road Freight</a></li>
-            <li><a href="{{ route('service', ['service' => 'rail-freight']) }}">Rail Freight</a></li>
-            <li><a href="{{ route('service', ['service' => 'courier-service']) }}">Courier Service</a></li>
-            <li><a href="{{ route('service', ['service' => 'cargo-insurance']) }}">Cargo Insurance</a></li>
+            <li><a href="{{ route('service', ['service' => 'book-freight']) }}">Quote & Book Freight</a></li>
+            <li><a href="{{ route('service', ['service' => 'track-shipment']) }}">Track Shipment</a></li>
+            <li><a href="{{ route('service', ['service' => 'trade-finance']) }}">Trade Finance</a></li>
+            <li><a href="{{ route('service', ['service' => 'access-insurance']) }}">Access Insurance</a></li>
+            <li><a href="{{ route('service', ['service' => 'resolve-disputes']) }}">Resolve Disputes & Claims</a></li>
+            <li><a href="{{ route('service', ['service' => 'offset-carbon-emission']) }}">Offset CO₂ Emissions</a></li>
+            <li><a href="{{ route('service', ['service' => 'community-feed']) }}">Community Feed</a></li>
           </ul>
         </div>
 

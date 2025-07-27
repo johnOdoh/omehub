@@ -25,9 +25,9 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('public.about');
 })->name('about');
-Route::get('/services', function () {
-    return view('public.services');
-})->name('services');
+Route::get('/stakeholders', function () {
+    return view('public.stakeholders');
+})->name('stakeholders');
 Route::get('/services/{service}', function ($service) {
     return view("public.services.$service");
 })->name('service');
