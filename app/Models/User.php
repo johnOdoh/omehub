@@ -82,6 +82,18 @@ class User extends Authenticatable
         };
     }
 
+    public function profileRoute()
+    {
+        $user = $this;
+        return match ($user->role) {
+            'Logistics Provider' => 'logistics.profile',
+            'Insurance Provider' => 'insurance.profile',
+            'Shipper' => 'shipper.profile',
+            'Admin' => 'admin.profile',
+            default => 'home'
+        };
+    }
+
     public function firstname(): string
     {
         return Str::of($this->name)

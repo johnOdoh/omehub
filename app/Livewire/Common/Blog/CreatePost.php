@@ -28,6 +28,7 @@ class CreatePost extends Component
 
     public function createPost()
     {
+        if (!request()->user()->profile() || !request()->user()->profile()->is_verified) return;
         $validated = $this->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:200',

@@ -18,6 +18,20 @@ class View extends Component
         $this->claim = $claim;
     }
 
+    public function resolve()
+    {
+        $this->claim->status = 'resolved';
+        $this->claim->chat = 'closed';
+        $this->claim->save();
+    }
+
+    public function chat($input)
+    {
+        if (!in_array($input, ['complainant', 'defendant', 'both', 'closed'])) return;
+        $this->claim->chat = $input;
+        $this->claim->save();
+    }
+
     public function reply()
     {
         $this->validate([
@@ -39,6 +53,7 @@ class View extends Component
             $this->claim->save();
         }
         $this->resetExcept('claim');
+        $this->dispatch('clear');
         session()->flash('created');
     }
 

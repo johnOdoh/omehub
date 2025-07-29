@@ -7,6 +7,23 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    @if (!auth()->user()->profile())
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <div class="alert-message d-flex">
+                                <strong class="me-2"><i class="fa fa-warning"></i></strong>
+                                <div>You are yet to complete your profile. <a href="{{ route(auth()->user()->profileRoute()) }}" wire:navigate>Click here</a> to complete your profile to be able to enjoy our services.</div>
+                            </div>
+                        </div>
+                    @elseif (!auth()->user()->profile()->is_verified)
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <div class="alert-message d-flex">
+                                <strong class="me-2"><i class="fa fa-warning"></i></strong>
+                                <div>Your documents are under review by our team. You will be notified when soon when your documents are approved.</div>
+                            </div>
+                        </div>
+                    @endif
                     <form wire:submit="create">
                         <div>
                             <div class="form-group">
@@ -76,7 +93,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile()->is_verified) disabled @endif wire:loading.remove>Submit</button>
+                                <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile() || !auth()->user()->profile()->is_verified) disabled @endif wire:loading.remove>Submit</button>
                                 <button class="btn btn-primary px-5" wire:loading>
                                     <div class="spinner-border spinner-border-sm text-light" role="status">
                                         <span class="visually-hidden">Loading...</span>
@@ -102,6 +119,9 @@
                 quill.on('text-change', function () {
                     @this.set('body', quill.root.innerHTML);
                 });
+                $wire.on('clear', () => {
+                    quill.root.innerHTML = ''
+                })
             }, 500);
         </script>
     @endscript

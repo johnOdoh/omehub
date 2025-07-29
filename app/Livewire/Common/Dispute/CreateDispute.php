@@ -22,7 +22,8 @@ class CreateDispute extends Component
             $this->suggestions = null;
             return;
         }
-        $result = User::whereLike('name', "%$input%")->limit(5)
+        $result = User::where('status', 'Active')
+            ->whereLike('name', "%$input%")->limit(5)
             ->whereNot('id', request()->user()->id)
             ->whereNot('role', 'Admin')
             ->pluck('name');
@@ -38,6 +39,7 @@ class CreateDispute extends Component
 
     public function create()
     {
+        if (!request()->user()->profile() || !request()->user()->profile()->is_verified) return;
         $this->suggestions = null;
         $this->validate([
             'body' => 'required',
@@ -58,6 +60,7 @@ class CreateDispute extends Component
             'attachments' => $attachments,
         ]);
         $this->reset();
+        $this->dispatch('clear');
         session()->flash('created');
     }
 
