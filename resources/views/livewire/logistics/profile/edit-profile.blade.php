@@ -4,7 +4,7 @@
         <div class="my-3">
             <label class="form-label fw-bold">Business Name</label>
             <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-user me-1"></i></span>
+                <span class="input-group-text"><i class="fa fa-user fa-fw me-1"></i></span>
                 <input type="text" class="form-control" aria-label="Name" disabled value="{{ $name }}">
             </div>
         </div>
@@ -30,7 +30,7 @@
         </div>
         <div class="my-3">
             <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-map-pin me-1"></i></span>
+                <span class="input-group-text"><i class="fa fa-map-pin fa-fw me-1"></i></span>
                 <input type="text" class="form-control" placeholder="Address" aria-label="Address" required wire:model="address">
             </div>
             @error('address')
@@ -39,7 +39,7 @@
         </div>
         <div class="my-3">
             <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-globe me-1"></i></span>
+                <span class="input-group-text"><i class="fa fa-globe fa-fw me-1"></i></span>
                 <select id="country" class="form-select" tabindex="1" required wire:model="country"></select>
             </div>
             @error('country')
@@ -48,7 +48,7 @@
         </div>
         <div class="my-3">
             <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-home me-1"></i></span>
+                <span class="input-group-text"><i class="fa fa-home fa-fw me-1"></i></span>
                 <select id="state" class="form-select" tabindex="1" required wire:model="city"></select>
             </div>
             @error('city')
@@ -57,7 +57,7 @@
         </div>
         <div class="my-3">
             <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-tag me-1"></i></span>
+                <span class="input-group-text"><i class="fa fa-tag fa-fw me-1"></i></span>
                 <input type="text" class="form-control" placeholder="Zip" aria-label="Zip" required wire:model="zip">
             </div>
             @error('zip')
@@ -65,8 +65,8 @@
             @enderror
         </div>
         <div class="text-end my-3">
-            <button type="button" class="btn btn-outline-primary me-1" x-on:click="$wire.closePage()" wire:loading.remove>Cancel</button>
-            <button type="submit" class="btn btn-primary" wire:loading.remove>Save</button>
+            <button type="button" class="btn btn-outline-primary fa-fw me-1" x-on:click="$wire.closePage()" wire:loading.remove>Cancel</button>
+            <button type="submit" class="btn btn-primary disabled" wire:loading.remove wire:dirty.class.remove="disabled">Save</button>
             <button class="btn btn-primary px-5" wire:loading>
                 <div class="spinner-border spinner-border-sm text-light" role="status">
                     <span class="visually-hidden">Loading...</span>

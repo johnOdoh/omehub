@@ -45,6 +45,7 @@ Route::get('/privacy-policy', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('admin/dashboard', \App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');
+    Route::get('admin/profile', \App\Livewire\Admin\Profile\Main::class)->name('admin.profile');
     Route::get('admin/users', \App\Livewire\Admin\Users\UsersList::class)->name('admin.users');
     Route::get('admin/disputes', DisputeList::class)->name('admin.disputes');
 

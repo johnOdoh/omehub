@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Logistics\Profile;
+namespace App\Livewire\Admin\Profile;
 
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -16,7 +16,7 @@ class Main extends Component
     public function mount()
     {
         $this->user = request()->user();
-        $this->hasProfile = $this->user->logistic_provider()->exists();
+        $this->hasProfile = $this->user->admin()->exists();
     }
 
     public function createProfile()
@@ -51,6 +51,6 @@ class Main extends Component
 
     public function render()
     {
-        return view('livewire.logistics.profile.main');
+        return view('livewire.admin.profile.main');
     }
 }

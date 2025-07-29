@@ -104,6 +104,11 @@ class User extends Authenticatable
         return $this->hasOne(Insurance::class);
     }
 
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
     public function quotes()
     {
         return $this->hasMany(Quote::class);

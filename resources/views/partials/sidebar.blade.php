@@ -56,6 +56,7 @@
                     Admin
                 </li>
                 <x-sidebar-item route="admin.dashboard" name="Dashboard" icon="sliders" />
+                <x-sidebar-item route="admin.profile" name="Profile" icon="user" />
                 <x-sidebar-item route="admin.users" name="Users" icon="users" />
                 <x-sidebar-item route="admin.disputes" name="Disputes" icon="balance-scale" :params="$adminParam" />
             {{-- @elseif (auth()->user()->role == 'Shipper') --}}
