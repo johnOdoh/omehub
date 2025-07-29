@@ -1,5 +1,7 @@
 <div class="container-fluid p-0">
     <p class="fw-bold text-secondary"><a href="#" wire:click.prevent="$parent.back" class="text-decoration-none">< Back</a></p>
+    @if (session('resolved')) <span x-show="notify('Claim marked as resolved')"></span> @endif
+    @if (session('updated')) <span x-show="notify('Chat status updated')"></span> @endif
     <div class="card">
         <div class="row g-0">
             <div class="col-12">
@@ -76,7 +78,7 @@
                         @endforeach
                     </div>
                 </div>
-                @if (auth()->user()->role == 'Admin' || $claim->chat == 'both' || ($claim->chat == 'defendant' && auth()->user()->id == $claim->defendant_id) || ($claim->chat == 'complainant' && auth()->user()->id == $claim->user_id))
+                @if ((auth()->user()->role == 'Admin' && $claim->status != 'resolved') || $claim->chat == 'both' || ($claim->chat == 'defendant' && auth()->user()->id == $claim->defendant_id) || ($claim->chat == 'complainant' && auth()->user()->id == $claim->user_id))
                     <div class="flex-grow-0 py-3 px-4 border-top">
                         <form wire:submit.prevent="reply">
                             <div class="my-3">

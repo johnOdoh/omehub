@@ -26,7 +26,7 @@
                                     <td>{{ $claims->firstItem() + $loop->index }}</td>
                                     <td>{{ $claim->user->name }}</td>
                                     <td>{{ $claim->defendant->name }}</td>
-                                    <td><span class="badge bg-info">{{ $claim->status }}</span></td>
+                                    <td><span class="text-capitalize badge bg-{{ $claim->status == 'ongoing' ? 'primary' : 'success' }}">{{ $claim->status }}</span></td>
                                     <td>{{ $claim->created_at->format('d M, Y') }}</td>
                                     <td>
                                         <button class="btn btn-info btn-sm" wire:click="viewClaim({{ $claim->id }})">View</button>

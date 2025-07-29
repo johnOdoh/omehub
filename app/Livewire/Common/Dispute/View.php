@@ -23,6 +23,7 @@ class View extends Component
         $this->claim->status = 'resolved';
         $this->claim->chat = 'closed';
         $this->claim->save();
+        session()->flash('resolved');
     }
 
     public function chat($input)
@@ -30,6 +31,7 @@ class View extends Component
         if (!in_array($input, ['complainant', 'defendant', 'both', 'closed'])) return;
         $this->claim->chat = $input;
         $this->claim->save();
+        session()->flash('updated');
     }
 
     public function reply()
