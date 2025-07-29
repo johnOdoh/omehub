@@ -68,7 +68,7 @@
             @enderror
         </div>
         <div class="text-end my-3">
-            <button type="button" class="btn btn-outline-primary me-1" x-on:click="$wire.closePage()" wire:loading.remove>Cancel</button>
+            <button type="button" class="btn btn-outline-primary me-1" wire:click="$parent.closeCreateProfile" wire:loading.remove>Cancel</button>
             <button type="submit" class="btn btn-primary" wire:loading.remove>Create</button>
             <button class="btn btn-primary px-5" wire:loading>
                 <div class="spinner-border spinner-border-sm text-light" role="status">
@@ -77,4 +77,11 @@
             </button>
         </div>
     </form>
+    @script
+        <script>
+            $wire.on('created', () => {
+                window.location.reload()
+            })
+        </script>
+    @endscript
 </div>

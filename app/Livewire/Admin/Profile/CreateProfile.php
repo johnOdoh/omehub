@@ -51,13 +51,9 @@ class CreateProfile extends Component
         $validated['logo'] = $logo->storeAs('logos', $logoName, 'public');
         $this->user->admin()->create($validated);
         session()->flash("created");
-        $this->dispatch('profile-updated');
+        $this->dispatch('created');
     }
 
-    public function closePage()
-    {
-        $this->dispatch('close-page');
-    }
     public function render()
     {
         return view('livewire.admin.profile.create-profile');

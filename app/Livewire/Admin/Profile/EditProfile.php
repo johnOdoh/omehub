@@ -43,11 +43,6 @@ class EditProfile extends Component
         $this->dispatch('profile-updated');
     }
 
-    public function closePage()
-    {
-        $this->dispatch('close-page');
-    }
-
     public function render()
     {
         return view('livewire.admin.profile.edit-profile');

@@ -31,7 +31,6 @@ class Main extends Component
         $this->showEditProfile = true;
     }
 
-    #[On('close-page')]
     public function closeCreateProfile()
     {
         $this->showProfile = true;
