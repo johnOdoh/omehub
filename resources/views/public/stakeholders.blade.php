@@ -27,7 +27,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/shipper.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/shipper.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/freight-provider.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/freight-provider.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -87,7 +87,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/legal-partner.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/legal-partner.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -117,7 +117,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/finance-provider.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/finance-provider.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -147,7 +147,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/insurance-provider.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/insurance-provider.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -177,7 +177,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/sustainability.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/sustainability.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -210,7 +210,7 @@
         <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section dark-background">
 
-      <img src="assets/img/cta-bg.jpg" alt="">
+      <img src="{{ asset('assets/img/cta-bg.jpg') }}" alt="">
 
       <div class="container">
         <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">

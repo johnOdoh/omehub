@@ -78,14 +78,14 @@
         <div class="row gy-4">
 
             <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
-                <img src="assets/img/about.jpg" class="img-fluid" alt="">
+                <img src="{{ asset('assets/img/about.jpg') }}" class="img-fluid" alt="">
                 <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
             </div>
 
             <div class="col-lg-6 content order-last order-lg-first" data-aos="fade-up" data-aos-delay="100">
                 <h3>About {{ config('app.name') }}</h3>
                 <p>{{ config('app.name') }} is a smart, all-in-one digital logistics marketplace designed to revolutionize how individuals and businesses manage international trade. Our mission is simple: to make global shipping accessible, transparent, and efficient, without compromising on compliance, sustainability, or user control.</p>
-                <p>Whether you're an SME exporting goods, an individual shipping personal items, or a logistics provider offering services, OmeHub connects you directly through one streamlined, intelligent platform.</p>
+                <p>Whether you're an SME exporting goods, an individual shipping personal items, or a logistics provider offering services, {{ config('app.name') }} connects you directly through one streamlined, intelligent platform.</p>
                 <h5 class="fw-bold">Our Vision</h5>
                 <p>We have a vision to become the world’s most trusted digital gateway for international trade, where logistics, finance, compliance, and sustainability converge — simply and seamlessly.</p>
                 <a href="{{ route('about') }}" class="readmore"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
@@ -123,7 +123,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-first order-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/features-2.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/features-2.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -192,7 +192,7 @@
                     <img src="{{ asset('assets/img/services/resolve-disputes.webp') }}" alt="" class="img-fluid">
                 </div>
                 <h3><a href="{{ route('service', ['service' => 'resolve-disputes']) }}" class="stretched-link">Resolve Disputes & Claims</a></h3>
-                <p>Get fast legal support for any issues during your shipment. Raise claims directly and have them handled professionally through OmeHub’s legal partners.</p>
+                <p>Get fast legal support for any issues during your shipment. Raise claims directly and have them handled professionally through {{ config('app.name') }}’s legal partners.</p>
             </div>
           </div><!-- End Card Item -->
 
@@ -202,7 +202,7 @@
                 <img src="{{ asset('assets/img/services/offset.webp') }}" alt="" class="img-fluid">
               </div>
               <h3><a href="{{ route('service', ['service' => 'offset-carbon-emission']) }}" class="stretched-link">Offset CO₂ Emissions</a></h3>
-              <p>Choose to offset your shipment’s carbon footprint through OmeHub’s built-in sustainability feature — and receive a certified annual report of your impact. </p>
+              <p>Choose to offset your shipment’s carbon footprint through {{ config('app.name') }}’s built-in sustainability feature — and receive a certified annual report of your impact. </p>
             </div>
           </div><!-- End Card Item -->
 
@@ -224,7 +224,7 @@
     <!-- Call To Action Section -->
     <section id="call-to-action" class="call-to-action section dark-background">
 
-      <img src="assets/img/cta-bg.jpg" alt="">
+      <img src="{{ asset('assets/img/cta-bg.jpg') }}" alt="">
 
       <div class="container">
         <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
@@ -291,7 +291,7 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section dark-background">
 
-      <img src="assets/img/testimonials-bg.jpg" class="testimonials-bg" alt="">
+      <img src="{{ asset('assets/img/testimonials-bg.jpg') }}" class="testimonials-bg" alt="">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -528,7 +528,7 @@
                 <i class="faq-icon bi bi-question-circle"></i>
                 <h3>What is CO₂ offsetting and how does it work? </h3>
                 <div class="faq-content">
-                  <p>After selecting a logistics quote, OmeHub will offer you the option to offset the carbon footprint of your shipment. Emissions are automatically calculated based on your shipment data, and you can choose to contribute to our in-house carbon offset program before completing your booking. <br>At the end of each year, you will receive a personalized carbon offset certificate, recognizing your contribution to a more sustainable and environmentally responsible trade ecosystem. </p>
+                  <p>After selecting a logistics quote, {{ config('app.name') }} will offer you the option to offset the carbon footprint of your shipment. Emissions are automatically calculated based on your shipment data, and you can choose to contribute to our in-house carbon offset program before completing your booking. <br>At the end of each year, you will receive a personalized carbon offset certificate, recognizing your contribution to a more sustainable and environmentally responsible trade ecosystem. </p>
                 </div>
                 <i class="faq-toggle bi bi-chevron-right"></i>
               </div><!-- End Faq item-->

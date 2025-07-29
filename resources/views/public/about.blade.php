@@ -23,11 +23,29 @@
 
       <div class="container">
 
+        <div class="row gy-4">
+
+            <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
+                <img src="{{ asset('assets/img/story.jpg') }}" class="img-fluid" alt="">
+                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+            </div>
+
+            <div class="col-lg-6 content order-last order-lg-first" data-aos="fade-up" data-aos-delay="100">
+                <h3>Our Story</h3>
+                <p>{{ config('app.name') }} was founded with a simple but powerful idea - that international trade should be accessible, efficient, and transparent for everyone. The founder of {{ config('app.name') }}, has built a career rooted in solving real-world problems. With years of experience spanning logistics, compliance, and international trade, he developed a deep understanding of how challenging cross-border shipping can be. He saw firsthand how businesses from startups to established enterprises struggled to coordinate freight, access dependable service providers, get clear pricing, and manage legal or financial support. The process was often disjointed, time-consuming, and lacked transparency. That insight became the driving force behind {{ config('app.name') }}.</p>
+                <p>Ifeanyi knew there had to be a better way. So, he created one.</p>
+                <p>{{ config('app.name') }} was born to bring every essential trade service into a single digital space. From booking freight and tracking shipments to applying for insurance and resolving disputes, users can manage everything they need in one place. It is designed not just for large corporations, but also for small businesses, individuals, and growing brands that want to trade smarter and more confidently.</p>
+                <p>More than just a platform, {{ config('app.name') }} is a growing community. It connects shippers, freight providers, legal experts, insurers, and financial partners with tools and opportunities to grow together. It offers real-time insights, compliance support, and even carbon offsetting options for users who want to reduce their environmental impact.</p>
+                <p>Our mission is simple. We want to make global trade easier and more human. We want to support companies of all sizes, from anywhere in the world, and give them the tools to succeed in the global economy.Today, {{ config('app.name') }} stands for progress. It stands for trust, simplicity, and a better way to move goods across borders.</p>
+                <p>Welcome to {{ config('app.name') }}. Your gateway to global trade.</p>
+            </div>
+        </div>
+
         <div class="row gy-4 mt-5">
 
             <div class="col-lg-6 position-relative align-self-start order-lg-first order-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/features-6.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/features-6.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -43,7 +61,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/features-4.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/features-4.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -67,7 +85,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/features-5.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/features-5.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -125,7 +143,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
                 <div class="card-img">
-                    <img src="assets/img/features-7.jpg" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/img/features-7.jpg') }}" alt="" class="img-fluid">
                 </div>
             </div>
 
@@ -187,7 +205,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
-              <img src="assets/img/team/team-1.png" class="img-fluid" alt="">
+              <img src="{{ asset('assets/img/team/team-1.png') }}" class="img-fluid" alt="">
               <div class="member-content">
                 <h4>Omeh Ifeanyi</h4>
                 <span>Founder and Hub Director</span>
@@ -201,7 +219,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
-              <img src="assets/img/team/team-2.png" class="img-fluid" alt="">
+              <img src="{{ asset('assets/img/team/team-2.png') }}" class="img-fluid" alt="">
               <div class="member-content">
                   <h4>Camern Gabriela Ion </h4>
                   <span>Hub Manager</span>
@@ -215,18 +233,15 @@
 
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
-              <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+              <img src="{{ asset('assets/img/team/team-3.jpg') }}" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>William Anderson</h4>
-                <span>Content</span>
+                <h4>Mama Godfrey Sunday</h4>
+                <span>Head of Technical Support</span>
                 <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+                   Mama Godfrey Sunday is a passionate Electrical and Electronics Engineering graduate with strong technical skills and a deep love for technology.
                 </p>
                 <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="#"><i class="bi bi-twitter-x"></i></a>
                 </div>
               </div>
             </div>
@@ -241,7 +256,7 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section dark-background">
 
-      <img src="assets/img/testimonials-bg.jpg" class="testimonials-bg" alt="">
+      <img src="{{ asset('assets/img/testimonials-bg.jpg') }}" class="testimonials-bg" alt="">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
