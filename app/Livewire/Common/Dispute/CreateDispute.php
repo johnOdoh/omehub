@@ -22,7 +22,10 @@ class CreateDispute extends Component
             $this->suggestions = null;
             return;
         }
-        $result = User::whereLike('name', "%$input%")->limit(5)->pluck('name');
+        $result = User::whereLike('name', "%$input%")->limit(5)
+            ->whereNot('id', request()->user()->id)
+            ->whereNot('role', 'Admin')
+            ->pluck('name');
         $this->suggestions = $result;
         // dd($result);
     }

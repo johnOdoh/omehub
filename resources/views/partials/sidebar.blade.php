@@ -80,6 +80,7 @@
                 <x-sidebar-dropdown :items="$logisticsQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
                 <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
+                <x-sidebar-dropdown :items="$claimDropdown" name="Claims" icon="balance-scale" id="claims" />
             @elseif (auth()->user()->role == 'Insurance Provider')y
                 {{-- <li class="sidebar-header">
                     Insurance
@@ -88,6 +89,7 @@
                 <x-sidebar-item route="insurance.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
+                <x-sidebar-dropdown :items="$claimDropdown" name="Claims" icon="balance-scale" id="claims" />
             @else
                 <li class="sidebar-header">
                     No Role
