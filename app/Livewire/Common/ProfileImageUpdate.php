@@ -20,7 +20,7 @@ class ProfileImageUpdate extends Component
     {
         $this->user = $user;
         $this->allowEdit = $allowEdit;
-        $this->profile = getProfile();
+        $this->profile = $this->user->profile();
     }
 
     public function save()

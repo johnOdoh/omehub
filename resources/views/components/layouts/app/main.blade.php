@@ -109,16 +109,10 @@
                             <div class="col-6 text-end">
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
-                                        <a class="text-muted" href="#">Support</a>
+                                        <a class="text-muted" href="{{ route('privacy') }}" target="_blank">Privacy</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="text-muted" href="#">Help Center</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a class="text-muted" href="#">Privacy</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a class="text-muted" href="#">Terms</a>
+                                        <a class="text-muted" href="{{ route('terms') }}" target="_blank">Terms</a>
                                     </li>
                                 </ul>
                             </div>

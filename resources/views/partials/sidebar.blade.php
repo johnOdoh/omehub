@@ -15,6 +15,12 @@
         0 => ['name' => 'Create Post', 'route' => 'user.blog.create'],
         1 => ['name' => 'My Posts', 'route' => 'user.blog.posts'],
     ];
+    $claimDropdown = [
+        0 => ['name' => 'Raise Claim', 'route' => 'user.dispute.create'],
+        1 => ['name' => 'My Claims', 'route' => 'user.dispute.list'],
+        2 => ['name' => 'Claims Against', 'route' => 'user.dispute.against', 'params' => ['q' => 'against']],
+    ];
+    $adminParam = ['q' => 'admin'];
 @endphp
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
@@ -45,43 +51,45 @@
         </div>
 
         <ul class="sidebar-nav">
-            @if (auth()->user()->role == 'Admin')
-                {{-- <li class="sidebar-header">
+            {{-- @if (auth()->user()->role == 'Admin') --}}
+                <li class="sidebar-header">
                     Admin
-                </li> --}}
+                </li>
                 <x-sidebar-item route="admin.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="admin.users" name="Users" icon="users" />
-            @elseif (auth()->user()->role == 'Shipper')
-                {{-- <li class="sidebar-header">
+                <x-sidebar-item route="admin.disputes" name="Disputes" icon="balance-scale" :params="$adminParam" />
+            {{-- @elseif (auth()->user()->role == 'Shipper') --}}
+                <li class="sidebar-header">
                     Shipper
-                </li> --}}
+                </li>
                 <x-sidebar-item route="shipper.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="shipper.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
                 <x-sidebar-item route="shipper.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
-            @elseif (auth()->user()->role == 'Logistics Provider')
-                {{-- <li class="sidebar-header">
+                <x-sidebar-dropdown :items="$claimDropdown" name="Claims" icon="balance-scale" id="claims" />
+            {{-- @elseif (auth()->user()->role == 'Logistics Provider') --}}
+                <li class="sidebar-header">
                     Logistics
-                </li> --}}
+                </li>
                 <x-sidebar-item route="logistics.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="logistics.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$logisticsQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
                 <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
-            @elseif (auth()->user()->role == 'Insurance Provider')
-                {{-- <li class="sidebar-header">
+            {{-- @elseif (auth()->user()->role == 'Insurance Provider')y --}}
+                <li class="sidebar-header">
                     Insurance
-                </li> --}}
+                </li>
                 <x-sidebar-item route="insurance.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="insurance.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
-            @else
+            {{-- @else
                 <li class="sidebar-header">
                     No Role
                 </li>
-            @endif
+            @endif --}}
         </ul>
     </div>
 </nav>

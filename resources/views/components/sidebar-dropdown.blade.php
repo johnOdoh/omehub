@@ -15,7 +15,7 @@
     <ul id="{{ $id }}" class="sidebar-dropdown list-unstyled collapse {{ $show ? 'show' : '' }}" data-bs-parent="#sidebar">
         @foreach ($items as $item)
             <li class="sidebar-item {{ request()->routeIs($item['route']) ? 'active' : '' }}">
-                <a class='sidebar-link' href='{{ route($item['route']) }}' wire:navigate>{{ $item['name'] }}</a>
+                <a class='sidebar-link' href='{{ route($item['route'], $item['params'] ?? []) }}' wire:navigate>{{ $item['name'] }}</a>
             </li>
         @endforeach
     </ul>

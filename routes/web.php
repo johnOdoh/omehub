@@ -3,6 +3,8 @@
 use App\Livewire\Common\Blog\CreatePost;
 use App\Livewire\Common\Blog\PostList;
 use App\Livewire\Common\Blog\ViewPost;
+use App\Livewire\Common\Dispute\CreateDispute;
+use App\Livewire\Common\Dispute\DisputeList;
 use App\Livewire\Shipper\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Shipper\Profile\Main;
@@ -44,6 +46,7 @@ Route::get('/privacy-policy', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('admin/dashboard', \App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');
     Route::get('admin/users', \App\Livewire\Admin\Users\UsersList::class)->name('admin.users');
+    Route::get('admin/disputes', DisputeList::class)->name('admin.disputes');
 
     Route::get('shipper/dashboard', Dashboard::class)->name('shipper.dashboard');
     Route::get('shipper/profile', Main::class)->name('shipper.profile');
@@ -66,6 +69,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/blog/{post}/edit', CreatePost::class)->name('user.blog.edit');
     Route::get('user/blog/posts', PostList::class)->name('user.blog.posts');
     Route::get('user/blog/{post}', ViewPost::class)->name('user.blog.post');
+
+    Route::get('user/disputes/create', CreateDispute::class)->name('user.dispute.create');
+    Route::get('user/disputes/list', DisputeList::class)->name('user.dispute.list');
+    Route::get('user/disputes/against', DisputeList::class)->name('user.dispute.against');
 });
 
 require __DIR__.'/auth.php';

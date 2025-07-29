@@ -16,9 +16,9 @@
                 autocomplete="name"
                 :placeholder="__('Full name')"
             />
-            @error('name')
+            {{-- @error('name')
                 <div style="color: red"><small><i>{{ $message }}</i></small></div>
-            @enderror
+            @enderror --}}
         </div>
 
         <!-- Email Address -->
@@ -31,9 +31,9 @@
                 autocomplete="email"
                 placeholder="email@example.com"
             />
-            @error('email')
+            {{-- @error('email')
                 <div style="color: red"><small><i>{{ $message }}</i></small></div>
-            @enderror
+            @enderror --}}
         </div>
 
         <div>
@@ -43,9 +43,9 @@
                 <flux:select.option value="Logistics Provider">Logistics Provider</flux:select.option>
                 <flux:select.option value="Insurance Provider">Insurance Provider</flux:select.option>
             </flux:select>
-            @error('role')
+            {{-- @error('role')
                 <div style="color: red"><small><i>{{ $message }}</i></small></div>
-            @enderror
+            @enderror --}}
         </div>
 
         <!-- Password -->
@@ -59,9 +59,9 @@
                 :placeholder="__('Password')"
                 viewable
             />
-            @error('password')
+            {{-- @error('password')
                 <div style="color: red"><small><i>{{ $message }}</i></small></div>
-            @enderror
+            @enderror --}}
         </div>
 
         <!-- Confirm Password -->

@@ -62,12 +62,24 @@ class User extends Authenticatable
     public function dashboard(): string
     {
         return match ($this->role) {
-        'Logistics Provider' => 'logistics.dashboard',
-        'Insurance Provider' => 'insurance.dashboard',
-        'Shipper' => 'shipper.dashboard',
-        'Admin' => 'admin.dashboard',
-        default => 'home'
-    };
+            'Logistics Provider' => 'logistics.dashboard',
+            'Insurance Provider' => 'insurance.dashboard',
+            'Shipper' => 'shipper.dashboard',
+            'Admin' => 'admin.dashboard',
+            default => 'home'
+        };
+    }
+
+    public function profile()
+    {
+        $user = $this;
+        return match ($user->role) {
+            'Logistics Provider' => $user->logistic_provider,
+            'Insurance Provider' => $user->insurance_provider,
+            'Shipper' => $user->shipper, // Assuming Shipper has a profile
+            'Admin' => $user->admin, // Assuming Admin has
+            default => null, // Handle other roles if necessary
+        };
     }
 
     public function firstname(): string
@@ -110,6 +122,11 @@ class User extends Authenticatable
     public function shipments()
     {
         return $this->hasMany(Shipment::class);
+    }
+
+    public function claims()
+    {
+        return $this->hasMany(Claim::class);
     }
 
     public function posts()
