@@ -59,6 +59,7 @@
                 <x-sidebar-item route="admin.profile" name="Profile" icon="user" />
                 @if (auth()->user()->admin)
                     <x-sidebar-item route="admin.users" name="Users" icon="users" />
+                    <x-sidebar-item route="admin.shipments" name="Shipments" icon="ship" />
                     <x-sidebar-item route="admin.disputes" name="Disputes" icon="balance-scale" :params="$adminParam" />
                 @endif
             @elseif (auth()->user()->role == 'Shipper')

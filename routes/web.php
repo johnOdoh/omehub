@@ -28,7 +28,7 @@ Route::get('/about', function () {
     return view('public.about');
 })->name('about');
 Route::get('/stakeholders', function () {
-    return view('public.invoice');
+    return view('public.stakeholders');
 })->name('stakeholders');
 Route::get('/services/{service}', function ($service) {
     return view("public.services.$service");
@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/dashboard', \App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');
     Route::get('admin/profile', \App\Livewire\Admin\Profile\Main::class)->name('admin.profile');
     Route::get('admin/users', \App\Livewire\Admin\Users\UsersList::class)->name('admin.users');
+    Route::get('admin/shipments', \App\Livewire\Admin\Shipments\ShipmentList::class)->name('admin.shipments');
     Route::get('admin/disputes', DisputeList::class)->name('admin.disputes');
 
     Route::get('shipper/dashboard', Dashboard::class)->name('shipper.dashboard');

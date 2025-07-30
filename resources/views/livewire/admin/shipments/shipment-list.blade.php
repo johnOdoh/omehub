@@ -1,8 +1,9 @@
 <div class="container-fluid p-0">
-    @if (session('booked')) <span x-show="notify('Your Shipment has been successfully Booked')"></span> @endif
-    @if ($isList)
+    @if ($shipment)
+        <livewire:admin.shipments.info :$shipment>
+    @else
         <div class="mb-2">
-            <h1 class="h3 d-inline align-middle">My Shipments</h1>
+            <h1 class="h3 d-inline align-middle">All Shipments</h1>
         </div>
         <div class="card">
             <div class="card-body">
@@ -14,6 +15,8 @@
                                 <th>Tracking Number</th>
                                 <th>Status</th>
                                 <th>Booking Date</th>
+                                <th>Logistic Invoice</th>
+                                <th>Insurance Invoice</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -24,13 +27,14 @@
                                     <td>{{ $shipment->tracking_number }}</td>
                                     <td><span class="badge bg-warning">{{ $shipment->status }}</span></td>
                                     <td>{{ $shipment->created_at->format('d M, Y') }}</td>
+                                    <td>@if ($shipment->invoice) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/invoices/'.$shipment->invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
+                                    <td>@if ($shipment->invoice) <a class="btn btn-outline-warning btn-sm" href="{{ asset('storage/invoices/'.$shipment->invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
                                     <td class="d-flex gap-2">
-                                        <button class="btn btn-info btn-sm" wire:click="viewShipment({{ $shipment->id }})">View Shipment</button>
-                                        <button class="btn btn-primary btn-sm" wire:click="viewShipment({{ $shipment->id }}, 1)">Update Tracking</button>
+                                        <button class="btn btn-info btn-sm" wire:click="select({{ $shipment->id }})">View Shipment</button>
                                     </td>
                                 </tr>
                             @empty
-                                <tr><td colspan="5"><h5>No Shipments Yet</h5></td></tr>
+                                <tr><td colspan="6"><h5>No Shipments Yet</h5></td></tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -38,8 +42,6 @@
                 </div>
             </div>
         </div>
-    @else
-        <livewire:logistics.shipments.details :shipment="$shipmentId" :track="$track" />
     @endif
     <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:1000;" wire:loading>
         <div class="spinner-grow text-info me-2" role="status" style="position:absolute;top:50%;left:50%">

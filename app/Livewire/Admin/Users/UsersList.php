@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class UsersList extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $current;
     public $user;
 
@@ -58,11 +59,11 @@ class UsersList extends Component
 
     public function render()
     {
-        match ($this->current) {
-            'All User' => $users = User::where('role', '!=', 'admin')->latest()->paginate(10),
-            'Shipper' => $users = User::where('role', 'Shipper')->latest()->paginate(10),
-            'Logistics Provider' => $users = User::where('role', 'Logistics Provider')->latest()->paginate(10),
-            'Insurance Provider' => $users = User::where('role', 'Insurance Provider')->latest()->paginate(10),
+        $users = match ($this->current) {
+            'All User' => User::where('role', '!=', 'admin')->latest()->paginate(20),
+            'Shipper' => User::where('role', 'Shipper')->latest()->paginate(20),
+            'Logistics Provider' => User::where('role', 'Logistics Provider')->latest()->paginate(20),
+            'Insurance Provider' => User::where('role', 'Insurance Provider')->latest()->paginate(20),
             default => abort(404)
         };
         return view('livewire.admin.users.users-list', [
