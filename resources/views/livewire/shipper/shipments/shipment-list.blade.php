@@ -14,6 +14,7 @@
                                 <th>Tracking Number</th>
                                 <th>Status</th>
                                 <th>Current Location</th>
+                                <th>Invoice</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -24,6 +25,7 @@
                                     <td>{{ $shipment->tracking_number }}</td>
                                     <td><span class="badge bg-warning">{{ $shipment->status }}</span></td>
                                     <td>{{ $shipment->current_location ?? '-' }}</td>
+                                    <td>@if ($shipment->invoice) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/invoices/'.$shipment->invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
                                     <td class="d-flex gap-2">
                                         <button class="btn btn-info btn-sm" wire:click="viewShipment({{ $shipment->id }})">View Shipment</button>
                                         <button class="btn btn-primary btn-sm" wire:click="viewShipment({{ $shipment->id }}, 1)">Track Shipment</button>

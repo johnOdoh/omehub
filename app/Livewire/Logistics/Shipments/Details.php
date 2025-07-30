@@ -4,20 +4,27 @@ namespace App\Livewire\Logistics\Shipments;
 
 use Livewire\Component;
 use App\Models\Shipment;
+use Livewire\Attributes\On;
 
 class Details extends Component
 {
     public $shipment;
     public $track;
     public $isTracking;
-    public $shipmentId;
+    public $generate = false;
 
     public function mount(Shipment $shipment, $track)
     {
         $this->shipment = $shipment;
         $this->track = $track;
         $this->isTracking = $track ? true : false;
-        $this->shipmentId = $this->shipment->id;
+    }
+
+    #[On('invoice-generated')]
+    public function invoiceGenerated()
+    {
+        $this->generate = false;
+        session()->flash('generated');
     }
 
     public function trackShipment()

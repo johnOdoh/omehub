@@ -14,11 +14,11 @@
             </div>
         @else
             <div class="row">
-                <div class="col-xl-{{ $request ? '7' : '12' }}">
+                <div class="col-lg-{{ $request ? '7' : '12' }}">
                     <livewire:common.quote.request-list />
                 </div>
                 @if ($request)
-                    <div class="col-xl-5" x-ref="request" x-on:request-changed.window="$refs.request.scrollIntoView({ behaviour: 'smooth' })">
+                    <div class="col-lg-5" x-ref="request" x-on:request-changed.window="$refs.request.scrollIntoView({ behaviour: 'smooth' })">
                         <div x-init="$refs.request.scrollIntoView({ behaviour: 'smooth' })">
                             <x-request-details :$request :has-button="true" />
                         </div>

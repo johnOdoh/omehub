@@ -28,7 +28,7 @@ Route::get('/about', function () {
     return view('public.about');
 })->name('about');
 Route::get('/stakeholders', function () {
-    return view('public.stakeholders');
+    return view('public.invoice');
 })->name('stakeholders');
 Route::get('/services/{service}', function ($service) {
     return view("public.services.$service");

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('carbon_offset')->nullable();
             $table->decimal('amount', 10, 2);
             $table->json('updates');
+            $table->string('invoice')->nullable();
             $table->timestamps();
         });
     }

@@ -5,6 +5,9 @@
         </div>
         @if (!$isTracking)
             <div class="col-auto ms-auto text-end mt-n1">
+                @if ($shipment->invoice)
+                    <button class="btn btn-outline-primary" wire:click="">Download Invoice</button>
+                @endif
                 <button class="btn btn-primary" wire:click="trackShipment">Track Shipment</button>
             </div>
         @endif
