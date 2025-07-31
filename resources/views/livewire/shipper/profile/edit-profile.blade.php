@@ -95,7 +95,7 @@
             @enderror
         </div>
         <div class="text-end my-3">
-            <button type="button" class="btn btn-outline-primary fa-fw me-1" x-on:click="$wire.closePage()" wire:loading.remove>Cancel</button>
+            <button type="button" class="btn btn-outline-primary me-1" x-on:click="$wire.closePage()" wire:loading.remove>Cancel</button>
             <button type="submit" class="btn btn-primary disabled" wire:loading.remove wire:dirty.class.remove="disabled">Save</button>
             <button class="btn btn-primary px-5" wire:loading>
                 <div class="spinner-border spinner-border-sm text-light" role="status">

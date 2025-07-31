@@ -23,7 +23,7 @@ class EditProfile extends Component
         $this->countryCodes = DB::table('countries')->orderBy('name')->get();
         $this->fill($this->user->admin);
         $this->currentCountry = $this->countryCodes->firstWhere('name', $this->country);
-        $this->dial_code = $this->currentCountry->code;
+        $this->dial_code = $this->currentCountry->dial_code;
         $this->dispatch('load-defaults');
     }
 

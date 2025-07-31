@@ -18,6 +18,11 @@ class AdminList extends Component
         $this->dispatch('admin-changed');
     }
 
+    public function close()
+    {
+        $this->admin = null;
+    }
+
     public function switch($role)
     {
         $this->admin->admin_role = $role;

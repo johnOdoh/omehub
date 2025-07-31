@@ -13,6 +13,16 @@
                 <div class="text-danger"><small><i>{{ $message }}</i></small></div>
             @enderror
         </div>
+        <div class="my-3">
+            <div class="form-label fw-bold">Business Logo</div>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-file fa-fw me-1"></i></span>
+                <input type="file" class="form-control" required wire:model="logo" accept="image/*">
+            </div>
+            @error('logo')
+                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+            @enderror
+        </div>
         <div class="mb-3" x-data="{ selectedFlag: 'https://flagcdn.com/{{ strtolower($currentCountry->code) }}.svg', selectedCode: '{{ $currentCountry->dial_code }}' }">
             <div class="border rounded d-flex align-items-center p-2">
                 <div class="dropdown me-2">
@@ -82,7 +92,7 @@
             @enderror
         </div>
         <div class="text-end my-3">
-            <button type="button" class="btn btn-outline-primary fa-fw me-1" x-on:click="$wire.closePage()" wire:loading.remove>Cancel</button>
+            <button type="button" class="btn btn-outline-primary me-1" x-on:click="$wire.closePage()" wire:loading.remove>Cancel</button>
             <button type="submit" class="btn btn-primary" wire:loading.remove>Create</button>
             <button class="btn btn-primary px-5" wire:loading>
                 <div class="spinner-border spinner-border-sm text-light" role="status">

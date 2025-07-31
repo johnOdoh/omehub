@@ -46,7 +46,6 @@ class CreateProfile extends Component
         ]);
         $validated['phone'] = $validated['phone']/1;
         $logo = $validated['logo'];
-        $validated['role'] = $this->user->admin_role;
         $logoName = $this->user->email. '.' .$logo->extension();
         $validated['logo'] = $logo->storeAs('logos', $logoName, 'public');
         $this->user->admin()->create($validated);

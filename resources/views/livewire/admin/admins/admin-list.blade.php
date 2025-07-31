@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="dropdown position-relative d-inline">
-                                    <a href="#" data-bs-display="static" style="margin-left: 10px" wire:click='$set("admin", null)'>
+                                    <a href="#" data-bs-display="static" style="margin-left: 10px" wire:click='close'>
                                         <i class="align-middle fa fa-times"></i>
                                     </a>
                                 </div>
