@@ -15,6 +15,10 @@
         0 => ['name' => 'Create Post', 'route' => 'user.blog.create'],
         1 => ['name' => 'My Posts', 'route' => 'user.blog.posts'],
     ];
+    $adminDropdown = [
+        0 => ['name' => 'Create Admin', 'route' => 'admin.create-admin'],
+        1 => ['name' => 'Admin List', 'route' => 'admin.admins'],
+    ];
     $claimDropdown = [
         0 => ['name' => 'Raise Claim', 'route' => 'user.dispute.create'],
         1 => ['name' => 'My Claims', 'route' => 'user.dispute.list'],
@@ -59,6 +63,7 @@
                 <x-sidebar-item route="admin.profile" name="Profile" icon="user" />
                 @if (auth()->user()->admin)
                     <x-sidebar-item route="admin.users" name="Users" icon="users" />
+                    <x-sidebar-dropdown :items="$adminDropdown" name="Admins" icon="users-cog" id="admins" />
                     <x-sidebar-item route="admin.shipments" name="Shipments" icon="ship" />
                     <x-sidebar-item route="admin.disputes" name="Disputes" icon="balance-scale" :params="$adminParam" />
                 @endif

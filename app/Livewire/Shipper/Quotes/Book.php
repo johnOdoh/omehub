@@ -11,13 +11,21 @@ class Book extends Component
     public $quote;
     public $selectedInsurance;
     public $total;
-    public $carbon_offset = 5.00;
+    public $carbon_offset;
+    public $processing_fee;
     public $offset_emission = false;
 
     public function mount(Quote $quote)
     {
         $this->quote = $quote;
-        $this->total = $quote->cost + $quote->custom;
+        if ($quote->currency == 'NGN') {
+            $this->processing_fee = 100000;
+            $this->carbon_offset += 5000;
+        }else {
+            $this->processing_fee = 100;
+            $this->carbon_offset += 5;
+        }
+        $this->total = $quote->cost + $quote->custom + $this->processing_fee;
     }
 
     public function toggleInsurance(InsuranceQuote $insuranceQuote)
@@ -48,7 +56,6 @@ class Book extends Component
 
     public function book()
     {
-        // dd('dfsdf');
         request()->user()->shipments()->create([
             'quote_id' => $this->quote->id,
             'insurance_quote_id' => $this->selectedInsurance ? $this->selectedInsurance->id : null,
@@ -64,8 +71,7 @@ class Book extends Component
             ]
         ]);
         $this->quote->request()->update(['is_closed' => true]);
-        $this->redirect(route('shipper.shipments',[] , absolute: false), navigate: true);
-        session()->flash('booked');
+        $this->redirect(route('shipper.shipments',['booked' => true] , absolute: false), navigate: true);
     }
 
     public function render()

@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Admin\Admins\AdminList;
+use App\Livewire\Admin\Users\UsersList;
 use App\Livewire\Common\Blog\CreatePost;
 use App\Livewire\Common\Blog\PostList;
 use App\Livewire\Common\Blog\ViewPost;
@@ -46,7 +48,9 @@ Route::get('/privacy-policy', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('admin/dashboard', \App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');
     Route::get('admin/profile', \App\Livewire\Admin\Profile\Main::class)->name('admin.profile');
-    Route::get('admin/users', \App\Livewire\Admin\Users\UsersList::class)->name('admin.users');
+    Route::get('admin/users', UsersList::class)->name('admin.users');
+    Route::get('admin/admins/create', \App\Livewire\Admin\Admins\Create::class)->name('admin.create-admin');
+    Route::get('admin/admins', AdminList::class)->name('admin.admins');
     Route::get('admin/shipments', \App\Livewire\Admin\Shipments\ShipmentList::class)->name('admin.shipments');
     Route::get('admin/disputes', DisputeList::class)->name('admin.disputes');
 

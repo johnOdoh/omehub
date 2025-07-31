@@ -33,7 +33,7 @@ class RequestList extends Component
                 $requests = $query;
                 break;
         }
-        $requests = $query->latest()->paginate(10);
+        $requests = $query->latest()->paginate(perPage: 20);
         return view('livewire.common.quote.request-list', ['requests' => $requests]);
     }
 }

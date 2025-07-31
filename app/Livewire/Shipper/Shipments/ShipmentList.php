@@ -4,15 +4,25 @@ namespace App\Livewire\Shipper\Shipments;
 
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 
 class ShipmentList extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+    #[Url]
+    public $booked;
     public $shipmentId;
     public $isList = true;
     public $track;
+
+    public function mount()
+    {
+        if ($this->booked) {
+            session()->flash('booked');
+        }
+    }
 
     public function viewShipment($id, $track = null)
     {

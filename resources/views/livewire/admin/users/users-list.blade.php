@@ -38,16 +38,9 @@
                         <tbody>
                             @forelse ($users as $user)
                                 <tr>
-                                    @php
-                                        match ($user->role) {
-                                            'Shipper' => $profile = $user->shipper,
-                                            'Logistics Provider' => $profile = $user->logistic_provider,
-                                            'Insurance Provider' => $profile = $user->insurance_provider,
-                                        };
-                                    @endphp
                                     <td>{{ $users->firstItem() + $loop->index }}</td>
                                     <td>
-                                        @if ($profile )<img src="{{ asset('storage/'.$profile->logo) }}" width="40" height="40" class="rounded-circle me-2" alt="logo"> @else N/A @endif
+                                        @if ($user->profile() )<img src="{{ asset('storage/'.$user->profile()->logo) }}" width="40" height="40" class="rounded-circle me-2" alt="logo"> @else N/A @endif
                                     </td>
                                     <td>
                                         <div class="flex-grow-1">
@@ -56,10 +49,10 @@
                                         </div>
                                     </td>
                                     <td><span class="badge bg-info">{{ $user->role }}</span></td>
-                                    <td><span class="badge bg-{{ $profile && $profile->is_verified ? 'success' : 'warning' }}">{{ $profile && $profile->is_verified ? 'Verified' : 'Unverified' }}</span></td>
+                                    <td><span class="badge bg-{{ $user->profile() && $user->profile()->is_verified ? 'success' : 'warning' }}">{{ $user->profile() && $user->profile()->is_verified ? 'Verified' : 'Unverified' }}</span></td>
                                     <td><span class="badge bg-{{ $user->status == 'Active' ? 'success' : 'warning' }}">{{ $user->status }}</span></td>
                                     <td class="table-action">
-                                        @if ($profile)
+                                        @if ($user->profile())
                                             <a href="#" class="me-2" wire:click.prevent='selectUser({{ $user->id }})'>
                                                 <i class="fa fa-eye"></i>
                                             </a>

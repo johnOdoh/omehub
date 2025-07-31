@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('shippers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('logo');
             $table->string('account_type');
             $table->string('business_type')->nullable();
             $table->string('phone');

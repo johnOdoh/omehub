@@ -1,9 +1,17 @@
 <div class="container-fluid p-0">
-    @if (session('booked')) <span x-show="notify('Your Shipment has been successfully Booked')"></span> @endif
     @if ($isList)
-        <div class="mb-2">
-            <h1 class="h3 d-inline align-middle">My Shipments</h1>
-        </div>
+    <div class="mb-2">
+        <h1 class="h3 d-inline align-middle">My Shipments</h1>
+    </div>
+        @if (session('booked'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <div class="alert-message d-flex">
+                    <strong class="me-2"><i class="fa fa-check"></i></strong>
+                    <div>Your Shipment has been Successfully booked. You can contact the provider to arrange the cargo drop off</div>
+                </div>
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">

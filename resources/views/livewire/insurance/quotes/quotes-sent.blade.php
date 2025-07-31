@@ -8,10 +8,6 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
-                    <div class="card-header pb-0">
-                        <h5 class="card-title mb-0">Requests</h5>
-                    </div>
-                    <hr class="mb-0">
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped">

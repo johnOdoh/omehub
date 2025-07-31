@@ -13,7 +13,7 @@
                             <th>Origin</th>
                             <th>Destination</th>
                             <th>Freight Type</th>
-                            <th>Expires In</th>
+                            <th>Submission Ends In</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -25,16 +25,18 @@
                                 <td>{{ $quote_request->destination }}</td>
                                 <td>{{ $quote_request->freight_type }}</td>
                                 @if($quote_request->expires_at->isPast())
-                                    <td><span class="badge bg-danger">Expired</span></td>
+                                    <td><span class="badge bg-danger">Ended</span></td>
                                 @else
                                     <td class="fw-bold text-info">{{ $quote_request->expires_at->diffAsCarbonInterval()->forHumans() }}</td>
                                 @endif
                                 <td>
-                                    <button class="btn btn-info btn-sm" wire:click="$parent.viewRequest({{ $quote_request->id }})">View</button>
+                                    @if(!$quote_request->expires_at->isPast())
+                                        <button class="btn btn-info btn-sm" wire:click="$parent.viewRequest({{ $quote_request->id }})">View</button>
+                                    @endif
                                 </td>
                             </tr>
                         @empty
-                            <tr><td colspan="5"><h5>No Requests Yet</h5></td></tr>
+                            <tr><td colspan="6"><h5>No Requests Yet</h5></td></tr>
                         @endforelse
                     </tbody>
                 </table>

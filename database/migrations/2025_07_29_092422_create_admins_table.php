@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('country');
             $table->string('zip');
             $table->string('dial_code');
-            $table->enum('role', ['Admin', 'Legal Partner', 'Shipment Auditor'])->default('Admin');
             $table->timestamps();
         });
     }
