@@ -1,6 +1,11 @@
 <div class="container-fluid p-0">
-    <div class="mb-2">
-        <h1 class="h3 d-inline align-middle">Admin list</h1>
+    <div class="row mb-2 mb-xl-3">
+        <div class="col-auto">
+            <h1 class="h3 d-inline align-middle">Admin list</h1>
+        </div>
+        <div class="col-auto ms-auto text-end mt-n1">
+            <a class="btn btn-primary" href="{{ route('admin.create-admin') }}" wire:navigate>Create Admin</a>
+        </div>
     </div>
     @if (session('message')) <span x-show="notify('{{ session('message') }}')"></span> @endif
     <div class="row">

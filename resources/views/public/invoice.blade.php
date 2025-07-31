@@ -65,43 +65,54 @@
 </head>
 <body>
   <div class="invoice-box">
-    <table style="width: 100%; margin-bottom: 20px;">
-        <tr>
-            <td colspan="2" style="text-align: left;">
-                <img src="{{ public_path('storage/'.$from->profile()->logo) }}" alt="Company Logo" style="width: 100px;">
+    <table style="width: 100%;">
+        <tr class="margin-bottom: 50px;">
+            <td colspan="2" style="text-align: center; margin-bottom: 15px;">
+                @if ($type == 'admin')
+                    <img src="{{ public_path('assets/img/logo_blue.png') }}" alt="Company Logo" style="width: 100px;">
+                @else
+                    <img src="{{ public_path('storage/'.$from->profile()->logo) }}" alt="Company Logo" style="width: 100px;">
+                @endif
             </td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align: center; font-size: 18px; color: #0b3aa7; font-weight: bold;">
+            <td colspan="2" style="text-align: left; font-size: 13px; color: #0b3aa7; font-weight: bold;">
             Tracking Number #{{ $shipment->tracking_number }}
             </td>
         </tr>
         <tr>
             <td style="width: 50%; vertical-align: top; padding-right: 10px;">
-            <p><strong style="color:#0b3aa7;">{{ $from->name }}</strong><br>
-                {{ $from->profile()->address }}<br>
-                {{ $from->email }}<br>
-                {{ $from->profile()->phone }}
-            </p>
-            <p>
-                <strong>Bank Name: </strong>{{ $data['name'] }}<br>
-                <strong>Address: </strong>{{ $data['address'] }}<br>
-                <strong>SWIFT/BIC: </strong>{{ $data['swift'] }}<br>
-                <strong>Account Number: </strong>{{ $data['number'] }}
-            </p>
+                @if ($type == 'admin')
+                    <p><strong style="color:#0b3aa7;">{{ config('app.name') }}</strong><br>
+                        {{ config('app.name') }} Address<br>
+                        {{ config('app.name') }} Email<br>
+                        {{ config('app.name') }} Phone
+                    </p>
+                @else
+                    <p><strong style="color:#0b3aa7;">{{ $from->name }}</strong><br>
+                        {{ $from->profile()->address }}<br>
+                        {{ $from->email }}<br>
+                        {{ $from->profile()->phone }}
+                    </p>
+                @endif
+                <p>
+                    <strong>Bank Name: </strong>{{ $data['name'] }}<br>
+                    <strong>Address: </strong>{{ $data['address'] }}<br>
+                    <strong>SWIFT/BIC: </strong>{{ $data['swift'] }}<br>
+                    <strong>Account Number: </strong>{{ $data['number'] }}
+                </p>
             </td>
-
             <td style="width: 50%; vertical-align: top; padding-left: 10px;">
-            <p><strong style="color:#0b3aa7;">BILL TO</strong><br>
-                {{ $to->name }}<br>
-                {{ $to->profile()->address }}<br>
-                {{ $to->email }}<br>
-                {{ $to->profile()->phone }}
-            </p>
-            <p>
-                Invoice Date: {{ date('d/m/Y') }}<br>
-                <strong>Due Date: {{ $data['date'] }}</strong>
-            </p>
+                <p><strong style="color:#0b3aa7;">BILL TO</strong><br>
+                    {{ $to->name }}<br>
+                    {{ $to->profile()->address }}<br>
+                    {{ $to->email }}<br>
+                    {{ $to->profile()->phone }}
+                </p>
+                <p>
+                    Invoice Date: {{ date('d/m/Y') }}<br>
+                    <strong>Due Date: {{ $data['date'] }}</strong>
+                </p>
             </td>
         </tr>
     </table>
@@ -145,6 +156,12 @@
                         <td>{{ number_format($shipment->carbon_offset, 2) }}</td>
                     </tr>
                 @endif
+                <tr>
+                    <td>Processing Fee</td>
+                    <td>1</td>
+                    <td>{{ number_format($shipment->processing_fee, 2) }}</td>
+                    <td>{{ number_format($shipment->processing_fee, 2) }}</td>
+                </tr>
             </tbody>
         </table>
         <div class="summary">
@@ -173,6 +190,40 @@
         <div class="summary">
             <div>SUBTOTAL: {{ $currency }} {{ number_format($shipment->insurance_quote->charge, 2) }}</div>
             <div><strong>Total: {{ $currency }} {{ number_format($shipment->insurance_quote->charge, 2) }}</strong></div>
+        </div>
+    @elseif ($type == 'admin')
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>DESCRIPTION</th>
+                    <th>QTY</th>
+                    <th>UNIT PRICE ({{ $currency }})</th>
+                    <th>SUBTOTAL ({{ $currency }})</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if ($shipment->carbon_offset)
+                    <tr>
+                        <td>Carbon Emission</td>
+                        <td>1</td>
+                        <td>{{ number_format($shipment->carbon_offset, 2) }}</td>
+                        <td>{{ number_format($shipment->carbon_offset, 2) }}</td>
+                    </tr>
+                @endif
+                <tr>
+                    <td>Processing Fee</td>
+                    <td>1</td>
+                    <td>{{ number_format($shipment->processing_fee, 2) }}</td>
+                    <td>{{ number_format($shipment->processing_fee, 2) }}</td>
+                </tr>
+            </tbody>
+        </table>
+        @php
+            $total = $shipment->carbon_offset + $shipment->processing_fee;
+        @endphp
+        <div class="summary">
+            <div>SUBTOTAL: {{ $currency }} {{ number_format($total, 2) }}</div>
+            <div><strong>Total: {{ $currency }} {{ number_format($total, 2) }}</strong></div>
         </div>
     @endif
   </div>

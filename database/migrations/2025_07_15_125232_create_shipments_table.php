@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('current_location')->nullable();
             $table->enum('status', ['Processing', 'In Transit', 'Delivered', 'Delayed', 'Arrived'])->default('processing');
             $table->decimal('carbon_offset')->nullable();
+            $table->decimal('processing_fee');
             $table->decimal('amount', 10, 2);
             $table->json('updates');
             $table->string('insurance_invoice')->nullable();

@@ -62,6 +62,7 @@ class Book extends Component
             'carbon_offset' => $this->offset_emission ? $this->carbon_offset : null,
             'amount' => $this->total,
             'status' => 'processing',
+            'processing_fee' => $this->processing_fee,
             'tracking_number' => date('Y').rand(10000, 99999).request()->user()->initials(),
             'updates' => [
                 [
