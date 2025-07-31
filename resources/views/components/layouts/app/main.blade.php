@@ -22,7 +22,7 @@
         <!-- Remove this after purchasing -->
         <link href="{{ asset('portal-assets/css/light.css') }}" rel="stylesheet">
         {{-- <script src="{{ asset('portal-assets/js/settings.js') }}"></script> --}}
-        @fluxAppearance
+        {{-- @fluxAppearance --}}
         <style>
             /* Custom Bootstrap-style column for 1.5 of 12 columns (12.5%) */
             .col-0-5 {

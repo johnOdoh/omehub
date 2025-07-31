@@ -48,7 +48,10 @@ class AdminList extends Component
     public function render()
     {
         return view('livewire.admin.admins.admin-list', [
-            'admins' => User::where('role', 'Admin')->latest()->paginate(20)
+            'admins' => User::where('role', 'Admin')
+                ->whereNot('id', request()->user()->id)
+                ->latest()
+                ->paginate(20)
         ]);
     }
 }

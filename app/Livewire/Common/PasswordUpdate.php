@@ -30,7 +30,7 @@ class PasswordUpdate extends Component
         $this->password = Hash::make($this->password);
         $this->user->update(["password" => $this->password]);
         $this->reset();
-        request()->session()->flash("password");
+        session()->flash("password");
     }
 
     public function render()

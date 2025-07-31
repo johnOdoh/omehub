@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\User;
 use Livewire\Component;
+use App\Models\Shipment;
 
 class Dashboard extends Component
 {
@@ -11,6 +12,7 @@ class Dashboard extends Component
     public $logisticsProvidersCount;
     public $insuranceProvidersCount;
     public $shippersCount;
+    public $shipmentsCount;
 
     public function mount()
     {
@@ -18,6 +20,7 @@ class Dashboard extends Component
         $this->logisticsProvidersCount = User::where('role', 'Logistics Provider')->count();
         $this->insuranceProvidersCount = User::where('role', 'Insurance Provider')->count();
         $this->shippersCount = User::where('role', 'Shipper')->count();
+        $this->shipmentsCount = Shipment::count();
     }
 
     public function render()
