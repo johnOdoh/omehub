@@ -2,11 +2,14 @@
 
 namespace App\Livewire\Shipper\Shipments;
 
-use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use Livewire\WithPagination;
 
 class ShipmentList extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $shipmentId;
     public $isList = true;
     public $track;
@@ -28,7 +31,7 @@ class ShipmentList extends Component
     public function render()
     {
         return view('livewire.shipper.shipments.shipment-list', [
-            'shipments' => request()->user()->shipments()->paginate(5)
+            'shipments' => request()->user()->shipments()->latest()->paginate(5)
         ]);
     }
 }

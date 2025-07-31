@@ -6,8 +6,8 @@
         @if (session('generated')) <span x-show="notify('Invoice Generated')"></span> @endif
         @if (!$isTracking)
             <div class="col-auto ms-auto text-end mt-n1">
-                @if ($shipment->invoice)
-                    <a class="btn btn-outline-primary" href="{{ asset('storage/invoices/'.$shipment->invoice) }}" target="_blank">Download Invoice</a>
+                @if ($shipment->logistics_invoice)
+                    <a class="btn btn-outline-primary" href="{{ asset('storage/invoices/'.$shipment->logistics_invoice) }}" target="_blank">Download Invoice</a>
                 @else
                     <button class="btn btn-outline-primary" wire:click="$toggle('generate')">Generate Invoice</button>
                 @endif

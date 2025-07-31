@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Tax Invoice</title>
+  <title>Shipment Invoice</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -68,7 +68,7 @@
     <table style="width: 100%; margin-bottom: 20px;">
         <tr>
             <td colspan="2" style="text-align: left;">
-                <img src="{{ public_path('storage/'.$shipment->quote->user->profile()->logo) }}" alt="Company Logo" style="width: 100px;">
+                <img src="{{ public_path('storage/'.$from->profile()->logo) }}" alt="Company Logo" style="width: 100px;">
             </td>
         </tr>
         <tr>
@@ -78,10 +78,10 @@
         </tr>
         <tr>
             <td style="width: 50%; vertical-align: top; padding-right: 10px;">
-            <p><strong style="color:#0b3aa7;">{{ $shipment->quote->user->name }}</strong><br>
-                {{ $shipment->quote->user->profile()->address }}<br>
-                {{ $shipment->quote->user->email }}<br>
-                {{ $shipment->quote->user->profile()->phone }}
+            <p><strong style="color:#0b3aa7;">{{ $from->name }}</strong><br>
+                {{ $from->profile()->address }}<br>
+                {{ $from->email }}<br>
+                {{ $from->profile()->phone }}
             </p>
             <p>
                 <strong>Bank Name: </strong>{{ $data['name'] }}<br>
@@ -93,10 +93,10 @@
 
             <td style="width: 50%; vertical-align: top; padding-left: 10px;">
             <p><strong style="color:#0b3aa7;">BILL TO</strong><br>
-                {{ $shipment->user->name }}<br>
-                {{ $shipment->user->profile()->address }}<br>
-                {{ $shipment->user->email }}<br>
-                {{ $shipment->user->profile()->phone }}
+                {{ $to->name }}<br>
+                {{ $to->profile()->address }}<br>
+                {{ $to->email }}<br>
+                {{ $to->profile()->phone }}
             </p>
             <p>
                 Invoice Date: {{ date('d/m/Y') }}<br>
@@ -106,55 +106,75 @@
         </tr>
     </table>
     @php $currency = $shipment->quote->request->currency @endphp
-    <table class="table">
-      <thead>
-        <tr>
-          <th>DESCRIPTION</th>
-          <th>QTY</th>
-          <th>UNIT PRICE ({{ $currency }})</th>
-          <th>SUBTOTAL ({{ $currency }})</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Freight Charge</td>
-          <td>1</td>
-          <td>{{ number_format($shipment->quote->cost, 2) }}</td>
-          <td>{{ number_format($shipment->quote->cost, 2) }}</td>
-        </tr>
-        <tr>
-          <td>Custom Charge</td>
-          <td>1</td>
-          <td>{{ number_format($shipment->quote->custom, 2) }}</td>
-          <td>{{ number_format($shipment->quote->custom, 2) }}</td>
-        </tr>
-        @if ($shipment->insurance_quote_id)
-            <tr>
-                <td>Insurance Charge</td>
-                <td>1</td>
-                <td>{{ number_format($shipment->insurance_quote->charge, 2) }}</td>
-                <td>{{ number_format($shipment->insurance_quote->charge, 2) }}</td>
-            </tr>
-        @endif
-        @if ($shipment->carbon_offset)
-            <tr>
-                <td>Carbon Emission</td>
-                <td>1</td>
-                <td>{{ number_format($shipment->carbon_offset, 2) }}</td>
-                <td>{{ number_format($shipment->carbon_offset, 2) }}</td>
-            </tr>
-        @endif
-      </tbody>
-    </table>
-
-    <div class="summary">
-      <div>SUBTOTAL: {{ $currency }} {{ number_format($shipment->amount, 2) }}</div>
-      <div><strong>Total: {{ $currency }} {{ number_format($shipment->amount, 2) }}</strong></div>
-    </div>
-
-    {{-- <div class="footer-note">
-      "TWENTY SIX THOUSAND FOUR HUNDRED FIFTY ZAR AND 00 CENTS"
-    </div> --}}
+    @if ($type == 'logistics')
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>DESCRIPTION</th>
+                    <th>QTY</th>
+                    <th>UNIT PRICE ({{ $currency }})</th>
+                    <th>SUBTOTAL ({{ $currency }})</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Freight Charge</td>
+                    <td>1</td>
+                    <td>{{ number_format($shipment->quote->cost, 2) }}</td>
+                    <td>{{ number_format($shipment->quote->cost, 2) }}</td>
+                </tr>
+                <tr>
+                    <td>Custom Charge</td>
+                    <td>1</td>
+                    <td>{{ number_format($shipment->quote->custom, 2) }}</td>
+                    <td>{{ number_format($shipment->quote->custom, 2) }}</td>
+                </tr>
+                @if ($shipment->insurance_quote_id)
+                    <tr>
+                        <td>Insurance Charge</td>
+                        <td>1</td>
+                        <td>{{ number_format($shipment->insurance_quote->charge, 2) }}</td>
+                        <td>{{ number_format($shipment->insurance_quote->charge, 2) }}</td>
+                    </tr>
+                @endif
+                @if ($shipment->carbon_offset)
+                    <tr>
+                        <td>Carbon Emission</td>
+                        <td>1</td>
+                        <td>{{ number_format($shipment->carbon_offset, 2) }}</td>
+                        <td>{{ number_format($shipment->carbon_offset, 2) }}</td>
+                    </tr>
+                @endif
+            </tbody>
+        </table>
+        <div class="summary">
+            <div>SUBTOTAL: {{ $currency }} {{ number_format($shipment->amount, 2) }}</div>
+            <div><strong>Total: {{ $currency }} {{ number_format($shipment->amount, 2) }}</strong></div>
+        </div>
+    @elseif ($type == 'insurance')
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>DESCRIPTION</th>
+                    <th>QTY</th>
+                    <th>UNIT PRICE ({{ $currency }})</th>
+                    <th>SUBTOTAL ({{ $currency }})</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Insurance Charge</td>
+                    <td>1</td>
+                    <td>{{ number_format($shipment->insurance_quote->charge, 2) }}</td>
+                    <td>{{ number_format($shipment->insurance_quote->charge, 2) }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="summary">
+            <div>SUBTOTAL: {{ $currency }} {{ number_format($shipment->insurance_quote->charge, 2) }}</div>
+            <div><strong>Total: {{ $currency }} {{ number_format($shipment->insurance_quote->charge, 2) }}</strong></div>
+        </div>
+    @endif
   </div>
 </body>
 </html>

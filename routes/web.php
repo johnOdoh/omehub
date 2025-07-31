@@ -66,6 +66,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('insurance/profile', InsuranceProfileMain::class)->name('insurance.profile');
     Route::get('insurance/quote-requests', InsuranceRequests::class)->name('insurance.quote-requests');
     Route::get('insurance/quotes-sent', InsuranceQuotesSent::class)->name('insurance.quotes-sent');
+    Route::get('insurance/shipments', \App\Livewire\Insurance\Shipments\ShipmentList::class)->name('insurance.shipments');
 
     Route::get('user/blog/create', CreatePost::class)->name('user.blog.create');
     Route::get('user/blog/{post}/edit', CreatePost::class)->name('user.blog.edit');

@@ -5,9 +5,12 @@ namespace App\Livewire\Logistics\Shipments;
 use App\Models\Shipment;
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\WithPagination;
 
 class Shipments extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $shipmentId;
     public $isList = true;
     public $track;
@@ -32,7 +35,7 @@ class Shipments extends Component
         return view('livewire.logistics.shipments.shipments', [
             'shipments' => Shipment::whereHas('quote', function ($q) {
                 $q->where('user_id', request()->user()->id);
-            })->paginate(10)
+            })->latest()->paginate(perPage: 20)
         ]);
     }
 }

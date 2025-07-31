@@ -82,7 +82,6 @@
                         @foreach ($shipment->updates as $update)
                             <li class="timeline-item">
                                 <span>{{ $update['timestamp'] }}</span>
-                                <span class="float-end text-muted text-sm"><a href="#{{ $loop->index }}" wire:confirm='Are you sure you want to delete this update?' wire:click.prevent='deleteUpdate({{ $loop->index }})'>Delete</a></span>
                                 <p class="fw-bold">{{ $update['message'] }}</p>
                             </li>
                         @endforeach

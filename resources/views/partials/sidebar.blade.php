@@ -89,6 +89,7 @@
                 <x-sidebar-item route="insurance.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="insurance.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
+                <x-sidebar-item route="insurance.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
                 <x-sidebar-dropdown :items="$claimDropdown" name="Claims" icon="balance-scale" id="claims" />
             @else

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Logistics\Shipments;
+namespace App\Livewire\Insurance\Shipments;
 
 use Carbon\Carbon;
 use Livewire\Component;
@@ -29,9 +29,9 @@ class GenerateInvoice extends Component
         $this->date = Carbon::parse($this->date)->format('d/m/Y');
         $pdf = Pdf::loadView('public.invoice', [
             'shipment' => $this->shipment,
-            'from' => $this->shipment->quote->user,
-            'to' => $this->shipment->user,
-            'type' => 'logistics',
+            'from' => $this->shipment->insurance_quote->user,
+            'to' => $this->shipment->quote->user,
+            'type' => 'insurance',
             'data' => $this->except('shipment')
         ]);
         $path = storage_path('app/public/invoices'); // Example path
@@ -39,7 +39,7 @@ class GenerateInvoice extends Component
             File::makeDirectory($path, 0755, true);
         }
         $pdf->save(storage_path("app/public/invoices/$filename"));
-        $this->shipment->logistics_invoice = $filename;
+        $this->shipment->insurance_invoice = $filename;
         $this->shipment->save();
         $this->resetExcept('shipment');
         $this->dispatch('invoice-generated');
@@ -47,6 +47,6 @@ class GenerateInvoice extends Component
 
     public function render()
     {
-        return view('livewire.logistics.shipments.generate-invoice');
+        return view('livewire.insurance.shipments.generate-invoice');
     }
 }
