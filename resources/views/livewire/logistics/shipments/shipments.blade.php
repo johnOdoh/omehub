@@ -14,6 +14,7 @@
                                 <th>Tracking Number</th>
                                 <th>Status</th>
                                 <th>Insurance Invoice</th>
+                                <th>Admin Invoice</th>
                                 <th>Booking Date</th>
                                 <th>Actions</th>
                             </tr>
@@ -25,6 +26,7 @@
                                     <td>{{ $shipment->tracking_number }}</td>
                                     <td><span class="badge bg-warning">{{ $shipment->status }}</span></td>
                                     <td>@if ($shipment->insurance_invoice) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/invoices/'.$shipment->insurance_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
+                                    <td>@if ($shipment->admin_invoice) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/invoices/'.$shipment->admin_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
                                     <td>{{ $shipment->created_at->format('d M, Y') }}</td>
                                     <td class="d-flex gap-2">
                                         <button class="btn btn-info btn-sm" wire:click="viewShipment({{ $shipment->id }})">View Shipment</button>

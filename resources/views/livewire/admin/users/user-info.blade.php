@@ -52,7 +52,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">No of Quotes {{ $user->role == 'Shipper' ? 'Requested' : 'Submitted' }}</h5>
+                                    <h5 class="card-title">Quotes {{ $user->role == 'Shipper' ? 'Requested' : 'Submitted' }}</h5>
                                 </div>
                                 <div class="col-auto">
                                     <div class="stat">
@@ -69,7 +69,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">@if ($user->role == 'Shipper') No of Shipments @else No of Quotes Accepted @endif</h5>
+                                    <h5 class="card-title">@if ($user->role == 'Shipper') Shipments @else Quotes Accepted @endif</h5>
                                 </div>
                                 <div class="col-auto">
                                     <div class="stat">

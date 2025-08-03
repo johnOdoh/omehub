@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">No of Quotes Submitted</h5>
+                            <h5 class="card-title">Quotes Submitted</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat">
@@ -44,7 +44,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">No of Active Quote Requests</h5>
+                            <h5 class="card-title">Active Quote Requests</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat">
@@ -64,7 +64,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">No of Active Covers</h5>
+                            <h5 class="card-title">Active Covers</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat">

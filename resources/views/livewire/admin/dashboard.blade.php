@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">No of Users</h5>
+                            <h5 class="card-title">Users</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat">
@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">No of Shippers</h5>
+                            <h5 class="card-title">Shippers</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat">
@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">No of Logistic Providers</h5>
+                            <h5 class="card-title">Logistic Providers</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat">
@@ -76,7 +76,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">No of Insurance Providers</h5>
+                            <h5 class="card-title">Insurance Providers</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat">
@@ -96,7 +96,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">No of Shipments</h5>
+                            <h5 class="card-title">Shipments</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat">

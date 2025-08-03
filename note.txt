@@ -1,2 +1,6 @@
 Tooltip resetting in admin users list
 Implement message sending on contact page
+
+Attachment not showing
+logo image not showing for invoice
+crop image to show omehub logo in homepage

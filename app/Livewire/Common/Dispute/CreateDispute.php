@@ -14,6 +14,7 @@ class CreateDispute extends Component
     public $subject;
     public $defendant;
     public $suggestions;
+    public $test = true;
     public $attachment = [];
 
     public function search($input)
@@ -31,6 +32,20 @@ class CreateDispute extends Component
         // dd($result);
     }
 
+    public function updating($property)
+    {
+        if ($property === 'attachment') {
+            $this->test = false;
+        }
+    }
+
+     public function updated($property)
+    {
+        if ($property === 'attachment') {
+            $this->test = true;
+        }
+    }
+
     public function select($option)
     {
         $this->defendant = $option;
@@ -39,6 +54,7 @@ class CreateDispute extends Component
 
     public function create()
     {
+        dd($this->attachment);
         if (!request()->user()->profile() || !request()->user()->profile()->is_verified) return;
         $this->suggestions = null;
         $this->validate([

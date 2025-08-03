@@ -27,6 +27,14 @@ class GenerateInvoice extends Component
         ]);
         $filename = uniqid(request()->user()->id).'.pdf';
         $this->date = Carbon::parse($this->date)->format('d/m/Y');
+        $html = view('public.invoice', [
+            'shipment' => $this->shipment,
+            'from' => $this->shipment->quote->user,
+            'to' => $this->shipment->user,
+            'type' => 'logistics',
+            'data' => $this->except('shipment')
+        ])->render();
+        dd($html);
         $pdf = Pdf::loadView('public.invoice', [
             'shipment' => $this->shipment,
             'from' => $this->shipment->quote->user,
