@@ -93,8 +93,8 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile() || !auth()->user()->profile()->is_verified) disabled @endif wire:loading.remove wire:confirm>Submit</button>
-                                <button class="btn btn-primary px-5" wire:loading>
+                                <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile() || !auth()->user()->profile()->is_verified) disabled @endif wire:loading.remove wire:target="attachment, create">Submit</button>
+                                <button class="btn btn-primary px-5" wire:loading wire:target="attachment, create">
                                     <div class="spinner-border spinner-border-sm text-light" role="status">
                                         <span class="visually-hidden">Loading...</span>
                                     </div>

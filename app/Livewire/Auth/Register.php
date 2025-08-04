@@ -36,6 +36,7 @@ class Register extends Component
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
+        if($validated['role'] == 'Admin') $validated['role_role'] = 'Admin';
 
         event(new Registered(($user = User::create($validated))));
 
