@@ -121,12 +121,14 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary" wire:loading.remove>Submit</button>
-                                    <button class="btn btn-primary px-5" wire:loading>
-                                        <div class="spinner-border spinner-border-sm text-light" role="status">
-                                            <span class="visually-hidden">Loading...</span>
-                                        </div>
-                                    </button>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary" wire:loading.remove wire:target="attachment, reply">Send</button>
+                                        <button class="btn btn-primary px-5" wire:loading wire:target="attachment, reply">
+                                            <div class="spinner-border spinner-border-sm text-light" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
