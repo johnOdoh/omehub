@@ -109,7 +109,7 @@
                 <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
-            @elseif (auth()->user()->role == 'Insurance Provider')y
+            @elseif (auth()->user()->role == 'Insurance Provider')
                 {{-- <li class="sidebar-header">
                     Insurance
                 </li> --}}

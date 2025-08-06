@@ -12,16 +12,16 @@ class CreateProfile extends Component
     public $user;
     public $countryCodes = [];
     public $currentCountry;
-    public string $name;
-    public string $account_type = 'Personal';
-    public string $phone;
-    public string $business_type;
-    public string $reg_no;
-    public string $address;
-    public string $city;
-    public string $country;
-    public string $dial_code;
-    public string $zip;
+    public $name;
+    public $account_type = 'Personal';
+    public $phone;
+    public $business_type;
+    public $reg_no;
+    public $address;
+    public $city;
+    public $country;
+    public $dial_code;
+    public $zip;
     public $document;
     public $logo;
 

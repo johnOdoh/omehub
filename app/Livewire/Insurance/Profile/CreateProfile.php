@@ -12,14 +12,14 @@ class CreateProfile extends Component
     public $user;
     public $countryCodes = [];
     public $currentCountry;
-    public string $name;
-    public string $phone;
-    public string $address;
-    public string $city;
-    public string $country;
-    public string $dial_code;
-    public string $zip;
-    public string $reg_no;
+    public $name;
+    public $phone;
+    public $address;
+    public $city;
+    public $country;
+    public $dial_code;
+    public $zip;
+    public $reg_no;
     public $logo;
     public $document;
 
