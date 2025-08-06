@@ -27,9 +27,13 @@ class Details extends Component
         session()->flash('generated');
     }
 
-    public function trackShipment()
+    public function generateInvoice()
     {
-        $this->isTracking = true;
+        if ($this->shipment->status != 'Delivered') {
+            session()->flash('error', 'Shipment must be marked as delivered before you can generate invoice.');
+            return;
+        }
+        $this->generate = true;
     }
 
     public function back()

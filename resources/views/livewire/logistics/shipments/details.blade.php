@@ -4,14 +4,15 @@
             <h1 class="h3 d-inline align-middle">Shipment Information</h1>
         </div>
         @if (session('generated')) <span x-show="notify('Invoice Generated')"></span> @endif
+        @if (session('error')) <span x-show="error('{{ session('error') }}')"></span> @endif
         @if (!$isTracking)
             <div class="col-auto ms-auto text-end mt-n1">
                 @if ($shipment->logistics_invoice)
                     <a class="btn btn-outline-primary" href="{{ asset('storage/invoices/'.$shipment->logistics_invoice) }}" target="_blank">Download Invoice</a>
                 @else
-                    <button class="btn btn-outline-primary" wire:click="$toggle('generate')">Generate Invoice</button>
+                    <button class="btn btn-outline-primary" wire:click="generateInvoice">Generate Invoice</button>
                 @endif
-                <button class="btn btn-primary" wire:click="trackShipment">Update Tracking</button>
+                <button class="btn btn-primary" wire:click="$toggle('isTracking')">Update Tracking</button>
             </div>
         @endif
     </div>

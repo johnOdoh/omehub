@@ -5,14 +5,18 @@ namespace App\Livewire\Logistics\Shipments;
 use App\Models\Shipment;
 use Carbon\Carbon;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Tracking extends Component
 {
+    use WithFileUploads;
     public $shipment;
     public $message = '';
     public $timestamp = '';
     public $status;
     public $location;
+    public $proof;
+    public $isDelivered = false;
 
     public function mount(Shipment $shipment)
     {
@@ -21,17 +25,36 @@ class Tracking extends Component
         $this->location = $shipment->current_location;
     }
 
+    public function switchView()
+    {
+        if ($this->status === 'Delivered') {
+            $this->isDelivered = true;
+        }
+    }
+
     public function updateStatus()
     {
-        $this->validate([
-            'status' => 'required|string|in:Processing,In Transit,Arrived,Delivered,Delayed',
-            'location' => 'required|string',
-        ]);
-
-        $this->shipment->update([
-            'status' => $this->status,
-            'current_location' => $this->location
-        ]);
+        if ($this->isDelivered) {
+            $this->validate([
+                'status' => 'required|string|in:Delivered',
+                'proof' => 'required|file|mimes:pdf|max:1024'
+            ]);
+            $this->proof = $this->proof->store('shipments/delivery', 'public');
+            $this->shipment->update([
+                'status' => $this->status,
+                'proof_of_delivery' => $this->proof
+            ]);
+        }
+        else {
+            $this->validate([
+                'status' => 'required|string|in:Processing,In Transit,Arrived,Delivered,Delayed',
+                'location' => 'required|string',
+            ]);
+            $this->shipment->update([
+                'status' => $this->status,
+                'current_location' => $this->location
+            ]);
+        }
         session()->flash('success', 'Shipment Status updated successfully.');
     }
 

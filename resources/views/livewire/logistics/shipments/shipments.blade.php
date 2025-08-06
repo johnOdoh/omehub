@@ -15,6 +15,7 @@
                                 <th>Status</th>
                                 <th>Insurance Invoice</th>
                                 <th>Admin Invoice</th>
+                                <th>Proof of Payment</th>
                                 <th>Booking Date</th>
                                 <th>Actions</th>
                             </tr>
@@ -24,13 +25,14 @@
                                 <tr>
                                     <td>{{ $shipments->firstItem() + $loop->index }}</td>
                                     <td>{{ $shipment->tracking_number }}</td>
-                                    <td><span class="badge bg-warning">{{ $shipment->status }}</span></td>
-                                    <td>@if ($shipment->insurance_invoice) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/invoices/'.$shipment->insurance_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
-                                    <td>@if ($shipment->admin_invoice) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/invoices/'.$shipment->admin_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
+                                    <td><span class="badge bg-{{ $shipment->status == 'Delivered' ? 'success' : 'warning' }}">{{ $shipment->status }}</span></td>
+                                    <td>@if ($shipment->insurance_invoice) <a class="btn btn-outline-warning btn-sm" href="{{ asset('storage/invoices/'.$shipment->insurance_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
+                                    <td>@if ($shipment->admin_invoice) <a class="btn btn-outline-secondary btn-sm" href="{{ asset('storage/invoices/'.$shipment->admin_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
+                                    <td>@if ($shipment->proof_of_payment) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/'.$shipment->proof_of_payment) }}" target="_blank">Download Proof</a> @else - @endif</td>
                                     <td>{{ $shipment->created_at->format('d M, Y') }}</td>
                                     <td class="d-flex gap-2">
                                         <button class="btn btn-info btn-sm" wire:click="viewShipment({{ $shipment->id }})">View Shipment</button>
-                                        <button class="btn btn-primary btn-sm" wire:click="viewShipment({{ $shipment->id }}, 1)">Update Tracking</button>
+                                        <button class="btn btn-primary btn-sm" wire:click="viewShipment({{ $shipment->id }}, 1)">{{ $shipment->status == 'Delivered' ? 'View' : 'Update' }} Tracking</button>
                                     </td>
                                 </tr>
                             @empty

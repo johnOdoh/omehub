@@ -5,10 +5,10 @@
         </div>
         @if (!$isTracking)
             <div class="col-auto ms-auto text-end mt-n1">
-                @if ($shipment->invoice)
-                    <button class="btn btn-outline-primary" wire:click="">Download Invoice</button>
+                @if ($shipment->status == 'Delivered' && !$shipment->proof_of_payment)
+                    <button class="btn btn-outline-primary" wire:click="$toggle('isProof')">Upload Proof of Payment</button>
                 @endif
-                <button class="btn btn-primary" wire:click="trackShipment">Track Shipment</button>
+                <button class="btn btn-primary" wire:click="$toggle('isTracking')">Track Shipment</button>
             </div>
         @endif
     </div>
@@ -44,8 +44,42 @@
             </div>
         </div>
     @else
-        <div>
-            <x-shipping-details :$shipment />
+        <div class="row">
+            <div class="col-lg-{{ $isProof ? '7' : '12' }}">
+                <x-shipping-details :$shipment />
+            </div>
+            @if ($isProof)
+                <div class="col-lg-5" x-ref="isProof" x-init="$refs.isProof.scrollIntoView({ behaviour: 'smooth' })">
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <h5 class="card-title mb-0">Upload Proof of Freight Payment</h5>
+                        </div>
+                        <hr class="mb-0">
+                        <div class="card-body">
+                            <form wire:submit="save" wire:confirm='Do you confirm that the uploaded file is correct? You will not be able to change it later!' class="p-0">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <label class="form-label fw-bold">Proof of Payment <small><em>(Must be a pdf. Not more than 1MB.)</em></small></label>
+                                        <input type="file" class="form-control" accept="application/pdf" required wire:model="proof">
+                                    </div>
+                                    @error('proof')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
+                                </div>
+                                <div class="text-end my-3">
+                                    <button type="button" class="btn btn-outline-primary me-1" wire:click="$toggle('isProof')" wire:loading.remove>Cancel</button>
+                                    <button type="submit" class="btn btn-primary" wire:loading.remove wire:target="proof, save">Upload</button>
+                                    <button class="btn btn-primary px-5" wire:loading wire:target="proof, save">
+                                        <div class="spinner-border spinner-border-sm text-light" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     @endif
 </div>

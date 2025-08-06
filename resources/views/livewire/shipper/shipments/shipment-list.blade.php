@@ -22,6 +22,7 @@
                                 <th>Tracking Number</th>
                                 <th>Status</th>
                                 <th>Booking Date</th>
+                                <th>Proof of Delivery</th>
                                 <th>Invoice</th>
                                 <th>Actions</th>
                             </tr>
@@ -31,9 +32,10 @@
                                 <tr>
                                     <td>{{ $shipments->firstItem() + $loop->index }}</td>
                                     <td>{{ $shipment->tracking_number }}</td>
-                                    <td><span class="badge bg-warning">{{ $shipment->status }}</span></td>
+                                    <td><span class="badge bg-{{ $shipment->status == 'Delivered' ? 'success' : 'warning' }}">{{ $shipment->status }}</span></td>
                                     <td>{{ $shipment->created_at->format('d M, Y') }}</td>
-                                    <td>@if ($shipment->logistics_invoice) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/invoices/'.$shipment->logistics_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
+                                    <td>@if ($shipment->proof_of_delivery) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/'.$shipment->proof_of_delivery) }}" target="_blank">Download Proof</a> @else - @endif</td>
+                                    <td>@if ($shipment->logistics_invoice) <a class="btn btn-outline-primary btn-sm" href="{{ asset('storage/invoices/'.$shipment->logistics_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
                                     <td class="d-flex gap-2">
                                         <button class="btn btn-info btn-sm" wire:click="viewShipment({{ $shipment->id }})">View Shipment</button>
                                         <button class="btn btn-primary btn-sm" wire:click="viewShipment({{ $shipment->id }}, 1)">Track Shipment</button>

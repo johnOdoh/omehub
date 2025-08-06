@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('insurance_invoice')->nullable();
             $table->string('logistics_invoice')->nullable();
             $table->string('admin_invoice')->nullable();
+            $table->string('proof_of_delivery')->nullable();
+            $table->string('proof_of_payment')->nullable();
             $table->timestamps();
         });
     }

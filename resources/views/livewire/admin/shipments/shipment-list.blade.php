@@ -26,7 +26,7 @@
                                 <tr>
                                     <td>{{ $shipments->firstItem() + $loop->index }}</td>
                                     <td>{{ $shipment->tracking_number }}</td>
-                                    <td><span class="badge bg-warning">{{ $shipment->status }}</span></td>
+                                    <td><span class="badge bg-{{ $shipment->status == 'Delivered' ? 'success' : 'warning' }}">{{ $shipment->status }}</span></td>
                                     <td>{{ $shipment->created_at->format('d M, Y') }}</td>
                                     <td>@if ($shipment->logistics_invoice) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/invoices/'.$shipment->logistics_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
                                     <td>@if ($shipment->insurance_invoice) <a class="btn btn-outline-primary btn-sm" href="{{ asset('storage/invoices/'.$shipment->insurance_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>

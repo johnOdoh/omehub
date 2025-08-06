@@ -24,7 +24,7 @@
                                 <tr>
                                     <td>{{ $shipments->firstItem() + $loop->index }}</td>
                                     <td>{{ $shipment->tracking_number }}</td>
-                                    <td><span class="badge bg-warning">{{ $shipment->status }}</span></td>
+                                    <td><span class="badge bg-{{ $shipment->status == 'Delivered' ? 'success' : 'warning' }}">{{ $shipment->status }}</span></td>
                                     <td>{{ $shipment->created_at->format('d M, Y') }}</td>
                                     <td class="d-flex gap-2">
                                         <button class="btn btn-info btn-sm" wire:click="viewShipment({{ $shipment->id }})">View Shipment</button>

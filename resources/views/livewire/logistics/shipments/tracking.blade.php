@@ -1,89 +1,109 @@
 <div class="container-fluid p-0">
     @if (session('success')) <span x-show="notify('{{ session('success') }}')"></span> @endif
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header pb-0">
-                    <h5 class="card-title mb-0">Update Shipment Status</h5>
-                </div>
-                <hr class="mb-0">
-                <div class="card-body">
-                    <form wire:submit="updateStatus" class="p-0">
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Status</label>
-                            <div class="form-group">
-                                <select class="form-select" required wire:model="status">
-                                    <option value="Processing">Processing</option>
-                                    <option value="In Transit">In Transit</option>
-                                    <option value="Delayed">Delayed</option>
-                                    <option value="Arrived">Arrived</option>
-                                    <option value="Delivered">Delivered</option>
-                                </select>
-                            </div>
-                            @error('status')
-                                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                            @enderror
-                        </div>
-                        <div class="my-3">
-                            <label class="form-label fw-bold">Current Location</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Current Location" required wire:model="location">
-                            </div>
-                            @error('location')
-                                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                            @enderror
-                        </div>
-                        <div class="text-end my-3">
-                            <button type="submit" class="btn btn-primary disabled" wire:loading.remove wire:dirty.class.remove="disabled">Update Status</button>
-                            <button class="btn btn-primary px-5" wire:loading>
-                                <div class="spinner-border spinner-border-sm text-light" role="status">
-                                    <span class="visually-hidden">Loading...</span>
+    @if ($shipment->status != 'Delivered')
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5 class="card-title mb-0">Update Shipment Status</h5>
+                    </div>
+                    <hr class="mb-0">
+                    <div class="card-body">
+                        <form wire:submit="updateStatus" class="p-0" @if($isDelivered) wire:confirm='You will not be able to make any other tracking updates after marking this shipment as delivered. Do you want to proceed?' @endif>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Status</label>
+                                <div class="form-group">
+                                    <select class="form-select" required wire:model="status" wire:change="switchView">
+                                        <option value="Processing">Processing</option>
+                                        <option value="In Transit">In Transit</option>
+                                        <option value="Delayed">Delayed</option>
+                                        <option value="Arrived">Arrived</option>
+                                        <option value="Delivered">Delivered</option>
+                                    </select>
                                 </div>
-                            </button>
-                        </div>
-                    </form>
+                                @error('status')
+                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                @enderror
+                            </div>
+                            @if ($status === 'Delivered')
+                                <div class="my-3">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            Proof of delivery <small><em>(Must be a pdf. Not more than 1MB.)</em></small>
+                                        </label>
+                                        <input type="file" class="form-control" wire:model="proof" accept="application/pdf" required>
+                                    </div>
+                                    @error('proof')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
+                                </div>
+                            @else
+                                <div class="my-3">
+                                    <label class="form-label fw-bold">Current Location</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Current Location" required wire:model="location">
+                                    </div>
+                                    @error('location')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
+                                </div>
+                            @endif
+                            <div class="text-end my-3">
+                                @if ($isDelivered)
+                                    <button type="submit" class="btn btn-primary" wire:loading.remove wire:target='proof, updateStatus'>Mark as Delivered</button>
+                                @else
+                                    <button type="submit" class="btn btn-primary" wire:loading.remove>Update Status</button>
+                                @endif
+                                <button class="btn btn-primary px-5" wire:loading @if($isDelivered) wire:target='proof, updateStatus' @endif>
+                                    <div class="spinner-border spinner-border-sm text-light" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <h5 class="card-title mb-0">Update Tracking Messages</h5>
+                    </div>
+                    <hr class="mb-0">
+                    <div class="card-body">
+                        <form wire:submit="updateTracking" class="p-0">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Message</label>
+                                <div class="form-group">
+                                    <textarea rows="2" class="form-control" placeholder="Message" required wire:model="message"></textarea>
+                                </div>
+                                @error('message')
+                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                @enderror
+                            </div>
+                            <div class="my-3">
+                                <label class="form-label fw-bold">Timestamp</label>
+                                <div class="form-group">
+                                    <input type="datetime-local" class="form-control" placeholder="Date and Time" required wire:model="timestamp">
+                                </div>
+                                @error('timestamp')
+                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                @enderror
+                            </div>
+                            <div class="text-end my-3">
+                                <button type="submit" class="btn btn-primary" wire:loading.remove wire:target='message, timestamp'>Add Message</button>
+                                <button class="btn btn-primary px-5" wire:loading wire:target='message, timestamp'>
+                                    <div class="spinner-border spinner-border-sm text-light" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header pb-0">
-                    <h5 class="card-title mb-0">Update Tracking Messages</h5>
-                </div>
-                <hr class="mb-0">
-                <div class="card-body">
-                    <form wire:submit="updateTracking" class="p-0">
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Message</label>
-                            <div class="form-group">
-                                <textarea rows="2" class="form-control" placeholder="Message" required wire:model="message"></textarea>
-                            </div>
-                            @error('message')
-                                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                            @enderror
-                        </div>
-                        <div class="my-3">
-                            <label class="form-label fw-bold">Timestamp</label>
-                            <div class="form-group">
-                                <input type="datetime-local" class="form-control" placeholder="Date and Time" required wire:model="timestamp">
-                            </div>
-                            @error('timestamp')
-                                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                            @enderror
-                        </div>
-                        <div class="text-end my-3">
-                            <button type="submit" class="btn btn-primary" wire:loading.remove>Add Message</button>
-                            <button class="btn btn-primary px-5" wire:loading>
-                                <div class="spinner-border spinner-border-sm text-light" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endif
     <div class="row">
         <div class="col-md-6 col-12">
             <div class="card">

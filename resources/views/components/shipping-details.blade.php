@@ -7,14 +7,14 @@
                     <div class="mb-2"><strong>Name:</strong> {{ $shipment->quote->user->name }}</div>
                     <div class="mb-2"><strong>Email:</strong> {{ $shipment->quote->user->email }}</div>
                     <div class="mb-2"><strong>Address:</strong> {{ $shipment->quote->user->logistic_provider->address }}</div>
-                    <div class="mb-2"><strong>Phone:</strong> {{ $shipment->quote->user->logistic_provider->phone }}</div>
+                    <div class="mb-2"><strong>Phone:</strong> {{ $shipment->user->logistic_provider->dial_code.' '.$shipment->quote->user->logistic_provider->phone }}</div>
                 </div>
                 <div class="col-md-6 col-12 mb-md-0 mb-3">
                     <h5 class="text-uppercase mb-3 fw-bold text-primary">Shipper Information</h5>
                     <div class="mb-2"><strong>Name:</strong> {{ $shipment->user->name }}</div>
                     <div class="mb-2"><strong>Email:</strong> {{ $shipment->user->email }}</div>
                     <div class="mb-2"><strong>Address:</strong> {{ $shipment->user->profile()->address }}</div>
-                    <div class="mb-2"><strong>Phone:</strong> {{ $shipment->user->profile()->phone }}</div>
+                    <div class="mb-2"><strong>Phone:</strong> {{ $shipment->user->profile()->dial_code.' '.$shipment->user->profile()->phone }}</div>
                 </div>
             </div>
         </div>

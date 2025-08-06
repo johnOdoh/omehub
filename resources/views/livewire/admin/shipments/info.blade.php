@@ -5,10 +5,12 @@
         </div>
         @if (session('generated')) <span x-show="notify('Invoice Generated')"></span> @endif
         <div class="col-auto ms-auto text-end mt-n1">
-            @if ($shipment->admin_invoice)
-                <a class="btn btn-outline-primary" href="{{ asset('storage/invoices/'.$shipment->admin_invoice) }}" target="_blank">Download Invoice</a>
-            @else
-                <button class="btn btn-outline-primary" wire:click="$toggle('generate')">Generate Invoice</button>
+            @if ($shipment->status == 'Delivered')
+                @if ($shipment->admin_invoice)
+                    <a class="btn btn-outline-primary" href="{{ asset('storage/invoices/'.$shipment->admin_invoice) }}" target="_blank">Download Invoice</a>
+                @else
+                    <button class="btn btn-outline-primary" wire:click="$toggle('generate')">Generate Invoice</button>
+                @endif
             @endif
         </div>
     </div>
