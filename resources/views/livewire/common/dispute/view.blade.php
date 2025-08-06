@@ -9,14 +9,14 @@
                     <div class="d-flex align-items-center py-1">
                         <span class="flex-grow-1 ps-3">
                             <div class="fw-bold">{{ $claim->subject }}</div>
-                            <div class="text-light small text-capitalize badge bg-{{ $claim->status == 'ongoing' ? 'primary' : 'success' }}">{{ $claim->status }}</div>
+                            <div class="text-light small text-capitalize badge bg-{{ $claim->status == 'active' ? 'primary' : 'success' }}">{{ $claim->status }}</div>
                         </span>
                         <div class="d-flex align-items-center ms-3">
                             <span>
                                 <div>Chat Turn</div>
                                 <div class="text-light small text-capitalize badge bg-{{ $claim->chat == 'closed' ? 'danger' : 'info' }}"><em>{{ $claim->chat }}</em></div>
                             </span>
-                            @if ($claim->status == 'ongoing' && auth()->user()->role == 'Admin')
+                            @if ($claim->status == 'active' && auth()->user()->role == 'Admin')
                                 <div class="dropdown position-relative ms-3 p-3 pt-0">
                                     <a href="#" data-bs-toggle="dropdown" data-bs-display="static">
                                         <i class="align-middle fa fa-ellipsis-v"></i>

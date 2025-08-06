@@ -3,6 +3,7 @@
 namespace App\Livewire\Common\Dispute;
 
 use App\Models\Claim;
+use Illuminate\Support\Facades\File;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -15,6 +16,24 @@ class DisputeList extends Component
     public $claim_id;
     #[Url]
     public $q;
+    public $current = 'All';
+
+    public function changeCurrent($newCurrent)
+    {
+        $this->current = $newCurrent;
+        $this->resetPage();
+    }
+
+    public function withdraw($id)
+    {
+        $claim = Claim::findOrFail($id);
+        if ($claim->user_id != request()->user()->id) return;
+        foreach ($claim->attachments as $attachment) {
+            File::delete(public_path('storage/'.$attachment));
+        }
+        $claim->delete();
+        session()->flash('withdrawn');
+    }
 
     public function viewClaim($id)
     {
@@ -29,9 +48,9 @@ class DisputeList extends Component
     public function render()
     {
         $claims = match ($this->q) {
-            'against' => Claim::where('defendant_id', request()->user()->id)->latest()->paginate(10),
-            'admin' => Claim::latest()->paginate(10),
-            default => request()->user()->claims()->latest()->paginate(10)
+            'against' => Claim::where('defendant_id', request()->user()->id)->latest()->paginate(perPage: 20),
+            'admin' => $this->current === 'All' ? Claim::latest()->paginate(20) : Claim::where('status', $this->current)->latest()->paginate(20),
+            default => request()->user()->claims()->latest()->paginate(20)
         };
         return view('livewire.common.dispute.dispute-list', [
             'claims' => $claims

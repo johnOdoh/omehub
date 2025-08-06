@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('defendant_id')->constrained('users')->onDelete('cascade');
             $table->string('subject');
             $table->text('body');
-            $table->enum('status', ['ongoing', 'resolved'])->default('ongoing');
+            $table->enum('status', ['active', 'resolved'])->default('active');
             $table->enum('chat', ['closed', 'defendant', 'complainant', 'both'])->default('defendant');
             $table->json('attachments')->nullable();
             $table->timestamps();
