@@ -208,6 +208,15 @@
                         </div>
                     @endif
                 </div>
+                <div class="mb-3">
+                    <label class="form-label" class="form-check m-0">
+                        <input type="checkbox" class="form-check-input" wire:model="declaration" required>
+                        <span class="form-check-label">I declare that my goods are not banned or prohibited</span>
+                    </label>
+                    @error('declaration')
+                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                    @enderror
+                </div>
                 <div class="row">
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary" @if (!auth()->user()->shipper || !auth()->user()->shipper->is_verified) disabled @endif wire:loading.remove>Request Quote</button>

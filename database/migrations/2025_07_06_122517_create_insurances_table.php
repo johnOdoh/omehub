@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('country');
             $table->string('dial_code');
+            $table->string('reg_no');
             $table->boolean('is_verified')->default(false);
             $table->string('document')->nullable();
             $table->unsignedSmallInteger('rating')->default(0);

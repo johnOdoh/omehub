@@ -7,6 +7,7 @@ use App\Livewire\Common\Blog\PostList;
 use App\Livewire\Common\Blog\ViewPost;
 use App\Livewire\Common\Dispute\CreateDispute;
 use App\Livewire\Common\Dispute\DisputeList;
+use App\Livewire\Common\Dispute\LegalAdvice;
 use App\Livewire\Shipper\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Shipper\Profile\Main;
@@ -80,6 +81,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/disputes/create', CreateDispute::class)->name('user.dispute.create');
     Route::get('user/disputes/list', DisputeList::class)->name('user.dispute.list');
     Route::get('user/disputes/against', DisputeList::class)->name('user.dispute.against');
+    Route::get('user/legal/advice', LegalAdvice::class)->name('user.legal.advice');
 });
 
 require __DIR__.'/auth.php';

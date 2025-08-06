@@ -12,15 +12,16 @@ class CreateProfile extends Component
     public $user;
     public $countryCodes = [];
     public $currentCountry;
-    public string $name = '';
+    public string $name;
     public string $account_type = 'Personal';
-    public string $phone = '';
-    public string $business_type = '';
-    public string $address = '';
-    public string $city = '';
-    public string $country = '';
+    public string $phone;
+    public string $business_type;
+    public string $reg_no;
+    public string $address;
+    public string $city;
+    public string $country;
     public string $dial_code;
-    public string $zip = '';
+    public string $zip;
     public $document;
     public $logo;
 
@@ -50,6 +51,7 @@ class CreateProfile extends Component
             'account_type' => 'required|string',
             'phone' => 'required|numeric',
             'business_type' => 'nullable|string',
+            'reg_no' => 'nullable|string',
             'address' => 'required|string',
             'city' => 'required|string',
             'country' => 'required|string',

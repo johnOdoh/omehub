@@ -24,59 +24,7 @@
                                 <button type="button" class="btn btn-primary" x-on:click="$wire.createProfile()">Create Profile</button>
                             </div>
                         @else
-                            <div class="card-body">
-                                <ul class="list-unstyled mb-0">
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-user fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Business Name</div>
-                                            <div class="fw-bold">{{ $user->name }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-phone fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Phone Number</div>
-                                            <div class="fw-bold">{{ $user->logistic_provider->dial_code.' '.$user->logistic_provider->phone }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-map-pin fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Address</div>
-                                            <div class="fw-bold">{{ $user->logistic_provider->address }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-tag fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Zip</div>
-                                            <div class="fw-bold">{{ $user->logistic_provider->zip }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-home fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">City</div>
-                                            <div class="fw-bold">{{ $user->logistic_provider->city }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-globe fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Country</div>
-                                            <div class="fw-bold">{{ $user->logistic_provider->country }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-{{ $user->logistic_provider->is_verified ? 'check-circle' : 'exclamation-triangle' }} fa-fw me-1 text-{{ $user->logistic_provider->is_verified ? 'success' : 'warning' }}"></i>
-                                        <div>
-                                            <div class="text-muted small">Profile Status</div>
-                                            <div class="fw-bold">{{ $user->logistic_provider->is_verified ? 'Verified' : 'Pending' }}</div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                            <x-profile-info :$user />
                         @endif
                     @endif
                     @if ($showCreateProfile)

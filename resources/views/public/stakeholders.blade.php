@@ -252,7 +252,7 @@
                     <ul>
                         <li class="my-2"><i class="bi bi-check fs-5"></i> <span>Individuals must upload a valid government-issued ID (passport or national ID) during registration.</span></li>
                         <li class="my-2"><i class="bi bi-check fs-5"></i> <span>Businesses are required to provide a verified company registration number and VAT or tax ID.</span></li>
-                        <li class="my-2"><i class="bi bi-check fs-5"></i> <span>KYC checks are carried out securely through our partners (e.g., Moniepoint for African businesses).</span></li>
+                        <li class="my-2"><i class="bi bi-check fs-5"></i> <span>Users are first verified through their bank details, with support from trusted partners like United Bank for Africa (UBA). Additional KYC checks are securely handled via Hub Legal team.</span></li>
                         <li class="my-2"><i class="bi bi-shield-check fs-5"></i> <span>Verified profiles are clearly marked.</span></li>
                         <li class="my-2"><i class="fas fa-shield-halved fs-5"></i> <span>Fraud checks are automated + human-reviewed.</span></li>
                         <li class="my-2"><i class="fas fa-shield fs-5"></i> <span>Data is encrypted and never shared without consent.</span></li>
@@ -271,7 +271,7 @@
                     <ul>
                         <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>OmeHub is built with full GDPR compliance in mind, ensuring user data is handled securely and transparently</span></li>
                         <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>Personal and company data is stored securely with limited access</span></li>
-                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>KYC checks are carried out securely through our partners (e.g., Moniepoint for African businesses).</span></li>
+                        <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>KYC checks are securely handled via Hub Legal team.</span></li>
                         <li class="my-2"><i class="bi bi-check-circle fs-5"></i> <span>We do not sell or rent user data to third parties.</span></li>
                     </ul>
                 </p>

@@ -44,6 +44,15 @@
             @enderror
         </div>
         <div class="my-3">
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-key fa-fw me-1"></i></span>
+                <input type="text" class="form-control" placeholder="Registration Number/TAX ID" aria-label="Registration Number/VAT ID" required wire:model="reg_no">
+            </div>
+            @error('reg_no')
+                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+            @enderror
+        </div>
+        <div class="my-3">
             <div class="form-label fw-bold">
                 Business registration document <small><em>(Must be an image)</em></small>
             </div>

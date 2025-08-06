@@ -24,75 +24,7 @@
                                 <button type="button" class="btn btn-primary" x-on:click="$wire.createProfile()">Create Profile</button>
                             </div>
                         @else
-                            <div class="card-body" wire:transition>
-                                <ul class="list-unstyled mb-0">
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-briefcase fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Account Type</div>
-                                            <div class="fw-bold">{{ $user->shipper->account_type }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-user fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">{{ $user->shipper->account_type == 'Business' ? 'Business' : 'Full' }} Name</div>
-                                            <div class="fw-bold">{{ $user->name }}</div>
-                                        </div>
-                                    </li>
-                                    @if ($user->shipper->account_type == 'Business')
-                                        <li class="d-flex align-items-center gap-2 mb-2">
-                                            <i class="fas fa-briefcase fa-fw me-1"></i>
-                                            <div>
-                                                <div class="text-muted small">Business Type</div>
-                                                <div class="fw-bold">{{ $user->shipper->business_type }}</div>
-                                            </div>
-                                        </li>
-                                    @endif
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-phone fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Phone Number</div>
-                                            <div class="fw-bold">{{ $user->shipper->dial_code.' '.$user->shipper->phone }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-map-pin fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Address</div>
-                                            <div class="fw-bold">{{ $user->shipper->address }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-tag fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Zip</div>
-                                            <div class="fw-bold">{{ $user->shipper->zip }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-home fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">City</div>
-                                            <div class="fw-bold">{{ $user->shipper->city }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-globe fa-fw me-1"></i>
-                                        <div>
-                                            <div class="text-muted small">Country</div>
-                                            <div class="fw-bold">{{ $user->shipper->country }}</div>
-                                        </div>
-                                    </li>
-                                    <li class="d-flex align-items-center gap-2 mb-2">
-                                        <i class="fas fa-{{ $user->shipper->is_verified ? 'check-circle' : 'exclamation-triangle' }} fa-fw me-1 text-{{ $user->shipper->is_verified ? 'success' : 'warning' }}"></i>
-                                        <div>
-                                            <div class="text-muted small">Profile Status</div>
-                                            <div class="fw-bold">{{ $user->shipper->is_verified ? 'Verified' : 'Pending' }}</div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                            <x-profile-info :$user />
                         @endif
                     @endif
                     @if ($showCreateProfile)

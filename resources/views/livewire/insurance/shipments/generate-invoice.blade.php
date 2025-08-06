@@ -27,7 +27,7 @@
                 <div class="my-3">
                     <div class="form-group">
                         <label class="form-label fw-bold">Bank Swift Code/BIC</label>
-                        <input type="number" class="form-control" placeholder="Swift/BIC" required wire:model="swift">
+                        <input type="text" class="form-control" placeholder="Swift/BIC" required wire:model="swift">
                     </div>
                     @error('swift')
                         <div class="text-danger"><small><i>{{ $message }}</i></small></div>

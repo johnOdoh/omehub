@@ -18,6 +18,7 @@ class RequestQuote extends Component
     public $hs_code;
     public $incoterm;
     public $insurance;
+    public $declaration = false; // New property for declaration
     public $mode;
     public $qty = [];
     public $weight = [];
@@ -44,7 +45,8 @@ class RequestQuote extends Component
             'incoterm' => 'required',
             'insurance' => 'required',
             'freight' => 'required',
-            'mode' => 'required'
+            'mode' => 'required',
+            'declaration' => 'accepted'
         ], [
             'mode.required' => 'Please select a container type.'
         ]);

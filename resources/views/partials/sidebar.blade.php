@@ -19,10 +19,28 @@
         0 => ['name' => 'Create Admin', 'route' => 'admin.create-admin'],
         1 => ['name' => 'Admin List', 'route' => 'admin.admins'],
     ];
-    $claimDropdown = [
-        0 => ['name' => 'Raise Claim', 'route' => 'user.dispute.create'],
-        1 => ['name' => 'My Claims', 'route' => 'user.dispute.list'],
-        2 => ['name' => 'Claims Against', 'route' => 'user.dispute.against', 'params' => ['q' => 'against']],
+    $legalDropdown = [
+        0 => ['name' => 'Raise Claim', 'routes' => [
+            0 => [
+                'name' => 'Create Claim',
+                'route' => 'user.dispute.create'
+            ],
+            1 => [
+                'name' => 'My Claims',
+                'route' => 'user.dispute.list'
+            ],
+            2 => [
+                'name' => 'Claims Against',
+                'route' => 'user.dispute.against',
+                'params' => ['q' => 'against']
+            ]
+        ], 'isSingle' => false],
+        1 => ['name' => 'Get Legal Advice', 'routes' => [
+            0 => [
+                'name' => 'Create Claim',
+                'route' => 'user.legal.advice'
+            ],
+        ], 'isSingle' => true],
     ];
     $adminParam = ['q' => 'admin'];
 @endphp
@@ -80,7 +98,7 @@
                 <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
                 <x-sidebar-item route="shipper.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
-                <x-sidebar-dropdown :items="$claimDropdown" name="Claims" icon="balance-scale" id="claims" />
+                <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
             @elseif (auth()->user()->role == 'Logistics Provider')
                 {{-- <li class="sidebar-header">
                     Logistics
@@ -90,7 +108,7 @@
                 <x-sidebar-dropdown :items="$logisticsQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
                 <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
-                <x-sidebar-dropdown :items="$claimDropdown" name="Claims" icon="balance-scale" id="claims" />
+                <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
             @elseif (auth()->user()->role == 'Insurance Provider')y
                 {{-- <li class="sidebar-header">
                     Insurance
@@ -100,7 +118,7 @@
                 <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
                 <x-sidebar-item route="insurance.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
-                <x-sidebar-dropdown :items="$claimDropdown" name="Claims" icon="balance-scale" id="claims" />
+                <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
             @else
                 <li class="sidebar-header">
                     No Role

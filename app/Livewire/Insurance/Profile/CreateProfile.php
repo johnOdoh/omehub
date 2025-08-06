@@ -12,13 +12,14 @@ class CreateProfile extends Component
     public $user;
     public $countryCodes = [];
     public $currentCountry;
-    public string $name = '';
-    public string $phone = '';
-    public string $address = '';
-    public string $city = '';
-    public string $country = '';
+    public string $name;
+    public string $phone;
+    public string $address;
+    public string $city;
+    public string $country;
     public string $dial_code;
-    public string $zip = '';
+    public string $zip;
+    public string $reg_no;
     public $logo;
     public $document;
 
@@ -46,6 +47,7 @@ class CreateProfile extends Component
             'country' => 'required|string',
             'dial_code' => 'required|string',
             'zip' => 'required|string',
+            'reg_no' => 'required|string',
             'logo' => 'required|image|mimes:jpg,jpeg,png,webp,svg|max:5120',
             'document' => 'required|image|mimes:jpg,jpeg,png|max:5120'
         ]);
