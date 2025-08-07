@@ -3,10 +3,11 @@
 namespace App\Livewire\Common\Dispute;
 
 use App\Models\Claim;
-use Illuminate\Support\Facades\File;
-use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\Attributes\Url;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
+use Illuminate\Support\Facades\File;
 
 class DisputeList extends Component
 {
@@ -45,6 +46,7 @@ class DisputeList extends Component
         $this->claim_id = null;
     }
 
+    #[Title('Dispute List')]
     public function render()
     {
         $claims = match ($this->q) {

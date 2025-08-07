@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Admins;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
 
 class AdminList extends Component
 {
@@ -45,6 +46,7 @@ class AdminList extends Component
         $this->admin = null;
     }
 
+    #[Title('Admin List')]
     public function render()
     {
         return view('livewire.admin.admins.admin-list', [

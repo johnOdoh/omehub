@@ -4,6 +4,7 @@ namespace App\Livewire\Logistics\Profile;
 
 use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Title;
 
 class Main extends Component
 {
@@ -49,6 +50,7 @@ class Main extends Component
         // $this->dispatch('refresh');
     }
 
+    #[Title('Profile')]
     public function render()
     {
         return view('livewire.logistics.profile.main');

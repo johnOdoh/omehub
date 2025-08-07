@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Users;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
 
 class UsersList extends Component
 {
@@ -57,6 +58,7 @@ class UsersList extends Component
         session()->flash('message', 'User deleted successfully.');
     }
 
+    #[Title('Users')]
     public function render()
     {
         $users = match ($this->current) {

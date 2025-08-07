@@ -7,6 +7,7 @@ use App\Models\Request;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
 use Illuminate\Support\Facades\DB;
 
 class QuoteRequests extends Component
@@ -49,6 +50,7 @@ class QuoteRequests extends Component
         $this->quote_id = $id;
     }
 
+    #[Title('My Quote Requests')]
     public function render()
     {
         $requests = request()->user()->requests()->where('is_closed', false)->orderByDesc('created_at')->paginate(10);

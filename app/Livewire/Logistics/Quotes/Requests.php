@@ -6,6 +6,7 @@ use App\Models\Quote;
 use App\Models\Request;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
 
 class Requests extends Component
 {
@@ -61,6 +62,7 @@ class Requests extends Component
         $this->show_submit_quote = false;
     }
 
+    #[Title('Quote Requests')]
     public function render()
     {
         return view('livewire.logistics.quotes.requests');

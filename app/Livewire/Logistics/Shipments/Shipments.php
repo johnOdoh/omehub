@@ -2,10 +2,11 @@
 
 namespace App\Livewire\Logistics\Shipments;
 
-use App\Models\Shipment;
 use Livewire\Component;
+use App\Models\Shipment;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
 
 class Shipments extends Component
 {
@@ -30,6 +31,7 @@ class Shipments extends Component
         $this->track = null;
     }
 
+    #[Title('Shipments')]
     public function render()
     {
         return view('livewire.logistics.shipments.shipments', [

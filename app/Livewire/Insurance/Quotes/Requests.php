@@ -2,11 +2,12 @@
 
 namespace App\Livewire\Insurance\Quotes;
 
-use App\Models\InsuranceQuote;
 use App\Models\Request;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
+use App\Models\InsuranceQuote;
+use Livewire\Attributes\Title;
 
 class Requests extends Component
 {
@@ -61,6 +62,7 @@ class Requests extends Component
         $this->show_submit_quote = false;
     }
 
+    #[Title('Quote Requests')]
     public function render()
     {
         return view('livewire.insurance.quotes.requests');

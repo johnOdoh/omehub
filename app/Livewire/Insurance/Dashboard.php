@@ -3,8 +3,9 @@
 namespace App\Livewire\Insurance;
 
 use App\Models\Request;
-use App\Models\Shipment;
 use Livewire\Component;
+use App\Models\Shipment;
+use Livewire\Attributes\Title;
 
 class Dashboard extends Component
 {
@@ -23,6 +24,7 @@ class Dashboard extends Component
             })->count();
     }
 
+    #[Title('Dashboard')]
     public function render()
     {
         return view('livewire.insurance.dashboard', [

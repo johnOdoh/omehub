@@ -5,6 +5,7 @@ namespace App\Livewire\Common\Dispute;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\Title;
 
 class CreateDispute extends Component
 {
@@ -65,6 +66,7 @@ class CreateDispute extends Component
         session()->flash('created');
     }
 
+    #[Title('Raise Claim')]
     public function render()
     {
         return view('livewire.common.dispute.create-dispute');

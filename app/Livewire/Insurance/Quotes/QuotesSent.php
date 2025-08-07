@@ -2,11 +2,12 @@
 
 namespace App\Livewire\Insurance\Quotes;
 
-use App\Models\InsuranceQuote;
 use App\Models\Request;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use App\Models\InsuranceQuote;
+use Livewire\Attributes\Title;
 
 class QuotesSent extends Component
 {
@@ -61,6 +62,7 @@ class QuotesSent extends Component
         $this->request = null;
     }
 
+    #[Title('My Quotes')]
     public function render()
     {
         $requests = Request::where('is_closed', false)

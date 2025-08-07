@@ -4,6 +4,7 @@ namespace App\Livewire\Shipper\Quotes;
 
 use App\Models\Request;
 use Livewire\Component;
+use Livewire\Attributes\Title;
 use Illuminate\Support\Facades\DB;
 
 class RequestQuote extends Component
@@ -106,6 +107,7 @@ class RequestQuote extends Component
         session()->flash('submitted');
     }
 
+    #[Title('Request Quote')]
     public function render()
     {
         return view('livewire.shipper.quotes.request-quote');

@@ -3,6 +3,7 @@
 namespace App\Livewire\Shipper;
 
 use Livewire\Component;
+use Livewire\Attributes\Title;
 
 class Dashboard extends Component
 {
@@ -31,6 +32,7 @@ class Dashboard extends Component
         $this->total = $total;
     }
 
+    #[Title('Dashboard')]
     public function render()
     {
         return view('livewire.shipper.dashboard', [

@@ -5,6 +5,7 @@ namespace App\Livewire\Logistics;
 use App\Models\Request;
 use Livewire\Component;
 use App\Models\Shipment;
+use Livewire\Attributes\Title;
 
 class Dashboard extends Component
 {
@@ -23,6 +24,7 @@ class Dashboard extends Component
         })->count();
     }
 
+    #[Title('Dashboard')]
     public function render()
     {
         return view('livewire.logistics.dashboard', [

@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
 
 class ShipmentList extends Component
 {
@@ -38,6 +39,8 @@ class ShipmentList extends Component
         $this->shipmentId = null;
         $this->track = null;
     }
+
+    #[Title('My Shipments')]
     public function render()
     {
         return view('livewire.shipper.shipments.shipment-list', [

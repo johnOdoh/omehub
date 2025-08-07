@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Insurance\Profile;
 
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\Attributes\On;
 
@@ -53,6 +54,7 @@ class Main extends Component
         // $this->dispatch('refresh');
     }
 
+    #[Title('Profile')]
     public function render()
     {
         return view('livewire.insurance.profile.main');

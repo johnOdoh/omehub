@@ -2,9 +2,10 @@
 
 namespace App\Livewire\Admin\Shipments;
 
-use App\Models\Shipment;
 use Livewire\Component;
+use App\Models\Shipment;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
 
 class ShipmentList extends Component
 {
@@ -17,6 +18,7 @@ class ShipmentList extends Component
         $this->shipment = $id;
     }
 
+    #[Title('Shipments')]
     public function render()
     {
         $shipments = Shipment::latest()->paginate(20);
