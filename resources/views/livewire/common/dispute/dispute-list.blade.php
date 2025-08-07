@@ -39,8 +39,13 @@
                             @forelse ($claims as $claim)
                                 <tr>
                                     <td>{{ $claims->firstItem() + $loop->index }}</td>
-                                    <td>{{ $claim->user->name }}</td>
-                                    <td>{{ $claim->defendant->name }}</td>
+                                    @if ($q == 'admin')
+                                        <td><a href="{{ route('admin.user', $claim->user_id) }}">{{ $claim->user->name }}</a></td>
+                                        <td><a href="{{ route('admin.user', $claim->defendant_id) }}">{{ $claim->defendant->name }}</a></td>
+                                    @else
+                                        <td>{{ $claim->user->name }}</td>
+                                        <td>{{ $claim->defendant->name }}</td>
+                                    @endif
                                     <td><span class="text-capitalize badge bg-{{ $claim->status == 'active' ? 'primary' : 'success' }}">{{ $claim->status }}</span></td>
                                     <td>{{ $claim->created_at->format('d M, Y') }}</td>
                                     <td class="d-flex gap-2">

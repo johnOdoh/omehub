@@ -19,6 +19,10 @@
         0 => ['name' => 'Create Admin', 'route' => 'admin.create-admin'],
         1 => ['name' => 'Admin List', 'route' => 'admin.admins'],
     ];
+    $ticketDropdown = [
+        0 => ['name' => 'Create Ticket', 'route' => 'user.ticket.create'],
+        1 => ['name' => 'My Tickets', 'route' => 'user.ticket.list'],
+    ];
     $legalDropdown = [
         0 => ['name' => 'Raise Claim', 'routes' => [
             0 => [
@@ -91,6 +95,7 @@
                         <x-sidebar-item route="admin.shipments" name="Shipments" icon="ship" />
                     @endif
                 @endif
+                <x-sidebar-item route="admin.tickets" name="Tickets" icon="hands-helping" />
             @elseif (auth()->user()->role == 'Shipper')
                 {{-- <li class="sidebar-header">
                     Shipper
@@ -101,6 +106,7 @@
                 <x-sidebar-item route="shipper.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
+                <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @elseif (auth()->user()->role == 'Logistics Provider')
                 {{-- <li class="sidebar-header">
                     Logistics
@@ -111,6 +117,7 @@
                 <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
+                <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @elseif (auth()->user()->role == 'Insurance Provider')
                 {{-- <li class="sidebar-header">
                     Insurance
@@ -121,6 +128,7 @@
                 <x-sidebar-item route="insurance.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
+                <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @else
                 <li class="sidebar-header">
                     No Role

@@ -61,8 +61,6 @@
                             @enderror
                         </div>
                         <input type="hidden" wire:model="body" required>
-                        <div class="my-3">
-                        </div>
                         <div class="my-3 position-relative">
                             <div class="form-group">
                                 <label class="form-label">Defendant</label>
@@ -83,7 +81,7 @@
                         <div class="my-3">
                             <div class="form-group">
                                 <label class="form-label">
-                                    Attachment <small><em>(Must be image(s). You can select up to 3 files.)</em></small>
+                                    Attachment <small><em>(Must be image(s). You can select up to 3 files. Optional.)</em></small>
                                 </label>
                                 <input type="file" class="form-control" wire:model="attachment" accept="image/*" multiple>
                             </div>

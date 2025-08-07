@@ -2,7 +2,6 @@
     <div class="mb-2">
         <h1 class="h3 d-inline align-middle">User Information</h1>
     </div>
-    <p class="fw-bold text-secondary"><a href="#" wire:click.prevent="$parent.resetUser()" class="text-decoration-none">< Back</a></p>
     @if (session('message')) <span x-show="notify('{{ session('message') }}')"></span> @endif
     <div class="row">
         <div class="col-md-6">

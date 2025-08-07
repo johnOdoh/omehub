@@ -3,13 +3,14 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Attachment;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NotifyDefendant extends Mailable
+class SupportTicket extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,9 +18,10 @@ class NotifyDefendant extends Mailable
      * Create a new message instance.
      */
     public function __construct(
-        public string $defendant,
-        public string $complainant,
-        public string $title
+        public $title,
+        public $message,
+        public $ticket_number,
+        public $attachment
     )
     {
         //
@@ -31,7 +33,7 @@ class NotifyDefendant extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Dispute Notification',
+            subject: 'New Ticket - '.$this->title,
         );
     }
 
@@ -41,7 +43,7 @@ class NotifyDefendant extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.notify-defendant',
+            markdown: 'mail.support-ticket',
         );
     }
 
@@ -52,6 +54,14 @@ class NotifyDefendant extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        if (!$this->attachment) {
+            return [];
+        } else {
+            return [
+                Attachment::fromData(fn () => file_get_contents($this->attachment->getRealPath()),
+                    'attachment.'.$this->attachment->getClientOriginalExtension()
+                )->withMime($this->attachment->getMimeType())
+            ];
+        }
     }
 }

@@ -5,7 +5,9 @@ namespace App\Livewire\Admin\Users;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\Shipment;
+use Livewire\Attributes\Title;
 
+#[Title('User Info')]
 class UserInfo extends Component
 {
     public $user;

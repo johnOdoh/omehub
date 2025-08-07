@@ -1,5 +1,5 @@
 <x-mail::message>
-# Claim subject - {{ $title }}
+# Dispute Subject - {{ $title }}
 
 Dear <em>{{ $defendant }}</em>,
 

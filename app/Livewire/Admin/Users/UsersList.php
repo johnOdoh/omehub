@@ -25,22 +25,12 @@ class UsersList extends Component
         $this->resetPage();
     }
 
-    public function selectUser($userId)
-    {
-        $this->user = $userId;
-    }
-
-    public function resetUser()
-    {
-        $this->user = null;
-    }
-
     public function suspend($userId)
     {
         $user = User::findOrFail($userId);
         $user->status = 'Suspended';
         $user->save();
-        session()->flash('message', 'User suspended successfully.');
+        session()->flash('message', 'User Suspended successfully.');
     }
 
     public function activate($userId)
@@ -48,7 +38,7 @@ class UsersList extends Component
         $user = User::findOrFail($userId);
         $user->status = 'Active';
         $user->save();
-        session()->flash('message', 'User reactivated successfully.');
+        session()->flash('message', 'User Reactivated successfully.');
     }
 
     public function delete($userId)
