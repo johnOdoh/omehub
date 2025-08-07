@@ -35,9 +35,9 @@
                 'params' => ['q' => 'against']
             ]
         ], 'isSingle' => false],
-        1 => ['name' => 'Get Legal Advice', 'routes' => [
+        1 => ['name' => 'Request Legal Advice', 'routes' => [
             0 => [
-                'name' => 'Create Claim',
+                'name' => 'Request Legal Advice',
                 'route' => 'user.legal.advice'
             ],
         ], 'isSingle' => true],
@@ -87,7 +87,9 @@
                     @if (in_array(auth()->user()->admin_role, ['Legal Partner', 'Admin']) )
                         <x-sidebar-item route="admin.disputes" name="Disputes" icon="balance-scale" :params="$adminParam" />
                     @endif
-                    <x-sidebar-item route="admin.shipments" name="Shipments" icon="ship" />
+                    @if (in_array(auth()->user()->admin_role, ['Shipment Auditor', 'Admin']) )
+                        <x-sidebar-item route="admin.shipments" name="Shipments" icon="ship" />
+                    @endif
                 @endif
             @elseif (auth()->user()->role == 'Shipper')
                 {{-- <li class="sidebar-header">
