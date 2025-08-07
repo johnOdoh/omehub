@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Common\Dispute;
 
+use App\Mail\NotifyDefendant;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Title;
@@ -50,7 +52,8 @@ class CreateDispute extends Component
             'attachment' => 'nullable|array|max:3',
             'attachment.*' => 'image|mimes:jpg,jpeg,png|max:2124',
         ]);
-        $defendant_id = User::where('name', $this->defendant)->firstOrFail()->id;
+        $defendant = User::where('name', $this->defendant)->firstOrFail();
+        $defendant_id = $defendant->id;
         $attachments = [];
         foreach ($this->attachment as $attachment) {
             $attachments[] = $attachment->store('claims', 'public');
@@ -61,6 +64,11 @@ class CreateDispute extends Component
             'body' => $this->body,
             'attachments' => $attachments,
         ]);
+        Mail::to($defendant)->send(new NotifyDefendant(
+            $defendant->name,
+            request()->user()->name,
+            $this->subject
+        ));
         $this->reset();
         $this->dispatch('clear');
         session()->flash('created');
