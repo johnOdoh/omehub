@@ -55,18 +55,6 @@
             @enderror
         </div>
         <div class="my-3">
-            <div class="form-label fw-bold">
-                Business registration document <small><em>(Must be an image)</em></small>
-            </div>
-            <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-file fa-fw me-1"></i></span>
-                <input type="file" class="form-control" required wire:model="document" accept="image/*">
-            </div>
-            @error('document')
-                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-            @enderror
-        </div>
-        <div class="my-3">
             <div class="input-group">
                 <span class="input-group-text"><i class="fa fa-map-pin fa-fw me-1"></i></span>
                 <input type="text" class="form-control" placeholder="Address" aria-label="Address" required wire:model="address">

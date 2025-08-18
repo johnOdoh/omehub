@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('role', ['Admin', 'Shipper', 'Logistics Provider', 'Insurance Provider']);
             $table->enum('admin_role', ['Admin', 'Legal Partner', 'Shipment Auditor'])->nullable();
             $table->enum('status', ['Active', 'Suspended'])->default('Active');
+            $table->boolean('verification_payment')->default('false');
             $table->rememberToken();
             $table->timestamps();
         });

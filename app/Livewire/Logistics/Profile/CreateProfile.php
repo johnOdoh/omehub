@@ -20,7 +20,6 @@ class CreateProfile extends Component
     public $dial_code;
     public $zip;
     public $reg_no;
-    public $document;
     public $logo;
 
     public function mount()
@@ -48,17 +47,13 @@ class CreateProfile extends Component
             'dial_code' => 'required|string',
             'zip' => 'required|string',
             'reg_no' => 'required|string',
-            'document' => 'required|image|mimes:jpg,jpeg,png|max:5120',
             'logo' => 'required|image|mimes:jpg,jpeg,png,webp,svg|max:5120'
         ]);
         $validated['phone'] = $validated['phone']/1;
         $this->user->update(['name' => $validated['name']]);
         unset($validated['name']);
-        $document = $validated['document'];
         $logo = $validated['logo'];
-        $documentName = $this->user->email. '.' .$document->extension();
-        $logoName = $this->user->email. '.' .$logo->extension();
-        $validated['document'] = $document->storeAs('logistics/documents', $documentName, 'public');
+        $logoName = uniqid($this->user->id). '.' .$logo->extension();
         $validated['logo'] = $logo->storeAs('logos', $logoName, 'public');
         $this->user->logistic_provider()->create($validated);
         session()->flash("created");

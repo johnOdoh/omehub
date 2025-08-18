@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('country');
             $table->string('dial_code');
-            $table->string('document')->nullable();
+            $table->json('documents')->nullable();
             $table->boolean('is_verified')->default(false);
             $table->timestamps();
         });

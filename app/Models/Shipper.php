@@ -8,6 +8,7 @@ class Shipper extends Model
 {
     protected $guarded = [];
     protected $casts = [
-        'is_verified' => 'boolean'
+        'is_verified' => 'boolean',
+        'document' => 'array'
     ];
 }

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('dial_code');
             $table->string('reg_no');
             $table->boolean('is_verified')->default(false);
-            $table->string('document')->nullable();
+            $table->json('documents')->nullable();
             $table->unsignedSmallInteger('rating')->default(0);
             $table->timestamps();
         });

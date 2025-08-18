@@ -1,5 +1,12 @@
 <div class="container-fluid p-0">
-    <h1 class="h3 mb-3">Profile</h1>
+    <div class="row mb-2 mb-xl-3">
+        <div class="col-auto">
+            <h1 class="h3 d-inline align-middle">Profile</h1>
+        </div>
+        <div class="col-auto ms-auto text-end mt-n1">
+            <a href="{{ route('user.upload-document') }}" class="btn btn-outline-primary" wire:navigate>Upload Documents for Verification</a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <div class="card mb-3">

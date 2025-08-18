@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Common;
+namespace App\Livewire\Common\Profile;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +35,6 @@ class PasswordUpdate extends Component
 
     public function render()
     {
-        return view('livewire.common.password-update');
+        return view('livewire.common.profile.password-update');
     }
 }

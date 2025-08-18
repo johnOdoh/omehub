@@ -12,7 +12,7 @@
                 @endif
                 <div class="card-body text-center">
                     <div class="text-center">
-                        <livewire:common.profile-image-update :$user />
+                        <livewire:common.profile.profile-image-update :$user />
                         <h5 class="fw-bold mt-2 mb-0">{{ $user->name }}</h5>
                         <div class="mb-2">{{ $user->email }}</div>
                     </div>
@@ -82,7 +82,7 @@
             </div>
         </div>
         <div class="col-md-6 mt-3 mt-md-0">
-            <livewire:common.password-update />
+            <livewire:common.profile.password-update />
         </div>
     </div>
     <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:1000;" wire:loading>

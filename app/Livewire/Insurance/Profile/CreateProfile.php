@@ -54,11 +54,8 @@ class CreateProfile extends Component
         $validated['phone'] = $validated['phone']/1;
         $this->user->update(['name' => $validated['name']]);
         unset($validated['name']);
-        $document = $validated['document'];
         $logo = $validated['logo'];
-        $documentName = $this->user->email. '.' .$document->extension();
-        $logoName = $this->user->email. '.' .$logo->extension();
-        $validated['document'] = $document->storeAs('insurance/documents', $documentName, 'public');
+        $logoName = uniqid($this->user->id). '.' .$logo->extension();
         $validated['logo'] = $logo->storeAs('logos', $logoName, 'public');
         $this->user->insurance_provider()->create($validated);
         session()->flash("created");

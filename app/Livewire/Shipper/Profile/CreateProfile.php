@@ -22,7 +22,8 @@ class CreateProfile extends Component
     public $country;
     public $dial_code;
     public $zip;
-    public $document;
+    public $front;
+    public $back;
     public $logo;
 
     public function mount()
@@ -57,18 +58,24 @@ class CreateProfile extends Component
             'country' => 'required|string',
             'dial_code' => 'required|string',
             'zip' => 'required|string',
-            'document' => 'required|image|mimes:jpg,jpeg,png|max:5120',
+            'front' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+            'back' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'logo' => 'required|image|mimes:jpg,jpeg,png,webp,svg|max:5120'
         ]);
         $validated['phone'] = $validated['phone']/1;
         $this->user->update(['name' => $validated['name']]);
         unset($validated['name']);
-        $document = $validated['document'];
+        unset($validated['front']);
+        unset($validated['back']);
         $logo = $validated['logo'];
-        $documentName = $this->user->email. '.' .$document->extension();
         $logoName = $this->user->email. '.' .$logo->extension();
-        $validated['document'] = $document->storeAs('shipper/documents', $documentName, 'public');
         $validated['logo'] = $logo->storeAs('logos', $logoName, 'public');
+        $front = $this->front->store('documents', 'public');
+        $this->back ? $back = $this->back->store('documents', 'public') : null;
+        $validated['document'] = [
+            'front' => $front,
+            'back' => $back ?? null
+        ];
         $this->user->shipper()->create($validated);
         request()->session()->flash("created");
         $this->dispatch('profile-updated');

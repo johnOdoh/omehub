@@ -37,7 +37,7 @@
             <i class="fas fa-key fa-fw me-1"></i>
             <div>
                 <div class="text-muted small">Registration Number/TAX ID</div>
-                <div class="fw-bold">{{ $user->profile()->reg_no }}</div>
+                <div class="fw-bold">{{ $user->profile()->reg_no ?? 'N/A' }}</div>
             </div>
         </li>
         <li class="d-flex align-items-center gap-2 mb-2">
@@ -78,8 +78,12 @@
         <li class="d-flex align-items-center gap-2 mb-2">
             <i class="fas fa-{{ $user->profile()->is_verified ? 'check-circle' : 'exclamation-triangle' }} fa-fw me-1 text-{{ $user->profile()->is_verified ? 'success' : 'warning' }}"></i>
             <div>
-                <div class="text-muted small">Profile Status</div>
-                <div class="fw-bold">{{ $user->profile()->is_verified ? 'Verified' : 'Pending' }}</div>
+                <div class="text-muted small">Verification Status</div>
+                @if ($user->profile()->document)
+                    <div class="fw-bold">{{ $user->profile()->is_verified ? 'Verified' : 'Pending' }}</div>
+                @else
+                    <div class="fw-bold">No documents submitted yet. <a @if($user->verification_payment) href="{{ route('user.upload-document') }}" @else href="#" data-bs-toggle="modal" data-bs-target="#uploadDocuments" @endif>Submit documents</a></div>
+                @endif
             </div>
         </li>
     </ul>

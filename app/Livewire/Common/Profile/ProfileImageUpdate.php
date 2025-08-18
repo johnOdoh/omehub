@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Common;
+namespace App\Livewire\Common\Profile;
 
 use Livewire\Component;
 use Livewire\Attributes\Rule;
@@ -27,7 +27,7 @@ class ProfileImageUpdate extends Component
     {
         $this->validate();
         $file = $this->image;
-        $name = $this->user->email. '.' .$file->extension();
+        $name = $this->user->name.'-'.$this->user->id.'.'.$file->extension();
         $this->profile->logo = $file->storeAs('logos', $name, 'public');
         $this->profile->save();
         // $this->user->logistic_provider()->update(['logo' => $file->storeAs('logos', $name, 'public')]);
@@ -37,6 +37,6 @@ class ProfileImageUpdate extends Component
 
     public function render()
     {
-        return view('livewire.common.profile-image-update');
+        return view('livewire.common.profile.profile-image-update');
     }
 }

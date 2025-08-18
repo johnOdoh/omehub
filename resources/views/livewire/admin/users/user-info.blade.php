@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">KYC Status</h5>
+                                    <h5 class="card-title">KYC Status <span class="badge bg-{{ $profile->is_verified ? 'success' : 'warning' }}">{{ $profile->is_verified ? 'Verified' : 'Pending' }}</span></h5>
                                 </div>
                                 <div class="col-auto">
                                     <div class="stat">
@@ -19,13 +19,44 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="fw-bold text-{{ $profile->is_verified ? 'success' : 'warning' }}">{{ $profile->is_verified ? 'Verified' : 'Not Verified' }}</p>
-                            <div class="text-end my-1">
-                                <a href="{{ asset('storage/' . $profile->document) }}" class="px-3" target="_blank">View Document</a>
-                                @if (!$profile->is_verified)
-                                    <button type="button" class="btn btn-primary" wire:confirm='Are you sure you want to verify this user?' wire:click="verifyUser()">Approve</button>
+                            @if ($profile->document)
+                                @if ($user->role == 'Shipper')
+                                    <div class="mt-3 d-flex justify-content-between">
+                                        <p class="text-muted">Front Page</p>
+                                        <a href="{{ asset('storage/' . $profile->document['front']) }}" class="px-3" target="_blank">View</a>
+                                    </div>
+                                    @if ($profile->document['back'])
+                                        <div class="d-flex justify-content-between">
+                                            <p class="text-muted">Back</p>
+                                            <a href="{{ asset('storage/' . $profile->document['back']) }}" class="px-3" target="_blank">View</a>
+                                        </div>
+                                    @endif
+                                    <div class="text-end my-2">
+                                        @if (!$profile->is_verified)
+                                            <button type="button" class="btn btn-primary" wire:confirm='Are you sure you want to verify this user?' wire:click="verifyUser()">Approve</button>
+                                        @endif
+                                    </div>
+                                @else
+                                    <div class="mt-2 d-flex justify-content-between">
+                                        <p class="text-muted">Account Name</p>
+                                        <span class="text-info">{{ $profile->document['name'] }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="text-muted">Account Number</p>
+                                        <span class="text-info">{{ $profile->document['number'] }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="text-muted">Bank Name</p>
+                                        <span class="text-info">{{ $profile->document['bank'] }}</span>
+                                    </div>
+                                    <div class="text-end my-1">
+                                        <a href="{{ asset('storage/' . $profile->document['document']) }}" class="px-3" target="_blank">View Document</a>
+                                        @if (!$profile->is_verified)
+                                            <button type="button" class="btn btn-primary" wire:confirm='Are you sure you want to verify this user?' wire:click="verifyUser()">Approve</button>
+                                        @endif
+                                    </div>
                                 @endif
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -86,7 +117,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="text-center">
-                        <livewire:common.profile-image-update :$user :allowEdit="false" />
+                        <livewire:common.profile.profile-image-update :$user :allowEdit="false" />
                         <h5 class="fw-bold mt-2 mb-0">{{ $user->name }}</h5>
                         <div class="mb-2">{{ $user->email }}</div>
                     </div>

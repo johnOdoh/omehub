@@ -101,7 +101,7 @@
                     Shipper
                 </li> --}}
                 <x-sidebar-item route="shipper.dashboard" name="Dashboard" icon="sliders" />
-                <x-sidebar-item route="shipper.profile" name="Profile" icon="user" />
+                <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
                 <x-sidebar-item route="shipper.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
@@ -112,7 +112,7 @@
                     Logistics
                 </li> --}}
                 <x-sidebar-item route="logistics.dashboard" name="Dashboard" icon="sliders" />
-                <x-sidebar-item route="logistics.profile" name="Profile" icon="user" />
+                <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$logisticsQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
                 <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
@@ -123,7 +123,7 @@
                     Insurance
                 </li> --}}
                 <x-sidebar-item route="insurance.dashboard" name="Dashboard" icon="sliders" />
-                <x-sidebar-item route="insurance.profile" name="Profile" icon="user" />
+                <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
                 <x-sidebar-item route="insurance.shipments" name="My Shipments" icon="ship" />
                 <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
