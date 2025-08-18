@@ -53,6 +53,7 @@
           <li><a href="{{ route('home') }}" class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home<br></a></li>
           <li><a href="{{ route('about') }}" class="{{ Route::currentRouteName() == 'about' ? 'active' : '' }}">About</a></li>
           <li><a href="{{ route('stakeholders') }}" class="{{ Route::currentRouteName() == 'stakeholders' ? 'active' : '' }}">Our Stakeholders</a></li>
+          <li><a href="{{ route('blog') }}" class="{{ Route::currentRouteName() == 'blog' ? 'active' : '' }}">Blog</a></li>
           <li><a href="{{ route('contact') }}" class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact Us</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

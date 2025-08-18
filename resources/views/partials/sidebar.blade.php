@@ -104,7 +104,7 @@
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
                 <x-sidebar-item route="shipper.shipments" name="My Shipments" icon="ship" />
-                <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
+                <x-sidebar-dropdown :items="$blogDropdown" name="Blog/Advert" icon="blog" id="blog" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @elseif (auth()->user()->role == 'Logistics Provider')
@@ -115,7 +115,7 @@
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$logisticsQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
                 <x-sidebar-item route="logistics.shipments" name="My Shipments" icon="ship" />
-                <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
+                <x-sidebar-dropdown :items="$blogDropdown" name="Blog/Advert" icon="blog" id="blog" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @elseif (auth()->user()->role == 'Insurance Provider')
@@ -126,7 +126,7 @@
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
                 <x-sidebar-item route="insurance.shipments" name="My Shipments" icon="ship" />
-                <x-sidebar-dropdown :items="$blogDropdown" name="Blog" icon="blog" id="blog" />
+                <x-sidebar-dropdown :items="$blogDropdown" name="Blog/Advert" icon="blog" id="blog" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @else

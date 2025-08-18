@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title')->index();
             $table->longText('body');
+            $table->string('image');
             $table->enum('status', ['pending', 'approved', 'declined'])->default('pending');
             $table->string('tags')->index();
             $table->string('description')->index();

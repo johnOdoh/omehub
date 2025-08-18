@@ -18,7 +18,7 @@ class Book extends Component
     public function mount(Quote $quote)
     {
         $this->quote = $quote;
-        if ($quote->currency == 'NGN') {
+        if ($quote->request->currency == 'NGN') {
             $this->processing_fee = 100000;
             $this->carbon_offset += 5000;
         }else {

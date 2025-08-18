@@ -25,6 +25,7 @@ class User extends Authenticatable
         'role',
         'admin_role',
         'verification_payment',
+        'blog_payment'
     ];
 
     /**

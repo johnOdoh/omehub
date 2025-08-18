@@ -28,6 +28,7 @@ use App\Livewire\Insurance\Profile\Main as InsuranceProfileMain;
 use App\Livewire\Insurance\Quotes\Requests as InsuranceRequests;
 use App\Livewire\Logistics\Profile\Main as LogisticsProfileMain;
 use App\Livewire\Insurance\Quotes\QuotesSent as InsuranceQuotesSent;
+use App\Models\Post;
 
 Route::get('/', function () {
     return view('public.index');
@@ -41,6 +42,13 @@ Route::get('/stakeholders', function () {
 Route::get('/services/{service}', function ($service) {
     return view("public.services.$service");
 })->name('service');
+Route::get('/blog', function () {
+    $posts = Post::latest()->get();
+    return view('public.blog', compact('posts'));
+})->name('blog');
+Route::get('/blog/{post}', function (Post $post) {
+    return view('public.blog-single', compact('post'));
+})->name('blog.single');
 Route::get('/contact', function () {
     return view('public.contact');
 })->name('contact');
@@ -99,6 +107,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/ticket/list', Tickets::class)->name('user.ticket.list');
 
     Route::get('payment/verification', [PaymentController::class, 'verification'])->name('payment.verification');
+    Route::get('payment/advert', [PaymentController::class, 'advert'])->name('payment.advert');
 });
 
 require __DIR__.'/auth.php';
