@@ -83,19 +83,17 @@
                 </li> --}}
                 <x-sidebar-item route="admin.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="admin.profile" name="Profile" icon="user" />
-                @if (auth()->user()->admin)
-                    @if (auth()->user()->admin_role == 'Admin')
-                        <x-sidebar-item route="admin.users" name="Users" icon="users" />
-                        <x-sidebar-dropdown :items="$adminDropdown" name="Admins" icon="users-cog" id="admins" />
-                    @endif
-                    @if (in_array(auth()->user()->admin_role, ['Legal Partner', 'Admin']) )
-                        <x-sidebar-item route="admin.disputes" name="Disputes" icon="balance-scale" :params="$adminParam" />
-                    @endif
-                    @if (in_array(auth()->user()->admin_role, ['Shipment Auditor', 'Admin']) )
-                        <x-sidebar-item route="admin.shipments" name="Shipments" icon="ship" />
-                    @endif
+                @if (auth()->user()->admin_role == 'Admin')
+                    <x-sidebar-item route="admin.users" name="Users" icon="users" />
+                    <x-sidebar-dropdown :items="$adminDropdown" name="Admins" icon="users-cog" id="admins" />
+                    <x-sidebar-item route="admin.tickets" name="Tickets" icon="hands-helping" />
                 @endif
-                <x-sidebar-item route="admin.tickets" name="Tickets" icon="hands-helping" />
+                @if (in_array(auth()->user()->admin_role, ['Legal Partner', 'Admin']) )
+                    <x-sidebar-item route="admin.disputes" name="Disputes" icon="balance-scale" :params="$adminParam" />
+                @endif
+                @if (in_array(auth()->user()->admin_role, ['Shipment Auditor', 'Admin']) )
+                    <x-sidebar-item route="admin.shipments" name="Shipments" icon="ship" />
+                @endif
             @elseif (auth()->user()->role == 'Shipper')
                 {{-- <li class="sidebar-header">
                     Shipper
