@@ -20,7 +20,7 @@
                                 </div>
                             </div>
                             @if ($profile->document)
-                                @if ($user->role == 'Shipper')
+                                @if ($user->role == 'Shipper' && $user->profile()->account_type == 'Personal')
                                     <div class="mt-3 d-flex justify-content-between">
                                         <p class="text-muted">Front Page</p>
                                         <a href="{{ asset('storage/' . $profile->document['front']) }}" class="px-3" target="_blank">View</a>

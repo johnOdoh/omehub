@@ -59,19 +59,6 @@
         </div>
         @if ($account_type == 'Business')
             <div class="my-3">
-                <div class="form-label fw-bold">
-                    @if ($account_type == 'Business') Business registration document @else Government Issued Identification @endif
-                    <small><em>(Must be an image)</em></small>
-                </div>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="fa fa-file fa-fw me-1"></i></span>
-                    <input type="file" class="form-control" required wire:model="front" accept="image/*">
-                </div>
-                @error('front')
-                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                @enderror
-            </div>
-            <div class="my-3">
                 <div class="input-group">
                     <span class="input-group-text"><i class="fa fa-briefcase fa-fw me-1"></i></span>
                     <select class="form-select" required wire:model="business_type">
@@ -101,29 +88,6 @@
                     <input type="text" class="form-control" placeholder="TAX ID Number" aria-label="TAX ID Number" required wire:model="tin">
                 </div>
                 @error('tin')
-                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                @enderror
-            </div>
-        @else
-            <div class="my-3">
-                <div class="form-label fw-bold">Government Issued ID (Front)<small><em>(Must be an image)</em></small>
-                </div>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="fa fa-file fa-fw me-1"></i></span>
-                    <input type="file" class="form-control" required wire:model="front" accept="image/*">
-                </div>
-                @error('front')
-                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                @enderror
-            </div>
-            <div class="my-3">
-                <div class="form-label fw-bold">Government Issued ID (Back - if applicable)<small><em>(Must be an image)</em></small>
-                </div>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="fa fa-file fa-fw me-1"></i></span>
-                    <input type="file" class="form-control" wire:model="back" accept="image/*">
-                </div>
-                @error('back')
                     <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                 @enderror
             </div>

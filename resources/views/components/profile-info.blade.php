@@ -23,7 +23,7 @@
                         <div class="fw-bold">{{ $user->profile()->business_type }}</div>
                     </div>
                 </li>
-                @endif
+            @endif
         @else
             <li class="d-flex align-items-center gap-2 mb-2">
                 <i class="fas fa-user fa-fw me-1"></i>

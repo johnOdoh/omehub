@@ -79,7 +79,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body m-3">
-                    <p class="mb-0">You need to make a one-time payment of $5 before you can upload your documents for verification.</p>
+                    <p class="mb-0">You need to make a one-time payment of ${{ $isPersonal ? '1' : '5' }} before you can upload your documents for verification.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
@@ -126,26 +126,28 @@
     //         populateCountries("country", "state")
     //     };
     // }); --}}
-    <script src="https://checkout.flutterwave.com/v3.js"></script>
-    <script>
-        function makePayment() {
-            FlutterwaveCheckout({
-                public_key: '{{ env('FLUTTERWAVE_PUBLIC_KEY') }}',
-                tx_ref: '{{ uniqid('ome_', true) }}',
-                amount: 5,
-                currency: 'USD',
-                payment_options: 'card, opay',
-                redirect_url: '{{ route('payment.verification') }}',
-                customer: {
-                    email: '{{ $user->email }}',
-                    name: '{{ $user->name }}',
-                },
-                customizations: {
-                    title: '{{ config('app.name') }}',
-                    description: 'One time payment for document verification',
-                    logo: '{{ asset('assets/img/favicon.png') }}',
-                },
-            });
-        }
-    </script>
+    @if ($hasProfile)
+        <script src="https://checkout.flutterwave.com/v3.js"></script>
+        <script>
+            function makePayment() {
+                FlutterwaveCheckout({
+                    public_key: '{{ env('FLUTTERWAVE_PUBLIC_KEY') }}',
+                    tx_ref: '{{ uniqid('ome_', true) }}',
+                    amount: {{ $isPersonal ? 1.00 : 5.00 }},
+                    currency: 'USD',
+                    payment_options: 'card',
+                    redirect_url: '{{ route('payment.verification') }}',
+                    customer: {
+                        email: '{{ $user->email }}',
+                        name: '{{ $user->name }}',
+                    },
+                    customizations: {
+                        title: '{{ config('app.name') }}',
+                        description: 'One time payment for document verification',
+                        logo: '{{ asset('assets/img/favicon.png') }}',
+                    },
+                });
+            }
+        </script>
+    @endif
 </div>

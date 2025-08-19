@@ -10,35 +10,51 @@ class DocumentUpload extends Component
 {
     use WithFileUploads;
 
+    public $user;
     public $document;
     public $number;
     public $name;
     public $bank;
+    public $front;
+    public $back;
 
     public function mount()
     {
-        if (!request()->user()->verification_payment) {
+        $this->user = request()->user();
+        if (!$this->user->verification_payment) {
             return $this->redirect(route('user.profile', absolute: true), true);
         }
     }
 
     public function save()
     {
-        $this->validate([
-            'document' => 'required|file|mimes:pdf|max:2048',
-            'number' => 'required|numeric',
-            'name' => 'required',
-            'bank' => 'required',
-        ]);
-        $filename = $this->document->store('documents', 'public');
-        request()->user()->profile()->update([
-            'document' => [
+        if ($this->user->role == 'Shipper' && $this->user->profile()->account_type == 'Personal') {
+            $this->validate([
+                'front' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+                'back' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            ]);
+            $front = $this->front->store('documents', 'public');
+            $this->back ? $back = $this->back->store('documents', 'public') : $back = null;
+            $document = [
+                'front' => $front,
+                'back' => $back
+            ];
+        } else {
+            $this->validate([
+                'document' => 'required|file|mimes:pdf|max:2048',
+                'number' => 'required|numeric',
+                'name' => 'required',
+                'bank' => 'required'
+            ]);
+            $filename = $this->document->store('documents', 'public');
+            $document = [
                 'number' => $this->number,
                 'name' => $this->name,
                 'bank' => $this->bank,
                 'document' => $filename
-            ]
-        ]);
+            ];
+        }
+        request()->user()->profile()->update(['document' => $document]);
         $this->redirect(route('user.profile', ['u' => 1]), true);
     }
 

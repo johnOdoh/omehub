@@ -15,11 +15,13 @@ class Main extends Component
     public $showEditProfile = false;
     #[Url(as: 'u')]
     public $uploaded;
+    public $isPersonal = false;
 
     public function mount()
     {
         $this->user = request()->user();
         $this->hasProfile = $this->user->profile();
+        $this->isPersonal = $this->hasProfile && $this->user->role == 'Shipper' && $this->user->profile()->account_type == 'Personal';
     }
 
     public function createProfile()
