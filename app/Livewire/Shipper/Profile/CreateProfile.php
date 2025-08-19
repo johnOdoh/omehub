@@ -17,6 +17,7 @@ class CreateProfile extends Component
     public $phone;
     public $business_type;
     public $reg_no;
+    public $tin;
     public $address;
     public $city;
     public $country;
@@ -53,6 +54,7 @@ class CreateProfile extends Component
             'phone' => 'required|numeric',
             'business_type' => 'nullable|string',
             'reg_no' => 'nullable|string',
+            'tin' => 'nullable|string',
             'address' => 'required|string',
             'city' => 'required|string',
             'country' => 'required|string',

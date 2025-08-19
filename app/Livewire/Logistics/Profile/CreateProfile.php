@@ -20,6 +20,7 @@ class CreateProfile extends Component
     public $dial_code;
     public $zip;
     public $reg_no;
+    public $tin;
     public $logo;
 
     public function mount()
@@ -47,6 +48,7 @@ class CreateProfile extends Component
             'dial_code' => 'required|string',
             'zip' => 'required|string',
             'reg_no' => 'required|string',
+            'tin' => 'nullable|string',
             'logo' => 'required|image|mimes:jpg,jpeg,png,webp,svg|max:5120'
         ]);
         $validated['phone'] = $validated['phone']/1;

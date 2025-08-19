@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('dial_code');
             $table->string('reg_no');
+            $table->string('tin');
             $table->boolean('is_verified')->default(false);
             $table->json('documents')->nullable();
             $table->unsignedSmallInteger('rating')->default(0);

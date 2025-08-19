@@ -7,7 +7,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <div class="alert-message d-flex">
                 <strong class="me-2"><i class="fa fa-warning"></i></strong>
-                <div>You are yet to complete your profile. <a href="{{ route('shipper.profile') }}" wire:navigate>Click here</a> to complete your profile to be able to enjoy our services.</div>
+                <div>You are yet to complete your profile. <a href="{{ route('user.profile') }}" wire:navigate>Click here</a> to complete your profile to be able to enjoy our services.</div>
             </div>
         </div>
     @elseif (!$user->shipper->is_verified)

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('account_type');
             $table->string('business_type')->nullable();
             $table->string('reg_no')->nullable();
+            $table->string('tin')->nullable();
             $table->string('phone');
             $table->string('address');
             $table->string('zip');

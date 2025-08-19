@@ -158,6 +158,20 @@
                             </div>
                         </li>
                         <li class="d-flex align-items-center gap-2 mb-2">
+                            <i class="fas fa-key fa-fw me-1"></i>
+                            <div>
+                                <div class="text-muted small">Registration Number</div>
+                                <div class="fw-bold">{{ $profile->reg_no ?? 'N/A' }}</div>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center gap-2 mb-2">
+                            <i class="fas fa-key fa-fw me-1"></i>
+                            <div>
+                                <div class="text-muted small">TAX ID Number</div>
+                                <div class="fw-bold">{{ $profile->tin ?? 'N/A' }}</div>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center gap-2 mb-2">
                             <i class="fas fa-phone fa-fw me-1"></i>
                             <div>
                                 <div class="text-muted small">Phone Number</div>
