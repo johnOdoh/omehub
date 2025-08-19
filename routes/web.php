@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PublicController;
 use App\Livewire\Shipper\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Users\UserInfo;
@@ -28,36 +29,17 @@ use App\Livewire\Insurance\Profile\Main as InsuranceProfileMain;
 use App\Livewire\Insurance\Quotes\Requests as InsuranceRequests;
 use App\Livewire\Logistics\Profile\Main as LogisticsProfileMain;
 use App\Livewire\Insurance\Quotes\QuotesSent as InsuranceQuotesSent;
-use App\Models\Post;
 
-Route::get('/', function () {
-    return view('public.index');
-})->name('home');
-Route::get('/about', function () {
-    return view('public.about');
-})->name('about');
-Route::get('/stakeholders', function () {
-    return view('public.stakeholders');
-})->name('stakeholders');
-Route::get('/services/{service}', function ($service) {
-    return view("public.services.$service");
-})->name('service');
-Route::get('/blog', function () {
-    $posts = Post::latest()->get();
-    return view('public.blog', compact('posts'));
-})->name('blog');
-Route::get('/blog/{post}', function (Post $post) {
-    return view('public.blog-single', compact('post'));
-})->name('blog.single');
-Route::get('/contact', function () {
-    return view('public.contact');
-})->name('contact');
-Route::get('/our-terms', function () {
-    return view('public.terms');
-})->name('terms');
-Route::get('/privacy-policy', function () {
-    return view('public.privacy');
-})->name('privacy');
+Route::get('/', [PublicController::class, 'index'])->name('home');
+Route::get('/about', [PublicController::class, 'about'])->name('about');
+Route::get('/stakeholders', [PublicController::class, 'stakeholders'])->name('stakeholders');
+Route::get('/services/{service}', [PublicController::class, 'service'])->name('service');
+Route::get('/blog', [PublicController::class, 'blog'])->name('blog');
+Route::get('/blog/search', [PublicController::class, 'blogSearch'])->name('search');
+Route::get('/blog/{post}', [PublicController::class, 'blogSingle'])->name('blog.single');
+Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
+Route::get('/our-terms', [PublicController::class, 'terms'])->name('terms');
+Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('admin/dashboard', \App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');

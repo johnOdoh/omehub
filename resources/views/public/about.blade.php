@@ -1,5 +1,6 @@
 @extends('public.layout.main')
 
+@section('title', 'About Us')
 @section('content')
 
   <main class="main">

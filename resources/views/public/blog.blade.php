@@ -1,5 +1,6 @@
 @extends('public.layout.main')
 
+@section('title', 'Blogs')
 @section('content')
 
   <main class="main">
@@ -19,12 +20,17 @@
     </div><!-- End Page Title -->
 
         <!-- About Section -->
-    <section id="services" class="services section">
+    <section id="services" class="blog services section">
 
       <div class="container">
 
+        <form action="{{ route('search') }}" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="100">
+            <input type="text" name="q" class="form-control" placeholder="What are you looking for?" value="{{ request('q') }}" required>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
         <div class="row gy-4">
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="card">
                         <div class="card-img">
@@ -34,8 +40,12 @@
                         <p>{{ $post->description }}</p>
                     </div>
                 </div><!-- End Card Item -->
-            @endforeach
+            @empty
+                <h3><em>No Posts found</em></h3>
+            @endforelse
         </div>
+
+        {{ $posts->links('vendor.pagination.default') }}
 
       </div>
 

@@ -1,5 +1,6 @@
 @extends('public.layout.main')
 
+@section('title', $post->title)
 @section('content')
 
   <main class="main">

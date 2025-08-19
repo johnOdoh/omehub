@@ -9,10 +9,10 @@
 
       <img src="{{ asset('assets/img/world-dotted-map.png') }}" alt="" class="hero-bg" data-aos="fade-in">
 
-      <div class="container">
+      <div class="container" data-aos="fade-up">
         <div class="row gy-4 d-flex justify-content-between">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-            <h2 data-aos="fade-up">Get rates for international shipments instantly 24/7</h2>
+            <h2>Get rates for international shipments instantly 24/7</h2>
             <ul>
               <li>Stress-free global shipping for all freight modes</li>
               <li>Instant quotes & flexible pricing</li>

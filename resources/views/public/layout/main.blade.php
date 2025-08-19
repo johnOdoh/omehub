@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>{{ config('app.name') .' | '. ucfirst(Route::currentRouteName()) }}</title>
+  <title>{{ config('app.name') }} | @yield('title')</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -81,10 +81,10 @@
           </a>
           <p>We have a vision to become the world’s most trusted digital gateway for international trade, where logistics, finance, compliance, and sustainability converge — simply and seamlessly.</p>
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="https://tiktok.com/@omefreight" target="_blank"><i class="bi bi-tiktok"></i></a>
+            <a href="https://facebook.com/share/1Aue653uWW" target="_blank" noreferrer><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/ome.freight" target="_blank" noreferrer><i class="bi bi-instagram"></i></a>
+            <a href="https://linkedin.com/company/omefreight" target="_blank"><i class="bi bi-linkedin" noreferrer></i></a>
           </div>
         </div>
 
@@ -94,6 +94,7 @@
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('about') }}">About us</a></li>
             <li><a href="{{ route('stakeholders') }}">Our Stakeholders</a></li>
+            <li><a href="{{ route('blog') }}">Blog</a></li>
             <li><a href="{{ route('terms') }}">Terms of service</a></li>
             <li><a href="{{ route('privacy') }}">Privacy policy</a></li>
           </ul>
