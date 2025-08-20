@@ -5,6 +5,24 @@
             <div class="card">
                 <div class="card-body">
                     <form wire:submit="save">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" wire:model="name" placeholder="Company Account Name" required>
+                            @error('name')
+                                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" wire:model="number" placeholder="Company Account Number" required>
+                            @error('number')
+                                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                            @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" wire:model="bank" placeholder="Company Bank Name" required>
+                            @error('bank')
+                                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                            @enderror
+                        </div>
                         @if ($user->role == 'Shipper' && $user->profile()->account_type == 'Personal')
                             <div class="form-group mb-3">
                                 <label class="form-label fw-bold">
@@ -25,24 +43,6 @@
                                 @enderror
                             </div>
                         @else
-                            <div class="form-group mb-3">
-                                <input type="text" class="form-control" wire:model="name" placeholder="Company Account Name" required>
-                                @error('name')
-                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                                @enderror
-                            </div>
-                            <div class="form-group mb-3">
-                                <input type="text" class="form-control" wire:model="number" placeholder="Company Account Number" required>
-                                @error('number')
-                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                                @enderror
-                            </div>
-                            <div class="form-group mb-3">
-                                <input type="text" class="form-control" wire:model="bank" placeholder="Company Bank Name" required>
-                                @error('bank')
-                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                                @enderror
-                            </div>
                             <div class="form-group mb-3">
                                 <label class="form-label fw-bold">
                                     Business registration document <small><em>(Must be a pdf)</em></small>
