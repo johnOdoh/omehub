@@ -16,9 +16,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title')->index();
             $table->longText('body');
-            $table->string('image');
+            $table->string('file');
+            $table->boolean('is_video')->default(false);
             $table->enum('status', ['pending', 'approved', 'declined'])->default('pending');
-            $table->string('tags')->index();
+            $table->string('tags')->index()->nullable();
             $table->string('description')->index();
             $table->timestamps();
         });

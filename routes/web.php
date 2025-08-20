@@ -34,9 +34,9 @@ Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/about', [PublicController::class, 'about'])->name('about');
 Route::get('/stakeholders', [PublicController::class, 'stakeholders'])->name('stakeholders');
 Route::get('/services/{service}', [PublicController::class, 'service'])->name('service');
-Route::get('/blog', [PublicController::class, 'blog'])->name('blog');
-Route::get('/blog/search', [PublicController::class, 'blogSearch'])->name('search');
-Route::get('/blog/{post}', [PublicController::class, 'blogSingle'])->name('blog.single');
+Route::get('/blog', [PublicController::class, 'bulletin'])->name('bulletin');
+Route::get('/bulletin/search', [PublicController::class, 'bulletinSearch'])->name('search');
+Route::get('/bulletin/{post}', [PublicController::class, 'bulletinSingle'])->name('bulletin.single');
 Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
 Route::get('/our-terms', [PublicController::class, 'terms'])->name('terms');
 Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
@@ -75,10 +75,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/profile', \App\Livewire\Common\Profile\Main::class)->name('user.profile');
     Route::get('user/profile/upload-document', DocumentUpload::class)->name('user.upload-document');
 
-    Route::get('user/blog/create', CreatePost::class)->name('user.blog.create');
-    Route::get('user/blog/{post}/edit', CreatePost::class)->name('user.blog.edit');
-    Route::get('user/blog/posts', PostList::class)->name('user.blog.posts');
-    Route::get('user/blog/{post}', ViewPost::class)->name('user.blog.post');
+    Route::get('user/bulletin/create', CreatePost::class)->name('user.bulletin.create');
+    Route::get('user/bulletin/{post}/edit', CreatePost::class)->name('user.bulletin.edit');
+    Route::get('user/bulletin/posts', PostList::class)->name('user.bulletin.list');
+    Route::get('user/bulletin/{post}', ViewPost::class)->name('user.bulletin.post');
 
     Route::get('user/disputes/create', CreateDispute::class)->name('user.dispute.create');
     Route::get('user/disputes/list', DisputeList::class)->name('user.dispute.list');

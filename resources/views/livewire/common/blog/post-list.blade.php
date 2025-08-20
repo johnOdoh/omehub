@@ -1,5 +1,5 @@
 <div>
-    <h1 class="h3 mb-3">My posts</h1>
+    <h1 class="h3 mb-3">My {{ $loc == 'ad' ? 'Ads' : 'Posts' }}</h1>
     @if (session('deleted')) <span x-show="notify('Post Successfully Deleted')"></span> @endif
     <div class="row">
         <div class="col-12 col-md-4 d-flex">
@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">Approved Posts</h5>
+                            <h5 class="card-title">Approved {{ $loc == 'ad' ? 'Ads' : 'Posts' }}</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat text-success">
@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">Pending Posts</h5>
+                            <h5 class="card-title">Pending {{ $loc == 'ad' ? 'Ads' : 'Posts' }}</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat text-warning">
@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title">Declined Posts</h5>
+                            <h5 class="card-title">Declined {{ $loc == 'ad' ? 'Ads' : 'Posts' }}</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat text-danger">
@@ -64,7 +64,7 @@
                                 <tr>
                                     <th>S/N</th>
                                     <th>Title</th>
-                                    <th>Tags</th>
+                                    @if ($loc == 'blog') <th>Tags</th> @endif
                                     <th>Date Created</th>
                                     <th>Status</th>
                                     <th>Actions</th>
@@ -75,11 +75,11 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $post->title }}</td>
-                                        <td>{{ $post->tags }}</td>
+                                        @if ($loc == 'blog') <td>{{ $post->tags }}</td> @endif
                                         <td>{{ $post->created_at->format('d M, Y') }}</td>
                                         <td class="text-capitalize fw-bold text-{{ $post->status == 'approved' ? 'success' : ($post->status == 'pending' ? 'warning' : 'danger') }}">{{ $post->status }}</td>
                                         <td>
-                                            <a href="{{ route('user.blog.post', $post->id) }}" class="btn btn-primary btn-sm mb-2" wire:navigate>View</a>
+                                            <a href="{{ route('user.bulletin.post', $post->id) }}" class="btn btn-primary btn-sm mb-2" wire:navigate>View</a>
                                             <button wire:confirm="Are you sure you want to delete this post?" class="btn btn-danger btn-sm mb-2" wire:click="deletePost({{ $post->id }})">Delete</button>
                                         </td>
                                     </tr>

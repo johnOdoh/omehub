@@ -21,7 +21,8 @@ return new class extends Migration
             $table->enum('admin_role', ['Admin', 'Legal Partner', 'Shipment Auditor'])->nullable();
             $table->enum('status', ['Active', 'Suspended'])->default('Active');
             $table->boolean('verification_payment')->default('false');
-            $table->boolean('blog_payment')->default('false');
+            $table->boolean('bulletin_payment')->default('false');
+            $table->timestamp('bulletin_payment_ends')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

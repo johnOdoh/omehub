@@ -3,9 +3,9 @@
         <div class="col-auto">
             <h3>{{ $post->title }}</h3>
         </div>
-        <div class="col-auto ms-auto text-end mt-n1">
+        {{-- <div class="col-auto ms-auto text-end mt-n1">
             <a href="{{ route('user.blog.edit', $post->id) }}" class="btn btn-primary" wire:navigate>Edit Post</a>
-        </div>
+        </div> --}}
     </div>
     @if ($post->status == 'approved')
         <hr>

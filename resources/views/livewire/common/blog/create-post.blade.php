@@ -1,15 +1,14 @@
 <div class="container-fluid p-0">
     <div class="mb-3">
-        <h1 class="h3">{{ $post ? 'Edit' : 'Create' }} Post</h1>
+        <h1 class="h3">{{ $post ? 'Edit' : 'Create' }} {{ $loc == 'blog' ? 'Post' : 'Ad' }}</h1>
     </div>
-    @if (auth()->user()->blog_payment)
-        @if (session('created')) <span x-show="notify('Post Successfully Created')"></span> @endif
-        @if (session('updated')) <span x-show="notify('Post Successfully Updated')"></span> @endif
+    @if (auth()->user()->bulletin_payment)
+        @if (session('success')) <span x-show="notify('{{ session('success') }}')"></span> @endif
         <div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <div class="alert-message d-flex">
                 <strong class="me-2">Note:</strong>
-                <div>Your post is subject to review by our team. We only accept posts that are relevant to our community.</div>
+                <div>Your post is subject to review by our team. We only accept posts that conform to our terms & conditions.</div>
             </div>
         </div>
         <div class="row">
@@ -33,102 +32,188 @@
                                 </div>
                             </div>
                         @endif
-                        <form wire:submit="create">
-                            <div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Title" aria-label="Title" required wire:model="title">
-                                </div>
-                                @error('title')
-                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                                @enderror
-                            </div>
-                            <div class="my-3">
-                                <div class="form-group">
-                                    <label class="form-label">Description <i class="small">(200 characters max)</i></label>
-                                    <textarea rows="2" maxlength="200" class="form-control" placeholder="Briefly describe the content of your post. This will help readers find your post faster." wire:model="description" required></textarea>
-                                </div>
-                                @error('description')
-                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                                @enderror
-                            </div>
-                            <div class="my-3">
-                                <div class="form-group">
-                                    <label class="form-label">Cover Image <i class="small"></i></label>
-                                    <input type="file" class="form-control" accept="image/*" wire:model="image" required>
-                                </div>
-                                @error('image')
-                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                                @enderror
-                            </div>
-                            <div class="my-3">
-                                <div class="clearfix" wire:ignore>
-                                    <div id="quill-toolbar">
-                                        <span class="ql-formats">
-                                            <select class="ql-font" title="Font style"></select>
-                                            <select class="ql-size" title="font size"></select>
-                                        </span>
-                                        <span class="ql-formats">
-                                            <button class="ql-bold" title="Bold"></button>
-                                            <button class="ql-italic" title="Italic"></button>
-                                            <button class="ql-underline" title="Underline"></button>
-                                            <button class="ql-strike" title="Strike"></button>
-                                        </span>
-                                        <span class="ql-formats">
-                                            <button class="ql-script" value="sub" title="subscript"></button>
-                                            <button class="ql-script" value="super" title="superscript"></button>
-                                        </span>
-                                        <span class="ql-formats">
-                                            {{-- <button class="ql-header" value="1" title="Heading"></button> --}}
-                                            <button class="ql-header" value="2" title="Heading"></button>
-                                            {{-- <button class="ql-header" value="3" title="Heading"></button>
-                                            <button class="ql-header" value="4" title="Heading"></button>
-                                            <button class="ql-header" value="5" title="Subheading"></button> --}}
-                                            <button class="ql-blockquote" title="Blockquote"></button>
-                                        </span>
-                                        <span class="ql-formats">
-                                            <button class="ql-list" value="ordered" title="Numbered"></button>
-                                            <button class="ql-list" value="bullet" title="Bullet"></button>
-                                            <button class="ql-indent" value="-1" title="Reduce Indent"></button>
-                                            <button class="ql-indent" value="+1" title="Increase Indent"></button>
-                                        </span>
-                                        <span class="ql-formats">
-                                            <select class="ql-align" title="Align"></select>
-                                        </span>
-                                        <span class="ql-formats">
-                                            <button class="ql-link" title="Link"></button>
-                                            <button class="ql-image" title="Image"></button>
-                                        </span>
-                                        <span class="ql-formats">
-                                            <button class="ql-clean" title="Clear formatting"></button>
-                                        </span>
+                        @if ($loc == 'blog')
+                            <form wire:submit="createPost">
+                                <div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Title" aria-label="Title" required wire:model="title">
                                     </div>
-                                    <div id="quill-editor">{!! $body !!}</div>
+                                    @error('title')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
                                 </div>
-                                @error('body')
-                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                                @enderror
-                            </div>
-                            <input type="hidden" wire:model="body" required>
-                            <div class="my-3">
-                                <div class="form-group">
-                                    <label class="form-label">Tags</label>
-                                    <input type="text" class="form-control" placeholder="eg:shipping, delivery" required wire:model="tags">
+                                <div class="my-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Description <i class="small">(200 characters max)</i></label>
+                                        <textarea rows="2" maxlength="200" class="form-control" placeholder="Briefly describe the content of your post. This will help readers find your post faster." wire:model="description" required></textarea>
+                                    </div>
+                                    @error('description')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
                                 </div>
-                                @error('tags')
-                                    <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-                                @enderror
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile() || !auth()->user()->profile()->is_verified) disabled @endif wire:loading.remove wire:target='image, create'>Submit</button>
-                                    <button class="btn btn-primary px-5" wire:loading>
-                                        <div class="spinner-border spinner-border-sm text-light" role="status" wire:target='image, create'>
-                                            <span class="visually-hidden">Loading...</span>
+                                <div class="my-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Cover Image <i class="small"></i></label>
+                                        <input type="file" class="form-control" accept="image/*" wire:model="file" required>
+                                    </div>
+                                    @error('file')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
+                                </div>
+                                <div class="my-3">
+                                    <div class="clearfix" wire:ignore>
+                                        <div id="quill-toolbar">
+                                            <span class="ql-formats">
+                                                <select class="ql-font" title="Font style"></select>
+                                                <select class="ql-size" title="font size"></select>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-bold" title="Bold"></button>
+                                                <button class="ql-italic" title="Italic"></button>
+                                                <button class="ql-underline" title="Underline"></button>
+                                                <button class="ql-strike" title="Strike"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-script" value="sub" title="subscript"></button>
+                                                <button class="ql-script" value="super" title="superscript"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                {{-- <button class="ql-header" value="1" title="Heading"></button> --}}
+                                                <button class="ql-header" value="2" title="Heading"></button>
+                                                {{-- <button class="ql-header" value="3" title="Heading"></button>
+                                                <button class="ql-header" value="4" title="Heading"></button>
+                                                <button class="ql-header" value="5" title="Subheading"></button> --}}
+                                                <button class="ql-blockquote" title="Blockquote"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" title="Numbered"></button>
+                                                <button class="ql-list" value="bullet" title="Bullet"></button>
+                                                <button class="ql-indent" value="-1" title="Reduce Indent"></button>
+                                                <button class="ql-indent" value="+1" title="Increase Indent"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <select class="ql-align" title="Align"></select>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-link" title="Link"></button>
+                                                <button class="ql-image" title="Image"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" title="Clear formatting"></button>
+                                            </span>
                                         </div>
-                                    </button>
+                                        <div id="quill-editor">{!! $body !!}</div>
+                                    </div>
+                                    @error('body')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
                                 </div>
-                            </div>
-                        </form>
+                                <input type="hidden" wire:model="body" required>
+                                <div class="my-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Tags</label>
+                                        <input type="text" class="form-control" placeholder="eg:shipping, delivery" required wire:model="tags">
+                                    </div>
+                                    @error('tags')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile() || !auth()->user()->profile()->is_verified) disabled @endif wire:loading.remove wire:target='file, body,createPost'>Submit</button>
+                                        <button class="btn btn-primary px-5" wire:loading>
+                                            <div class="spinner-border spinner-border-sm text-light" role="status" wire:target='file, body, createPost'>
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        @else
+                            <form wire:submit="createAd">
+                                <div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Title" aria-label="Title" required wire:model="title">
+                                    </div>
+                                    @error('title')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
+                                </div>
+                                <div class="my-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Description <i class="small">(200 characters max)</i></label>
+                                        <textarea rows="2" maxlength="200" class="form-control" placeholder="Briefly describe the content of your ad. This will help users find your ad faster." wire:model="description" required></textarea>
+                                    </div>
+                                    @error('description')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
+                                </div>
+                                <div class="my-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Cover Image/Video <i class="small">(5MB max)</i></label>
+                                        <input type="file" class="form-control" accept="image/*,video/*" wire:model="file" required>
+                                    </div>
+                                    @error('file')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
+                                </div>
+                                <div class="my-3">
+                                    <div class="clearfix" wire:ignore>
+                                        <div id="quill-toolbar">
+                                            <span class="ql-formats">
+                                                <select class="ql-font" title="Font style"></select>
+                                                <select class="ql-size" title="font size"></select>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-bold" title="Bold"></button>
+                                                <button class="ql-italic" title="Italic"></button>
+                                                <button class="ql-underline" title="Underline"></button>
+                                                <button class="ql-strike" title="Strike"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-script" value="sub" title="subscript"></button>
+                                                <button class="ql-script" value="super" title="superscript"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                {{-- <button class="ql-header" value="1" title="Heading"></button> --}}
+                                                <button class="ql-header" value="2" title="Heading"></button>
+                                                {{-- <button class="ql-header" value="3" title="Heading"></button>
+                                                <button class="ql-header" value="4" title="Heading"></button>
+                                                <button class="ql-header" value="5" title="Subheading"></button> --}}
+                                                <button class="ql-blockquote" title="Blockquote"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-list" value="ordered" title="Numbered"></button>
+                                                <button class="ql-list" value="bullet" title="Bullet"></button>
+                                                <button class="ql-indent" value="-1" title="Reduce Indent"></button>
+                                                <button class="ql-indent" value="+1" title="Increase Indent"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <select class="ql-align" title="Align"></select>
+                                            </span>
+                                            <span class="ql-formats">
+                                                <button class="ql-clean" title="Clear formatting"></button>
+                                            </span>
+                                        </div>
+                                        <div id="quill-editor">{!! $body !!}</div>
+                                    </div>
+                                    @error('body')
+                                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                                    @enderror
+                                </div>
+                                <input type="hidden" wire:model="body" required>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile() || !auth()->user()->profile()->is_verified) disabled @endif wire:loading.remove wire:target='file, body, createAd'>Submit</button>
+                                        <button class="btn btn-primary px-5" wire:loading>
+                                            <div class="spinner-border spinner-border-sm text-light" role="status" wire:target='file, body, createAd'>
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -153,19 +238,97 @@
                     quill.on('text-change', function () {
                         @this.set('body', quill.root.innerHTML);
                     });
+                    $wire.on('clear', () => {
+                        quill.root.innerHTML = ''
+                    })
                 }, 500);
             </script>
         @endscript
+        @if ($paid == 1)
+            @script
+                <script>
+                    $wire.dispatch('paid');
+                </script>
+            @endscript
+        @endif
     @else
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center align-items-center vh-50 text-center">
-                            <div>
-                                <i class="fa fa-lock fa-5x mb-3 text-warning"></i> <!-- Icon replacing image -->
-                                <h4 class="fw-bold">You need to pay a fee of $10 to access the blog and advert features.</h4>
-                                <button class="btn btn-primary mt-1" onclick="makePayment()">Pay Now</button>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Our Bulletin section is currently locked</h1>
+                <p class="lead text-center mb-4">Luckily, you can unlock it with as little as $5 per month.</p>
+                <div class="row py-4">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card text-center h-100">
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-4">
+                                    <h5 class="mb-3">Monthly</h5>
+                                    <span class="display-4">$5</span><span>/month</span>
+                                </div>
+                                <h6>Includes:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        Access to the Blog and Ads section
+                                    </li>
+                                    <li class="mb-2">
+                                        Unlimited Posts
+                                    </li>
+                                    <li class="mb-2">
+                                        Prompt post approvals
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <button class="btn btn-lg btn-outline-primary" onclick="makePayment('monthly', 5)">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card text-center h-100">
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-4">
+                                    <h5 class="mb-3">Biannual</h5>
+                                    <span class="display-4">$28</span><span>/6 months</span>
+                                </div>
+                                <h6>Includes:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        Access to the Blog and Ads section
+                                    </li>
+                                    <li class="mb-2">
+                                        Unlimited Posts
+                                    </li>
+                                    <li class="mb-2">
+                                        Prompt post approvals
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <button class="btn btn-lg btn-primary" onclick="makePayment('biannual', 28)">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card text-center h-100">
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-4">
+                                    <h5 class="mb-3">Annual</h5>
+                                    <span class="display-4">$50</span><span>/year</span>
+                                </div>
+                                <h6>Includes:</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        Access to the Blog and Ads section
+                                    </li>
+                                    <li class="mb-2">
+                                        Unlimited Posts
+                                    </li>
+                                    <li class="mb-2">
+                                        Prompt post approvals
+                                    </li>
+                                </ul>
+                                <div class="mt-auto">
+                                    <button class="btn btn-lg btn-outline-primary" onclick="makePayment('annual', 50)">Select</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -174,11 +337,11 @@
         </div>
         <script src="https://checkout.flutterwave.com/v3.js"></script>
         <script>
-            function makePayment() {
+            function makePayment($plan, $amount) {
                 FlutterwaveCheckout({
                     public_key: '{{ env('FLUTTERWAVE_PUBLIC_KEY') }}',
                     tx_ref: '{{ uniqid('ome_', true) }}',
-                    amount: 10,
+                    amount: $amount,
                     currency: 'USD',
                     payment_options: 'card',
                     redirect_url: '{{ route('payment.advert') }}',
@@ -188,9 +351,13 @@
                     },
                     customizations: {
                         title: '{{ config('app.name') }}',
-                        description: 'Blog and Advert placement fee',
+                        description: '{{ config('app.name') }} Bulletin section fee',
                         logo: '{{ asset('assets/img/favicon.png') }}',
                     },
+                    meta: {
+                        plan: $plan,
+                        loc: '{{ $loc }}'
+                    }
                 });
             }
         </script>

@@ -46,6 +46,32 @@
             ],
         ], 'isSingle' => true],
     ];
+    $bulletinDropdown = [
+        0 => ['name' => 'Advert', 'routes' => [
+            0 => [
+                'name' => 'Create Ad',
+                'route' => 'user.bulletin.create',
+                'params' => ['loc' => 'ad']
+            ],
+            1 => [
+                'name' => 'My Ads',
+                'route' => 'user.bulletin.list',
+                'params' => ['loc' => 'ad']
+            ]
+        ], 'isSingle' => false],
+        1 => ['name' => 'Blog', 'routes' => [
+            0 => [
+                'name' => 'Create Post',
+                'route' => 'user.bulletin.create',
+                'params' => ['loc' => 'blog']
+            ],
+            1 => [
+                'name' => 'My Posts',
+                'route' => 'user.bulletin.list',
+                'params' => ['loc' => 'blog']
+            ]
+        ], 'isSingle' => false],
+    ];
     $adminParam = ['q' => 'admin'];
 @endphp
 <nav id="sidebar" class="sidebar js-sidebar">
@@ -102,7 +128,7 @@
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
                 <x-sidebar-item route="shipper.shipments" name="My Shipments" icon="ship" />
-                <x-sidebar-dropdown :items="$blogDropdown" name="Blog/Advert" icon="blog" id="blog" />
+                <x-sidebar-multi-dropdown :items="$bulletinDropdown" name="Bulletin" icon="blog" id="bulletin" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @elseif (auth()->user()->role == 'Logistics Provider')

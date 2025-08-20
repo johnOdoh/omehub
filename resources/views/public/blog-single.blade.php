@@ -12,7 +12,6 @@
         <nav class="breadcrumbs">
           <ol>
             <li><a href="{{ route( 'home') }}">Home</a></li>
-            <li><a href="{{ route( 'blog') }}">Blog</a></li>
             <li class="current">{{ $post->title }}</li>
           </ol>
         </nav>
@@ -27,6 +26,17 @@
         <div class="row gy-4">
 
             <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+                @if ($post->is_video)
+                    <div class="about">
+                        <div class="position-relative align-self-start" data-aos="fade-up" data-aos-delay="200">
+                            <img src="{{ asset('assets/img/play-btn.png/') }}" alt="cover image" class="img-fluid" width="774" height="353">
+                            <a href="{{ asset('storage/'.$post->file) }}" class="glightbox pulsating-play-btn"></a>
+                        </div>
+
+                    </div>
+                @else
+                    <img src="{{ asset('storage/'.$post->file) }}" alt="" class="img-fluid services-img">
+                @endif
                 <h3>{{ $post->title }}</h3>
                 {!! $post->body !!}
             </div>

@@ -53,7 +53,13 @@
           <li><a href="{{ route('home') }}" class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home<br></a></li>
           <li><a href="{{ route('about') }}" class="{{ Route::currentRouteName() == 'about' ? 'active' : '' }}">About</a></li>
           <li><a href="{{ route('stakeholders') }}" class="{{ Route::currentRouteName() == 'stakeholders' ? 'active' : '' }}">Our Stakeholders</a></li>
-          <li><a href="{{ route('blog') }}" class="{{ Route::currentRouteName() == 'blog' ? 'active' : '' }}">Blog</a></li>
+          <li class="dropdown">
+            <a href="#" class="{{ Route::currentRouteName() == 'bulletin' ? 'active' : '' }}"><span>Our Bulletin</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="{{ route('bulletin', ['loc' => 'ads']) }}">Ads</a></li>
+              <li><a href="{{ route('bulletin', ['loc' => 'blog']) }}">Blog</a></li>
+            </ul>
+          </li>
           <li><a href="{{ route('contact') }}" class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact Us</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -94,7 +100,8 @@
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('about') }}">About us</a></li>
             <li><a href="{{ route('stakeholders') }}">Our Stakeholders</a></li>
-            <li><a href="{{ route('blog') }}">Blog</a></li>
+            <li><a href="{{ route('bulletin', ['loc' => 'ads']) }}">Ads</a></li>
+            <li><a href="{{ route('bulletin', ['loc' => 'blog']) }}">Blog</a></li>
             <li><a href="{{ route('terms') }}">Terms of service</a></li>
             <li><a href="{{ route('privacy') }}">Privacy policy</a></li>
           </ul>

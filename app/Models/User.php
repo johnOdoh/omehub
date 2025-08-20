@@ -25,7 +25,8 @@ class User extends Authenticatable
         'role',
         'admin_role',
         'verification_payment',
-        'blog_payment'
+        'bulletin_payment',
+        'bulletin_payment_ends',
     ];
 
     /**
@@ -49,6 +50,8 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'verification_payment' => 'boolean',
+            'bulletin_payment' => 'boolean',
+            'bulletin_payment_ends' => 'datetime',
         ];
     }
 

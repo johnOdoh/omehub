@@ -27,26 +27,34 @@ class PublicController extends Controller
         return view('public.stakeholders');
     }
 
-    public function blog()
+    public function bulletin()
     {
-        $posts = Post::latest()->paginate(1);
-        return view('public.blog', compact('posts'));
+        $loc = request()->query('loc', 'blog');
+        $query = $loc == 'ads' ? Post::where('tags', null)
+                               : Post::whereNot('tags', null);
+        $posts = $query->latest()->paginate(3)->withQueryString();
+        return view('public.blog', compact('posts', 'loc'));
     }
 
-    public function blogSearch(Request $request)
+    public function bulletinSearch(Request $request)
     {
         $q = $request->query('q', config('app.name'));
-        $posts = Post::where('title', 'like', "%$q%")
-            ->orWhere('body', 'like', "%$q%")
-            ->orWhere('description', 'like', "%$q%")
-            ->orWhere('tags', 'like', "%$q%")
+        $loc = request()->query('loc', 'blog');
+        $query = $loc == 'ads' ? Post::where('tags', null)
+                               : Post::whereNot('tags', null);
+        $posts = $query->where(function ($query) use ($q) {
+            $query->where('title', 'like', "%$q%")
+                ->orWhere('body', 'like', "%$q%")
+                ->orWhere('description', 'like', "%$q%")
+                ->orWhere('tags', 'like', "%$q%");
+            })
             ->latest()
             ->paginate(1)
             ->withQueryString();
-        return view('public.blog', compact('posts'));
+        return view('public.blog', compact('posts', 'loc'));
     }
 
-    public function blogSingle(Post $post)
+    public function bulletinSingle(Post $post)
     {
         return view('public.blog-single', compact('post'));
     }
@@ -55,7 +63,6 @@ class PublicController extends Controller
     {
         return view('public.contact');
     }
-
     public function terms()
     {
         return view('public.terms');
