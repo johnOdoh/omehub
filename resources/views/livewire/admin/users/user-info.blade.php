@@ -31,6 +31,18 @@
                                             <a href="{{ asset('storage/' . $profile->document['back']) }}" class="px-3" target="_blank">View</a>
                                         </div>
                                     @endif
+                                    <div class="mt-2 d-flex justify-content-between">
+                                        <p class="text-muted">Account Name</p>
+                                        <span class="text-info">{{ $profile->document['name'] }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="text-muted">Account Number</p>
+                                        <span class="text-info">{{ $profile->document['number'] }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="text-muted">Bank Name</p>
+                                        <span class="text-info">{{ $profile->document['bank'] }}</span>
+                                    </div>
                                     <div class="text-end my-2">
                                         @if (!$profile->is_verified)
                                             <button type="button" class="btn btn-primary" wire:confirm='Are you sure you want to verify this user?' wire:click="verifyUser()">Approve</button>

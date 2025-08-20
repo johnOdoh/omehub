@@ -51,6 +51,7 @@ class Main extends Component
         $this->showProfile = true;
         $this->showCreateProfile = false;
         $this->showEditProfile = false;
+        $this->isPersonal = $this->user->role == 'Shipper' && $this->user->profile()->account_type == 'Personal';
         // $this->dispatch('refresh');
     }
 

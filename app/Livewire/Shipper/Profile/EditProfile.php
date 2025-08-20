@@ -13,7 +13,7 @@ class EditProfile extends Component
     public string $name = '';
     public string $account_type = '';
     public string $phone = '';
-    public string $business_type = '';
+    public $business_type = '';
     public string $address = '';
     public string $city = '';
     public string $country = '';

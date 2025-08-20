@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Common\Profile;
 
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
@@ -20,6 +21,12 @@ class ProfileImageUpdate extends Component
     {
         $this->user = $user;
         $this->allowEdit = $allowEdit;
+        $this->profile = $this->user->profile();
+    }
+
+    #[On('profile-updated')]
+    public function profileCreated()
+    {
         $this->profile = $this->user->profile();
     }
 

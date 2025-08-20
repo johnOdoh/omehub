@@ -32,12 +32,18 @@ class DocumentUpload extends Component
             $this->validate([
                 'front' => 'required|image|mimes:jpg,jpeg,png|max:2048',
                 'back' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+                'number' => 'required|numeric',
+                'name' => 'required',
+                'bank' => 'required'
             ]);
             $front = $this->front->store('documents', 'public');
             $this->back ? $back = $this->back->store('documents', 'public') : $back = null;
             $document = [
                 'front' => $front,
-                'back' => $back
+                'back' => $back,
+                'number' => $this->number,
+                'name' => $this->name,
+                'bank' => $this->bank
             ];
         } else {
             $this->validate([
