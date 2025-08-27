@@ -14,7 +14,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <div class="alert-message d-flex">
                 <strong class="me-2"><i class="fa fa-warning"></i></strong>
-                <div>Your documents are under review by our team. You will be notified when soon when your documents are approved.</div>
+                <div>Your documents are under review by our team. You will be notified as soon as your documents are approved.</div>
             </div>
         </div>
     @endif

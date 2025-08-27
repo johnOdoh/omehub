@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Logistics\Profile;
+namespace App\Livewire\Common\Profile;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -13,6 +13,8 @@ class CreateProfile extends Component
     public $countryCodes = [];
     public $currentCountry;
     public $name;
+    public $account_type = 'Personal';
+    public $business_type;
     public $phone;
     public $address;
     public $city;
@@ -37,7 +39,7 @@ class CreateProfile extends Component
         // $this->dispatch('reRenderScripts');
     }
 
-    public function createProfile()
+    public function create()
     {
         $validated = $this->validate([
             'name' => 'required|string',
@@ -47,19 +49,32 @@ class CreateProfile extends Component
             'country' => 'required|string',
             'dial_code' => 'required|string',
             'zip' => 'required|string',
-            'reg_no' => 'required|string',
+            'reg_no' => 'nullable|string',
             'tin' => 'nullable|string',
-            'logo' => 'required|image|mimes:jpg,jpeg,png,webp,svg|max:5120'
+            'logo' => 'required|image|mimes:jpg,jpeg,png,webp,svg|max:5120',
         ]);
+        if ($this->user->role == 'Shipper') {
+            $validatedShipper = $this->validate([
+                'account_type' => 'nullable|string|in:Personal,Business',
+                'business_type' => 'nullable|string'
+            ]);
+            $validated = array_merge($validated, $validatedShipper);
+        }
         $validated['phone'] = $validated['phone']/1;
         $this->user->update(['name' => $validated['name']]);
         unset($validated['name']);
         $logo = $validated['logo'];
-        $logoName = uniqid($this->user->id). '.' .$logo->extension();
+        $logoName = uniqid($this->user->id.'-'). '.' .$logo->extension();
         $validated['logo'] = $logo->storeAs('logos', $logoName, 'public');
-        $this->user->logistic_provider()->create($validated);
+        $this->user->profileMethod()->create($validated);
         session()->flash("created");
         $this->dispatch('profile-updated');
+    }
+
+    public function changeType($type)
+    {
+        $this->account_type = $type;
+        $this->dispatch('load-countries-plugin');
     }
 
     public function closePage()
@@ -68,6 +83,6 @@ class CreateProfile extends Component
     }
     public function render()
     {
-        return view('livewire.logistics.profile.create-profile');
+        return view('livewire.common.profile.create-profile');
     }
 }

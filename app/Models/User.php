@@ -83,9 +83,19 @@ class User extends Authenticatable
         return match ($user->role) {
             'Logistics Provider' => $user->logistic_provider,
             'Insurance Provider' => $user->insurance_provider,
-            'Shipper' => $user->shipper, // Assuming Shipper has a profile
-            'Admin' => $user->admin, // Assuming Admin has
-            default => null, // Handle other roles if necessary
+            'Shipper' => $user->shipper,
+            default => $user->admin
+        };
+    }
+
+    public function profileMethod()
+    {
+        $user = $this;
+        return match ($user->role) {
+            'Logistics Provider' => $user->logistic_provider(),
+            'Insurance Provider' => $user->insurance_provider(),
+            'Shipper' => $user->shipper(),
+            default => $user->admin()
         };
     }
 
@@ -161,5 +171,15 @@ class User extends Authenticatable
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
+    }
+
+    public function financeRequests()
+    {
+        return $this->hasMany(Financing::class);
+    }
+
+    public function financingRequests()
+    {
+        return $this->hasMany(Financing::class, 'partner_id');
     }
 }

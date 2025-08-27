@@ -43,22 +43,10 @@
                     @endif
                     @if ($showCreateProfile)
                         <hr class="my-0">
-                        @if ($user->role == 'Insurance Provider')
-                            <livewire:insurance.profile.create-profile :$user />
-                        @elseif($user->role == 'Shipper')
-                            <livewire:shipper.profile.create-profile :$user />
-                        @else
-                            <livewire:logistics.profile.create-profile :$user />
-                        @endif
+                        <livewire:common.profile.create-profile :$user />
                     @endif
                 @else
-                    @if ($user->role == 'Insurance Provider')
-                        <livewire:insurance.profile.edit-profile :$user />
-                    @elseif($user->role == 'Shipper')
-                        <livewire:shipper.profile.edit-profile :$user />
-                    @else
-                        <livewire:logistics.profile.edit-profile :$user />
-                    @endif
+                    <livewire:common.profile.edit-profile :$user />
                 @endif
             </div>
         </div>

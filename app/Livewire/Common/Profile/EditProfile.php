@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire\Logistics\Profile;
+namespace App\Livewire\Common\Profile;
 
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class EditProfile extends Component
 {
@@ -11,7 +11,9 @@ class EditProfile extends Component
     public $countryCodes;
     public $currentCountry;
     public string $name = '';
+    public string $account_type = '';
     public string $phone = '';
+    public $business_type = '';
     public string $address = '';
     public string $city = '';
     public string $country = '';
@@ -22,14 +24,14 @@ class EditProfile extends Component
     {
         $this->dispatch('load-countries-plugin');
         $this->countryCodes = DB::table('countries')->orderBy('name')->get();
-        $this->fill($this->user->logistic_provider);
+        $this->fill($this->user->profile());
         $this->currentCountry = $this->countryCodes->firstWhere('name', $this->country);
         $this->dial_code = $this->currentCountry->dial_code;
         $this->name = $this->user->name;
         $this->dispatch('load-defaults');
     }
 
-    public function updateProfile()
+    public function update()
     {
         $validated = $this->validate([
             'phone' => 'required|numeric',
@@ -39,8 +41,14 @@ class EditProfile extends Component
             'dial_code' => 'required|string',
             'zip' => 'required|string'
         ]);
+        if ($this->user->role == 'shipper') {
+            $validatedShipper = $this->validate([
+                'business_type' => 'nullable|string'
+            ]);
+            $validated = array_merge($validated, $validatedShipper);
+        }
         $validated['phone'] = $validated['phone']/1;
-        $this->user->logistic_provider()->update($validated);
+        $this->user->profileMethod()->update($validated);
         request()->session()->flash("updated");
         $this->dispatch('profile-updated');
     }
@@ -49,9 +57,8 @@ class EditProfile extends Component
     {
         $this->dispatch('close-page');
     }
-
     public function render()
     {
-        return view('livewire.logistics.profile.edit-profile');
+        return view('livewire.common.profile.edit-profile');
     }
 }

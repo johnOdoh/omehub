@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['Admin', 'Shipper', 'Logistics Provider', 'Insurance Provider']);
-            $table->enum('admin_role', ['Admin', 'Legal Partner', 'Shipment Auditor'])->nullable();
+            $table->enum('admin_role', ['Admin', 'Legal Partner', 'Shipment Auditor', 'Financial Partner', 'Sustainability Partner'])->nullable();
             $table->enum('status', ['Active', 'Suspended'])->default('Active');
             $table->boolean('verification_payment')->default('false');
             $table->boolean('bulletin_payment')->default('false');

@@ -1,28 +1,53 @@
 <div class="card-body">
-    @if (session('created')) <span x-show="notify('Profile Created')"></span> @endif
-    <form wire:submit="createProfile" class="p-0">
-        <div class="my-3">
-            <label class="form-label fw-bold">
-                Business Name <small><em>(You can only edit this once)</em></small>
-            </label>
-            <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-user fa-fw me-1"></i></span>
-                <input type="text" class="form-control" placeholder="Name" aria-label="Name" wire:model="name">
+    @if (session('updated')) <span x-show="notify('Profile Updated')"></span> @endif
+    <form wire:submit="update" class="p-0">
+        @if ($user->role == 'Shipper')
+            <label class="form-label fw-bold"><small>Account Type</small></label>
+            <div>
+                <label class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" {{ $account_type == 'Personal' ? 'checked' : '' }} disabled>
+                    <span class="form-check-label">Personal</span>
+                </label>
+                <label class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" {{ $account_type == 'Business' ? 'checked' : '' }} disabled>
+                    <span class="form-check-label">Business</span>
+                </label>
             </div>
-            @error('name')
-                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-            @enderror
-        </div>
-        <div class="my-3">
-            <div class="form-label fw-bold">Business Logo</div>
-            <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-file fa-fw me-1"></i></span>
-                <input type="file" class="form-control" required wire:model="logo" accept="image/*">
+            <div class="my-3">
+                <label class="form-label fw-bold">
+                    @if ($account_type == 'Business') Business Name @else Full Name @endif
+                </label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa fa-user fa-fw me-1"></i></span>
+                    <input type="text" class="form-control" aria-label="Name" disabled value="{{ $name }}">
+                </div>
             </div>
-            @error('logo')
-                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-            @enderror
-        </div>
+            @if ($account_type == 'Business')
+                <div class="my-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa fa-briefcase fa-fw me-1"></i></span>
+                        <select class="form-select" required wire:model="business_type">
+                            <option value="">Select Business Type</option>
+                            <option value="Online Store" {{ $business_type == 'Online Store' ? 'selected' : '' }}>Online Store</option>
+                            <option value="Retail Store" {{ $business_type == 'Retail Store' ? 'selected' : '' }}>Retail Store</option>
+                            <option value="Wholesale" {{ $business_type == 'Wholesale' ? 'selected' : '' }}>Wholesale</option>
+                            <option value="Manufacturer" {{ $business_type == 'Manufacturer' ? 'selected' : '' }}>Manufacturer</option>
+                        </select>
+                    </div>
+                    @error('business_type')
+                        <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                    @enderror
+                </div>
+            @endif
+        @else
+            <div class="my-3">
+                <label class="form-label fw-bold">Business Name</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa fa-user fa-fw me-1"></i></span>
+                    <input type="text" class="form-control" aria-label="Name" disabled value="{{ $name }}">
+                </div>
+            </div>
+        @endif
         <div class="mb-3" x-data="{ selectedFlag: 'https://flagcdn.com/{{ strtolower($currentCountry->code) }}.svg', selectedCode: '{{ $currentCountry->dial_code }}' }">
             <div class="border rounded d-flex align-items-center p-2">
                 <div class="dropdown me-2">
@@ -40,24 +65,6 @@
                 <input type="tel" class="form-control border-0" placeholder="Phone number" style="flex: 1;" required wire:model='phone'>
             </div>
             @error('phone')
-                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-            @enderror
-        </div>
-        <div class="my-3">
-            <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-key fa-fw me-1"></i></span>
-                <input type="text" class="form-control" placeholder="Company Registration Number" aria-label="Registration Number" required wire:model="reg_no">
-            </div>
-            @error('reg_no')
-                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
-            @enderror
-        </div>
-        <div class="my-3">
-            <div class="input-group">
-                <span class="input-group-text"><i class="fa fa-key fa-fw me-1"></i></span>
-                <input type="text" class="form-control" placeholder="TAX ID Number" aria-label="TAX ID Number" required wire:model="tin">
-            </div>
-            @error('tin')
                 <div class="text-danger"><small><i>{{ $message }}</i></small></div>
             @enderror
         </div>
@@ -99,7 +106,7 @@
         </div>
         <div class="text-end my-3">
             <button type="button" class="btn btn-outline-primary me-1" x-on:click="$wire.closePage()" wire:loading.remove>Cancel</button>
-            <button type="submit" class="btn btn-primary" wire:loading.remove>Create</button>
+            <button type="submit" class="btn btn-primary disabled" wire:loading.remove wire:dirty.class.remove="disabled">Save</button>
             <button class="btn btn-primary px-5" wire:loading>
                 <div class="spinner-border spinner-border-sm text-light" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -107,4 +114,18 @@
             </button>
         </div>
     </form>
+    @script
+        <script>
+            $wire.on('load-defaults', () => {
+                setTimeout(() => {
+                    const country = document.getElementById('country');
+                    const city = document.getElementById('state');
+                    country.value = $wire.country; // Set your desired default value
+                    const event = new Event('change', { bubbles: true });
+                    country.dispatchEvent(event);
+                    city.value = $wire.city; // Set your desired default value
+                }, 1000);
+            });
+        </script>
+    @endscript
 </div>

@@ -1,29 +1,30 @@
 <div class="container-fluid p-0">
     <h1 class="h3 mb-3 text-center">Upload Verification Documents</h1>
+    @php $isPersonal = $user->role == 'Shipper' && $user->profile()->account_type == 'Personal' @endphp
     <div class="row">
         <div class="col-12 col-md-6 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <form wire:submit="save">
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control" wire:model="name" placeholder="Company Account Name" required>
+                            <input type="text" class="form-control" wire:model="name" placeholder="{{ $isPersonal ? 'Personal' : 'Company' }} Account Name" required>
                             @error('name')
                                 <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control" wire:model="number" placeholder="Company Account Number" required>
+                            <input type="text" class="form-control" wire:model="number" placeholder="{{ $isPersonal ? 'Personal' : 'Company' }} Account Number" required>
                             @error('number')
                                 <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control" wire:model="bank" placeholder="Company Bank Name" required>
+                            <input type="text" class="form-control" wire:model="bank" placeholder="{{ $isPersonal ? 'Personal' : 'Company' }} Bank Name" required>
                             @error('bank')
                                 <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                             @enderror
                         </div>
-                        @if ($user->role == 'Shipper' && $user->profile()->account_type == 'Personal')
+                        @if ($isPersonal)
                             <div class="form-group mb-3">
                                 <label class="form-label fw-bold">
                                     Government Issued ID (Front)<small><em>(Must be an image)</em></small>
@@ -55,8 +56,8 @@
                         @endif
                         <div>
                             <button type="submit" class="btn btn-primary" wire:loading.remove wire:target="save, document, front, back">Submit</button>
-                            <button class="btn btn-primary px-5" wire:loading>
-                                <div class="spinner-border spinner-border-sm text-light" role="status" wire:target="save, document, front, back">
+                            <button class="btn btn-primary px-5" wire:loading wire:target="save, document, front, back">
+                                <div class="spinner-border spinner-border-sm text-light" role="status">
                                     <span class="visually-hidden">Loading...</span>
                                 </div>
                             </button>
