@@ -4,7 +4,7 @@
             <div class="row align-items-center">
                 <div class="col-4 pe-0">
                     <h4 class="text-center py-1 fw-bold">
-                        <img src="{{ asset('storage/'.$quote->user->profile()->logo) ?? '' }}" alt="logo" width="70" class="me-2 img-fluid">{{ $quote->user->name }}
+                        <img src="{{ asset('storage/'.$quote->user->profile->logo) ?? '' }}" alt="logo" width="70" class="me-2 img-fluid">{{ $quote->user->name }}
                     </h4>
                 </div>
                 <div class="col-4 border-start border-end px-0 py-3">
@@ -40,7 +40,7 @@
                                     <div class="iq p-2 border border-1">
                                         <div class="d-flex align-items-center gap-2">
                                             <div class="d-flex align-items-center">
-                                                <img src="{{ asset('storage/'.$insurance->user->profile()->logo) ?? '' }}"  width="50" height="50" class="rounded-circle me-2" alt="logo">
+                                                <img src="{{ asset('storage/'.$insurance->user->profile->logo) ?? '' }}"  width="50" height="50" class="rounded-circle me-2" alt="logo">
                                                 <div>
                                                     <strong>{{ $insurance->user->name }}</strong>
                                                     <p class="small text-muted mb-0">Insurance cover of up to

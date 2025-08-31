@@ -72,41 +72,9 @@ class User extends Authenticatable
             'Logistics Provider' => 'logistics.dashboard',
             'Insurance Provider' => 'insurance.dashboard',
             'Shipper' => 'shipper.dashboard',
+            'Financial Partner' => 'finance.dashboard',
+            'Sustainability Partner' => 'sustainability.dashboard',
             'Admin' => 'admin.dashboard',
-            default => 'home'
-        };
-    }
-
-    public function profile()
-    {
-        $user = $this;
-        return match ($user->role) {
-            'Logistics Provider' => $user->logistic_provider,
-            'Insurance Provider' => $user->insurance_provider,
-            'Shipper' => $user->shipper,
-            default => $user->admin
-        };
-    }
-
-    public function profileMethod()
-    {
-        $user = $this;
-        return match ($user->role) {
-            'Logistics Provider' => $user->logistic_provider(),
-            'Insurance Provider' => $user->insurance_provider(),
-            'Shipper' => $user->shipper(),
-            default => $user->admin()
-        };
-    }
-
-    public function profileRoute()
-    {
-        $user = $this;
-        return match ($user->role) {
-            'Logistics Provider' => 'logistics.profile',
-            'Insurance Provider' => 'insurance.profile',
-            'Shipper' => 'shipper.profile',
-            'Admin' => 'admin.profile',
             default => 'home'
         };
     }
@@ -118,24 +86,9 @@ class User extends Authenticatable
             ->first();
     }
 
-    public function shipper()
+    public function profile()
     {
-        return $this->hasOne(Shipper::class);
-    }
-
-    public function logistic_provider()
-    {
-        return $this->hasOne(Logistic::class);
-    }
-
-    public function insurance_provider()
-    {
-        return $this->hasOne(Insurance::class);
-    }
-
-    public function admin()
-    {
-        return $this->hasOne(Admin::class);
+        return $this->hasOne(Profile::class);
     }
 
     public function quotes()

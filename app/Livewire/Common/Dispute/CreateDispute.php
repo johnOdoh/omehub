@@ -43,7 +43,7 @@ class CreateDispute extends Component
 
     public function create()
     {
-        if (!request()->user()->profile() || !request()->user()->profile()->is_verified) return;
+        if (!request()->user()->profile?->is_verified) return;
         $this->suggestions = null;
         $this->validate([
             'body' => 'required',

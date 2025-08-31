@@ -1,6 +1,6 @@
 <div class="container-fluid p-0">
     <h1 class="h3 mb-3 text-center">Upload Verification Documents</h1>
-    @php $isPersonal = $user->role == 'Shipper' && $user->profile()->account_type == 'Personal' @endphp
+    @php $isPersonal = $user->role == 'Shipper' && $user->profile->account_type == 'Personal' @endphp
     <div class="row">
         <div class="col-12 col-md-6 mx-auto">
             <div class="card">

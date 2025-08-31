@@ -23,6 +23,10 @@
         0 => ['name' => 'Create Admin', 'route' => 'admin.create-admin'],
         1 => ['name' => 'Admin List', 'route' => 'admin.admins'],
     ];
+    $adminUsersDropdown = [
+        0 => ['name' => 'Create Partner', 'route' => 'admin.create-user'],
+        1 => ['name' => 'Users List', 'route' => 'admin.users'],
+    ];
     $ticketDropdown = [
         0 => ['name' => 'Create Ticket', 'route' => 'user.ticket.create'],
         1 => ['name' => 'My Tickets', 'route' => 'user.ticket.list'],
@@ -114,7 +118,7 @@
                 <x-sidebar-item route="admin.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="admin.profile" name="Profile" icon="user" />
                 @if (auth()->user()->admin_role == 'Admin')
-                    <x-sidebar-item route="admin.users" name="Users" icon="users" />
+                    <x-sidebar-dropdown :items="$adminUsersDropdown" name="Users" icon="users" id="users" />
                     <x-sidebar-dropdown :items="$adminDropdown" name="Admins" icon="users-cog" id="admins" />
                     <x-sidebar-item route="admin.tickets" name="Tickets" icon="hands-helping" />
                 @endif
@@ -139,7 +143,7 @@
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$financingDropdown" name="Trade Finance" icon="money-check" id="financing" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
-                @elseif (auth()->user()->role == 'Logistics Provider')
+            @elseif (auth()->user()->role == 'Logistics Provider')
                 {{-- <li class="sidebar-header">
                     Logistics
                 </li> --}}
@@ -168,6 +172,11 @@
                     No Role
                 </li>
             @endif
+            <li class="sidebar-header">
+                Financial Partner
+            </li>
+            <x-sidebar-item route="finance.dashboard" name="Dashboard" icon="sliders" />
+            <x-sidebar-item route="user.profile" name="Profile" icon="user" />
         </ul>
     </div>
 </nav>

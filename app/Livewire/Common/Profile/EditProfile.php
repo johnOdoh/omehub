@@ -11,7 +11,7 @@ class EditProfile extends Component
     public $countryCodes;
     public $currentCountry;
     public string $name = '';
-    public string $account_type = '';
+    public $account_type = '';
     public string $phone = '';
     public $business_type = '';
     public string $address = '';
@@ -24,7 +24,7 @@ class EditProfile extends Component
     {
         $this->dispatch('load-countries-plugin');
         $this->countryCodes = DB::table('countries')->orderBy('name')->get();
-        $this->fill($this->user->profile());
+        $this->fill($this->user->profile);
         $this->currentCountry = $this->countryCodes->firstWhere('name', $this->country);
         $this->dial_code = $this->currentCountry->dial_code;
         $this->name = $this->user->name;
@@ -48,7 +48,7 @@ class EditProfile extends Component
             $validated = array_merge($validated, $validatedShipper);
         }
         $validated['phone'] = $validated['phone']/1;
-        $this->user->profileMethod()->update($validated);
+        $this->user->profile()->update($validated);
         request()->session()->flash("updated");
         $this->dispatch('profile-updated');
     }

@@ -112,40 +112,40 @@
                                         <div class="fw-bold">{{ $admin->admin_role }}</div>
                                     </div>
                                 </li>
-                                @if ($admin->profile())
+                                @if ($admin->profile)
                                     <li class="d-flex align-items-center gap-2 mb-2">
                                         <i class="fas fa-phone fa-fw me-1"></i>
                                         <div>
                                             <div class="text-muted small">Phone Number</div>
-                                            <div class="fw-bold">{{ $admin->profile()->dial_code.' '.$admin->profile()->phone }}</div>
+                                            <div class="fw-bold">{{ $admin->profile->dial_code.' '.$admin->profile->phone }}</div>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-2 mb-2">
                                         <i class="fas fa-map-pin fa-fw me-1"></i>
                                         <div>
                                             <div class="text-muted small">Address</div>
-                                            <div class="fw-bold">{{ $admin->profile()->address }}</div>
+                                            <div class="fw-bold">{{ $admin->profile->address }}</div>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-2 mb-2">
                                         <i class="fas fa-tag fa-fw me-1"></i>
                                         <div>
                                             <div class="text-muted small">Zip</div>
-                                            <div class="fw-bold">{{ $admin->profile()->zip }}</div>
+                                            <div class="fw-bold">{{ $admin->profile->zip }}</div>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-2 mb-2">
                                         <i class="fas fa-home fa-fw me-1"></i>
                                         <div>
                                             <div class="text-muted small">City</div>
-                                            <div class="fw-bold">{{ $admin->profile()->city }}</div>
+                                            <div class="fw-bold">{{ $admin->profile->city }}</div>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-2 mb-2">
                                         <i class="fas fa-globe fa-fw me-1"></i>
                                         <div>
                                             <div class="text-muted small">Country</div>
-                                            <div class="fw-bold">{{ $admin->profile()->country }}</div>
+                                            <div class="fw-bold">{{ $admin->profile->country }}</div>
                                         </div>
                                     </li>
                                 @endif

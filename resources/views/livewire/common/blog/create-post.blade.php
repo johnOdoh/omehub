@@ -8,22 +8,22 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <div class="alert-message d-flex">
                 <strong class="me-2">Note:</strong>
-                <div>Your post is subject to review by our team. We only accept posts that conform to our terms & conditions.</div>
+                <div>Your post is subject to review by our team. We only accept posts that conform to our <a href="{{ route('terms') }}" target="_blank">terms & conditions.</a></div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        @if (!auth()->user()->profile())
+                        @if (!auth()->user()->profile)
                             <div class="alert alert-warning alert-dismissible" role="alert">
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 <div class="alert-message d-flex">
                                     <strong class="me-2"><i class="fa fa-warning"></i></strong>
-                                    <div>You are yet to complete your profile. <a href="{{ route(auth()->user()->profileRoute()) }}" wire:navigate>Click here</a> to complete your profile to be able to enjoy our services.</div>
+                                    <div>You are yet to complete your profile. <a href="{{ route('user.profile') }}" wire:navigate>Click here</a> to complete your profile to be able to enjoy our services.</div>
                                 </div>
                             </div>
-                        @elseif (!auth()->user()->profile()->is_verified)
+                        @elseif (!auth()->user()->profile->is_verified)
                             <div class="alert alert-warning alert-dismissible" role="alert">
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 <div class="alert-message d-flex">
@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile() || !auth()->user()->profile()->is_verified) disabled @endif wire:loading.remove wire:target='file, body,createPost'>Submit</button>
+                                        <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile || !auth()->user()->profile->is_verified) disabled @endif wire:loading.remove wire:target='file, body,createPost'>Submit</button>
                                         <button class="btn btn-primary px-5" wire:loading>
                                             <div class="spinner-border spinner-border-sm text-light" role="status" wire:target='file, body, createPost'>
                                                 <span class="visually-hidden">Loading...</span>
@@ -204,7 +204,7 @@
                                 <input type="hidden" wire:model="body" required>
                                 <div class="row">
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile() || !auth()->user()->profile()->is_verified) disabled @endif wire:loading.remove wire:target='file, body, createAd'>Submit</button>
+                                        <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile?->is_verified) disabled @endif wire:loading.remove wire:target='file, body, createAd'>Submit</button>
                                         <button class="btn btn-primary px-5" wire:loading>
                                             <div class="spinner-border spinner-border-sm text-light" role="status" wire:target='file, body, createAd'>
                                                 <span class="visually-hidden">Loading...</span>

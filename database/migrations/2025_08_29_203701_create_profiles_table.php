@@ -11,16 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('logo');
+            $table->string('account_type')->nullable();
+            $table->string('business_type')->nullable();
+            $table->string('reg_no')->nullable();
+            $table->string('tin')->nullable();
             $table->string('phone');
             $table->string('address');
+            $table->string('zip');
             $table->string('city');
             $table->string('country');
-            $table->string('zip');
             $table->string('dial_code');
+            $table->json('documents')->nullable();
+            $table->boolean('is_verified')->default(false);
+            $table->unsignedSmallInteger('rating')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('profiles');
     }
 };

@@ -21,14 +21,14 @@ class DocumentUpload extends Component
     public function mount()
     {
         $this->user = request()->user();
-        if (!$this->user->verification_payment || $this->user->profile()->document) {
+        if (!$this->user->verification_payment || $this->user->profile->document) {
             return $this->redirect(route('user.profile'), true);
         }
     }
 
     public function save()
     {
-        if ($this->user->role == 'Shipper' && $this->user->profile()->account_type == 'Personal') {
+        if ($this->user->role == 'Shipper' && $this->user->profile->account_type == 'Personal') {
             $this->validate([
                 'front' => 'required|image|mimes:jpg,jpeg,png|max:2048',
                 'back' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',

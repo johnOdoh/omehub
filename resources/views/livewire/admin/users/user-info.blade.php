@@ -2,6 +2,7 @@
     <div class="mb-2">
         <h1 class="h3 d-inline align-middle">User Information</h1>
     </div>
+    <p class="fw-bold"><a href="{{ route('admin.users') }}" wire:navigate class="text-decoration-none">< Back</a></p>
     @if (session('message')) <span x-show="notify('{{ session('message') }}')"></span> @endif
     <div class="row">
         <div class="col-md-6">
@@ -11,7 +12,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">KYC Status <span class="badge bg-{{ $profile->is_verified ? 'success' : 'warning' }}">{{ $profile->is_verified ? 'Verified' : 'Pending' }}</span></h5>
+                                    <h5 class="card-title">KYC Status <span class="badge bg-{{ $user->profile->is_verified ? 'success' : 'warning' }}">{{ $user->profile->is_verified ? 'Verified' : 'Pending' }}</span></h5>
                                 </div>
                                 <div class="col-auto">
                                     <div class="stat">
@@ -19,51 +20,51 @@
                                     </div>
                                 </div>
                             </div>
-                            @if ($profile->document)
-                                @if ($user->role == 'Shipper' && $user->profile()->account_type == 'Personal')
+                            @if ($user->profile->document)
+                                @if ($user->role == 'Shipper' && $user->profile->account_type == 'Personal')
                                     <div class="mt-3 d-flex justify-content-between">
                                         <p class="text-muted">Front Page</p>
-                                        <a href="{{ asset('storage/' . $profile->document['front']) }}" class="px-3" target="_blank">View</a>
+                                        <a href="{{ asset('storage/' . $user->profile->document['front']) }}" class="px-3" target="_blank">View</a>
                                     </div>
-                                    @if ($profile->document['back'])
+                                    @if ($user->profile->document['back'])
                                         <div class="d-flex justify-content-between">
                                             <p class="text-muted">Back</p>
-                                            <a href="{{ asset('storage/' . $profile->document['back']) }}" class="px-3" target="_blank">View</a>
+                                            <a href="{{ asset('storage/' . $user->profile->document['back']) }}" class="px-3" target="_blank">View</a>
                                         </div>
                                     @endif
                                     <div class="mt-2 d-flex justify-content-between">
                                         <p class="text-muted">Account Name</p>
-                                        <span class="text-info">{{ $profile->document['name'] }}</span>
+                                        <span class="text-info">{{ $user->profile->document['name'] }}</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="text-muted">Account Number</p>
-                                        <span class="text-info">{{ $profile->document['number'] }}</span>
+                                        <span class="text-info">{{ $user->profile->document['number'] }}</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="text-muted">Bank Name</p>
-                                        <span class="text-info">{{ $profile->document['bank'] }}</span>
+                                        <span class="text-info">{{ $user->profile->document['bank'] }}</span>
                                     </div>
                                     <div class="text-end my-2">
-                                        @if (!$profile->is_verified)
+                                        @if (!$user->profile->is_verified)
                                             <button type="button" class="btn btn-primary" wire:confirm='Are you sure you want to verify this user?' wire:click="verifyUser()">Approve</button>
                                         @endif
                                     </div>
                                 @else
                                     <div class="mt-2 d-flex justify-content-between">
                                         <p class="text-muted">Account Name</p>
-                                        <span class="text-info">{{ $profile->document['name'] }}</span>
+                                        <span class="text-info">{{ $user->profile->document['name'] }}</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="text-muted">Account Number</p>
-                                        <span class="text-info">{{ $profile->document['number'] }}</span>
+                                        <span class="text-info">{{ $user->profile->document['number'] }}</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <p class="text-muted">Bank Name</p>
-                                        <span class="text-info">{{ $profile->document['bank'] }}</span>
+                                        <span class="text-info">{{ $user->profile->document['bank'] }}</span>
                                     </div>
                                     <div class="text-end my-1">
-                                        <a href="{{ asset('storage/' . $profile->document['document']) }}" class="px-3" target="_blank">View Document</a>
-                                        @if (!$profile->is_verified)
+                                        <a href="{{ asset('storage/' . $user->profile->document['document']) }}" class="px-3" target="_blank">View Document</a>
+                                        @if (!$user->profile->is_verified)
                                             <button type="button" class="btn btn-primary" wire:confirm='Are you sure you want to verify this user?' wire:click="verifyUser()">Approve</button>
                                         @endif
                                     </div>
@@ -173,49 +174,49 @@
                             <i class="fas fa-key fa-fw me-1"></i>
                             <div>
                                 <div class="text-muted small">Registration Number</div>
-                                <div class="fw-bold">{{ $profile->reg_no ?? 'N/A' }}</div>
+                                <div class="fw-bold">{{ $user->profile->reg_no ?? 'N/A' }}</div>
                             </div>
                         </li>
                         <li class="d-flex align-items-center gap-2 mb-2">
                             <i class="fas fa-key fa-fw me-1"></i>
                             <div>
                                 <div class="text-muted small">TAX ID Number</div>
-                                <div class="fw-bold">{{ $profile->tin ?? 'N/A' }}</div>
+                                <div class="fw-bold">{{ $user->profile->tin ?? 'N/A' }}</div>
                             </div>
                         </li>
                         <li class="d-flex align-items-center gap-2 mb-2">
                             <i class="fas fa-phone fa-fw me-1"></i>
                             <div>
                                 <div class="text-muted small">Phone Number</div>
-                                <div class="fw-bold">{{ $profile->dial_code.' '.$profile->phone }}</div>
+                                <div class="fw-bold">{{ $user->profile->dial_code.' '.$user->profile->phone }}</div>
                             </div>
                         </li>
                         <li class="d-flex align-items-center gap-2 mb-2">
                             <i class="fas fa-map-pin fa-fw me-1"></i>
                             <div>
                                 <div class="text-muted small">Address</div>
-                                <div class="fw-bold">{{ $profile->address }}</div>
+                                <div class="fw-bold">{{ $user->profile->address }}</div>
                             </div>
                         </li>
                         <li class="d-flex align-items-center gap-2 mb-2">
                             <i class="fas fa-tag fa-fw me-1"></i>
                             <div>
                                 <div class="text-muted small">Zip</div>
-                                <div class="fw-bold">{{ $profile->zip }}</div>
+                                <div class="fw-bold">{{ $user->profile->zip }}</div>
                             </div>
                         </li>
                         <li class="d-flex align-items-center gap-2 mb-2">
                             <i class="fas fa-home fa-fw me-1"></i>
                             <div>
                                 <div class="text-muted small">City</div>
-                                <div class="fw-bold">{{ $profile->city }}</div>
+                                <div class="fw-bold">{{ $user->profile->city }}</div>
                             </div>
                         </li>
                         <li class="d-flex align-items-center gap-2 mb-2">
                             <i class="fas fa-globe fa-fw me-1"></i>
                             <div>
                                 <div class="text-muted small">Country</div>
-                                <div class="fw-bold">{{ $profile->country }}</div>
+                                <div class="fw-bold">{{ $user->profile->country }}</div>
                             </div>
                         </li>
                     </ul>

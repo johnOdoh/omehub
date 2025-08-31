@@ -17,7 +17,7 @@ class Main extends Component
     public function mount()
     {
         $this->user = request()->user();
-        $this->hasProfile = $this->user->admin()->exists();
+        $this->hasProfile = $this->user->profile()->exists();
     }
 
     public function createProfile()

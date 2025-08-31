@@ -13,7 +13,7 @@
                 <div class="card mb-4 p-0 rounded-4">
                     <div class="card-body">
                         <h3 class="text-center py-1 fw-bold">
-                            <img src="{{ asset('storage/'.$quote->user->profile()->logo) ?? '' }}" alt="" width="100" height="50" class="me-2">{{ $quote->user->name }}
+                            <img src="{{ asset('storage/'.$quote->user->profile->logo) ?? '' }}" alt="" width="100" height="50" class="me-2">{{ $quote->user->name }}
                         </h3>
                         <hr class="mb-0">
                         {{-- <div class="d-flex justify-content-around align-items-center">

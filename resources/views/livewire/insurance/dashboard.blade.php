@@ -1,7 +1,7 @@
 <div>
     <h1 class="h3 mb-3"><i class="fa fa-sun"></i> Good Day, {{ $user->firstname() }}</h1>
     <hr>
-    @if (!$user->insurance_provider)
+    @if (!$user->profile)
         <div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <div class="alert-message d-flex">
@@ -9,7 +9,7 @@
                 <div>You are yet to complete your profile. <a href="{{ route('user.profile') }}" wire:navigate>Click here</a> to complete your profile to be able to enjoy our services.</div>
             </div>
         </div>
-    @elseif (!$user->insurance_provider->is_verified)
+    @elseif (!$user->profile->is_verified)
         <div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <div class="alert-message d-flex">

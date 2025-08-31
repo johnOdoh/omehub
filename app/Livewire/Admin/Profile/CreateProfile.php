@@ -46,9 +46,10 @@ class CreateProfile extends Component
         ]);
         $validated['phone'] = $validated['phone']/1;
         $logo = $validated['logo'];
-        $logoName = $this->user->email. '.' .$logo->extension();
+        $validated['is_verified'] = true;
+        $logoName = uniqid($this->user->id.'-'). '.' .$logo->extension();
         $validated['logo'] = $logo->storeAs('logos', $logoName, 'public');
-        $this->user->admin()->create($validated);
+        $this->user->profile()->create($validated);
         session()->flash("created");
         $this->dispatch('created');
     }

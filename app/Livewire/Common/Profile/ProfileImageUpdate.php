@@ -21,13 +21,13 @@ class ProfileImageUpdate extends Component
     {
         $this->user = $user;
         $this->allowEdit = $allowEdit;
-        $this->profile = $this->user->profile();
+        $this->profile = $this->user->profile;
     }
 
     #[On('profile-updated')]
     public function profileCreated()
     {
-        $this->profile = $this->user->profile();
+        $this->profile = $this->user->profile;
     }
 
     public function save()

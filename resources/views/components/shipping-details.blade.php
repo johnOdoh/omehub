@@ -13,8 +13,8 @@
                     <h5 class="text-uppercase mb-3 fw-bold text-primary">Shipper Information</h5>
                     <div class="mb-2"><strong>Name:</strong> {{ $shipment->user->name }}</div>
                     <div class="mb-2"><strong>Email:</strong> {{ $shipment->user->email }}</div>
-                    <div class="mb-2"><strong>Address:</strong> {{ $shipment->user->profile()->address }}</div>
-                    <div class="mb-2"><strong>Phone:</strong> {{ $shipment->user->profile()->dial_code.' '.$shipment->user->profile()->phone }}</div>
+                    <div class="mb-2"><strong>Address:</strong> {{ $shipment->user->profile->address }}</div>
+                    <div class="mb-2"><strong>Phone:</strong> {{ $shipment->user->profile->dial_code.' '.$shipment->user->profile->phone }}</div>
                 </div>
             </div>
         </div>

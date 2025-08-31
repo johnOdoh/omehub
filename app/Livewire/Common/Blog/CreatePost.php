@@ -37,7 +37,7 @@ class CreatePost extends Component
 
     public function createPost()
     {
-        if (!request()->user()->profile() || !request()->user()->profile()->is_verified) return;
+        if (!request()->user()->profile?->is_verified) return;
         $validated = $this->validate([
             'title' => 'required|string|max:191',
             'description' => 'required|string|max:200',
@@ -60,7 +60,7 @@ class CreatePost extends Component
 
     public function createAd()
     {
-        if (!request()->user()->profile() || !request()->user()->profile()->is_verified) return;
+        if (!request()->user()->profile?->is_verified) return;
         $validated = $this->validate([
             'title' => 'required|string|max:191',
             'description' => 'required|string|max:200',

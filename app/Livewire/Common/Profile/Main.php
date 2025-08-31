@@ -20,8 +20,8 @@ class Main extends Component
     public function mount()
     {
         $this->user = request()->user();
-        $this->hasProfile = $this->user->profile();
-        $this->isPersonal = $this->hasProfile && $this->user->role == 'Shipper' && $this->user->profile()->account_type == 'Personal';
+        $this->hasProfile = $this->user->profile()->exists();
+        $this->isPersonal = $this->hasProfile && $this->user->role == 'Shipper' && $this->user->profile->account_type == 'Personal';
     }
 
     public function createProfile()
@@ -51,7 +51,7 @@ class Main extends Component
         $this->showProfile = true;
         $this->showCreateProfile = false;
         $this->showEditProfile = false;
-        $this->isPersonal = $this->user->role == 'Shipper' && $this->user->profile()->account_type == 'Personal';
+        $this->isPersonal = $this->user->role == 'Shipper' && $this->user->profile->account_type == 'Personal';
         // $this->dispatch('refresh');
     }
 

@@ -23,6 +23,7 @@ use App\Livewire\Common\Dispute\CreateDispute;
 use App\Livewire\Common\Financing\RequestList;
 use App\Livewire\Shipper\Quotes\QuoteRequests;
 use App\Livewire\Common\Profile\DocumentUpload;
+use App\Livewire\Finance\Dashboard as FinanceDashboard;
 use App\Livewire\Logistics\Shipments\Shipments;
 use App\Livewire\Shipper\Shipments\ShipmentList;
 use App\Livewire\Insurance\Dashboard as InsuranceDashboard;
@@ -44,6 +45,7 @@ Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('priva
 Route::middleware(['auth'])->group(function () {
     Route::get('admin/dashboard', \App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');
     Route::get('admin/profile', \App\Livewire\Admin\Profile\Main::class)->name('admin.profile');
+    Route::get('admin/users/create', \App\Livewire\Admin\Users\Create::class)->name('admin.create-user');
     Route::get('admin/users', UsersList::class)->name('admin.users');
     Route::get('admin/users/{user}', UserInfo::class)->name('admin.user');
     Route::get('admin/admins/create', \App\Livewire\Admin\Admins\Create::class)->name('admin.create-admin');
@@ -68,6 +70,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('insurance/quote-requests', InsuranceRequests::class)->name('insurance.quote-requests');
     Route::get('insurance/quotes-sent', InsuranceQuotesSent::class)->name('insurance.quotes-sent');
     Route::get('insurance/shipments', \App\Livewire\Insurance\Shipments\ShipmentList::class)->name('insurance.shipments');
+
+    Route::get('finance/dashboard', FinanceDashboard::class)->name('finance.dashboard');
 
     Route::get('user/profile', Main::class)->name('user.profile');
     Route::get('user/profile/upload-document', DocumentUpload::class)->name('user.upload-document');

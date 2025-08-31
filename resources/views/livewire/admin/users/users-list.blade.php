@@ -15,10 +15,12 @@
                         <a class="dropdown-item" wire:click.prevent='changeCurrent("Shipper")' href="#">Shippers</a>
                         <a class="dropdown-item" wire:click.prevent='changeCurrent("Logistics Provider")' href="#">Logistics Providers</a>
                         <a class="dropdown-item" wire:click.prevent='changeCurrent("Insurance Provider")' href="#">Insurance Providers</a>
+                        <a class="dropdown-item" wire:click.prevent='changeCurrent("Financial Partner")' href="#">Financial Partners</a>
+                        <a class="dropdown-item" wire:click.prevent='changeCurrent("Sustainability Partner")' href="#">Sustainability Partners</a>
                     </div>
                 </div>
             </div>
-            {{-- <h5 class="card-title mb-0">{{ $current }}s</h5> --}}
+            <h5 class="card-title mb-0">{{ $current }}s</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -39,7 +41,7 @@
                             <tr>
                                 <td>{{ $users->firstItem() + $loop->index }}</td>
                                 <td>
-                                    @if ($user->profile() )<img src="{{ asset('storage/'.$user->profile()->logo) }}" width="40" height="40" class="rounded-circle me-2" alt="logo"> @else N/A @endif
+                                    @if ($user->profile)<img src="{{ asset('storage/'.$user->profile->logo) }}" width="40" height="40" class="rounded-circle me-2" alt="logo"> @else N/A @endif
                                 </td>
                                 <td>
                                     <div class="flex-grow-1">
@@ -48,10 +50,10 @@
                                     </div>
                                 </td>
                                 <td><span class="badge bg-info">{{ $user->role }}</span></td>
-                                <td><span class="badge bg-{{ $user->profile() && $user->profile()->is_verified ? 'success' : 'warning' }}">{{ $user->profile() && $user->profile()->is_verified ? 'Verified' : 'Unverified' }}</span></td>
+                                <td><span class="badge bg-{{ $user->profile?->is_verified ? 'success' : 'warning' }}">{{ $user->profile?->is_verified ? 'Verified' : 'Unverified' }}</span></td>
                                 <td><span class="badge bg-{{ $user->status == 'Active' ? 'success' : 'warning' }}">{{ $user->status }}</span></td>
                                 <td class="table-action">
-                                    @if ($user->profile())
+                                    @if ($user->profile()->exists())
                                         <a href="{{ route('admin.user', $user->id) }}" class="me-2" wire:navigate>
                                             <i class="fa fa-eye"></i>
                                         </a>

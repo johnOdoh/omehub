@@ -66,7 +66,7 @@ class CreateProfile extends Component
         $logo = $validated['logo'];
         $logoName = uniqid($this->user->id.'-'). '.' .$logo->extension();
         $validated['logo'] = $logo->storeAs('logos', $logoName, 'public');
-        $this->user->profileMethod()->create($validated);
+        $this->user->profile()->create($validated);
         session()->flash("created");
         $this->dispatch('profile-updated');
     }

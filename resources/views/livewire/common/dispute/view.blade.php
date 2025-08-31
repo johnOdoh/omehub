@@ -38,8 +38,8 @@
                     <div class="chat-messages p-4">
                         <div class="chat-message-left pb-4">
                             <div class="mx-1">
-                                @if ($claim->user->profile()->logo)
-                                    <img src="{{ asset('storage/'.$claim->user->profile()->logo) }}" class="rounded-circle d-flex mx-auto" alt="{{ $claim->user->name }}" width="40" height="40">
+                                @if ($claim->user->profile->logo)
+                                    <img src="{{ asset('storage/'.$claim->user->profile->logo) }}" class="rounded-circle d-flex mx-auto" alt="{{ $claim->user->name }}" width="40" height="40">
                                 @else
                                     <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 40px; height: 40px; font-size: 1rem;">{{ $claim->user->initials() }}</div>
                                 @endif
@@ -58,8 +58,8 @@
                         @foreach ($claim->replies as $reply)
                             <div class="chat-message-{{ $reply->user_id == $claim->defendant_id ? 'right' : 'left' }} pb-4">
                                 <div class="mx-1">
-                                    @if ($reply->user->profile()->logo)
-                                        <img src="{{ asset('storage/'.$reply->user->profile()->logo) }}" class="rounded-circle d-flex mx-auto" alt="{{ $reply->user->name }}" width="40" height="40">
+                                    @if ($reply->user->profile->logo)
+                                        <img src="{{ asset('storage/'.$reply->user->profile->logo) }}" class="rounded-circle d-flex mx-auto" alt="{{ $reply->user->name }}" width="40" height="40">
                                     @else
                                         <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 40px; height: 40px; font-size: 1rem;">{{ $reply->user->initials() }}</div>
                                     @endif

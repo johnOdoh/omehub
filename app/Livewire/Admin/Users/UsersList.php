@@ -53,10 +53,7 @@ class UsersList extends Component
     {
         $users = match ($this->current) {
             'All User' => User::where('role', '!=', 'admin')->latest()->paginate(20),
-            'Shipper' => User::where('role', 'Shipper')->latest()->paginate(20),
-            'Logistics Provider' => User::where('role', 'Logistics Provider')->latest()->paginate(20),
-            'Insurance Provider' => User::where('role', 'Insurance Provider')->latest()->paginate(20),
-            default => abort(404)
+            default => User::where('role', $this->current)->latest()->paginate(20)
         };
         return view('livewire.admin.users.users-list', [
             'users' => $users
