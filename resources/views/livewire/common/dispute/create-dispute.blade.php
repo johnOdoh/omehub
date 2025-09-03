@@ -68,7 +68,7 @@
                                 @if ($suggestions)
                                     <ul class="dropdown-menu w-100" id="suggestionsDropdown" style="display: block;">
                                         @foreach ( $suggestions as $suggestion )
-                                            <li><a class="dropdown-item" wire:click='select("{{ $suggestion }}")'>{{ $suggestion }}</a></li>
+                                            <li><a class="dropdown-item" wire:click='select("{{ $suggestion['id'] }}, {{ $suggestion['name'] }}")'>{{ $suggestion['name'] }}</a></li>
                                         @endforeach
                                     </ul>
                                 @endif

@@ -60,7 +60,7 @@ class DocumentUpload extends Component
                 'document' => $filename
             ];
         }
-        request()->user()->profile()->update(['document' => $document]);
+        request()->user()->profile()->update(['documents' => $document]);
         $this->redirect(route('user.profile', ['u' => 1]), true);
     }
 

@@ -16,6 +16,7 @@ class CreateDispute extends Component
     public $body;
     public $subject;
     public $defendant;
+    public $defendant_id;
     public $suggestions;
     public $test = true;
     public $attachment = [];
@@ -27,17 +28,19 @@ class CreateDispute extends Component
             return;
         }
         $result = User::where('status', 'Active')
-            ->whereLike('name', "%$input%")->limit(5)
-            ->whereNot('id', request()->user()->id)
             ->whereNot('role', 'Admin')
-            ->pluck('name');
+            ->whereNot('id', request()->user()->id)
+            ->whereLike('name', "%$input%")->limit(5)
+            ->map(fn ($user) => ['name' => $user->name, 'id' => $user->id])
+            ->toArray();
         $this->suggestions = $result;
         // dd($result);
     }
 
-    public function select($option)
+    public function select($id, $name)
     {
-        $this->defendant = $option;
+        $this->defendant_id = $id;
+        $this->defendant = $name;
         $this->suggestions = null;
     }
 
@@ -48,18 +51,18 @@ class CreateDispute extends Component
         $this->validate([
             'body' => 'required',
             'subject' => 'required',
-            'defendant' => 'required|exists:users,name',
+            'defendant' => 'required|string',
             'attachment' => 'nullable|array|max:3',
             'attachment.*' => 'image|mimes:jpg,jpeg,png|max:2124',
         ]);
-        $defendant = User::where('name', $this->defendant)->firstOrFail();
-        $defendant_id = $defendant->id;
+        $defendant = User::where('id', $this->defendant_id)->firstOrFail();
+        if (!$defendant) abort(404);
         $attachments = [];
         foreach ($this->attachment as $attachment) {
             $attachments[] = $attachment->store('claims', 'public');
         }
         request()->user()->claims()->create([
-            'defendant_id' => $defendant_id,
+            'defendant_id' => $this->defendant_id,
             'subject' => $this->subject,
             'body' => $this->body,
             'attachments' => $attachments,

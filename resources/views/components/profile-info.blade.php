@@ -86,7 +86,7 @@
             <i class="fas fa-{{ $user->profile->is_verified ? 'check-circle' : 'exclamation-triangle' }} fa-fw me-1 text-{{ $user->profile->is_verified ? 'success' : 'warning' }}"></i>
             <div>
                 <div class="text-muted small">Verification Status</div>
-                @if ($user->profile->document)
+                @if ($user->profile->documents)
                     <div class="fw-bold">{{ $user->profile->is_verified ? 'Verified' : 'Pending' }}</div>
                 @else
                     <div class="fw-bold">No documents submitted yet. <a @if($user->verification_payment) href="{{ route('user.upload-document') }}" @else href="#" data-bs-toggle="modal" data-bs-target="#uploadDocuments" @endif>Submit documents</a></div>

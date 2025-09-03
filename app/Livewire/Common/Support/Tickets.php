@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 class Tickets extends Component
 {
     use WithPagination;
-    // public $tickets;
+    protected $paginationTheme = "bootstrap";
     public $current = 'All';
 
     public function changeStatus($id, $status)

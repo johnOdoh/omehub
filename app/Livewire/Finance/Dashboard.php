@@ -8,6 +8,10 @@ class Dashboard extends Component
 {
     public function render()
     {
-        return view('livewire.finance.dashboard');
+        $counts = request()->user()->financingRequests()
+            ->selectRaw("status, COUNT(*) as total")
+            ->groupBy('status')
+            ->pluck('total', 'status');
+        return view('livewire.finance.dashboard', ['counts' => $counts]);
     }
 }

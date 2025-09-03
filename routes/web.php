@@ -24,6 +24,7 @@ use App\Livewire\Common\Financing\RequestList;
 use App\Livewire\Shipper\Quotes\QuoteRequests;
 use App\Livewire\Common\Profile\DocumentUpload;
 use App\Livewire\Finance\Dashboard as FinanceDashboard;
+use App\Livewire\Finance\Requests as FinanceRequests;
 use App\Livewire\Logistics\Shipments\Shipments;
 use App\Livewire\Shipper\Shipments\ShipmentList;
 use App\Livewire\Insurance\Dashboard as InsuranceDashboard;
@@ -72,6 +73,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('insurance/shipments', \App\Livewire\Insurance\Shipments\ShipmentList::class)->name('insurance.shipments');
 
     Route::get('finance/dashboard', FinanceDashboard::class)->name('finance.dashboard');
+    Route::get('finance/requests', FinanceRequests::class)->name('finance.requests');
 
     Route::get('user/profile', Main::class)->name('user.profile');
     Route::get('user/profile/upload-document', DocumentUpload::class)->name('user.upload-document');

@@ -4,7 +4,7 @@
             <h1 class="h3 d-inline align-middle">Profile</h1>
         </div>
         @if (session('success')) <span x-show="notify('Document Submitted')"></span> @endif
-        @if ($hasProfile && !$user->profile->document)
+        @if ($hasProfile && !$user->profile->documents)
             <div class="col-auto ms-auto text-end mt-n1">
                 @if ($user->verification_payment)
                     <a class="btn btn-outline-primary" href="{{ route('user.upload-document') }}" wire:navigate>Upload Documents</a>

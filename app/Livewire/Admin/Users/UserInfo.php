@@ -52,8 +52,8 @@ class UserInfo extends Component
 
     public function verifyUser()
     {
-        $this->profile->is_verified = true;
-        $this->profile->save();
+        $this->user->profile->is_verified = true;
+        $this->user->profile->save();
         session()->flash('message', 'User approved successfully.');
     }
 

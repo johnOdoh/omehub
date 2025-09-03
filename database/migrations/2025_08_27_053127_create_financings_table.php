@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('partner_id')->constrained('users')->cascadeOnDelete();
             $table->decimal('amount', 10, 2);
             $table->text('reason');
+            $table->string('currency');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->float('interest')->nullable();
             $table->float('duration')->nullable();

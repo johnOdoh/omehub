@@ -112,9 +112,6 @@
 
         <ul class="sidebar-nav">
             @if (auth()->user()->role == 'Admin')
-                {{-- <li class="sidebar-header">
-                    Admin
-                </li> --}}
                 <x-sidebar-item route="admin.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="admin.profile" name="Profile" icon="user" />
                 @if (auth()->user()->admin_role == 'Admin')
@@ -128,13 +125,7 @@
                 @if (in_array(auth()->user()->admin_role, ['Shipment Auditor', 'Admin']) )
                     <x-sidebar-item route="admin.shipments" name="Shipments" icon="ship" />
                 @endif
-                @if (auth()->user()->admin_role == 'Financial Partner')
-
-                @endif
             @elseif (auth()->user()->role == 'Shipper')
-                {{-- <li class="sidebar-header">
-                    Shipper
-                </li> --}}
                 <x-sidebar-item route="shipper.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$shipperQuoteDropdown" name="Quotes" icon="lightbulb" id="quotes" />
@@ -144,9 +135,6 @@
                 <x-sidebar-dropdown :items="$financingDropdown" name="Trade Finance" icon="money-check" id="financing" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @elseif (auth()->user()->role == 'Logistics Provider')
-                {{-- <li class="sidebar-header">
-                    Logistics
-                </li> --}}
                 <x-sidebar-item route="logistics.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$logisticsQuoteDropdown" name="Quotes" icon="lightbulb" id="requests" />
@@ -156,9 +144,6 @@
                 <x-sidebar-dropdown :items="$financingDropdown" name="Trade Finance" icon="money-check" id="financing" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @elseif (auth()->user()->role == 'Insurance Provider')
-                {{-- <li class="sidebar-header">
-                    Insurance
-                </li> --}}
                 <x-sidebar-item route="insurance.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
@@ -167,16 +152,24 @@
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$financingDropdown" name="Trade Finance" icon="money-check" id="financing" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
+            @elseif (auth()->user()->role == 'Financial Partner')
+                <x-sidebar-item route="finance.dashboard" name="Dashboard" icon="sliders" />
+                <x-sidebar-item route="user.profile" name="Profile" icon="user" />
+                <x-sidebar-item route="finance.requests" name="Financing Requests" icon="money-check" />
+                <x-sidebar-multi-dropdown :items="$bulletinDropdown" name="Bulletin" icon="blog" id="bulletin" />
+                <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
+                <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
+            @elseif (auth()->user()->role == 'Sustainability Partner')
+                <x-sidebar-item route="finance.dashboard" name="Dashboard" icon="sliders" />
+                <x-sidebar-item route="user.profile" name="Profile" icon="user" />
+                <x-sidebar-multi-dropdown :items="$bulletinDropdown" name="Bulletin" icon="blog" id="bulletin" />
+                <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
+                <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @else
                 <li class="sidebar-header">
                     No Role
                 </li>
             @endif
-            <li class="sidebar-header">
-                Financial Partner
-            </li>
-            <x-sidebar-item route="finance.dashboard" name="Dashboard" icon="sliders" />
-            <x-sidebar-item route="user.profile" name="Profile" icon="user" />
         </ul>
     </div>
 </nav>
