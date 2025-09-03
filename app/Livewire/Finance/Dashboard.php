@@ -3,9 +3,11 @@
 namespace App\Livewire\Finance;
 
 use Livewire\Component;
+use Livewire\Attributes\Title;
 
 class Dashboard extends Component
 {
+    #[Title('Dashboard')]
     public function render()
     {
         $counts = request()->user()->financingRequests()

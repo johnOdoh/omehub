@@ -31,6 +31,8 @@ use App\Livewire\Insurance\Dashboard as InsuranceDashboard;
 use App\Livewire\Logistics\Dashboard as LogisticsDashboard;
 use App\Livewire\Insurance\Quotes\Requests as InsuranceRequests;
 use App\Livewire\Insurance\Quotes\QuotesSent as InsuranceQuotesSent;
+use App\Livewire\Sustainability\Dashboard as SustainabilityDashboard;
+use App\Livewire\Sustainability\Offsets;
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/about', [PublicController::class, 'about'])->name('about');
@@ -74,6 +76,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('finance/dashboard', FinanceDashboard::class)->name('finance.dashboard');
     Route::get('finance/requests', FinanceRequests::class)->name('finance.requests');
+
+    Route::get('sustainability/dashboard', SustainabilityDashboard::class)->name('sustainability.dashboard');
+    Route::get('sustainability/offsets', Offsets::class)->name('sustainability.offsets');
 
     Route::get('user/profile', Main::class)->name('user.profile');
     Route::get('user/profile/upload-document', DocumentUpload::class)->name('user.upload-document');

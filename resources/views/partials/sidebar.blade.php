@@ -160,8 +160,9 @@
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
             @elseif (auth()->user()->role == 'Sustainability Partner')
-                <x-sidebar-item route="finance.dashboard" name="Dashboard" icon="sliders" />
+                <x-sidebar-item route="sustainability.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
+                <x-sidebar-item route="sustainability.offsets" name="Carbon Offsets" icon="leaf" />
                 <x-sidebar-multi-dropdown :items="$bulletinDropdown" name="Bulletin" icon="blog" id="bulletin" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
