@@ -138,7 +138,14 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">{{ config('app.name') }}</strong> <span>All Rights Reserved</span></p>
+      <p>
+        &copy; {{ date('Y') }} <strong>{{ config('app.name') }}</strong>. All rights reserved.
+        <span>Powered by
+            <a href="https://omefreight.com" target="_blank" class="text-decoration-none fw-semibold">
+                OmeFreight
+            </a>
+        </span>
+      </p>
     </div>
 
   </footer>

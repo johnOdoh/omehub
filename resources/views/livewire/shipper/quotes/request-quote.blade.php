@@ -2,7 +2,7 @@
     <h1 class="h3 mb-3 text-center">Enter your shipping needs to get the best quotes</h1>
     <div class="card">
         <div class="card-body">
-            @if (!auth()->user()->shipper || !auth()->user()->shipper->is_verified)
+            @if (!auth()->user()->profile?->is_verified)
                 <div class="alert alert-warning alert-dismissible" role="alert">
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     <div class="alert-message d-flex">
@@ -219,7 +219,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary" @if (!auth()->user()->shipper || !auth()->user()->shipper->is_verified) disabled @endif wire:loading.remove>Request Quote</button>
+                        <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile?->is_verified) disabled @endif wire:loading.remove>Request Quote</button>
                         <button class="btn btn-primary px-5" wire:loading>
                             <div class="spinner-border spinner-border-sm text-light" role="status">
                                 <span class="visually-hidden">Loading...</span>

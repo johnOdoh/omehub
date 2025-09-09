@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    @if (!auth()->user()->profile)
+                    @if (!auth()->user()->profile()->exists())
                         <div class="alert alert-warning alert-dismissible" role="alert">
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <div class="alert-message d-flex">

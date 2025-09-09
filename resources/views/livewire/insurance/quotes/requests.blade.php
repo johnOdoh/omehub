@@ -5,7 +5,7 @@
     @if (session('submitted')) <span x-show="notify('Quote Submitted')"></span> @endif
     @if (session('expired')) <span x-show="error('The Quote Request has expired!')"></span> @endif
     @if (!$show_submit_quote)
-        @if (!auth()->user()->insurance_provider || !auth()->user()->insurance_provider->is_verified)
+        @if (!auth()->user()->iprofile?->is_verified)
             <div class="alert alert-warning" role="alert">
                 <div class="alert-message d-flex">
                     <strong class="me-2"><i class="fa fa-warning"></i></strong>

@@ -23,6 +23,8 @@ use App\Livewire\Common\Dispute\CreateDispute;
 use App\Livewire\Common\Financing\RequestList;
 use App\Livewire\Shipper\Quotes\QuoteRequests;
 use App\Livewire\Common\Profile\DocumentUpload;
+use App\Livewire\Common\Documents\CommercialInvoice;
+use App\Livewire\Common\Documents\PackingList;
 use App\Livewire\Finance\Dashboard as FinanceDashboard;
 use App\Livewire\Finance\Requests as FinanceRequests;
 use App\Livewire\Logistics\Shipments\Shipments;
@@ -98,6 +100,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('user/ticket/create', CreateTicket::class)->name('user.ticket.create');
     Route::get('user/ticket/list', Tickets::class)->name('user.ticket.list');
+
+    Route::get('user/document/commercial', CommercialInvoice::class)->name('document.commercial');
+    Route::get('user/document/packing-list', PackingList::class)->name('document.packing-list');
 
     Route::get('payment/verification', [PaymentController::class, 'verification'])->name('payment.verification');
     Route::get('payment/advert', [PaymentController::class, 'advert'])->name('payment.advert');

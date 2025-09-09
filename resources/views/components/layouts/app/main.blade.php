@@ -102,7 +102,12 @@
                         <div class="row text-muted">
                             <div class="col-6 text-start">
                                 <p class="mb-0">
-                                    <a href="{{ route('home') }}" target="_blank" class="text-muted"><strong>{{ config('app.name') }}</strong></a> &copy;
+                                    &copy; {{ date('Y') }} <strong><a href="{{ route('home') }}">{{ config('app.name') }}</a></strong>. All rights reserved.
+                                    <span>Powered by
+                                        <a href="https://omefreight.com" target="_blank" class="text-decoration-none fw-semibold">
+                                            OmeFreight
+                                        </a>
+                                    </span>
                                 </p>
                             </div>
                             <div class="col-6 text-end">

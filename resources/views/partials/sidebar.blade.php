@@ -31,6 +31,10 @@
         0 => ['name' => 'Create Ticket', 'route' => 'user.ticket.create'],
         1 => ['name' => 'My Tickets', 'route' => 'user.ticket.list'],
     ];
+    $documentDropdown = [
+        0 => ['name' => 'Commercial Invoice', 'route' => 'document.commercial'],
+        1 => ['name' => 'Packing List', 'route' => 'document.packing-list'],
+    ];
     $legalDropdown = [
         0 => ['name' => 'Raise Claim', 'routes' => [
             0 => [
@@ -134,6 +138,7 @@
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$financingDropdown" name="Trade Finance" icon="money-check" id="financing" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
+                <x-sidebar-dropdown :items="$documentDropdown" name="Generate Documents" icon="file-invoice-dollar" id="documents" />
             @elseif (auth()->user()->role == 'Logistics Provider')
                 <x-sidebar-item route="logistics.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
@@ -143,6 +148,7 @@
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$financingDropdown" name="Trade Finance" icon="money-check" id="financing" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
+                <x-sidebar-dropdown :items="$documentDropdown" name="Generate Documents" icon="file-invoice-dollar" id="documents" />
             @elseif (auth()->user()->role == 'Insurance Provider')
                 <x-sidebar-item route="insurance.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
@@ -152,6 +158,7 @@
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$financingDropdown" name="Trade Finance" icon="money-check" id="financing" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
+                <x-sidebar-dropdown :items="$documentDropdown" name="Generate Documents" icon="file-invoice-dollar" id="documents" />
             @elseif (auth()->user()->role == 'Financial Partner')
                 <x-sidebar-item route="finance.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
@@ -159,6 +166,7 @@
                 <x-sidebar-multi-dropdown :items="$bulletinDropdown" name="Bulletin" icon="blog" id="bulletin" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
+                <x-sidebar-dropdown :items="$documentDropdown" name="Generate Documents" icon="file-invoice-dollar" id="documents" />
             @elseif (auth()->user()->role == 'Sustainability Partner')
                 <x-sidebar-item route="sustainability.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
@@ -166,6 +174,7 @@
                 <x-sidebar-multi-dropdown :items="$bulletinDropdown" name="Bulletin" icon="blog" id="bulletin" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
+                <x-sidebar-dropdown :items="$documentDropdown" name="Generate Documents" icon="file-invoice-dollar" id="documents" />
             @else
                 <li class="sidebar-header">
                     No Role

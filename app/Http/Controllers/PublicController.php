@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PublicController extends Controller
 {
     public function index()
     {
-        return view('public.index');
+        // $filename = uniqid(request()->user()->id).'.pdf';
+        // $pdf = Pdf::loadView('public.test');
+        // return $pdf->download($filename);
+        return view('public.test1');
     }
 
     public function about()

@@ -1,7 +1,7 @@
 <div>
     <h1 class="h3 mb-3"><i class="fa fa-sun"></i> Good Day, {{ auth()->user()->firstname() }}</h1>
     <hr>
-    @if (!auth()->user()->profile)
+    @if (!auth()->user()->profile()->exists())
         <div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <div class="alert-message d-flex">
