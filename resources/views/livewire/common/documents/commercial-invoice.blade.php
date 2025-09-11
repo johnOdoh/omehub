@@ -37,7 +37,7 @@
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
-                        <label class="form-label">Date od Export</label>
+                        <label class="form-label">Date of Export</label>
                         <input type="date" class="form-control" placeholder="Date" wire:model="export_date" required>
                         @error('export_date')
                             <div class="text-danger"><small><i>{{ $message }}</i></small></div>

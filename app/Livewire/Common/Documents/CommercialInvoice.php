@@ -5,6 +5,7 @@ namespace App\Livewire\Common\Documents;
 use Livewire\Component;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\Title;
 
 class CommercialInvoice extends Component
 {
@@ -102,7 +103,7 @@ class CommercialInvoice extends Component
             array_splice($this->qty, $this->index+1);
             array_splice($this->amount, $this->index+1);
         }
-        $pdf = Pdf::loadView('public.commercial-invoice', $this->all());
+        $pdf = Pdf::loadView('public.commercial-invoice', $this->except('countries'));
         session()->flash('success', 'Commercial Invoice generated successfully');
         $this->resetExcept('countries');
         return response()->streamDownload(function() use ($pdf) {
@@ -110,6 +111,7 @@ class CommercialInvoice extends Component
         }, 'commercial-invoice.pdf');
     }
 
+    #[Title('Generate Commercial Invoice')]
     public function render()
     {
         return view('livewire.common.documents.commercial-invoice');

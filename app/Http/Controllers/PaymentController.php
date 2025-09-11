@@ -14,16 +14,15 @@ class PaymentController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    private function verifyPayment($amount, $transaction_id)
+    private function verifyPayment($amount, $transaction_id): bool
     {
         $response = Http::withToken(env('FLUTTERWAVE_SECRET_KEY'))
             ->get("https://api.flutterwave.com/v3/transactions/$transaction_id/verify");
         $transaction = $response->json()['data'];
-        if ($transaction['status'] === 'successful' && $transaction['charged_amount'] == $amount && $transaction['currency'] === 'USD') {
+        if ($transaction['status'] === 'successful' && $transaction['charged_amount'] == $amount && $transaction['currency'] === 'USD')
             return true;
-        } else {
+        else
             return false;
-        }
     }
 
     public function verification(Request $request): RedirectResponse
