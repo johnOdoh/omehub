@@ -21,7 +21,7 @@ class EditProfile extends Component
     {
         $this->dispatch('load-countries-plugin');
         $this->countryCodes = DB::table('countries')->orderBy('name')->get();
-        $this->fill($this->user->admin);
+        $this->fill($this->user->profile);
         $this->currentCountry = $this->countryCodes->firstWhere('name', $this->country);
         $this->dial_code = $this->currentCountry->dial_code;
         $this->dispatch('load-defaults');
@@ -38,7 +38,7 @@ class EditProfile extends Component
             'zip' => 'required|string'
         ]);
         $validated['phone'] = $validated['phone']/1;
-        $this->user->admin()->update($validated);
+        $this->user->profile()->update($validated);
         request()->session()->flash("updated");
         $this->dispatch('profile-updated');
     }
