@@ -74,10 +74,10 @@
                     @endif
                     @if ($showCreateProfile)
                         <hr class="my-0">
-                        <livewire:profile.profile.create-profile :$user />
+                        <livewire:admin.profile.create-profile :$user />
                     @endif
                 @else
-                    <livewire:profile.profile.edit-profile :$user />
+                    <livewire:admin.profile.edit-profile :$user />
                 @endif
             </div>
         </div>

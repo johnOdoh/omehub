@@ -82,9 +82,15 @@
             </div>
         </div>
     </div>
+    <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:100000;" id="loadingOverlay" class="d-none">
+        <div class="spinner-grow text-info me-2" role="status" style="position:absolute;top:50%;left:50%">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
     <script src="https://checkout.flutterwave.com/v3.js"></script>
     <script>
         function makePayment(plan, amount) {
+            document.querySelector('#loadingOverlay').classList.remove('d-none');
             FlutterwaveCheckout({
                 public_key: '{{ env('FLUTTERWAVE_PUBLIC_KEY') }}',
                 tx_ref: '{{ uniqid('ome_', true) }}',

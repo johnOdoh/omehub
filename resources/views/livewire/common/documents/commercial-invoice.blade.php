@@ -1,7 +1,7 @@
 <div class="container-fluid p-0">
     <h1 class="h3 mb-3 text-center">Generate a Commercial Invoice</h1>
     @if (session('success')) <span x-show="notify('{{ session('success') }}')"></span> @endif
-    @if (!auth()->user()->document_generation_payment)
+    @if (auth()->user()->document_generation_payment)
         @if (!auth()->user()->profile?->is_verified)
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
