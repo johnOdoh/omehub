@@ -22,7 +22,9 @@ return new class extends Migration
             $table->enum('status', ['Active', 'Suspended'])->default('Active');
             $table->boolean('verification_payment')->default('false');
             $table->boolean('bulletin_payment')->default('false');
+            $table->boolean('document_generation_payment')->default('false');
             $table->timestamp('bulletin_payment_ends')->nullable();
+            $table->timestamp('document_generation_payment_ends')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

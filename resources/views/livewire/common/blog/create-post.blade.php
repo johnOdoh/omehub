@@ -337,11 +337,11 @@
         </div>
         <script src="https://checkout.flutterwave.com/v3.js"></script>
         <script>
-            function makePayment($plan, $amount) {
+            function makePayment(plan, amount) {
                 FlutterwaveCheckout({
                     public_key: '{{ env('FLUTTERWAVE_PUBLIC_KEY') }}',
                     tx_ref: '{{ uniqid('ome_', true) }}',
-                    amount: $amount,
+                    amount: amount,
                     currency: 'USD',
                     payment_options: 'card',
                     redirect_url: '{{ route('payment.advert') }}',
@@ -355,7 +355,7 @@
                         logo: '{{ asset('assets/img/favicon.png') }}',
                     },
                     meta: {
-                        plan: $plan,
+                        plan: plan,
                         loc: '{{ $loc }}'
                     }
                 });

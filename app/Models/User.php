@@ -18,16 +18,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
-        'admin_role',
-        'verification_payment',
-        'bulletin_payment',
-        'bulletin_payment_ends',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -52,6 +43,8 @@ class User extends Authenticatable
             'verification_payment' => 'boolean',
             'bulletin_payment' => 'boolean',
             'bulletin_payment_ends' => 'datetime',
+            'document_generation_payment' => 'boolean',
+            'document_generation_payment_ends' => 'datetime',
         ];
     }
 

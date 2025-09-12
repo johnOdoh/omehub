@@ -57,4 +57,27 @@ class PaymentController extends Controller
             return back();
         }
     }
+
+    public function document(Request $request): RedirectResponse
+    {
+        $response = Http::withToken(env('FLUTTERWAVE_SECRET_KEY'))
+        ->get("https://api.flutterwave.com/v3/transactions/$request->transaction_id/verify");
+        $transaction = $response->json()['data'];
+        $amount = match($transaction['meta']['plan']) {
+            'monthly' => 5,
+            'biannual' => 28,
+            'annual' => 50,
+            default => 100
+        };
+        if ($transaction['status'] === 'successful' && $transaction['charged_amount'] == $amount && $transaction['currency'] === 'USD') {
+            $request->user()->update(['document_generation_payment' => true]);
+            if ($transaction['meta']['loc'] == 'commercial') {
+                return redirect()->route('document.commercial');
+            } else {
+                return redirect()->route('document.packing-list');
+            }
+        } else {
+            return back();
+        }
+    }
 }

@@ -106,6 +106,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('payment/verification', [PaymentController::class, 'verification'])->name('payment.verification');
     Route::get('payment/advert', [PaymentController::class, 'advert'])->name('payment.advert');
+    Route::get('payment/document', [PaymentController::class, 'document'])->name('payment.document');
 });
 
 require __DIR__.'/auth.php';
