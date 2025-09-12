@@ -37,35 +37,35 @@
                                         <i class="fas fa-phone fa-fw me-1"></i>
                                         <div>
                                             <div class="text-muted small">Phone Number</div>
-                                            <div class="fw-bold">{{ $user->admin->dial_code.' '.$user->admin->phone }}</div>
+                                            <div class="fw-bold">{{ $user->profile->dial_code.' '.$user->profile->phone }}</div>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-2 mb-2">
                                         <i class="fas fa-map-pin fa-fw me-1"></i>
                                         <div>
                                             <div class="text-muted small">Address</div>
-                                            <div class="fw-bold">{{ $user->admin->address }}</div>
+                                            <div class="fw-bold">{{ $user->profile->address }}</div>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-2 mb-2">
                                         <i class="fas fa-tag fa-fw me-1"></i>
                                         <div>
                                             <div class="text-muted small">Zip</div>
-                                            <div class="fw-bold">{{ $user->admin->zip }}</div>
+                                            <div class="fw-bold">{{ $user->profile->zip }}</div>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-2 mb-2">
                                         <i class="fas fa-home fa-fw me-1"></i>
                                         <div>
                                             <div class="text-muted small">City</div>
-                                            <div class="fw-bold">{{ $user->admin->city }}</div>
+                                            <div class="fw-bold">{{ $user->profile->city }}</div>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-center gap-2 mb-2">
                                         <i class="fas fa-globe fa-fw me-1"></i>
                                         <div>
                                             <div class="text-muted small">Country</div>
-                                            <div class="fw-bold">{{ $user->admin->country }}</div>
+                                            <div class="fw-bold">{{ $user->profile->country }}</div>
                                         </div>
                                     </li>
                                 </ul>
@@ -74,10 +74,10 @@
                     @endif
                     @if ($showCreateProfile)
                         <hr class="my-0">
-                        <livewire:admin.profile.create-profile :$user />
+                        <livewire:profile.profile.create-profile :$user />
                     @endif
                 @else
-                    <livewire:admin.profile.edit-profile :$user />
+                    <livewire:profile.profile.edit-profile :$user />
                 @endif
             </div>
         </div>
