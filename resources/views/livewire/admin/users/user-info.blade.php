@@ -143,22 +143,22 @@
                                 <i class="fas fa-briefcase fa-fw me-1"></i>
                                 <div>
                                     <div class="text-muted small">Account Type</div>
-                                    <div class="fw-bold">{{ $user->shipper->account_type }}</div>
+                                    <div class="fw-bold">{{ $user->profile->account_type }}</div>
                                 </div>
                             </li>
                             <li class="d-flex align-items-center gap-2 mb-2">
                                 <i class="fas fa-user fa-fw me-1"></i>
                                 <div>
-                                    <div class="text-muted small">{{ $user->shipper->account_type == 'Business' ? 'Business' : 'Full' }} Name</div>
+                                    <div class="text-muted small">{{ $user->profile->account_type == 'Business' ? 'Business' : 'Full' }} Name</div>
                                     <div class="fw-bold">{{ $user->name }}</div>
                                 </div>
                             </li>
-                            @if ($user->shipper->account_type == 'Business')
+                            @if ($user->profile->account_type == 'Business')
                                 <li class="d-flex align-items-center gap-2 mb-2">
                                     <i class="fas fa-briefcase fa-fw me-1"></i>
                                     <div>
                                         <div class="text-muted small">Business Type</div>
-                                        <div class="fw-bold">{{ $user->shipper->business_type }}</div>
+                                        <div class="fw-bold">{{ $user->profile->business_type }}</div>
                                     </div>
                                 </li>
                             @endif

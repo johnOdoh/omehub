@@ -27,7 +27,7 @@ class PaymentController extends Controller
 
     public function verification(Request $request): RedirectResponse
     {
-        $amount = $request->user()->role == 'Shipper' && $request->user()->profile()->account_type == 'Personal' ? 1 : 5;
+        $amount = $request->user()->role == 'Shipper' && $request->user()->profile->account_type == 'Personal' ? 1 : 5;
         if ($this->verifyPayment($amount, $request->transaction_id)) {
             $request->user()->update(['verification_payment' => true]);
             return redirect()->route('user.upload-document');
