@@ -34,9 +34,7 @@ class RequestQuote extends Component
 
     public function requestQuote()
     {
-        if(!request()->user()->shipper || !request()->user()->shipper->is_verified) {
-            return;
-        }
+        if(!request()->user()->profile?->is_verified) return;
         $this->validate([
             'origin' => 'required',
             'destination' => 'required',
