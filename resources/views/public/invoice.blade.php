@@ -71,7 +71,7 @@
                 @if ($type == 'admin')
                     <img src="{{ public_path('assets/img/logo_blue.png') }}" alt="Company Logo" style="width: 100px;">
                 @else
-                    <img src="{{ public_path('storage/'.$from->profile()->logo) }}" alt="Company Logo" style="width: 100px;">
+                    <img src="{{ public_path('storage/'.$from->profile->logo) }}" alt="Company Logo" style="width: 100px;">
                 @endif
             </td>
         </tr>
@@ -90,9 +90,9 @@
                     </p>
                 @else
                     <p><strong style="color:#0b3aa7;">{{ $from->name }}</strong><br>
-                        {{ $from->profile()->address }}<br>
+                        {{ $from->profile->address }}<br>
                         {{ $from->email }}<br>
-                        {{ $from->profile()->phone }}
+                        {{ $from->profile->phone }}
                     </p>
                 @endif
                 <p>
@@ -105,9 +105,9 @@
             <td style="width: 50%; vertical-align: top; padding-left: 10px;">
                 <p><strong style="color:#0b3aa7;">BILL TO</strong><br>
                     {{ $to->name }}<br>
-                    {{ $to->profile()->address }}<br>
+                    {{ $to->profile->address }}<br>
                     {{ $to->email }}<br>
-                    {{ $to->profile()->phone }}
+                    {{ $to->profile->phone }}
                 </p>
                 <p>
                     Invoice Date: {{ date('d/m/Y') }}<br>
