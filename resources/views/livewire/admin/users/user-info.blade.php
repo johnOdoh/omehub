@@ -90,40 +90,111 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="card flex-fill">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col mt-0">
-                                    <h5 class="card-title">Quotes {{ $user->role == 'Shipper' ? 'Requested' : 'Submitted' }}</h5>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="stat">
-                                        <i class="fa fa-lightbulb"></i>
+                @if ($user->role != 'Sustainability Partner' && $user->role != 'Financial Partner')
+                    <div class="col-12">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Quotes {{ $user->role == 'Shipper' ? 'Requested' : 'Submitted' }}</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat">
+                                            <i class="fa fa-lightbulb"></i>
+                                        </div>
                                     </div>
                                 </div>
+                                <p class="fw-bold">{{ $stats['quotes'] }}</p>
                             </div>
-                            <p class="fw-bold">{{ $stats['quotes'] }}</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <div class="card flex-fill">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col mt-0">
-                                    <h5 class="card-title">@if ($user->role == 'Shipper') Shipments @else Quotes Accepted @endif</h5>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="stat">
-                                        <i class="fa fa-ship"></i>
+                    <div class="col-12">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">@if ($user->role == 'Shipper') Shipments @else Quotes Accepted @endif</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat">
+                                            <i class="fa fa-ship"></i>
+                                        </div>
                                     </div>
                                 </div>
+                                <p class="fw-bold">{{ $stats['shipments'] }}</p>
                             </div>
-                            <p class="fw-bold">{{ $stats['shipments'] }}</p>
                         </div>
                     </div>
-                </div>
+                @elseif ($user->role == 'Financial Partner')
+                    <div class="col-12">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Funding Requests Received</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat">
+                                            <i class="fa fa-list"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="my-1">{{ $stats['counts']->sum() }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Requests Pending</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat text-warning">
+                                            <i class="fa fa-exclamation-triangle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="my-1">{{ $stats['counts']['pending'] ?? 0 }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Requests Approved</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat text-success">
+                                            <i class="fa fa-check-double"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="my-1">{{ $stats['counts']['approved'] ?? 0 }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card flex-fill">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Requests Rejected</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat text-danger">
+                                            <i class="fa fa-times"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="my-1">{{ $stats['counts']['rejected'] ?? 0 }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="col-md-6">

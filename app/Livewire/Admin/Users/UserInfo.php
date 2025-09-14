@@ -34,16 +34,12 @@ class UserInfo extends Component
                     })->count();
                 break;
             case 'Financial Partner':
-                $this->stats['quotes'] = $user->insuranceQuotes()->count();
-                $this->stats['shipments'] = Shipment::whereHas('insurance_quote', function ($q) {
-                        $q->where('user_id', request()->user()->id);
-                    })->count();
+                $this->stats['counts'] = $user->financingRequests()
+                    ->selectRaw("status, COUNT(*) as total")
+                    ->groupBy('status')
+                    ->pluck('total', 'status');
                 break;
             case 'Sustainability Partner':
-                $this->stats['quotes'] = $user->insuranceQuotes()->count();
-                $this->stats['shipments'] = Shipment::whereHas('insurance_quote', function ($q) {
-                        $q->where('user_id', request()->user()->id);
-                    })->count();
                 break;
             default:
                 abort(404);
