@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Common\Financing;
 
-use App\Models\User;
 use Livewire\Component;
 use App\Models\Financing;
 use Livewire\WithPagination;
@@ -18,6 +17,20 @@ class RequestList extends Component
         $this->close();
         $this->request_details = $request;
         $this->dispatch('request-changed');
+    }
+
+    public function accept()
+    {
+        $this->request_details->user_status = 'accepted';
+        $this->request_details->save();
+        session()->flash('success', 'Financing Conditions Accepted');
+    }
+
+    public function reject()
+    {
+        $this->request_details->user_status = 'rejected';
+        $this->request_details->save();
+        session()->flash('success', 'Financing Conditions Rejected');
     }
 
     public function close()

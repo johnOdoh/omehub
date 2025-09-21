@@ -52,6 +52,13 @@
                                 <div class="-danger"><small><i>{{ $message }}</i></small></div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label class="form-label">@if(auth()->user()->role == 'Shipper' && auth()->user()->profile?->account_type == 'Personal') Personal Bank Statement and Employment slip @else Company Bank Statement @endif <i>(must be in .pdf format)</i> </label>
+                            <input type="file" class="form-control" accept="application/pdf" required wire:model="document">
+                            @error('document')
+                                <div class="text-danger"><small><i>{{ $message }}</i></small></div>
+                            @enderror
+                        </div>
                         <div class="form-group my-3">
                             <label class="form-label">Request From</label>
                             <select class="form-select" wire:model="partner" required>
@@ -66,8 +73,8 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile?->is_verified) disabled @endif wire:loading.remove>Submit</button>
-                                <button class="btn btn-primary px-5" wire:loading>
+                                <button type="submit" class="btn btn-primary" @if (!auth()->user()->profile?->is_verified) disabled @endif wire:loading.remove wire:target='document, create'>Submit</button>
+                                <button class="btn btn-primary px-5" wire:loading wire:target='document, create'>
                                     <div class="spinner-border spinner-border-sm text-light" role="status">
                                         <span class="visually-hidden">Loading...</span>
                                     </div>

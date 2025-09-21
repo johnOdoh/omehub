@@ -2,16 +2,17 @@
 
 namespace App\View\Components;
 
+use App\Models\Financing;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class PriceList extends Component
+class FinancialRequestDetails extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public $loc)
+    public function __construct(public Financing $request)
     {
         //
     }
@@ -21,6 +22,6 @@ class PriceList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.price-list');
+        return view('components.financial-request-details');
     }
 }

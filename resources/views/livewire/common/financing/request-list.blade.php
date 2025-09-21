@@ -4,6 +4,7 @@
             <h1 class="h3 d-inline align-middle">Financing Requests</h1>
         </div>
     </div>
+    @if (session('success')) <span x-show="notify('{{ session('success') }}')"></span> @endif
     <div class="row">
         <div class="col-lg-{{ $request_details ? '7' : '12' }}">
             <div class="card">
@@ -16,6 +17,7 @@
                                     <th>Requested From</th>
                                     <th>Amount</th>
                                     <th>Status</th>
+                                    <th>Your Approval</th>
                                     <th>Requested On</th>
                                     <th>Actions</th>
                                 </tr>
@@ -26,7 +28,10 @@
                                         <td>{{ $requests->firstItem() + $loop->index }}</td>
                                         <td>{{ $request->partner->name }}</td>
                                         <td>{{ $request->currency.' '.$request->amount }}</td>
-                                        <td><span class="badge bg-{{ $request->status == 'pending' ? 'info' : ($request->status == 'approved' ? 'success' : 'danger') }} text-capitalize">{{ $request->status }}</span></td>
+                                        <td><span class="badge bg-{{ $request->status == 'pending' ? 'warning' : ($request->status == 'approved' ? 'success' : 'danger') }} text-capitalize">{{ $request->status }}</span></td>
+                                        <td>
+                                            @if($request->status == 'approved')<span class="badge bg-{{ $request->user_status == 'pending' ? 'warning' : ($request->user_status == 'accepted' ? 'success' : 'danger') }} text-capitalize">{{ $request->user_status }}</span>@else - @endif
+                                        </td>
                                         <td>{{ $request->created_at->format('d M, Y') }}</td>
                                         <td>
                                             <div class="d-flex gap-2">
@@ -60,38 +65,7 @@
                         </div>
                         <hr class="mb-0">
                         <div class="card-body">
-                            <table class="table table-sm mt-2 mb-4">
-                                <tbody>
-                                    <tr>
-                                        <th>Amount Requested</th>
-                                        <td>{{ $request_details->currency.' '.number_format($request_details->amount, 2) }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Purpose of Funds</th>
-                                        <td>{{ $request_details->reason }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Status</th>
-                                        <td>
-                                            <span class="badge bg-{{ $request_details->status == 'pending' ? 'info' : ($request_details->status == 'approved' ? 'success' : 'danger') }} text-capitalize">{{ $request_details->status }}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Requested On</th>
-                                        <td>{{ $request_details->created_at->format('d M, Y') }}</td>
-                                    </tr>
-                                    @if ($request_details->status == 'approved')
-                                        <tr>
-                                            <th>Interest Rate per month</th>
-                                            <td>{{ $request_details->interest }}%</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Number of months Due</th>
-                                            <td>{{ $request_details->duration }}</td>
-                                        </tr>
-                                    @endif
-                                </tbody>
-                            </table>
+                            <x-financial-request-details :request="$request_details" />
                         </div>
                     </div>
                 </div>

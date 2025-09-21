@@ -18,7 +18,9 @@ return new class extends Migration
             $table->decimal('amount', 10, 2);
             $table->text('reason');
             $table->string('currency');
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->string('document');
+            $table->enum('status', ['pending', 'approved', 'declined'])->default('pending');
+            $table->enum('user_status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->float('interest')->nullable();
             $table->float('duration')->nullable();
             $table->timestamps();

@@ -32,6 +32,7 @@
                                     <th>S/N</th>
                                     <th>Amount Requested</th>
                                     <th>Status</th>
+                                    <th>Customer Approval</th>
                                     <th>Requested On</th>
                                     <th>Actions</th>
                                 </tr>
@@ -41,7 +42,10 @@
                                     <tr>
                                         <td>{{ $requests->firstItem() + $loop->index }}</td>
                                         <td>{{ $request->currency.' '.number_format($request->amount, 2) }}</td>
-                                        <td><span class="badge bg-{{ $request->status == 'pending' ? 'info' : ($request->status == 'approved' ? 'success' : 'danger') }} text-capitalize">{{ $request->status }}</span></td>
+                                        <td><span class="badge bg-{{ $request->status == 'pending' ? 'warning' : ($request->status == 'approved' ? 'success' : 'danger') }} text-capitalize">{{ $request->status }}</span></td>
+                                        <td>
+                                            @if($request->status == 'approved')<span class="badge bg-{{ $request->user_status == 'pending' ? 'warning' : ($request->user_status == 'accepted' ? 'success' : 'danger') }} text-capitalize">{{ $request->user_status }}</span>@else - @endif
+                                        </td>
                                         <td>{{ $request->created_at->format('d M, Y') }}</td>
                                         <td>
                                             <div class="d-flex gap-2">
@@ -95,42 +99,7 @@
                         </div>
                         <hr class="mb-0">
                         <div class="card-body">
-                            <table class="table table-sm mt-2 mb-4">
-                                <tbody>
-                                    <tr>
-                                        <th>Requested By</th>
-                                        <td>{{ $request_details->user->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Amount Requested</th>
-                                        <td>{{ $request_details->currency.' '.number_format($request_details->amount, 2) }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Purpose of Funds</th>
-                                        <td>{{ $request_details->reason }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Status</th>
-                                        <td>
-                                            <span class="badge bg-{{ $request_details->status == 'pending' ? 'info' : ($request_details->status == 'approved' ? 'success' : 'danger') }} text-capitalize">{{ $request_details->status }}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Requested On</th>
-                                        <td>{{ $request_details->created_at->format('d M, Y') }}</td>
-                                    </tr>
-                                    @if ($request_details->status == 'approved')
-                                        <tr>
-                                            <th>Interest Rate per month</th>
-                                            <td>{{ $request_details->interest }}%</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Number of months Due</th>
-                                            <td>{{ $request_details->duration }}</td>
-                                        </tr>
-                                    @endif
-                                </tbody>
-                            </table>
+                            <x-financial-request-details :request="$request_details" />
                             @if ($request_details->status == 'pending')
                                 @if(!$accepting)
                                     <div class="text-end my-3">
@@ -139,7 +108,7 @@
                                     </div>
                                 @else
                                     <h5 class="card-title">Complete the financing Details</h5>
-                                    <form wire:submit="accept">
+                                    <form wire:submit="accept" wire:confirm="Are you sure you want to accept this request with the entered details?">
                                         <div class="form-group mb-3">
                                             <input type="number" class="form-control" wire:model="interest" placeholder="Interest Rate per Month (%)" min="0" step="0.01" required>
                                             @error('interest')
