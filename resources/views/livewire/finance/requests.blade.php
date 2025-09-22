@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>S/N</th>
+                                    <th>Requested By</th>
                                     <th>Amount Requested</th>
                                     <th>Status</th>
                                     <th>Customer Approval</th>
@@ -41,6 +42,7 @@
                                 @forelse ($requests as $request)
                                     <tr>
                                         <td>{{ $requests->firstItem() + $loop->index }}</td>
+                                        <td>{{ $request->user->name }}</td>
                                         <td>{{ $request->currency.' '.number_format($request->amount, 2) }}</td>
                                         <td><span class="badge bg-{{ $request->status == 'pending' ? 'warning' : ($request->status == 'approved' ? 'success' : 'danger') }} text-capitalize">{{ $request->status }}</span></td>
                                         <td>

@@ -35,7 +35,7 @@
               <i class="bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h3>Address</h3>
-                <p>Unity warehouse, Toyota Bus Stop, Ladipo Mushin, Lagos</p>
+                <p>{{ config('app.address') }}</p>
               </div>
             </div><!-- End Info Item -->
 
@@ -43,7 +43,7 @@
               <i class="bi bi-geo-alt flex-shrink-0"></i>
               <div>
                 <h3>Address</h3>
-                <p>Zone C New Market Express, Enugu, Enugu State</p>
+                <p>{{ config('app.address2') }}</p>
               </div>
             </div><!-- End Info Item -->
 
@@ -59,7 +59,7 @@
               <i class="bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>Email Us</h3>
-                <p>support@omefreight.com</p>
+                <p>{{ config('app.email') }}</p>
               </div>
             </div><!-- End Info Item -->
 

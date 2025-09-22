@@ -19,6 +19,10 @@
         0 => ['name' => 'Request Financing', 'route' => 'user.financing.request'],
         1 => ['name' => 'My Requests', 'route' => 'user.financing.list'],
     ];
+    $sustainabilityDropdown = [
+        0 => ['name' => 'Offsets', 'route' => 'sustainability.offsets'],
+        1 => ['name' => 'My Invoices', 'route' => 'user.offsets.invoices'],
+    ];
     $adminDropdown = [
         0 => ['name' => 'Create Admin', 'route' => 'admin.create-admin'],
         1 => ['name' => 'Admin List', 'route' => 'admin.admins'],
@@ -122,6 +126,7 @@
                     <x-sidebar-dropdown :items="$adminUsersDropdown" name="Users" icon="users" id="users" />
                     <x-sidebar-dropdown :items="$adminDropdown" name="Admins" icon="users-cog" id="admins" />
                     <x-sidebar-item route="admin.tickets" name="Tickets" icon="hands-helping" />
+                    <x-sidebar-item route="user.offsets.invoices" name="Carbon Offset Invoices" icon="file-invoice" />
                 @endif
                 @if (in_array(auth()->user()->admin_role, ['Legal Partner', 'Admin']) )
                     <x-sidebar-item route="admin.disputes" name="Disputes" icon="balance-scale" :params="$adminParam" />
@@ -170,7 +175,7 @@
             @elseif (auth()->user()->role == 'Sustainability Partner')
                 <x-sidebar-item route="sustainability.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
-                <x-sidebar-item route="sustainability.offsets" name="Carbon Offsets" icon="leaf" />
+                <x-sidebar-dropdown :items="$sustainabilityDropdown" name="Carbon Offsets" icon="leaf" id="offsets" />
                 <x-sidebar-multi-dropdown :items="$bulletinDropdown" name="Bulletin" icon="blog" id="bulletin" />
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />

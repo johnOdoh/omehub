@@ -19,7 +19,7 @@
         </div>
     @endif
     <div class="row">
-        <div class="col-12 d-flex">
+        <div class="col-12 col-md-6 d-flex">
             <div class="card flex-fill">
                 <div class="card-body">
                     <div class="row">
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="col-12 col-md-6 d-flex">
+        <div class="col-12 col-md-6 d-flex">
             <div class="card flex-fill">
                 <div class="card-body">
                     <div class="row">
@@ -49,9 +49,9 @@
                             </div>
                         </div>
                     </div>
-                    <h1 class="my-1">{{ number_format(500, 2) }}</h1>
+                    <h1 class="my-1">USD {{ number_format($offsets_count * 5, 2) }}</h1>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 </div>

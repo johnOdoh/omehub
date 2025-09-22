@@ -84,9 +84,9 @@
             <td style="width: 50%; vertical-align: top; padding-right: 10px;">
                 @if ($type == 'admin')
                     <p><strong style="color:#0b3aa7;">{{ config('app.name') }}</strong><br>
-                        {{ config('app.name') }} Address<br>
-                        {{ config('app.name') }} Email<br>
-                        {{ config('app.name') }} Phone
+                        {{ config('app.address') }}<br>
+                        {{ config('app.email') }}<br>
+                        {{ config('app.phone') }}
                     </p>
                 @else
                     <p><strong style="color:#0b3aa7;">{{ $from->name }}</strong><br>

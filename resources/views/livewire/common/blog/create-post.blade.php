@@ -288,6 +288,7 @@
                                 <div class="mb-4">
                                     <h5 class="mb-3">Biannual</h5>
                                     <span class="display-4">$28</span><span>/6 months</span>
+                                    <h5 class="mb-3 text-primary"><em>7% off</em></h5>
                                 </div>
                                 <h6>Includes:</h6>
                                 <ul class="list-unstyled">
@@ -302,17 +303,21 @@
                                     </li>
                                 </ul>
                                 <div class="mt-auto">
-                                    <button class="btn btn-lg btn-primary" onclick="makePayment('biannual', 28)">Select</button>
+                                    <button class="btn btn-lg btn-outline-primary" onclick="makePayment('biannual', 28)">Select</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card text-center h-100">
+                        <div class="card text-center h-100 border border-primary border-3">
+                            <div class="position-absolute top-0 start-50 translate-middle">
+                                <span class="badge bg-primary px-3 py-2">Most Popular</span>
+                            </div>
                             <div class="card-body d-flex flex-column">
                                 <div class="mb-4">
                                     <h5 class="mb-3">Annual</h5>
                                     <span class="display-4">$50</span><span>/year</span>
+                                    <h5 class="mb-3 text-primary"><em>17% off</em></h5>
                                 </div>
                                 <h6>Includes:</h6>
                                 <ul class="list-unstyled">
@@ -327,7 +332,7 @@
                                     </li>
                                 </ul>
                                 <div class="mt-auto">
-                                    <button class="btn btn-lg btn-outline-primary" onclick="makePayment('annual', 50)">Select</button>
+                                    <button class="btn btn-lg btn-primary" onclick="makePayment('annual', 50)">Select</button>
                                 </div>
                             </div>
                         </div>

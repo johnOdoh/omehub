@@ -1,11 +1,25 @@
 <div class="container-fluid p-0">
+    @if (session('generated')) <span x-show="notify('Invoice Generated')"></span> @endif
     @if (!$shipment_details)
-        <div class="mb-2">
-            <h1 class="h3 d-inline align-middle">Carbon Offsets</h1>
+        <div class="row mb-2 mb-xl-3">
+            <div class="col-auto">
+                <h1 class="h3 d-inline align-middle">Carbon Offsets</h1>
+            </div>
+            <div class="col-auto ms-auto text-end mt-n1">
+                <button class="btn btn-outline-primary" wire:click="$toggle('generate')">Generate Invoice</button>
+            </div>
         </div>
         <div class="row">
-            <div class="col-lg-{{ $user ? '7' : '12' }}">
+            <div class="col-lg-{{ $user || $generate ? '7' : '12' }}">
                 <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="card-actions float-end">
+                            <div class="d-flex gap-2 align-items-center">
+                                <strong>Filter:</strong>
+                                <input type="month" class="form-control" wire:model="filter" wire:change="updateFilter">
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped">
@@ -58,6 +72,11 @@
                             <x-profile-info :$user />
                         </div>
                     </div>
+                </div>
+            @endif
+            @if ($generate)
+                <div class="col-lg-5" x-ref="generate" x-init="$refs.generate.scrollIntoView({ behaviour: 'smooth' })">
+                    <livewire:sustainability.generate-invoice />
                 </div>
             @endif
         </div>

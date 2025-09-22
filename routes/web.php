@@ -25,6 +25,7 @@ use App\Livewire\Shipper\Quotes\QuoteRequests;
 use App\Livewire\Common\Profile\DocumentUpload;
 use App\Livewire\Common\Documents\CommercialInvoice;
 use App\Livewire\Common\Documents\PackingList;
+use App\Livewire\Common\Sustainability\Invoices;
 use App\Livewire\Finance\Dashboard as FinanceDashboard;
 use App\Livewire\Finance\Requests as FinanceRequests;
 use App\Livewire\Logistics\Shipments\Shipments;
@@ -97,6 +98,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('user/financing/request', Request::class)->name('user.financing.request');
     Route::get('user/financing/requests', RequestList::class)->name('user.financing.list');
+
+    Route::get('user/offsets/invoices', Invoices::class)->name('user.offsets.invoices');
 
     Route::get('user/ticket/create', CreateTicket::class)->name('user.ticket.create');
     Route::get('user/ticket/list', Tickets::class)->name('user.ticket.list');
