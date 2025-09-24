@@ -20,10 +20,10 @@ class Book extends Component
         $this->quote = $quote;
         if ($quote->request->currency == 'NGN') {
             $this->processing_fee = 100000;
-            $this->carbon_offset += 5000;
+            $this->carbon_offset = 10000;
         }else {
             $this->processing_fee = 100;
-            $this->carbon_offset += 5;
+            $this->carbon_offset = config('app.offset');
         }
         $this->total = $quote->cost + $quote->custom + $this->processing_fee;
     }

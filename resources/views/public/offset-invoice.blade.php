@@ -119,14 +119,14 @@
                     <td>{{ $shipment->user->name }}</td>
                     <td>{{ $shipment->quote->user->name }}</td>
                     <td>{{ $shipment->quote->request->currency }} {{ number_format($shipment->amount, 2) }}</td>
-                    <td>USD {{ number_format(5, 2) }}</td>
+                    <td>USD {{ number_format(config('app.offset'), 2) }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
     <div class="summary">
-        <div>SUBTOTAL: USD {{ number_format($shipments->count()*5, 2) }}</div>
-        <div><strong>Total: USD {{ number_format($shipments->count()*5, 2) }}</strong></div>
+        <div>SUBTOTAL: USD {{ number_format($shipments->count()*config('app.offset'), 2) }}</div>
+        <div><strong>Total: USD {{ number_format($shipments->count()*config('app.offset'), 2) }}</strong></div>
     </div>
   </div>
 </body>

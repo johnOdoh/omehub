@@ -37,7 +37,7 @@
                                         <tr>
                                             <td>{{ $shipments->firstItem() + $loop->index }}</td>
                                             <td>{{ $shipment->user->name }}</td>
-                                            <td>{{ $shipment->quote->request->currency.' '.number_format($shipment->carbon_offset, 2) }}</td>
+                                            <td>USD {{ number_format(config('app.offset'), 2) }}</td>
                                             <td>{{ $shipment->created_at->format('d M, Y') }}</td>
                                             <td class="d-flex gap-2">
                                                 <button class="btn btn-primary btn-sm" wire:click="getUser({{ $shipment->user_id }})">View User</button>

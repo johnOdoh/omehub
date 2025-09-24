@@ -18,6 +18,7 @@ return [
     'address2' => env('APP_ADDRESS2', 'Zone C New Market Express, Enugu, Enugu State, Nigeria'),
     'email' => env('APP_EMAIL', 'support@omefreight.com'),
     'phone' => env('APP_PHONE', '+234 903 000 0000'),
+    'offset' => env('OFFSET_AMOUNT', 10),
 
     /*
     |--------------------------------------------------------------------------

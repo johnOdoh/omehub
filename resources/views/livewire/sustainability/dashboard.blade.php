@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <h1 class="my-1">USD {{ number_format($offsets_count * 5, 2) }}</h1>
+                    <h1 class="my-1">USD {{ number_format($offsets_count * config('app.offset'), 2) }}</h1>
                 </div>
             </div>
         </div>
