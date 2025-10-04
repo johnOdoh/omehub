@@ -154,7 +154,7 @@
                 <x-sidebar-dropdown :items="$financingDropdown" name="Trade Finance" icon="money-check" id="financing" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
                 <x-sidebar-dropdown :items="$documentDropdown" name="Generate Documents" icon="file-invoice-dollar" id="documents" />
-            @elseif (auth()->user()->role == 'Insurance Provider')
+            {{-- @elseif (auth()->user()->role == 'Insurance Provider')
                 <x-sidebar-item route="insurance.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />
                 <x-sidebar-dropdown :items="$insuranceQuoteDropdown" name="Quotes" icon="lightbulb" id="insurance-requests" />
@@ -163,7 +163,7 @@
                 <x-sidebar-multi-dropdown :items="$legalDropdown" name="Legal" icon="balance-scale" id="legal" />
                 <x-sidebar-dropdown :items="$financingDropdown" name="Trade Finance" icon="money-check" id="financing" />
                 <x-sidebar-dropdown :items="$ticketDropdown" name="Support" icon="hands-helping" id="support" />
-                <x-sidebar-dropdown :items="$documentDropdown" name="Generate Documents" icon="file-invoice-dollar" id="documents" />
+                <x-sidebar-dropdown :items="$documentDropdown" name="Generate Documents" icon="file-invoice-dollar" id="documents" /> --}}
             @elseif (auth()->user()->role == 'Financial Partner')
                 <x-sidebar-item route="finance.dashboard" name="Dashboard" icon="sliders" />
                 <x-sidebar-item route="user.profile" name="Profile" icon="user" />

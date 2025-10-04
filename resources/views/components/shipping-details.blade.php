@@ -43,10 +43,10 @@
                         <strong>Custom Charges</strong>
                         <span>{{ $currency }} {{ number_format($shipment->quote->custom, 2) }}</span>
                     </div>
-                    <div class="d-flex justify-content-between mb-2">
+                    {{-- <div class="d-flex justify-content-between mb-2">
                         <strong>Insurance Charges</strong>
                         <span>{{ $shipment->insurance_quote_id ? $currency.' '.number_format($shipment->insurance_quote->charge, 2) : '-' }}</span>
-                    </div>
+                    </div> --}}
                     <div class="d-flex justify-content-between mb-2">
                         <strong>Carbon Emission</strong>
                         <span>{{ $shipment->carbon_offset ? $currency.' '.number_format($shipment->carbon_offset, 2) : '-' }}</span>

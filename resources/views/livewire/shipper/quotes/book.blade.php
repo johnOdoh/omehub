@@ -102,7 +102,7 @@
                                 <span class="text-primary fw-bold small">{{ $quote->request->currency }} {{ number_format($quote->custom, 2) }}</span>
                             </div>
                         </div>
-                        <hr>
+                        {{-- <hr>
                         <div class="col-12">
                             <div class="d-flex justify-content-between pb-3">
                                 <strong class="text-uppercase text-primary small">Insurance Charges</strong>
@@ -110,7 +110,7 @@
                                     {{ $selectedInsurance ? $quote->request->currency.' '.number_format($selectedInsurance->charge, 2) : '-' }}
                                 </span>
                             </div>
-                        </div>
+                        </div> --}}
                         <hr>
                         <div class="col-12">
                             <div class="d-flex justify-content-between pb-3">

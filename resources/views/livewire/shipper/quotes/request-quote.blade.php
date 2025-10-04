@@ -125,7 +125,7 @@
                             <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                         @enderror
                     </div>
-                    <div class="mb-3 col-md-6">
+                    {{-- <div class="mb-3 col-md-6">
                         <label class="form-label">Do you need Insurance? <i class="fa fa-info-circle" title="Choose yes if you also need insurance quotes" data-bs-toggle="tooltip" data-bs-placement="top"></i></label>
                         <select class="form-select" wire:model="insurance" required>
                             <option value="">Select...</option>
@@ -135,9 +135,7 @@
                         @error('insurance')
                             <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                         @enderror
-                    </div>
-                </div>
-                <div class="row mb-2" id="insert">
+                    </div> --}}
                     <div class="mb-3 col-md-6">
                         <label class="form-label">What volume of container do you need?</label>
                         <select class="form-select" wire:model.lazy="mode" required>
@@ -149,6 +147,8 @@
                             <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                         @enderror
                     </div>
+                </div>
+                <div class="row mb-2" id="insert">
                     @if ($mode == 'FCL')
                         <div class="mb-3 col-md-6 fcl">
                             <div class="input-group">

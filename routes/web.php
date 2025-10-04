@@ -72,10 +72,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logistics/quotes-sent', QuotesSent::class)->name('logistics.quotes-sent');
     Route::get('logistics/shipments', Shipments::class)->name('logistics.shipments');
 
-    Route::get('insurance/dashboard', InsuranceDashboard::class)->name('insurance.dashboard');
-    Route::get('insurance/quote-requests', InsuranceRequests::class)->name('insurance.quote-requests');
-    Route::get('insurance/quotes-sent', InsuranceQuotesSent::class)->name('insurance.quotes-sent');
-    Route::get('insurance/shipments', \App\Livewire\Insurance\Shipments\ShipmentList::class)->name('insurance.shipments');
+    // Route::get('insurance/dashboard', InsuranceDashboard::class)->name('insurance.dashboard');
+    // Route::get('insurance/quote-requests', InsuranceRequests::class)->name('insurance.quote-requests');
+    // Route::get('insurance/quotes-sent', InsuranceQuotesSent::class)->name('insurance.quotes-sent');
+    // Route::get('insurance/shipments', \App\Livewire\Insurance\Shipments\ShipmentList::class)->name('insurance.shipments');
 
     Route::get('finance/dashboard', FinanceDashboard::class)->name('finance.dashboard');
     Route::get('finance/requests', FinanceRequests::class)->name('finance.requests');

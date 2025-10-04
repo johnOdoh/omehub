@@ -20,13 +20,6 @@ return new class extends Migration
             $table->date('departure_date');
             $table->string('duration');
             $table->timestamps();
-            // $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            // $table->string('from');
-            // $table->string('to');
-            // $table->decimal('full_container', 10, 2);
-            // $table->decimal('half_container', 10, 2);
-            // $table->decimal('volume', 10, 2);
-            // $table->string('duration');
         });
     }
 

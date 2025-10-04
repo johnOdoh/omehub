@@ -18,7 +18,7 @@ class RequestQuote extends Component
     public $currency;
     public $hs_code;
     public $incoterm;
-    public $insurance;
+    // public $insurance;
     public $declaration = false; // New property for declaration
     public $mode;
     public $qty = [];
@@ -42,7 +42,7 @@ class RequestQuote extends Component
             'currency' => 'required',
             'hs_code' => 'required',
             'incoterm' => 'required',
-            'insurance' => 'required',
+            // 'insurance' => 'required',
             'freight' => 'required',
             'mode' => 'required',
             'declaration' => 'accepted'
@@ -96,7 +96,7 @@ class RequestQuote extends Component
             'hs_code' => $this->hs_code,
             'incoterm' => $this->incoterm,
             'freight_type' => $this->freight,
-            'needs_insurance' => $this->insurance === 'Yes' ? true : false,
+            'needs_insurance' => false,
             'container_type' => $this->mode,
             'dimensions' => $dimensions,
             'expires_at' => now()->addHour()

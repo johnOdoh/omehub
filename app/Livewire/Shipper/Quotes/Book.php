@@ -58,7 +58,7 @@ class Book extends Component
     {
         request()->user()->shipments()->create([
             'quote_id' => $this->quote->id,
-            'insurance_quote_id' => $this->selectedInsurance ? $this->selectedInsurance->id : null,
+            'insurance_quote_id' => $this->selectedInsurance?->id,
             'carbon_offset' => $this->offset_emission ? $this->carbon_offset : null,
             'amount' => $this->total,
             'status' => 'processing',
