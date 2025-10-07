@@ -2,13 +2,15 @@
 
 namespace App\Livewire\Auth;
 
+use Livewire\Component;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
 use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Livewire\Attributes\Layout;
-use Livewire\Component;
 
 #[Layout('components.layouts.auth')]
+#[Title('Verify Email Address')]
 class VerifyEmail extends Component
 {
     /**
@@ -17,7 +19,7 @@ class VerifyEmail extends Component
     public function sendVerification(): void
     {
         if (Auth::user()->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+            $this->redirectIntended(default: route(Auth::user()->dashboard(), absolute: false), navigate: true);
 
             return;
         }

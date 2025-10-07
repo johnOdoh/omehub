@@ -16,9 +16,6 @@
                 autocomplete="name"
                 :placeholder="__('Full name')"
             />
-            {{-- @error('name')
-                <div style="color: red"><small><i>{{ $message }}</i></small></div>
-            @enderror --}}
         </div>
 
         <!-- Email Address -->
@@ -31,9 +28,6 @@
                 autocomplete="email"
                 placeholder="email@example.com"
             />
-            {{-- @error('email')
-                <div style="color: red"><small><i>{{ $message }}</i></small></div>
-            @enderror --}}
         </div>
 
         <div>
@@ -43,9 +37,6 @@
                 <flux:select.option value="Logistics Provider">Logistics Provider</flux:select.option>
                 {{-- <flux:select.option value="Insurance Provider">Insurance Provider</flux:select.option> --}}
             </flux:select>
-            {{-- @error('role')
-                <div style="color: red"><small><i>{{ $message }}</i></small></div>
-            @enderror --}}
         </div>
 
         <!-- Password -->
@@ -59,9 +50,6 @@
                 :placeholder="__('Password')"
                 viewable
             />
-            {{-- @error('password')
-                <div style="color: red"><small><i>{{ $message }}</i></small></div>
-            @enderror --}}
         </div>
 
         <!-- Confirm Password -->
@@ -74,6 +62,29 @@
             :placeholder="__('Confirm password')"
             viewable
         />
+        <div class="flex items-center space-x-2">
+            <input
+                id="terms"
+                type="checkbox"
+                required
+                class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label for="terms" class="text-sm">
+                I agree to the <a href="{{ route('terms') }}" target="_blank" class="text-blue-600 hover:underline">Terms of Service</a>.
+            </label>
+        </div>
+
+        <div class="flex items-center space-x-2">
+            <input
+                id="privacy"
+                type="checkbox"
+                required
+                class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label for="privacy" class="text-sm">
+                I agree to the <a href="{{ route('privacy') }}" target="_blank" class="text-blue-600 hover:underline">Privacy Policy</a>.
+            </label>
+        </div>
 
         <div class="flex items-center justify-end">
             <flux:button type="submit" variant="primary" class="w-full">

@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Auth;
 
+use Livewire\Component;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-use Livewire\Attributes\Layout;
-use Livewire\Component;
 
 #[Layout('components.layouts.auth')]
+#[Title('Confirm Password')]
 class ConfirmPassword extends Component
 {
     public string $password = '';
@@ -32,6 +34,6 @@ class ConfirmPassword extends Component
 
         session(['auth.password_confirmed_at' => time()]);
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        $this->redirectIntended(default: route(Auth::user()->dashboard(), absolute: false), navigate: true);
     }
 }

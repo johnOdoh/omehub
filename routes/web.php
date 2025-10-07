@@ -48,7 +48,7 @@ Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
 Route::get('/our-terms', [PublicController::class, 'terms'])->name('terms');
 Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('admin/dashboard', \App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');
     Route::get('admin/profile', \App\Livewire\Admin\Profile\Main::class)->name('admin.profile');
     Route::get('admin/users/create', \App\Livewire\Admin\Users\Create::class)->name('admin.create-user');
