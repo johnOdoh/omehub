@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'address' => env('APP_ADDRESS', 'Unity warehouse, Toyota Bus Stop, Ladipo Mushin, Lagos, Nigeria'),
+    'address' => env('APP_ADDRESS', '17th Floor Elephant House, 214 Broad Street, Marina, Lagos State, Nigeria'),
     'address2' => env('APP_ADDRESS2', 'Zone C New Market Express, Enugu, Enugu State, Nigeria'),
     'email' => env('APP_EMAIL', 'support@omefreight.com'),
     'phone' => env('APP_PHONE', '+234 903 000 0000'),

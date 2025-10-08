@@ -123,7 +123,7 @@
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
           <div class="mb-4">
-              <p>Unity warehouse, Toyota Bus Stop, Ladipo Mushin,</p>
+              <p>17th Floor Elephant House, 214 Broad Street, Marina,</p>
               <p>Lagos, Nigeria.</p>
           </div>
           <div class="mb-4">
@@ -131,7 +131,7 @@
               <p>Enugu, Nigeria.</p>
           </div>
           {{-- <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p> --}}
-          <p><strong>Email:</strong> <span>support@omefreight.com</span></p>
+          <p><strong>Email:</strong> <span>{{ config('app.email') }}</span></p>
         </div>
 
       </div>
