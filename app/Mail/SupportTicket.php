@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SupportTicket extends Mailable
+class SupportTicket extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 

@@ -18,7 +18,7 @@ class LegalAdvice extends Component
             'message' => 'required|string',
             'subject' => 'required|string'
         ]);
-        Mail::to(config('mail.from.address'))
+        Mail::to(config('app.mail'))
             ->send(new LegalAdviceMail($this->message, $this->subject));
         session()->flash('success', 'Legal advice request sent successfully.');
         $this->reset();
