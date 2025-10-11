@@ -117,6 +117,7 @@ window.smartsupp||(function(d) {
             <li><a href="{{ route('bulletin', ['loc' => 'blog']) }}">Blog</a></li>
             <li><a href="{{ route('terms') }}">Terms of service</a></li>
             <li><a href="{{ route('privacy') }}">Privacy policy</a></li>
+            <li><a href="{{ route('advert-policy') }}">Advertising & Blog policy</a></li>
           </ul>
         </div>
 
@@ -126,7 +127,7 @@ window.smartsupp||(function(d) {
             <li><a href="{{ route('service', ['service' => 'book-freight']) }}">Quote & Book Freight</a></li>
             <li><a href="{{ route('service', ['service' => 'track-shipment']) }}">Track Shipment</a></li>
             <li><a href="{{ route('service', ['service' => 'trade-finance']) }}">Trade Finance</a></li>
-            <li><a href="{{ route('service', ['service' => 'access-insurance']) }}">Access Insurance</a></li>
+            {{-- <li><a href="{{ route('service', ['service' => 'access-insurance']) }}">Access Insurance</a></li> --}}
             <li><a href="{{ route('service', ['service' => 'resolve-disputes']) }}">Resolve Disputes & Claims</a></li>
             <li><a href="{{ route('service', ['service' => 'offset-carbon-emission']) }}">Offset CO₂ Emissions</a></li>
             <li><a href="{{ route('service', ['service' => 'community-feed']) }}">Community Feed</a></li>
@@ -151,14 +152,24 @@ window.smartsupp||(function(d) {
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>
-        &copy; {{ date('Y') }} <strong>{{ config('app.name') }}</strong>. All rights reserved.
-        <span>Powered by
-            <a href="https://omefreight.com" target="_blank" class="text-decoration-none fw-semibold">
-                OmeFreight
-            </a>
-        </span>
-      </p>
+        <div class="row">
+            <div class="col-md-6 mb-3 md-mb-0">
+                <p>
+                    <small>Omefreight Logistics Ltd (Omehub) is duly registered and certified by the Nigeria Data Protection Commission (NDPC) as a Data Controller of Major Importance (Ultra-High Level). REGISTRATION ID: NDPC/DCP/09043
+                    </small>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p>
+                  &copy; {{ date('Y') }} <strong>{{ config('app.name') }}</strong>. All rights reserved.
+                  <span>Powered by
+                      <a href="https://omefreight.com" target="_blank" class="text-decoration-none fw-semibold">
+                          OmeFreight
+                      </a>
+                  </span>
+                </p>
+            </div>
+        </div>
     </div>
 
   </footer>

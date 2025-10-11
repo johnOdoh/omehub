@@ -72,4 +72,9 @@ class PublicController extends Controller
     {
         return view('public.privacy');
     }
+
+    public function advertPolicy()
+    {
+        return view('public.advert-policy');
+    }
 }

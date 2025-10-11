@@ -177,7 +177,7 @@
             </div>
           </div><!-- End Card Item -->
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          {{-- <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
             <div class="card">
               <div class="card-img">
                 <img src="{{ asset('assets/img/services/access-insurance.webp') }}" alt="" class="img-fluid">
@@ -185,7 +185,7 @@
               <h3><a href="{{ route('service', ['service' => 'access-insurance']) }}" class="stretched-link">Access Insurance</a></h3>
               <p>Protect your cargo with affordable, tailored insurance solutions offered directly through the platform.</p>
             </div>
-          </div><!-- End Card Item -->
+          </div><!-- End Card Item --> --}}
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="card">
