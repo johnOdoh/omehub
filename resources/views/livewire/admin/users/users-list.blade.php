@@ -14,7 +14,7 @@
                         <a class="dropdown-item" wire:click.prevent='changeCurrent("All User")' href="#">All Users</a>
                         <a class="dropdown-item" wire:click.prevent='changeCurrent("Shipper")' href="#">Shippers</a>
                         <a class="dropdown-item" wire:click.prevent='changeCurrent("Logistics Provider")' href="#">Logistics Providers</a>
-                        <a class="dropdown-item" wire:click.prevent='changeCurrent("Insurance Provider")' href="#">Insurance Providers</a>
+                        {{-- <a class="dropdown-item" wire:click.prevent='changeCurrent("Insurance Provider")' href="#">Insurance Providers</a> --}}
                         <a class="dropdown-item" wire:click.prevent='changeCurrent("Financial Partner")' href="#">Financial Partners</a>
                         <a class="dropdown-item" wire:click.prevent='changeCurrent("Sustainability Partner")' href="#">Sustainability Partners</a>
                     </div>

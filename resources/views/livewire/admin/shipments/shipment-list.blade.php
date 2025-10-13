@@ -16,7 +16,7 @@
                                 <th>Status</th>
                                 <th>Booking Date</th>
                                 <th>Logistic Invoice</th>
-                                <th>Insurance Invoice</th>
+                                {{-- <th>Insurance Invoice</th> --}}
                                 <th>Admin Invoice</th>
                                 <th>Actions</th>
                             </tr>
@@ -29,7 +29,7 @@
                                     <td><span class="badge bg-{{ $shipment->status == 'Delivered' ? 'success' : 'warning' }}">{{ $shipment->status }}</span></td>
                                     <td>{{ $shipment->created_at->format('d M, Y') }}</td>
                                     <td>@if ($shipment->logistics_invoice) <a class="btn btn-outline-success btn-sm" href="{{ asset('storage/invoices/'.$shipment->logistics_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
-                                    <td>@if ($shipment->insurance_invoice) <a class="btn btn-outline-primary btn-sm" href="{{ asset('storage/invoices/'.$shipment->insurance_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
+                                    {{-- <td>@if ($shipment->insurance_invoice) <a class="btn btn-outline-primary btn-sm" href="{{ asset('storage/invoices/'.$shipment->insurance_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td> --}}
                                     <td>@if ($shipment->admin_invoice) <a class="btn btn-outline-secondary btn-sm" href="{{ asset('storage/invoices/'.$shipment->admin_invoice) }}" target="_blank">Download Invoice</a> @else - @endif</td>
                                     <td class="d-flex gap-2">
                                         <button class="btn btn-info btn-sm" wire:click="select({{ $shipment->id }})">View Shipment</button>

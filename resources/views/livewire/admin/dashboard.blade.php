@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4 d-flex">
+        {{-- <div class="col-12 col-md-4 d-flex">
             <div class="card flex-fill">
                 <div class="card-body">
                     <div class="row">
@@ -86,11 +86,11 @@
                     </div>
                     <h1 class="my-1">{{ $logisticsProvidersCount }}</h1>
                     <div class="float-end">
-                        {{-- <a href="{{ route('logistics.shipments') }}" wire:navigate>My Shipments</a> --}}
+                        <a href="{{ route('logistics.shipments') }}" wire:navigate>My Shipments</a>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-12 col-md-4 d-flex">
             <div class="card flex-fill">
                 <div class="card-body">
