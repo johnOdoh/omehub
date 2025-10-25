@@ -70,11 +70,11 @@
                 class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
             />
             <label for="terms" class="text-sm">
-                I agree to the <a href="{{ route('terms') }}" target="_blank" class="text-blue-600 hover:underline">Terms of Service</a>.
+                I agree to the <a href="{{ route('terms') }}" target="_blank" class="text-blue-600 hover:underline">Terms of Service</a> and <a href="{{ route('privacy') }}" target="_blank" class="text-blue-600 hover:underline">Privacy Policy</a>.
             </label>
         </div>
 
-        <div class="flex items-center space-x-2">
+        {{-- <div class="flex items-center space-x-2">
             <input
                 id="privacy"
                 type="checkbox"
@@ -82,9 +82,9 @@
                 class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
             />
             <label for="privacy" class="text-sm">
-                I agree to the <a href="{{ route('privacy') }}" target="_blank" class="text-blue-600 hover:underline">Privacy Policy</a>.
+                I agree to the .
             </label>
-        </div>
+        </div> --}}
 
         <div class="flex items-center justify-end">
             <flux:button type="submit" variant="primary" class="w-full">
