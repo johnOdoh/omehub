@@ -80,7 +80,7 @@
 
             <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
                 <img src="{{ asset('assets/img/about.jpg') }}" class="img-fluid" alt="">
-                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+                <a href="https://youtube.com/embed/YeOgHg6m1iM" class="glightbox pulsating-play-btn"></a>
             </div>
 
             <div class="col-lg-6 content order-last order-lg-first" data-aos="fade-up" data-aos-delay="100">
