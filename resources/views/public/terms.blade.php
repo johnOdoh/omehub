@@ -61,6 +61,12 @@
             </p>
         </div>
         <div>
+            <h4>Refund Policy</h4>
+            <p>
+              {{ config('app.name') }} provides refunds only in cases where a paid service has not been rendered or where a duplicate payment was made in error. Refund requests must be submitted in writing within 7 business days of payment. Services that have already commenced, including freight bookings, customs processing, or third-party handling, are non-refundable.
+            </p>
+        </div>
+        <div>
             <h4>Trade Finance & Insurance</h4>
             <p>
               Services offered by third-party partners are subject to their own terms. {{ config('app.name') }} facilitates the transaction but does not underwrite or guarantee finance or insurance.

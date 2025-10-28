@@ -2,7 +2,7 @@
 
 @section('title', 'Privacy Policy')
 @section('content')
-      <main class="main">
+  <main class="main">
 
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade" style="background-image: url({{ asset('assets/img/terms-bg.jpg') }});">
@@ -133,7 +133,7 @@
               <li><i class="bi bi-check-circle"></i> <span>Right to opt-out of sale/sharing of personal data. </span></li>
               <li><i class="bi bi-check-circle"></i> <span>Right to non-discrimination if you exercise your rights. </span></li>
             </ul>
-            <p>To exercise your rights, contact us at privacy@omefreight.com. </p>
+            <p>To exercise your rights, contact us at {{ config('app.email') }}. </p>
         </div>
         <div>
             <h4>Data Security </h4>
