@@ -30,9 +30,9 @@ class DocumentUpload extends Component
     {
         if ($this->user->role == 'Shipper' && $this->user->profile->account_type == 'Personal') {
             $this->validate([
-                'front' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-                'back' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-                'number' => 'required|numeric',
+                'front' => 'required|image|mimes:jpg,jpeg,png|max:5120',
+                'back' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
+                'number' => 'required|string',
                 'name' => 'required',
                 'bank' => 'required'
             ]);

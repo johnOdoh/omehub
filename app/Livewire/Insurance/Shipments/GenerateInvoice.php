@@ -20,7 +20,7 @@ class GenerateInvoice extends Component
     {
         $this->validate([
             'name' => 'required|string',
-            'number' => 'required|numeric',
+            'number' => 'required|string',
             'swift' => 'required|string',
             'address' => 'nullable|string',
             'date' => 'required|date'

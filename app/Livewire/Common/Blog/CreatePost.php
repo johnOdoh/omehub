@@ -43,7 +43,7 @@ class CreatePost extends Component
             'description' => 'required|string|max:200',
             'body' => 'required|string',
             'tags' => 'required|string|max:100',
-            'file' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'file' => 'required|image|mimes:jpeg,png,jpg|max:5120',
         ]);
         $this->tags = preg_replace('/,\s*/', ', ', $this->tags); // Remove spaces from tags
         if ($this->edit) {
