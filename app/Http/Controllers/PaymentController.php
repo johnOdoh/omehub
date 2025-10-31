@@ -19,8 +19,7 @@ class PaymentController extends Controller
         $response = Http::withToken(env('FLUTTERWAVE_SECRET_KEY'))
             ->get("https://api.flutterwave.com/v3/transactions/$transaction_id/verify");
         $transaction = $response->json()['data'];
-        dd($transaction, $amount, $transaction['status'] === 'successful', $transaction['charged_amount'] == $amount, $transaction['currency'] === 'USD');
-        if ($transaction['status'] === 'successful' && $transaction['charged_amount'] == $amount && $transaction['currency'] === 'USD')
+        if ($transaction['status'] === 'successful' && $transaction['charged_amount'] >= $amount && $transaction['currency'] === 'USD')
             return true;
         else
             return false;
