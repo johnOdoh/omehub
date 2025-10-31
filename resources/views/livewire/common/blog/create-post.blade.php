@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="my-3">
                                     <div class="form-group">
-                                        <label class="form-label">Cover Image <i class="small"></i></label>
+                                        <label class="form-label">Cover Image <i class="small">(5MB max)</i></label>
                                         <input type="file" class="form-control" accept="image/*" wire:model="file" required>
                                     </div>
                                     @error('file')

@@ -27,7 +27,7 @@
                         @if ($isPersonal)
                             <div class="form-group mb-3">
                                 <label class="form-label fw-bold">
-                                    Government Issued ID (Front)<small><em>(Must be an image)</em></small>
+                                    Government Issued ID (Front)<small><em>(Must be an image. 5MB max)</em></small>
                                 </label>
                                 <input type="file" class="form-control" required wire:model="front" accept="image/*">
                                 @error('front')
@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label fw-bold">
-                                    Government Issued ID (Back - if applicable)<small><em>(Must be an image)</em></small>
+                                    Government Issued ID (Back - if applicable)<small><em>(Must be an image. 5MB max)</em></small>
                                 </label>
                                 <input type="file" class="form-control" wire:model="back" accept="image/*">
                                 @error('back')
