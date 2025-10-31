@@ -2,6 +2,13 @@
     <div class="mb-3">
         <h1 class="h3">{{ $post ? 'Edit' : 'Create' }} {{ $loc == 'blog' ? 'Post' : 'Ad' }}</h1>
     </div>
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            <div class="alert-message">
+                <div>{{ session('error') }}</div>
+            </div>
+        </div>
+    @endif
     @if (auth()->user()->bulletin_payment)
         @if (session('success')) <span x-show="notify('{{ session('success') }}')"></span> @endif
         <div class="alert alert-warning alert-dismissible" role="alert">

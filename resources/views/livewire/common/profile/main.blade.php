@@ -5,15 +5,22 @@
         </div>
         @if (session('success')) <span x-show="notify('Document Submitted')"></span> @endif
         @if ($hasProfile && !$user->profile->documents)
-            <div class="col-auto ms-auto text-end mt-n1">
-                @if ($user->verification_payment)
-                    <a class="btn btn-outline-primary" href="{{ route('user.upload-document') }}" wire:navigate>Upload Documents</a>
-                @else
-                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadDocuments">Upload Documents</button>
-                @endif
-            </div>
+        <div class="col-auto ms-auto text-end mt-n1">
+            @if ($user->verification_payment)
+            <a class="btn btn-outline-primary" href="{{ route('user.upload-document') }}" wire:navigate>Upload Documents</a>
+            @else
+            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#uploadDocuments">Upload Documents</button>
+            @endif
+        </div>
         @endif
     </div>
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            <div class="alert-message">
+                <div>{{ session('error') }}</div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-6">
             <div class="card mb-3">
