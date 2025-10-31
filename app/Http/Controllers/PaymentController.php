@@ -19,6 +19,7 @@ class PaymentController extends Controller
         $response = Http::withToken(env('FLUTTERWAVE_SECRET_KEY'))
             ->get("https://api.flutterwave.com/v3/transactions/$transaction_id/verify");
         $transaction = $response->json()['data'];
+        dd($transaction, $amount, $transaction['status'] === 'successful', $transaction['charged_amount'] == $amount, $transaction['currency'] === 'USD');
         if ($transaction['status'] === 'successful' && $transaction['charged_amount'] == $amount && $transaction['currency'] === 'USD')
             return true;
         else
@@ -27,7 +28,7 @@ class PaymentController extends Controller
 
     public function verification(Request $request): RedirectResponse
     {
-        $amount = $request->user()->role == 'Shipper' && $request->user()->profile->account_type == 'Personal' ? 1 : 5;
+        $amount = $request->user()->role == 'Shipper' && $request->user()->profile->account_type == 'Personal' ? 1.00 : 5.00;
         if ($this->verifyPayment($amount, $request->transaction_id)) {
             $request->user()->update(['verification_payment' => true]);
             return redirect()->route('user.upload-document');
