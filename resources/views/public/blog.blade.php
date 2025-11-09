@@ -46,7 +46,7 @@
                     </div>
                 </div><!-- End Card Item -->
             @empty
-                <h3 data-aos="fade-up" data-aos-delay="100"><em>No Posts found</em></h3>
+                <h3 data-aos="fade-up" data-aos-delay="100"><em>No {{ $loc == 'ads' ? 'Ads' : 'Posts' }} found</em></h3>
             @endforelse
         </div>
 

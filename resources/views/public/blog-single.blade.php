@@ -17,7 +17,13 @@
         </nav>
       </div>
     </div><!-- End Page Title -->
-
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
     <!-- Service Details Section -->
     <section id="service-details" class="service-details section">
 
@@ -32,7 +38,6 @@
                             <img src="{{ asset('assets/img/play-btn.png/') }}" alt="cover image" class="img-fluid" width="774" height="353">
                             <a href="{{ asset('storage/'.$post->file) }}" class="glightbox pulsating-play-btn"></a>
                         </div>
-
                     </div>
                 @else
                     <img src="{{ asset('storage/'.$post->file) }}" alt="" class="img-fluid services-img">

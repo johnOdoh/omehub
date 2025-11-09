@@ -32,7 +32,10 @@ class PublicController extends Controller
         $loc = request()->query('loc', 'blog');
         $query = $loc == 'ads' ? Post::where('tags', null)
                                : Post::whereNot('tags', null);
-        $posts = $query->latest()->paginate(3)->withQueryString();
+        $posts = $query->where('status', 'approved')
+            ->latest()
+            ->paginate(12)
+            ->withQueryString();
         return view('public.blog', compact('posts', 'loc'));
     }
 

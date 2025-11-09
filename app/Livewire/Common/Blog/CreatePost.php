@@ -7,6 +7,7 @@ use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\Title;
 
 class CreatePost extends Component
 {
@@ -65,7 +66,7 @@ class CreatePost extends Component
             'title' => 'required|string|max:191',
             'description' => 'required|string|max:200',
             'body' => 'required|string',
-            'file' => 'required|file|mimes:jpeg,png,jpg,mp4,avi,mov|max:5120',
+            'file' => 'required|file|mimes:jpeg,png,jpg,mp4,webm|max:20480',
         ]);
         if ($this->edit) {
             $this->post->update($validated);
@@ -89,6 +90,7 @@ class CreatePost extends Component
         $this->paid = null;
     }
 
+    #[Title('Create Post')]
     public function render()
     {
         return view('livewire.common.blog.create-post');

@@ -8,7 +8,7 @@
         </div> --}}
     </div>
     @if ($post->status == 'approved')
-        <hr>
+        {{-- <hr>
         <div class="d-flex">
             <p class="my-0"><i class="fa fa-heart text-danger"></i> 300</p>
             <div class="ms-auto">
@@ -25,11 +25,26 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <hr> --}}
     @endif
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
     <div class="row">
         <div class="col-12">
             <div class="card">
+                @if ($post->is_video)
+                    <video width="100%" controls>
+                        <source src="{{ asset('storage/'.$post->file) }}">
+                        Your browser does not support the video tag.
+                    </video>
+                @else
+                    <img class="card-img-top" src="{{ asset('storage/'.$post->file) }}" alt="cover image">
+                @endif
                 <div class="card-body">
                     {!! $post->body !!}
                 </div>

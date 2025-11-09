@@ -13,6 +13,7 @@ use App\Livewire\Common\Support\Tickets;
 use App\Http\Controllers\PublicController;
 use App\Livewire\Common\Financing\Request;
 use App\Http\Controllers\PaymentController;
+use App\Livewire\Admin\Bulletin;
 use App\Livewire\Logistics\Quotes\Requests;
 use App\Livewire\Common\Dispute\DisputeList;
 use App\Livewire\Common\Dispute\LegalAdvice;
@@ -60,6 +61,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('admin/shipments', \App\Livewire\Admin\Shipments\ShipmentList::class)->name('admin.shipments');
     Route::get('admin/disputes', DisputeList::class)->name('admin.disputes');
     Route::get('admin/tickets', Tickets::class)->name('admin.tickets');
+    Route::get('admin/bulletin', Bulletin::class)->name('admin.bulletin');
     // Route::middleware(['role:admin'])->group(function () {
     // });
 

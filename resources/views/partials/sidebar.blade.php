@@ -15,6 +15,10 @@
         0 => ['name' => 'Create Post', 'route' => 'user.blog.create'],
         1 => ['name' => 'My Posts', 'route' => 'user.blog.posts'],
     ];
+    $adminBulletinDropdown = [
+        0 => ['name' => 'Adverts', 'route' => 'admin.bulletin', 'params' => ['loc' => 'ad']],
+        1 => ['name' => 'Blog', 'route' => 'admin.bulletin'],
+    ];
     $financingDropdown = [
         0 => ['name' => 'Request Financing', 'route' => 'user.financing.request'],
         1 => ['name' => 'My Requests', 'route' => 'user.financing.list'],
@@ -127,6 +131,7 @@
                     <x-sidebar-dropdown :items="$adminDropdown" name="Admins" icon="users-cog" id="admins" />
                     <x-sidebar-item route="admin.tickets" name="Tickets" icon="hands-helping" />
                     <x-sidebar-item route="user.offsets.invoices" name="Carbon Offset Invoices" icon="file-invoice" />
+                    <x-sidebar-dropdown :items="$adminBulletinDropdown" name="Bulletin" icon="blog" id="bulletin" />
                 @endif
                 @if (in_array(auth()->user()->admin_role, ['Legal Partner', 'Admin']) )
                     <x-sidebar-item route="admin.disputes" name="Disputes" icon="balance-scale" :params="$adminParam" />

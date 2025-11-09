@@ -32,7 +32,7 @@
 
         <div>
             <flux:select wire:model="role" label="Role" placeholder="Choose Role..." required>
-                <flux:select.option value="Admin">Admin</flux:select.option>
+                {{-- <flux:select.option value="Admin">Admin</flux:select.option> --}}
                 <flux:select.option value="Shipper">Shipper</flux:select.option>
                 <flux:select.option value="Logistics Provider">Logistics Provider</flux:select.option>
                 {{-- <flux:select.option value="Insurance Provider">Insurance Provider</flux:select.option> --}}

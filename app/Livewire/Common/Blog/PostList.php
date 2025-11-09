@@ -4,6 +4,7 @@ namespace App\Livewire\Common\Blog;
 
 use Livewire\Component;
 use Livewire\Attributes\Url;
+use Livewire\Attributes\Title;
 use Illuminate\Support\Facades\File;
 
 class PostList extends Component
@@ -27,6 +28,8 @@ class PostList extends Component
         session()->flash('deleted');
         $this->dispatch('postDeleted');
     }
+
+    #[Title('Posts')]
     public function render()
     {
         return view('livewire.common.blog.post-list');

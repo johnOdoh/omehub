@@ -24,7 +24,7 @@ class CreateTicket extends Component
             'attachment' => 'nullable|file|mimes:jpg,jpeg,png|max:2048'
         ]);
         $ticket_number = request()->user()->initials().rand(100000, 999999);
-        Mail::to(config('app.mail'))
+        Mail::to(config('app.email'))
             ->send(new SupportTicket(
                 $this->subject,
                 $this->message,
