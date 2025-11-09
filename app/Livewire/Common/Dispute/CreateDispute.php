@@ -30,7 +30,9 @@ class CreateDispute extends Component
         $result = User::where('status', 'Active')
             ->whereNot('role', 'Admin')
             ->whereNot('id', request()->user()->id)
-            ->whereLike('name', "%$input%")->limit(5)
+            ->whereLike('name', "%$input%")
+            ->limit(5)
+            ->get()
             ->map(fn ($user) => ['name' => $user->name, 'id' => $user->id])
             ->toArray();
         $this->suggestions = $result;
