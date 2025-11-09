@@ -18,7 +18,6 @@ class CreateTicket extends Component
 
     public function send()
     {
-        dd(config('app.email'));
         $this->validate([
             'subject' => 'required|string|max:191',
             'message' => 'required|string',
