@@ -67,8 +67,8 @@
                                 <input type="text" class="form-control" placeholder="Defendant" required wire:keyup="search($event.target.value)" wire:model="defendant">
                                 @if ($suggestions)
                                     <ul class="dropdown-menu w-100" id="suggestionsDropdown" style="display: block;">
-                                        @foreach ( $suggestions as $suggestion )
-                                            <li><a class="dropdown-item" wire:click='select("{{ $suggestion['id'] }}, {{ $suggestion['name'] }}")'>{{ $suggestion['name'] }}</a></li>
+                                        @foreach ($suggestions as $suggestion)
+                                            <li><a class="dropdown-item" wire:click='select("{{ $suggestion['id'] }}", "{{ $suggestion['name'] }}")'>{{ $suggestion['name'] }}</a></li>
                                         @endforeach
                                     </ul>
                                 @endif
