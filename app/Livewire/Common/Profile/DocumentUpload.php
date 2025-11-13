@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Common\Profile;
 
+use App\Mail\AdminAlert;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -60,7 +62,8 @@ class DocumentUpload extends Component
                 'document' => $filename
             ];
         }
-        request()->user()->profile()->update(['documents' => $document]);
+        $this->user->profile()->update(['documents' => $document]);
+        Mail::to(config('app.email'))->send(new AdminAlert('verification', $this->user->id));
         $this->redirect(route('user.profile', ['u' => 1]), true);
     }
 

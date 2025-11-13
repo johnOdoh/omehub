@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Users;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\Shipment;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Title;
 
 #[Title('User Info')]
@@ -50,6 +51,7 @@ class UserInfo extends Component
     {
         $this->user->profile->is_verified = true;
         $this->user->profile->save();
+        Mail::to($this->user->email) ->send(new \App\Mail\VerificationNotice($this->user));
         session()->flash('message', 'User approved successfully.');
     }
 

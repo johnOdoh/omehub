@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Auth;
 
+use App\Mail\AdminAlert;
+use App\Mail\RegistrationNotice;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Title;
@@ -9,6 +11,7 @@ use Livewire\Attributes\Layout;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 
 #[Layout('components.layouts.auth')]
@@ -39,6 +42,7 @@ class Register extends Component
 
         $validated['password'] = Hash::make($validated['password']);
         if($validated['role'] == 'Admin') $validated['admin_role'] = 'Admin';
+        Mail::to(config('app.email'))->send(new AdminAlert('registration'));
 
         event(new Registered(($user = User::create($validated))));
 
