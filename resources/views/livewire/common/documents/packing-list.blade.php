@@ -1,7 +1,15 @@
 <div class="container-fluid p-0">
     <h1 class="h3 mb-3 text-center">Generate a Packing List</h1>
     @if (session('success')) <span x-show="notify('{{ session('success') }}')"></span> @endif
-    @if (auth()->user()->document_generation_payment)
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            <div class="alert-message">
+                <div>{{ session('error') }}</div>
+            </div>
+        </div>
+    @endif
+    {{-- @if (auth()->user()->document_generation_payment) --}}
+    @if (true)
         @if (!auth()->user()->profile?->is_verified)
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

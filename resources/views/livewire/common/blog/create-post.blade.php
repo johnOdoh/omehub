@@ -9,7 +9,8 @@
             </div>
         </div>
     @endif
-    @if (auth()->user()->bulletin_payment)
+    @if (true)
+    {{-- @if (true) --}}
         @if (session('success')) <span x-show="notify('{{ session('success') }}')"></span> @endif
         <div class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

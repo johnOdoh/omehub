@@ -8,7 +8,8 @@
             </div>
         </div>
     @endif
-    @if (auth()->user()->document_generation_payment)
+    {{-- @if (auth()->user()->document_generation_payment) --}}
+    @if (true)
         @if (!auth()->user()->profile?->is_verified)
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
