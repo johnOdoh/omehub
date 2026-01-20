@@ -74,7 +74,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body m-3">
-                    <p class="mb-0">You need to make a one-time payment of ${{ $isPersonal ? '1' : '5' }} before you can upload your documents for verification.</p>
+                    <p class="mb-0">You need to make a one-time payment of ${{ $isPersonal ? '1' : '1' }} before you can upload your documents for verification.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
@@ -134,7 +134,7 @@
                 FlutterwaveCheckout({
                     public_key: '{{ env('FLUTTERWAVE_PUBLIC_KEY') }}',
                     tx_ref: '{{ uniqid('ome_', true) }}',
-                    amount: {{ $isPersonal ? 1.00 : 5.00 }},
+                    amount: {{ $isPersonal ? 1.00 : 1.00 }},
                     currency: 'USD',
                     payment_options: 'card',
                     redirect_url: '{{ route('payment.verification') }}',
