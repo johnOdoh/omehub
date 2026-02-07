@@ -204,7 +204,7 @@
 
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-6 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
               <img src="{{ asset('assets/img/team/team-1.png') }}" class="img-fluid" alt="">
               <div class="member-content">
@@ -218,7 +218,7 @@
             </div>
           </div><!-- End Team Member -->
 
-          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+          {{-- <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
               <img src="{{ asset('assets/img/team/team-2.png') }}" class="img-fluid" alt="">
               <div class="member-content">
@@ -230,16 +230,17 @@
                 </div>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div> --}}
+          <!-- End Team Member -->
 
-          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-6 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
               <img src="{{ asset('assets/img/team/team-3.jpg') }}" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>Mama Godfrey Sunday</h4>
+                <h4>Mama Godfrey</h4>
                 <span>Head of Technical Support</span>
                 <p>
-                   Mama Godfrey Sunday is a passionate Electrical and Electronics Engineering graduate with strong technical skills and a deep love for technology.
+                   Mama Godfrey is a passionate Electrical and Electronics Engineering graduate with strong technical skills and a deep love for technology.
                 </p>
                 <div class="social">
                   <a href="#"><i class="bi bi-twitter-x"></i></a>
