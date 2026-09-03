@@ -7,7 +7,7 @@
         <div class="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
             <div class="flex w-full max-w-sm flex-col gap-2">
                 <a href="{{ route('home') }}" class="flex flex-col items-center gap-2 font-medium mb-5" wire:navigate>
-                    <img src="{{ asset('assets/img/logo_blue.png') }}" alt="" class="img-fluid" width="100">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="logo" class="img-fluid" width="200">
                     <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
                 </a>
                 <div class="flex flex-col gap-6">

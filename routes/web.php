@@ -31,10 +31,7 @@ use App\Livewire\Finance\Dashboard as FinanceDashboard;
 use App\Livewire\Finance\Requests as FinanceRequests;
 use App\Livewire\Logistics\Shipments\Shipments;
 use App\Livewire\Shipper\Shipments\ShipmentList;
-use App\Livewire\Insurance\Dashboard as InsuranceDashboard;
 use App\Livewire\Logistics\Dashboard as LogisticsDashboard;
-use App\Livewire\Insurance\Quotes\Requests as InsuranceRequests;
-use App\Livewire\Insurance\Quotes\QuotesSent as InsuranceQuotesSent;
 use App\Livewire\Sustainability\Dashboard as SustainabilityDashboard;
 use App\Livewire\Sustainability\Offsets;
 
@@ -49,6 +46,54 @@ Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
 Route::get('/our-terms', [PublicController::class, 'terms'])->name('terms');
 Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
 Route::get('/advert-and-blog-policy', [PublicController::class, 'advertPolicy'])->name('advert-policy');
+
+Route::get('/public/', function () {
+    return view('test.index');
+})->name('public.index');
+
+Route::get('/public/about', function () {
+    return view('test.about');
+})->name('public.about');
+
+Route::get('/public/for-carriers', function () {
+    return view('test.for-carriers');
+})->name('public.for-carriers');
+
+Route::get('/public/for-shippers', function () {
+    return view('test.for-shippers');
+})->name('public.for-shippers');
+
+Route::get('/public/contact', function () {
+    return view('test.contact');
+})->name('public.contact');
+
+Route::get('/public/platform', function () {
+    return view('test.platform');
+})->name('public.platform');
+
+Route::get('/public/solutions', function () {
+    return view('test.solutions');
+})->name('public.solutions');
+
+Route::get('/public/quotes', function () {
+    return view('test.quote');
+})->name('public.quote');
+
+Route::get('/public/tracking', function () {
+    return view('test.tracking');
+})->name('public.tracking');
+
+Route::get('/public/terms', function () {
+    return view('test.terms');
+})->name('public.terms');
+
+Route::get('/public/privacy', function () {
+    return view('test.privacy');
+})->name('public.privacy');
+
+Route::get('/public/advertising', function () {
+    return view('test.privacy');
+})->name('public.advertising');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('admin/dashboard', \App\Livewire\Admin\Dashboard::class)->name('admin.dashboard');
@@ -66,7 +111,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // });
 
     Route::get('shipper/dashboard', Dashboard::class)->name('shipper.dashboard');
-    Route::get('shipper/get-quotes',RequestQuote::class)->name('shipper.get-quotes');
+    Route::get('shipper/get-quotes', RequestQuote::class)->name('shipper.get-quotes');
     Route::get('shipper/quote-requests', QuoteRequests::class)->name('shipper.quote-requests');
     Route::get('shipper/shipments', ShipmentList::class)->name('shipper.shipments');
 
@@ -115,4 +160,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('payment/document', [PaymentController::class, 'document'])->name('payment.document');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
