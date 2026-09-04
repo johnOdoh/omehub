@@ -92,7 +92,7 @@ Route::get('/public/privacy', function () {
 })->name('public.privacy');
 
 Route::get('/public/advertising', function () {
-    return view('test.privacy');
+    return view('test.advert-policy');
 })->name('public.advertising');
 
 Route::middleware(['auth', 'verified'])->group(function () {
