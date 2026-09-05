@@ -191,7 +191,7 @@
                     </p>
                     <div class="flex items-center space-x-3 pt-2">
                         <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-brand-blue hover:text-white flex items-center justify-center text-gray-400 transition-all" aria-label="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.601 0 4.263 2.37 4.263 5.455v6.288zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.994 20.452H3.675V9h3.319v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
                             </svg>
                         </a>
@@ -233,20 +233,7 @@
             <!-- Middle Row: Multi-Column Links -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-b border-white/10 text-xs sm:text-sm">
 
-                <!-- Column 1: Solutions -->
-                <div>
-                    <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Transport Solutions</h5>
-                    <ul class="space-y-2.5">
-                        <li><a href="{{ route('public.solutions') }}#ocean-fcl" class="hover:text-white transition-colors">Ocean Freight FCL</a></li>
-                        <li><a href="{{ route('public.solutions') }}#ocean-lcl" class="hover:text-white transition-colors">Ocean Freight LCL</a></li>
-                        <li><a href="{{ route('public.solutions') }}#air-freight" class="hover:text-white transition-colors">Air Freight Express</a></li>
-                        {{-- <li><a href="{{ route('public.solutions') }}#rail-road" class="hover:text-white transition-colors">Rail & Intermodal</a></li> --}}
-                        <li><a href="{{ route('public.solutions') }}#customs" class="hover:text-white transition-colors">Automated Customs</a></li>
-                        <li><a href="{{ route('public.solutions') }}#sustainability" class="hover:text-brand-green transition-colors text-emerald-400">Green Logistics</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 2: Platform -->
+                <!-- Column 1: Platform -->
                 <div>
                     <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Services</h5>
                         <ul class="space-y-2.5">
@@ -259,7 +246,7 @@
                     </ul>
                 </div>
 
-                <!-- Column 4: Resources -->
+                <!-- Column 2: Resources -->
                 <div>
                     <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Resources & Tools</h5>
                     <ul class="space-y-2.5">
@@ -267,11 +254,12 @@
                         <li><a href="{{ route('public.tracking') }}" class="hover:text-white transition-colors">Shipment Tracker</a></li>
                         <li><a href="{{ route('public.about') }}#sustainability" class="hover:text-white transition-colors">Carbon Report</a></li>
                         <li><a href="{{ route('public.about') }}#faq" class="hover:text-white transition-colors">FAQ</a></li>
-                        <li><a href="{{ route('public.contact') }}" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="{{ route('public.for-shippers') }}" class="hover:text-white transition-colors">For Shippers</a></li>
+                        <li><a href="{{ route('public.for-carriers') }}" class="hover:text-white transition-colors">For Logistic Providers</a></li>
                     </ul>
                 </div>
 
-                <!-- Column 5: Company -->
+                <!-- Column 3: Company -->
                 <div>
                     <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Company</h5>
                     <ul class="space-y-2.5">
@@ -279,6 +267,38 @@
                         <li><a href="{{ route('public.about') }}#leadership" class="hover:text-white transition-colors">Leadership</a></li>
                         <li><a href="{{ route('public.contact') }}#locations" class="hover:text-white transition-colors">Global Hubs</a></li>
                         <li><a href="{{ route('public.contact') }}" class="hover:text-white transition-colors">Contact Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Address & Contact -->
+                <div>
+                    <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Contact & Address</h5>
+                    <ul class="space-y-3 text-xs">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-white shrink-0 mt-0.5"></i>
+                            <span class="text-gray-400 leading-relaxed">
+                                17th Floor Elephant House,<br>
+                                214 Broad Street, Marina,<br>
+                                Lagos, Nigeria
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-white shrink-0 mt-0.5"></i>
+                            <span class="text-gray-400 leading-relaxed">
+                                Zone C New Market Express,<br>
+                                Enugu, Nigeria
+                            </span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-white shrink-0"></i>
+                            <a href="mailto:info@ome-hub.com" class="text-gray-400 hover:text-white transition-colors">info@ome-hub.com</a>
+                        </li>
+                        <li class="pt-1">
+                            <a href="{{ route('public.contact') }}" class="inline-flex items-center gap-1 text-xs font-bold text-brand-white hover:text-white transition-colors">
+                                <span>Get in Touch</span>
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
