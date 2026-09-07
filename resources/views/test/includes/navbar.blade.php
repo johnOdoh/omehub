@@ -369,16 +369,16 @@
 
         @guest
             <!-- Login Link -->
-            <a href="{{ route('register') }}" class="hidden sm:inline-flex text-xs sm:text-sm font-semibold text-gray-700 hover:text-brand-blue transition-colors px-2 py-1">
+            <a href="{{ route('register') }}" class="sm:inline-flex text-xs sm:text-sm font-semibold text-gray-700 hover:text-brand-blue transition-colors px-2 py-1">
                 Sign Up
             </a>
             <!-- Primary CTA Buttons -->
-            <a href="{{ route('login') }}" class="hidden sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4 shadow-sm">
+            <a href="{{ route('login') }}" class="sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4 shadow-sm">
                 <span>Login</span>
                 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
         @else
-            <a href="{{ route(auth()->user()->dashboard()) }}" class="hidden sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4 shadow-sm">
+            <a href="{{ route(auth()->user()->dashboard()) }}" class="sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4 shadow-sm">
                 <span>Dashboard</span>
                 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
             </a>
