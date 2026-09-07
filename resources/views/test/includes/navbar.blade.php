@@ -315,11 +315,14 @@
                 <div>
                   <div class="mega-group-title">Global Network</div>
                   <div class="space-y-1">
-                    <a href="{{ route('public.about') }}#sustainability" class="mega-link-card">
-                      <div class="mega-icon-box"><i data-lucide="heart-handshake" class="w-4 h-4"></i></div>
+                    <a href="#" class="mega-link-card">
+                      <div class="mega-icon-box text-brand-blue"><i data-lucide="newspaper" class="w-4 h-4"></i></div>
                       <div>
-                        <div class="mega-item-title">ESG & Commitments</div>
-                        <p class="mega-item-desc">Decarbonizing global logistics corridors.</p>
+                        <div class="mega-item-title flex items-center gap-1.5">
+                          Blogs &amp; Adverts
+                          <span class="bg-brand-green/15 text-emerald-700 text-[9px] font-bold px-1.5 py-0.2 rounded">Feed</span>
+                        </div>
+                        <p class="mega-item-desc">Trade intelligence & partner adverts.</p>
                       </div>
                     </a>
                     <a href="{{ route('public.about') }}#faq" class="mega-link-card">
@@ -442,6 +445,12 @@
 
       <div class="border-b border-gray-100 pb-3">
         <a href="{{ route('public.for-carriers') }}" class="block font-bold text-base text-brand-dark py-2 hover:text-brand-blue">For Logistics Providers & Carriers</a>
+      </div>
+
+      <div class="border-b border-gray-100 pb-3">
+        <a href="#" class="flex items-center justify-between font-bold text-base text-brand-dark py-2 hover:text-brand-blue">
+          <span>Blogs &amp; Adverts</span>
+        </a>
       </div>
 
       <div class="border-b border-gray-100 pb-3">

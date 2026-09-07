@@ -250,9 +250,14 @@
                 <div>
                     <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Resources & Tools</h5>
                     <ul class="space-y-2.5">
+                        <li>
+                            <a href="#" class="hover:text-white transition-colors flex items-center gap-1.5 font-medium text-emerald-400">
+                                <span>Blogs &amp; Adverts</span>
+                                <span class="text-[9px] bg-emerald-500/20 text-emerald-400 font-bold px-1.5 py-0.2 rounded">Feed</span>
+                            </a>
+                        </li>
                         <li><a href="{{ route('public.quote') }}" class="hover:text-white transition-colors">Quote Calculator</a></li>
                         <li><a href="{{ route('public.tracking') }}" class="hover:text-white transition-colors">Shipment Tracker</a></li>
-                        <li><a href="{{ route('public.about') }}#sustainability" class="hover:text-white transition-colors">Carbon Report</a></li>
                         <li><a href="{{ route('public.about') }}#faq" class="hover:text-white transition-colors">FAQ</a></li>
                         <li><a href="{{ route('public.for-shippers') }}" class="hover:text-white transition-colors">For Shippers</a></li>
                         <li><a href="{{ route('public.for-carriers') }}" class="hover:text-white transition-colors">For Logistic Providers</a></li>

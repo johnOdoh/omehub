@@ -4,15 +4,21 @@
 @section('content')
 
    <!-- Hero Section -->
-<section class="relative bg-gradient-to-b from-white via-sand-light to-sand/40 pt-8 pb-20 overflow-hidden">
+<section class="relative pt-10 pb-20 overflow-hidden bg-sand-light">
 
-  <!-- Hero Background Image & Grid Pattern with Smooth Gradient Mask -->
-  <div class="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none"></div>
-  <div class="absolute right-0 top-0 w-full lg:w-1/2 h-full opacity-10 pointer-events-none overflow-hidden">
-    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80" alt="Global Container Ship" class="w-full h-full object-cover object-center filter saturate-150">
-    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
+  <!-- Hero Full Image Background with Multi-Layer Gradient Overlays -->
+  <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=2000&q=85"
+         alt="Global Container Port Logistics & Maritime Trade"
+         class="w-full h-full object-cover object-center scale-105 transform">
+    <!-- Gradient Overlays for optimal typography readability and contrast -->
+    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/70 lg:via-white/90 lg:to-white/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-white"></div>
+    <div class="absolute inset-0 bg-grid-pattern opacity-25"></div>
+    <!-- Ambient Brand Glowing Flares -->
+    <div class="absolute top-10 right-10 w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-10 w-[400px] h-[400px] bg-brand-green/10 rounded-full blur-3xl"></div>
   </div>
-  <div class="absolute top-10 right-0 w-[550px] h-[550px] bg-brand-blue/5 rounded-full blur-3xl pointer-events-none"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -154,11 +160,11 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- Card 1 -->
-      <div class="card-sand p-8 flex flex-col justify-between group">
-        <div class="space-y-4">
+      <div class="card-sand p-8 flex flex-col align-center text-center group">
+        <div class="space-y-4 flex flex-col items-center">
           <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors duration-200">
             <i data-lucide="calculator" class="w-6 h-6"></i>
           </div>
@@ -169,38 +175,12 @@
             Get quick comparisons of freight options over 100 countries. Compare ocean, air, and road freight rates instantly with zero hidden fees.
           </p>
         </div>
-        <div class="pt-6">
-          <a href="{{ route('public.quote') }}" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-blue-hover group/link">
-            <span>Get a quote now</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
-          </a>
-        </div>
       </div>
+
 
       <!-- Card 2 -->
-      <div class="card-sand p-8 flex flex-col justify-between group">
-        <div class="space-y-4">
-          <div class="w-12 h-12 rounded-2xl bg-brand-green/15 flex items-center justify-center text-emerald-600 group-hover:bg-brand-green group-hover:text-white transition-colors duration-200">
-            <i data-lucide="sliders" class="w-6 h-6"></i>
-          </div>
-          <h3 class="font-heading font-bold text-2xl text-brand-dark">
-            Flexible Rates
-          </h3>
-          <p class="text-gray-600 text-sm leading-relaxed">
-            No hidden fees — the cheapest rates in the industry. Access trade financing and insurance options to keep your shipments moving without financial stress.
-          </p>
-        </div>
-        <div class="pt-6">
-          <a href="{{ route('public.solutions') }}" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-blue-hover group/link">
-            <span>View freight solutions</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card-sand p-8 flex flex-col justify-between group">
-        <div class="space-y-4">
+      <div class="card-sand p-8 flex flex-col align-center text-center group">
+        <div class="space-y-4 flex flex-col items-center">
           <div class="w-12 h-12 rounded-2xl bg-brand-cyan/15 flex items-center justify-center text-brand-cyan group-hover:bg-brand-cyan group-hover:text-white transition-colors duration-200">
             <i data-lucide="gift" class="w-6 h-6"></i>
           </div>
@@ -211,17 +191,11 @@
             Access to flexible short-term trade financing options and cargo insurance for your shipments.
           </p>
         </div>
-        <div class="pt-6">
-          <a href="{{ route('public.platform') }}#trade-finance" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-blue-hover group/link">
-            <span>Explore trade finance options</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
-          </a>
-        </div>
       </div>
 
-      <!-- Card 4 -->
-      <div class="card-sand p-8 flex flex-col justify-between group">
-        <div class="space-y-4">
+      <!-- Card 3 -->
+      <div class="card-sand p-8 flex flex-col align-center text-center group">
+        <div class="space-y-4 flex flex-col items-center">
           <div class="w-12 h-12 rounded-2xl bg-brand-green/15 flex items-center justify-center text-brand-green group-hover:bg-brand-green group-hover:text-white transition-colors duration-200">
             <i data-lucide="headset" class="w-6 h-6"></i>
           </div>
@@ -231,12 +205,6 @@
           <p class="text-gray-600 text-sm leading-relaxed">
             Professional support staff ready to handle your shipping needs. From booking freight to tracking shipments and resolving disputes — we've got you covered.
           </p>
-        </div>
-        <div class="pt-6">
-          <a href="{{ route('public.contact') }}" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-blue-hover group/link">
-            <span>Contact support</span>
-            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
-          </a>
         </div>
       </div>
 
@@ -290,23 +258,23 @@
 <!-- About {{ config('app.name') }} & How We Work Section -->
 <section id="about" class="py-24 bg-white border-b border-sand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-    
+
     <!-- Part 1: About {{ config('app.name') }} & Vision -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
+
       <!-- Video / Visual -->
       <div class="lg:col-span-6 order-2 lg:order-1">
         <div class="hero-image-wrapper aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-sand-border group relative">
-          <img src="{{ asset('assets/img/about.jpg') }}" 
-               onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80'" 
-               alt="About {{ config('app.name') }} Platform" 
+          <img src="{{ asset('assets/img/about.jpg') }}"
+               onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80'"
+               alt="About {{ config('app.name') }} Platform"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="hero-overlay-gradient"></div>
-          
+
           <!-- Video Play Button -->
-          <a href="https://youtube.com/embed/YeOgHg6m1iM" 
-             target="_blank" 
-             rel="noopener noreferrer" 
+          <a href="https://youtube.com/embed/YeOgHg6m1iM"
+             target="_blank"
+             rel="noopener noreferrer"
              class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-brand-blue/90 hover:bg-brand-blue text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all z-20"
              aria-label="Watch {{ config('app.name') }} Overview Video">
             <i data-lucide="play" class="w-7 h-7 fill-white ml-1"></i>
@@ -335,7 +303,7 @@
         <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
           Whether you're an SME exporting goods, an individual shipping personal items, or a logistics provider offering services, {{ config('app.name') }} connects you directly through one streamlined, intelligent platform.
         </p>
-        
+
         <div class="p-5 rounded-2xl bg-sand-light border border-sand-border space-y-2">
           <h4 class="font-heading font-bold text-brand-dark text-sm sm:text-base">Our Vision</h4>
           <p class="text-xs sm:text-sm text-gray-600 leading-relaxed italic">
@@ -355,16 +323,16 @@
 
     <!-- Part 2: How We Work (3 Steps) -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-gray-100">
-      
+
       <!-- Steps Column -->
       <div class="lg:col-span-6 space-y-6">
         <span class="badge-pill badge-pill-green">Simple 3-Step Process</span>
         <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-dark tracking-tight">
           How We Work
         </h2>
-        
+
         <div class="space-y-6 pt-2">
-          
+
           <!-- Step 1 -->
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-brand-blue text-white flex items-center justify-center font-heading font-bold text-lg flex-shrink-0">
@@ -410,9 +378,9 @@
       <!-- Visual Column -->
       <div class="lg:col-span-6">
         <div class="hero-image-wrapper aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-sand-border group">
-          <img src="https://ome-hub.com/assets/img/features-2.jpg" 
-               onerror="this.src='https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80'" 
-               alt="How {{ config('app.name') }} Works" 
+          <img src="https://ome-hub.com/assets/img/features-2.jpg"
+               onerror="this.src='https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80'"
+               alt="How {{ config('app.name') }} Works"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="hero-overlay-gradient"></div>
 
@@ -508,7 +476,7 @@
 <!-- What We Do: The 6 Essential Trade Services Section -->
 <section id="services" class="py-24 bg-sand-light border-b border-sand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
     <div class="max-w-3xl mx-auto text-center mb-16 space-y-3">
       <span class="badge-pill badge-pill-blue">Our Services</span>
       <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-dark tracking-tight">
@@ -521,165 +489,129 @@
 
     <!-- 6 Services Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      
-      <!-- Service 1: Quote & Book Freight -->
-      <div class="card-sand bg-white rounded-3xl overflow-hidden border border-sand-border shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
-        <div>
-          <div class="aspect-[16/10] overflow-hidden relative">
-            <img src="{{ asset('assets/img/services/quote-and-book.webp') }}" 
-                 onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80'" 
-                 alt="Quote and Book Freight" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+
+        <!-- Card 1 -->
+      <div class="card-sand p-8 flex flex-col item-center group text-center">
+        <div class="space-y-4 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors duration-200">
+            <i data-lucide="calculator" class="w-6 h-6"></i>
           </div>
-          <div class="p-6 space-y-2">
-            <h3 class="font-heading font-bold text-xl text-brand-dark group-hover:text-brand-blue transition-colors">
-              Quote &amp; Book Freight
-            </h3>
-            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Quickly compare and book shipping options from trusted logistics providers across all freight modes: sea, air, road, and rail &mdash; all in one place.
-            </p>
-          </div>
+          <h3 class="font-heading font-bold text-2xl text-brand-dark">
+            Quote &amp; Book Freight
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Quickly compare and book shipping options from trusted logistics providers across all freight modes: sea, air, road, and rail &mdash; all in one place.
+          </p>
         </div>
-        <div class="px-6 pb-6 pt-2">
-          <a href="{{ route('public.quote') }}#quote-and-book-freight" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:text-brand-blue-hover">
+        <div class="pt-6">
+          <a href="{{ route('public.quote') }}#quote-and-book-freight" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-blue-hover group/link">
             <span>Get Quote</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
           </a>
         </div>
       </div>
 
-      <!-- Service 2: Track Shipment -->
-      <div class="card-sand bg-white rounded-3xl overflow-hidden border border-sand-border shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
-        <div>
-          <div class="aspect-[16/10] overflow-hidden relative">
-            <img src="{{ asset('assets/img/services/track.webp') }}" 
-                 onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'" 
-                 alt="Track Shipment" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      <!-- Card 2 -->
+      <div class="card-sand p-8 flex flex-col item-center text-center group">
+        <div class="space-y-4 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-2xl bg-brand-green/15 flex items-center justify-center text-emerald-600 group-hover:bg-brand-green group-hover:text-white transition-colors duration-200">
+            <i data-lucide="sliders" class="w-6 h-6"></i>
           </div>
-          <div class="p-6 space-y-2">
-            <h3 class="font-heading font-bold text-xl text-brand-dark group-hover:text-brand-blue transition-colors">
-              Track Shipment
-            </h3>
-            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Stay informed with real-time tracking updates from pickup to final delivery, visible right from your dashboard.
-            </p>
-          </div>
+          <h3 class="font-heading font-bold text-2xl text-brand-dark">
+            Track Shipment
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Stay informed with real-time tracking updates from pickup to final delivery, visible right from your dashboard.
+          </p>
         </div>
-        <div class="px-6 pb-6 pt-2">
-          <a href="{{ route('public.platform') }}#track-shipment" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:text-brand-blue-hover">
+        <div class="pt-6">
+          <a href="{{ route('public.platform') }}#track-shipment" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-blue-hover group/link">
             <span>Track Now</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
           </a>
         </div>
       </div>
 
-      <!-- Service 3: Trade Finance -->
-      <div class="card-sand bg-white rounded-3xl overflow-hidden border border-sand-border shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
-        <div>
-          <div class="aspect-[16/10] overflow-hidden relative">
-            <img src="{{ asset('assets/img/services/finance.webp') }}" 
-                 onerror="this.src='https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80'" 
-                 alt="Trade Finance" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      <!-- Card 3 -->
+      <div class="card-sand p-8 flex flex-col item-center text-center group">
+        <div class="space-y-4 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-2xl bg-brand-cyan/15 flex items-center justify-center text-brand-cyan group-hover:bg-brand-cyan group-hover:text-white transition-colors duration-200">
+            <i data-lucide="gift" class="w-6 h-6"></i>
           </div>
-          <div class="p-6 space-y-2">
-            <h3 class="font-heading font-bold text-xl text-brand-dark group-hover:text-brand-blue transition-colors">
-              Trade Finance
-            </h3>
-            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Secure short-term financial support to fund your shipment, with flexible payment options available based on your business or individual profile.
-            </p>
-          </div>
+          <h3 class="font-heading font-bold text-2xl text-brand-dark">
+            Trade Finance
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Secure short-term financial support to fund your shipment, with flexible payment options available based on your business or individual profile.
+          </p>
         </div>
-        <div class="px-6 pb-6 pt-2">
-          <a href="{{ route('public.platform') }}#trade-finance" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:text-brand-blue-hover">
-            <span>Explore Financing</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        <div class="pt-6">
+          <a href="{{ route('public.platform') }}#trade-finance" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-blue-hover group/link">
+            <span>Explore trade finance options</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
           </a>
         </div>
       </div>
 
-      <!-- Service 4: Resolve Disputes & Claims -->
-      <div class="card-sand bg-white rounded-3xl overflow-hidden border border-sand-border shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
-        <div>
-          <div class="aspect-[16/10] overflow-hidden relative">
-            <img src="{{ asset('assets/img/services/resolve-disputes.webp') }}" 
-                 onerror="this.src='https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80'" 
-                 alt="Resolve Disputes & Claims" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      <!-- Card 4 -->
+      <div class="card-sand p-8 flex flex-col item-center text-center group">
+        <div class="space-y-4 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-2xl bg-brand-amber/15 flex items-center justify-center text-brand-amber group-hover:bg-brand-amber group-hover:text-white transition-colors duration-200">
+            <i data-lucide="banknote" class="w-6 h-6"></i>
           </div>
-          <div class="p-6 space-y-2">
-            <h3 class="font-heading font-bold text-xl text-brand-dark group-hover:text-brand-blue transition-colors">
-              Resolve Disputes &amp; Claims
-            </h3>
-            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Get fast legal support for any issues during your shipment. Raise claims directly and have them handled professionally through {{ config('app.name') }}’s legal partners.
-            </p>
-          </div>
+          <h3 class="font-heading font-bold text-2xl text-brand-dark">
+            Resolve Disputes &amp; Claims
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Get fast legal support for any issues during your shipment. Raise claims directly and have them handled professionally through {{ config('app.name') }}’s legal partners.
+          </p>
         </div>
-        <div class="px-6 pb-6 pt-2">
-          <a href="{{ route('public.platform') }}#resolve-disputes" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:text-brand-blue-hover">
+        <div class="pt-6">
+          <a href="{{ route('public.platform') }}#resolve-disputes" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-blue-hover group/link">
             <span>Legal Support</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
           </a>
         </div>
       </div>
 
-      <!-- Service 5: Offset CO2 Emissions -->
-      <div class="card-sand bg-white rounded-3xl overflow-hidden border border-sand-border shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
-        <div>
-          <div class="aspect-[16/10] overflow-hidden relative">
-            <img src="{{ asset('assets/img/services/offset.webp') }}" 
-                 onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'" 
-                 alt="Offset CO2 Emissions" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      <!-- Card 5 -->
+      <div class="card-sand p-8 flex flex-col item-center text-center group">
+        <div class="space-y-4 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-2xl bg-brand-green/15 flex items-center justify-center text-brand-green group-hover:bg-brand-green group-hover:text-white transition-colors duration-200">
+            <i data-lucide="leaf" class="w-6 h-6"></i>
           </div>
-          <div class="p-6 space-y-2">
-            <h3 class="font-heading font-bold text-xl text-brand-dark group-hover:text-brand-blue transition-colors">
-              Offset CO₂ Emissions
-            </h3>
-            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Choose to offset your shipment’s carbon footprint through {{ config('app.name') }}’s built-in sustainability feature &mdash; and receive a certified annual report of your impact.
-            </p>
-          </div>
+          <h3 class="font-heading font-bold text-2xl text-brand-dark">
+            Offset CO₂ Emissions
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Choose to offset your shipment’s carbon footprint through {{ config('app.name') }}’s built-in sustainability feature &mdash; and receive a certified annual report of your impact.
+          </p>
         </div>
-        <div class="px-6 pb-6 pt-2">
-          <a href="{{ route('public.platform') }}#offset" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:text-brand-blue-hover">
+        <div class="pt-6">
+          <a href="{{ route('public.platform') }}#offset" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-blue-hover group/link">
             <span>Sustainability</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
           </a>
         </div>
       </div>
 
-      <!-- Service 6: Engage in Trade Community Feed -->
-      <div class="card-sand bg-white rounded-3xl overflow-hidden border border-sand-border shadow-sm hover:shadow-xl transition-all flex flex-col justify-between group">
-        <div>
-          <div class="aspect-[16/10] overflow-hidden relative">
-            <img src="{{ asset('assets/img/services/community.webp') }}" 
-                 onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80'" 
-                 alt="Trade Community Feed" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      <!-- Card 6 -->
+      <div class="card-sand p-8 flex flex-col item-center text-center group">
+        <div class="space-y-4 flex flex-col items-center">
+          <div class="w-12 h-12 rounded-2xl bg-brand-cyan/15 flex items-center justify-center text-brand-cyan group-hover:bg-brand-cyan group-hover:text-white transition-colors duration-200">
+            <i data-lucide="messages-square" class="w-6 h-6"></i>
           </div>
-          <div class="p-6 space-y-2">
-            <h3 class="font-heading font-bold text-xl text-brand-dark group-hover:text-brand-blue transition-colors">
-              Engage in a Trade Community Feed
-            </h3>
-            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Post updates, share market news, and interact with others in the global trade community &mdash; with a limit of one post per day per stakeholder to keep content focused.
-            </p>
-          </div>
+          <h3 class="font-heading font-bold text-2xl text-brand-dark">
+            Engage in a Trade Community Feed
+          </h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Post updates, share market news, and interact with others in the global trade community &mdash; with a limit of one post per day per stakeholder to keep content focused.
+          </p>
         </div>
-        <div class="px-6 pb-6 pt-2">
-          <a href="{{ route('public.platform') }}#community" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:text-brand-blue-hover">
+        <div class="pt-6">
+          <a href="{{ route('public.platform') }}#community" class="inline-flex items-center gap-2 text-sm font-bold text-brand-blue hover:text-brand-blue-hover group/link">
             <span>Community Feed</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
           </a>
         </div>
       </div>
@@ -693,16 +625,16 @@
 <section id="features" class="py-24 bg-white border-b border-sand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
+
       <!-- Visual Column -->
       <div class="lg:col-span-5">
         <div class="hero-image-wrapper aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-sand-border group">
-          <img src="{{ asset('assets/img/features-9.jpg') }}" 
-               onerror="this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80'" 
-               alt="Professional Logistics Support" 
+          <img src="{{ asset('assets/img/features-9.jpg') }}"
+               onerror="this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80'"
+               alt="Professional Logistics Support"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="hero-overlay-gradient"></div>
-          
+
           <div class="absolute bottom-6 left-6 right-6 hero-glass-card p-4 space-y-1 shadow-xl">
             <div class="text-xs font-bold text-brand-dark">Built by Logistics Practitioners</div>
             <div class="text-[11px] text-gray-500">6+ years international trade law &amp; global supply network expertise</div>
@@ -721,7 +653,7 @@
         </p>
 
         <div class="space-y-4 pt-2">
-          
+
           <div class="flex items-start gap-4 p-4 rounded-2xl bg-sand-light border border-sand-border">
             <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
               <i data-lucide="globe" class="w-5 h-5"></i>
@@ -762,7 +694,7 @@
 <!-- Call To Action: Freight Revolution Section -->
 <section id="call-to-action" class="py-20 bg-brand-dark text-white relative overflow-hidden">
   <div class="absolute inset-0 bg-grid-pattern-dark opacity-40 pointer-events-none"></div>
-  
+
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
     <span class="badge-pill bg-white/10 text-brand-green border border-white/15">Get Started Today</span>
     <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
