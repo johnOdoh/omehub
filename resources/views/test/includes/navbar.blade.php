@@ -375,7 +375,7 @@
             <!-- Primary CTA Buttons -->
             <a href="{{ route('login') }}" class="sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4 shadow-sm">
                 <span>Login</span>
-                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                {{-- <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i> --}}
             </a>
         @else
             <a href="{{ route(auth()->user()->dashboard()) }}" class="sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4 shadow-sm">
