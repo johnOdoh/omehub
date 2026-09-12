@@ -1,10 +1,7 @@
-<?php
-$page_title = "Blogs & Adverts | Global Trade Intelligence & Partner Showcase";
-$page_desc = "Explore comprehensive logistics articles, market analyses, AI freight tracking insights, and discover verified carrier adverts & promotions.";
-$base_url = '../';
-include '../includes/header.php';
-include '../includes/navbar.php';
-?>
+@extends('public.layout.public')
+
+@section('title', 'Advertising & Blog Policy')
+@section('content')
 
 <style>
 /* Smooth Marquee Carousel Animation */
@@ -38,11 +35,11 @@ include '../includes/navbar.php';
 <div class="bg-sand-light border-b border-sand-border py-4">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
     <nav class="flex items-center gap-2 text-gray-500" aria-label="Breadcrumb">
-      <a href="<?php echo $base_url; ?>index.php" class="hover:text-brand-blue transition-colors flex items-center gap-1">
+      <a href="{{ route('public.index') }}" class="hover:text-brand-blue transition-colors flex items-center gap-1">
         <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
       </a>
       <span>/</span>
-      <a href="<?php echo $base_url; ?>pages/blogs.php" class="text-brand-dark hover:text-brand-blue font-semibold transition-colors">
+      <a href="{{ route('public.blogs') }}" class="text-brand-dark hover:text-brand-blue font-semibold transition-colors">
         Blogs &amp; Adverts
       </a>
       <span>/</span>
@@ -84,7 +81,7 @@ include '../includes/navbar.php';
 
   <!-- Infinite Marquee Track (Duplicated set of cards for continuous seamless looping) -->
   <div class="marquee-track flex items-center gap-4 py-1">
-    
+
     <!-- Advert Card 1 -->
     <div onclick="openPromoModal('atlantic')" class="bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
       <div class="w-10 h-10 rounded-xl bg-brand-blue text-white flex items-center justify-center shrink-0">
@@ -264,12 +261,12 @@ include '../includes/navbar.php';
 <section class="py-10 sm:py-14 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
+
       <!-- =================================================================== -->
       <!-- LEFT-HAND SIDEBAR: DEDICATED ADVERT PLACEMENTS & PROMOTIONS         -->
       <!-- =================================================================== -->
       <aside class="lg:col-span-4 xl:col-span-4 space-y-6 sticky-sidebar order-2 lg:order-1">
-        
+
         <!-- Advert Block Header -->
         <div class="flex items-center justify-between pb-2 border-b border-gray-100">
           <div class="flex items-center gap-1.5 text-xs font-extrabold text-brand-dark uppercase tracking-wider">
@@ -314,7 +311,7 @@ include '../includes/navbar.php';
             <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-1 rounded-lg">Save $420</span>
           </div>
 
-          <a href="<?php echo $base_url; ?>pages/quote.php?promo=ATLANTIC26" class="w-full btn-primary text-xs py-2.5 justify-center shadow-md shadow-brand-blue/20">
+          <a href="{{ route('public.quote') }}?promo=ATLANTIC26" class="w-full btn-primary text-xs py-2.5 justify-center shadow-md shadow-brand-blue/20">
             <span>Book Allocation Instantly</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
@@ -343,7 +340,7 @@ include '../includes/navbar.php';
             Temperature-controlled cross-docking (-25°C to +15°C) with direct automated border inspection and EU distribution.
           </p>
 
-          <a href="<?php echo $base_url; ?>pages/contact.php?inquiry=EuroCold-Ad" class="w-full btn-primary text-xs py-2.5 justify-center bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20">
+          <a href="{{ route('public.contact') }}?inquiry=EuroCold-Ad" class="w-full btn-primary text-xs py-2.5 justify-center bg-emerald-600 hover:bg-emerald-700 shadow-md shadow-emerald-600/20">
             <span>Inquire Storage Rates</span>
             <i data-lucide="mail" class="w-3.5 h-3.5"></i>
           </a>
@@ -361,7 +358,7 @@ include '../includes/navbar.php';
           <p class="text-xs text-gray-600 leading-relaxed mb-3">
             Instant paperless policy generation for containerized ocean, air, and intermodal freight with 48h claims turnaround.
           </p>
-          <a href="<?php echo $base_url; ?>pages/contact.php?inquiry=MarineInsurance" class="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-700 hover:text-cyan-900 underline">
+          <a href="{{ route('public.quote') }}?inquiry=MarineInsurance" class="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-700 hover:text-cyan-900 underline">
             <span>Calculate insurance premium &rarr;</span>
           </a>
         </div>
@@ -395,7 +392,7 @@ include '../includes/navbar.php';
             </span>
             <span class="text-[10px] text-gray-500 font-mono">Q3 2026</span>
           </div>
-          
+
           <div class="space-y-2 text-xs">
             <div class="flex items-center justify-between p-2 rounded-xl bg-white border border-gray-100">
               <span class="text-gray-600 font-medium">CNSHA &rarr; NGLOS (40HC)</span>
@@ -411,7 +408,7 @@ include '../includes/navbar.php';
             </div>
           </div>
 
-          <a href="<?php echo $base_url; ?>pages/quote.php" class="block text-center text-xs font-bold text-brand-blue hover:underline pt-1">
+          <a href="{{ route('public.quote') }}" class="block text-center text-xs font-bold text-brand-blue hover:underline pt-1">
             Open Freight Rate Calculator &rarr;
           </a>
         </div>
@@ -422,7 +419,7 @@ include '../includes/navbar.php';
       <!-- RIGHT COLUMN: FULL RICH BLOG POST DETAILS & EDITORIAL ARTICLE       -->
       <!-- =================================================================== -->
       <main class="lg:col-span-8 xl:col-span-8 space-y-8 order-1 lg:order-2" id="blogArticleContainer">
-        
+
         <!-- Article Header & Category Pill -->
         <div class="space-y-4">
           <div class="flex flex-wrap items-center justify-between gap-3">
@@ -481,7 +478,7 @@ include '../includes/navbar.php';
 
         <!-- Featured Article Hero Media Banner -->
         <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/9] bg-brand-dark group">
-          <img id="articleFeaturedImg" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1400&q=80" 
+          <img id="articleFeaturedImg" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1400&q=80"
             alt="Container port operations" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/70 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-6 right-6 text-white text-xs flex items-center justify-between">
@@ -492,7 +489,7 @@ include '../includes/navbar.php';
 
         <!-- Full Formatted Article Body -->
         <div id="articleBodyContent" class="space-y-6 text-gray-700 text-base leading-relaxed">
-          
+
           <div class="p-6 bg-sand-light rounded-3xl border border-sand-border space-y-2">
             <div class="font-heading font-bold text-xs uppercase tracking-wider text-brand-blue flex items-center gap-1.5">
               <i data-lucide="lightbulb" class="w-4 h-4 text-brand-blue"></i>
@@ -560,7 +557,7 @@ include '../includes/navbar.php';
                 <h4 class="font-heading font-bold text-lg text-white">Save Up to 15% on Guaranteed Ocean Allocations</h4>
                 <p class="text-xs text-gray-300">Book through OmeHub's verified carrier pool with direct digital customs filing.</p>
               </div>
-              <a href="<?php echo $base_url; ?>pages/quote.php" class="btn-primary py-2.5 px-5 text-xs font-bold whitespace-nowrap shadow-lg shadow-brand-blue/50">
+              <a href="{{ route('public.quote') }}" class="btn-primary py-2.5 px-5 text-xs font-bold whitespace-nowrap shadow-lg shadow-brand-blue/50">
                 <span>Calculate Rate Now</span>
                 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
               </a>
@@ -630,7 +627,7 @@ include '../includes/navbar.php';
 <!-- ========================================================================= -->
 <section class="py-16 bg-sand-light border-t border-sand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
       <div>
         <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue uppercase tracking-wider mb-1">
@@ -1156,5 +1153,4 @@ document.getElementById('advertModal')?.addEventListener('click', (e) => {
 });
 </script>
 
-<?php include '../includes/cta-banner.php'; ?>
-<?php include '../includes/footer.php'; ?>
+@endsection

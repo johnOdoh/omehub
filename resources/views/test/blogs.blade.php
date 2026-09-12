@@ -1,10 +1,7 @@
-<?php
-$page_title = "Blogs & Adverts Directory | Global Freight Intelligence & Partner Adverts";
-$page_desc = "Browse comprehensive lists of logistics blogs, market intelligence, maritime insights, and verified commercial carrier adverts on OmeHub.";
-$base_url = '../';
-include '../includes/header.php';
-include '../includes/navbar.php';
-?>
+@extends('public.layout.public')
+
+@section('title', 'Blogs & Adverts Directory')
+@section('content')
 
 <style>
 /* Smooth Marquee Carousel Animation */
@@ -28,7 +25,7 @@ include '../includes/navbar.php';
 <div class="bg-sand-light border-b border-sand-border py-4">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
     <nav class="flex items-center gap-2 text-gray-500" aria-label="Breadcrumb">
-      <a href="<?php echo $base_url; ?>index.php" class="hover:text-brand-blue transition-colors flex items-center gap-1">
+      <a href="{{ route('public.index') }}" class="hover:text-brand-blue transition-colors flex items-center gap-1">
         <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
       </a>
       <span>/</span>
@@ -69,7 +66,7 @@ include '../includes/navbar.php';
 
   <!-- Infinite Marquee Track -->
   <div class="marquee-track flex items-center gap-4 py-1">
-    
+
     <!-- Advert Card 1 -->
     <div onclick="openPromoModal('atlantic')" class="bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
       <div class="w-10 h-10 rounded-xl bg-brand-blue text-white flex items-center justify-center shrink-0">
@@ -207,20 +204,20 @@ include '../includes/navbar.php';
     <div class="text-center max-w-3xl mx-auto space-y-4 mb-8">
       <div class="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
         <i data-lucide="newspaper" class="w-3.5 h-3.5"></i>
-        <span>OmeHub Media &amp; Intelligence Hub</span>
+        <span>{{ config('app.name') }} Media &amp; Intelligence Hub</span>
       </div>
-      
+
       <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-brand-dark tracking-tight leading-tight">
         Lists of <span class="text-brand-blue">Blogs</span> &amp; <span class="text-brand-green">Adverts</span>
       </h1>
-      
+
       <p class="text-gray-600 text-base sm:text-lg leading-relaxed">
         Explore verified trade publications, freight forwarding intelligence, port updates, and discover commercial services from global logistics providers.
       </p>
     </div>
 
     <!-- Search & Filter Controls -->
-    <div class="max-w-5xl mx-auto bg-white rounded-3xl p-4 shadow-xl shadow-brand-dark/5 border border-sand-border space-y-4">
+    {{-- <div class="max-w-5xl mx-auto bg-white rounded-3xl p-4 shadow-xl shadow-brand-dark/5 border border-sand-border space-y-4">
       <div class="flex flex-col md:flex-row items-center gap-3">
         <!-- Live Search -->
         <div class="relative w-full md:flex-1">
@@ -266,7 +263,7 @@ include '../includes/navbar.php';
           Carrier Adverts
         </button>
       </div>
-    </div>
+    </div> --}}
 
   </div>
 </section>
@@ -304,7 +301,7 @@ include '../includes/navbar.php';
         </p>
 
         <div class="pt-2 flex flex-wrap items-center gap-4">
-          <a href="<?php echo $base_url; ?>pages/blog.php?id=featured-1" class="btn-primary text-xs sm:text-sm py-2.5 px-6 shadow-lg shadow-brand-blue/40">
+          <a href="{{ route('public.blog') }}?id=featured-1" class="btn-primary text-xs sm:text-sm py-2.5 px-6 shadow-lg shadow-brand-blue/40">
             <span>Read Full Article &amp; Analysis</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
@@ -320,12 +317,12 @@ include '../includes/navbar.php';
 <!-- ========================================================================= -->
 <section id="directoryFeedSection" class="py-14 bg-sand-light/60">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
     <!-- Feed Header / Counters -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
       <div>
         <h3 class="font-heading font-extrabold text-2xl sm:text-3xl text-brand-dark">
-          Latest Publications &amp; Commercial Listings
+          Latest Publications
         </h3>
         <p class="text-xs sm:text-sm text-gray-500 mt-1">
           Showing <span id="visibleCardsCount" class="font-bold text-brand-blue">12</span> verified articles and partner promotions
@@ -376,7 +373,7 @@ include '../includes/navbar.php';
               <span>Logistics Tech</span>
             </div>
             <h4 class="font-heading font-bold text-lg text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
-              How OmeHub's Machine Learning Pipeline Predicts Port Delays Before Vessel Berth
+              How {{ config('app.name') }}'s Machine Learning Pipeline Predicts Port Delays Before Vessel Berth
             </h4>
             <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
               Aggregating 2 million historical voyage waypoints, AIS satellite positioning, and crane productivity curves to deliver 99.4% accurate predictive ETAs.
@@ -388,46 +385,8 @@ include '../includes/navbar.php';
             <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">TA</div>
             <span class="text-gray-700 font-semibold">Tariq Al-Mansoor</span>
           </div>
-          <a href="<?php echo $base_url; ?>pages/blog.php?id=post-1" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <a href="{{ route('public.blog') }}?id=post-1" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
             <span>Read Article</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
-      </article>
-
-      <!-- ================= LIST ITEM 2: SPONSORED ADVERT ================= -->
-      <article class="feed-item bg-gradient-to-b from-blue-50/70 via-white to-white rounded-3xl border-2 border-brand-blue/30 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
-        data-type="advert" data-topic="carriers" data-keywords="advert sponsored carrier ocean vessel container shanghai lagos slot space rate">
-        <div>
-          <div class="relative aspect-[16/10] overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=800&q=80" alt="Vessel Container Slots" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
-            <div class="absolute top-3 left-3 bg-brand-blue text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
-              ★ Sponsored Advert
-            </div>
-            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-brand-dark text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-brand-blue"></i> Verified Carrier
-            </div>
-          </div>
-          <div class="p-6 space-y-3">
-            <div class="flex items-center justify-between text-xs">
-              <span class="font-bold text-brand-blue">Atlantic Line Global</span>
-              <span class="text-[11px] text-gray-500 font-mono">22-Day Transit</span>
-            </div>
-            <h4 class="font-heading font-bold text-lg text-brand-dark leading-snug">
-              Shanghai &rarr; Lagos Direct Express 40HC Container Allocation
-            </h4>
-            <p class="text-xs text-gray-600 leading-relaxed">
-              Weekly departures with zero roll-over guarantee and automated Apapa customs pre-arrival synchronization. Free 14 days demurrage.
-            </p>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-3 border-t border-brand-blue/15 flex items-center justify-between">
-          <div>
-            <span class="text-[10px] text-gray-400 uppercase font-semibold">Guaranteed Spot</span>
-            <div class="text-sm font-mono font-bold text-brand-blue">$3,150 / FEU</div>
-          </div>
-          <a href="<?php echo $base_url; ?>pages/quote.php?promo=ATLANTIC26" class="btn-primary text-xs py-2 px-4 shadow-md shadow-brand-blue/30">
-            <span>Book Allocation</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
@@ -456,7 +415,7 @@ include '../includes/navbar.php';
               2026 West African Port Automation: Streamlining Pre-Arrival &amp; SONCAP Clearance
             </h4>
             <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
-              How single-window digital integration between OmeHub and Nigerian port terminals is accelerating release times from 7 days down to 24 hours.
+              How single-window digital integration between {{ config('app.name') }} and Nigerian port terminals is accelerating release times from 7 days down to 24 hours.
             </p>
           </div>
         </div>
@@ -465,44 +424,9 @@ include '../includes/navbar.php';
             <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">AO</div>
             <span class="text-gray-700 font-semibold">Amina Olanrewaju</span>
           </div>
-          <a href="<?php echo $base_url; ?>pages/blog.php?id=post-2" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <a href="{{ route('public.blog') }}?id=post-2" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
             <span>Read Article</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
-      </article>
-
-      <!-- ================= LIST ITEM 4: SPONSORED ADVERT ================= -->
-      <article class="feed-item bg-gradient-to-b from-emerald-50/70 via-white to-white rounded-3xl border-2 border-emerald-300/80 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
-        data-type="advert" data-topic="carriers" data-keywords="advert warehouse cold storage reefer rotterdam pharma perishables temperature">
-        <div>
-          <div class="relative aspect-[16/10] overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=800&q=80" alt="Cold Storage Facility" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
-            <div class="absolute top-3 left-3 bg-brand-green text-brand-dark text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
-              ★ Sponsored Advert
-            </div>
-            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-emerald-800 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Bonded Warehouse
-            </div>
-          </div>
-          <div class="p-6 space-y-3">
-            <div class="flex items-center justify-between text-xs">
-              <span class="font-bold text-emerald-800">EuroCold Terminals BV</span>
-              <span class="text-[11px] text-gray-500">Port of Rotterdam</span>
-            </div>
-            <h4 class="font-heading font-bold text-lg text-brand-dark leading-snug">
-              Certified Pharma &amp; Perishable Reefer Warehousing (15,000 m²)
-            </h4>
-            <p class="text-xs text-gray-600 leading-relaxed">
-              Temperature-controlled (-25°C to +15°C) cross-dock storage next to Maasvlakte II. Rapid border inspection and cross-Europe reefer trucking.
-            </p>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-3 border-t border-emerald-100 flex items-center justify-between">
-          <span class="text-xs font-mono font-bold text-emerald-700">10% Promo Discount</span>
-          <a href="<?php echo $base_url; ?>pages/contact.php?inquiry=EuroCold-Ad" class="btn-primary text-xs py-2 px-4 bg-emerald-600 hover:bg-emerald-700">
-            <span>Inquire Space</span>
-            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
           </a>
         </div>
       </article>
@@ -539,44 +463,9 @@ include '../includes/navbar.php';
             <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">MS</div>
             <span class="text-gray-700 font-semibold">Marcus Schmidt</span>
           </div>
-          <a href="<?php echo $base_url; ?>pages/blog.php?id=post-3" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <a href="{{ route('public.blog') }}?id=post-3" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
             <span>Read Article</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
-      </article>
-
-      <!-- ================= LIST ITEM 6: SPONSORED ADVERT ================= -->
-      <article class="feed-item bg-gradient-to-b from-cyan-50/70 via-white to-white rounded-3xl border-2 border-cyan-300/70 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
-        data-type="advert" data-topic="carriers" data-keywords="advert insurance cargo policy lloyds protection claims marine">
-        <div>
-          <div class="relative aspect-[16/10] overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Marine Cargo Insurance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
-            <div class="absolute top-3 left-3 bg-cyan-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
-              ★ Sponsored Advert
-            </div>
-            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-brand-dark text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-              <i data-lucide="shield" class="w-3.5 h-3.5 text-cyan-600"></i> Lloyd's Syndicate
-            </div>
-          </div>
-          <div class="p-6 space-y-3">
-            <div class="flex items-center justify-between text-xs">
-              <span class="font-bold text-cyan-800">Nautical Shield Underwriters</span>
-              <span class="text-[11px] text-gray-500">Global Coverage</span>
-            </div>
-            <h4 class="font-heading font-bold text-lg text-brand-dark leading-snug">
-              Instant All-Risk Marine Cargo Insurance (ICC 'A') from 0.18%
-            </h4>
-            <p class="text-xs text-gray-600 leading-relaxed">
-              Door-to-door transit coverage, full general average protection, and automated paperless claims reimbursement within 48 hours for OmeHub shipments.
-            </p>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-3 border-t border-cyan-100 flex items-center justify-between">
-          <span class="text-xs font-mono font-bold text-cyan-800">Instant Digital Policy</span>
-          <a href="<?php echo $base_url; ?>pages/contact.php?inquiry=MarineInsurance" class="btn-primary text-xs py-2 px-4 bg-cyan-700 hover:bg-cyan-800">
-            <span>Get Cover</span>
-            <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
           </a>
         </div>
       </article>
@@ -604,7 +493,7 @@ include '../includes/navbar.php';
               Scope 3 Transparency: Insetting Biofuels to Reduce Ocean Container Footprint by 84%
             </h4>
             <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
-              How OmeHub's verified carbon reporting ledger allows global brand owners to audit their supply chain emissions according to GLEC Framework standards.
+              How {{ config('app.name') }}'s verified carbon reporting ledger allows global brand owners to audit their supply chain emissions according to GLEC Framework standards.
             </p>
           </div>
         </div>
@@ -613,43 +502,8 @@ include '../includes/navbar.php';
             <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-[10px]">EL</div>
             <span class="text-gray-700 font-semibold">Elena Lindqvist</span>
           </div>
-          <a href="<?php echo $base_url; ?>pages/blog.php?id=post-4" class="text-emerald-600 font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <a href="{{ route('public.blog') }}?id=post-4" class="text-emerald-600 font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
             <span>Read Article</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
-      </article>
-
-      <!-- ================= LIST ITEM 8: SPONSORED ADVERT ================= -->
-      <article class="feed-item bg-gradient-to-b from-amber-50/70 via-white to-white rounded-3xl border-2 border-amber-300/70 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
-        data-type="advert" data-topic="carriers" data-keywords="advert air charter express dubai europe west africa cargo flights freight">
-        <div>
-          <div class="relative aspect-[16/10] overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" alt="Air Cargo Express" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
-            <div class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
-              ★ Sponsored Advert
-            </div>
-            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-amber-800 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-              <i data-lucide="plane" class="w-3.5 h-3.5 text-amber-600"></i> Express Air
-            </div>
-          </div>
-          <div class="p-6 space-y-3">
-            <div class="flex items-center justify-between text-xs">
-              <span class="font-bold text-amber-900">Apex Air Charter Express</span>
-              <span class="text-[11px] text-gray-500">72-Hour Transit</span>
-            </div>
-            <h4 class="font-heading font-bold text-lg text-brand-dark leading-snug">
-              Dubai (DXB) &amp; Europe &rarr; West Africa Scheduled Air Cargo Charters
-            </h4>
-            <p class="text-xs text-gray-600 leading-relaxed">
-              Guaranteed space allocations for time-critical electronics, spare parts, and pharma with integrated bonded airport customs transfer.
-            </p>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-3 border-t border-amber-100 flex items-center justify-between">
-          <span class="text-xs font-mono font-bold text-amber-800">From $4.85 / kg</span>
-          <a href="<?php echo $base_url; ?>pages/quote.php?mode=air" class="btn-primary text-xs py-2 px-4 bg-amber-600 hover:bg-amber-700">
-            <span>Book Air Space</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
@@ -687,43 +541,8 @@ include '../includes/navbar.php';
             <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">DR</div>
             <span class="text-gray-700 font-semibold">Dr. Robert Chen</span>
           </div>
-          <a href="<?php echo $base_url; ?>pages/blog.php?id=featured-1" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <a href="{{ route('public.blog') }}?id=featured-1" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
             <span>Read Article</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
-      </article>
-
-      <!-- ================= LIST ITEM 10: SPONSORED ADVERT ================= -->
-      <article class="feed-item bg-gradient-to-b from-sand-light via-white to-white rounded-3xl border-2 border-brand-dark/20 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
-        data-type="advert" data-topic="carriers" data-keywords="advert drayage trucking port evacuation apapa tincan fleet trucks inland">
-        <div>
-          <div class="relative aspect-[16/10] overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80" alt="Port Drayage Fleet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
-            <div class="absolute top-3 left-3 bg-brand-dark text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
-              ★ Sponsored Advert
-            </div>
-            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-brand-dark text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-              <i data-lucide="truck" class="w-3.5 h-3.5 text-brand-blue"></i> GPS Fleet
-            </div>
-          </div>
-          <div class="p-6 space-y-3">
-            <div class="flex items-center justify-between text-xs">
-              <span class="font-bold text-brand-dark">OmeHub Bonded Drayage Fleet</span>
-              <span class="text-[11px] text-emerald-700 font-bold">24-Hr Gate Out</span>
-            </div>
-            <h4 class="font-heading font-bold text-lg text-brand-dark leading-snug">
-              Fast-Track Apapa &amp; Tin Can Port Terminal Evacuation &amp; Direct Off-Docking
-            </h4>
-            <p class="text-xs text-gray-600 leading-relaxed">
-              Dedicated pre-cleared flatbed and lowbed chassis fleet for immediate bonded container evacuation straight to Ikeja, Ogun, and regional inland depots.
-            </p>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-3 border-t border-gray-100 flex items-center justify-between">
-          <span class="text-xs font-mono font-bold text-brand-blue">Guaranteed Trucks</span>
-          <a href="<?php echo $base_url; ?>pages/quote.php" class="btn-primary text-xs py-2 px-4">
-            <span>Book Drayage</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
@@ -752,7 +571,7 @@ include '../includes/navbar.php';
               Automating 6-Digit HS Tariff Codes with Multilingual Vision OCR
             </h4>
             <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
-              How OmeHub's document vault scans commercial invoices in English, Mandarin, and French to classify global customs tariffs with zero audit errors.
+              How {{ config('app.name') }}'s document vault scans commercial invoices in English, Mandarin, and French to classify global customs tariffs with zero audit errors.
             </p>
           </div>
         </div>
@@ -761,43 +580,8 @@ include '../includes/navbar.php';
             <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">TA</div>
             <span class="text-gray-700 font-semibold">Tariq Al-Mansoor</span>
           </div>
-          <a href="<?php echo $base_url; ?>pages/blog.php?id=post-1" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <a href="{{ route('public.blog') }}?id=post-1" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
             <span>Read Article</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
-      </article>
-
-      <!-- ================= LIST ITEM 12: SPONSORED ADVERT ================= -->
-      <article class="feed-item bg-gradient-to-b from-indigo-50/70 via-white to-white rounded-3xl border-2 border-indigo-300/70 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
-        data-type="advert" data-topic="carriers" data-keywords="advert pacific transpacific los angeles singapore container vessel slot">
-        <div>
-          <div class="relative aspect-[16/10] overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80" alt="Transpacific Alliance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
-            <div class="absolute top-3 left-3 bg-indigo-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
-              ★ Sponsored Advert
-            </div>
-            <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-indigo-900 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-              <i data-lucide="anchor" class="w-3.5 h-3.5 text-indigo-600"></i> Transpacific
-            </div>
-          </div>
-          <div class="p-6 space-y-3">
-            <div class="flex items-center justify-between text-xs">
-              <span class="font-bold text-indigo-900">Pacific Carrier Alliance</span>
-              <span class="text-[11px] text-gray-500">Weekly Departures</span>
-            </div>
-            <h4 class="font-heading font-bold text-lg text-brand-dark leading-snug">
-              Los Angeles / Long Beach &rarr; Southeast Asia Guaranteed Equipment Slots
-            </h4>
-            <p class="text-xs text-gray-600 leading-relaxed">
-              Expedited 14-day direct ocean transit connecting West Coast US shippers with Singapore, Port Klang, and Tanjung Pelepas transshipment hubs.
-            </p>
-          </div>
-        </div>
-        <div class="px-6 pb-6 pt-3 border-t border-indigo-100 flex items-center justify-between">
-          <span class="text-xs font-mono font-bold text-indigo-900">$2,450 / 40HC</span>
-          <a href="<?php echo $base_url; ?>pages/quote.php" class="btn-primary text-xs py-2 px-4 bg-indigo-600 hover:bg-indigo-700">
-            <span>Get Quote</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
@@ -810,7 +594,7 @@ include '../includes/navbar.php';
       <div class="w-12 h-12 rounded-2xl bg-gray-100 text-gray-400 flex items-center justify-center mx-auto mb-3">
         <i data-lucide="search-x" class="w-6 h-6"></i>
       </div>
-      <h4 class="font-heading font-bold text-lg text-brand-dark mb-1">No matching articles or adverts found</h4>
+      <h4 class="font-heading font-bold text-lg text-brand-dark mb-1">No matching articles found</h4>
       <p class="text-xs text-gray-500 max-w-sm mx-auto mb-4">Try clearing the search keywords or switching filters.</p>
       <button type="button" onclick="resetDirectoryFilters()" class="btn-primary text-xs py-2 px-4">
         <span>Reset Filters</span>
@@ -821,7 +605,7 @@ include '../includes/navbar.php';
     <!-- PAGINATION UI CONTAINER                                                   -->
     <!-- ========================================================================= -->
     <div id="paginationContainer" class="mt-12 pt-8 border-t border-sand-border flex flex-col sm:flex-row items-center justify-between gap-4">
-      
+
       <!-- Range Info -->
       <div class="text-xs text-gray-500 font-medium order-2 sm:order-1">
         Showing <span id="pageRangeStart" class="font-bold text-brand-dark">1</span> to <span id="pageRangeEnd" class="font-bold text-brand-dark">6</span> of <span id="pageTotalCount" class="font-bold text-brand-blue">12</span> entries
@@ -866,13 +650,13 @@ include '../includes/navbar.php';
       <div class="lg:col-span-8 space-y-4">
         <div class="inline-flex items-center gap-2 bg-white/10 text-brand-green px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
           <i data-lucide="megaphone" class="w-3.5 h-3.5"></i>
-          <span>OmeHub Commercial Advertising Network</span>
+          <span>{{ config('app.name') }} Commercial Advertising Network</span>
         </div>
         <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
           List Your Logistics Services &amp; Reach Over <span class="text-brand-green">50,000 Shippers</span>
         </h2>
         <p class="text-sm text-gray-300 max-w-2xl leading-relaxed">
-          &ldquo;The OmeHub Blog is more than a feature, it's your voice in the global trade community. Advertise your services, share your updates, and connect with partners worldwide &mdash; all from your dashboard.&rdquo;
+          &ldquo;The {{ config('app.name') }} Blog is more than a feature, it's your voice in the global trade community. Advertise your services, share your updates, and connect with partners worldwide &mdash; all from your dashboard.&rdquo;
         </p>
       </div>
 
@@ -911,7 +695,7 @@ include '../includes/navbar.php';
 
     <div class="space-y-2 mb-6">
       <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green bg-brand-green/15 px-3 py-1 rounded-full">
-        <i data-lucide="megaphone" class="w-3.5 h-3.5"></i> Post an Advert on OmeHub
+        <i data-lucide="megaphone" class="w-3.5 h-3.5"></i> Post an Advert on {{ config('app.name') }}
       </div>
       <h3 class="font-heading font-extrabold text-2xl text-brand-dark">Promote to 50,000+ Active Shippers</h3>
       <p class="text-xs text-gray-600">
@@ -1003,7 +787,7 @@ const promoDatabase = {
     service: "Instant All-Risk Marine Cargo Insurance (ICC 'A')",
     badge: "Lloyd's Syndicate Coverholder",
     price: "From 0.18% Cargo Invoice Value",
-    details: "Full general average, door-to-door transit, and automated paperless claims reimbursement within 48 hours for verified OmeHub shipments worldwide.",
+    details: "Full general average, door-to-door transit, and automated paperless claims reimbursement within 48 hours for verified {{ config('app.name') }} shipments worldwide.",
     link: "../pages/contact.php?inquiry=MarineInsurance"
   },
   'apexair': {
@@ -1019,7 +803,7 @@ const promoDatabase = {
 function filterFeed() {
   const searchQuery = (document.getElementById('directorySearchInput')?.value || '').toLowerCase().trim();
   const allItems = Array.from(document.querySelectorAll('.feed-item'));
-  
+
   // Collect matching items
   filteredItems = allItems.filter(item => {
     const itemType = item.getAttribute('data-type');
@@ -1256,5 +1040,4 @@ document.getElementById('advertModal')?.addEventListener('click', (e) => {
 });
 </script>
 
-<?php include '../includes/cta-banner.php'; ?>
-<?php include '../includes/footer.php'; ?>
+@endsection

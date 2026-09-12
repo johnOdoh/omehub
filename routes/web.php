@@ -83,6 +83,14 @@ Route::get('/public/tracking', function () {
     return view('test.tracking');
 })->name('public.tracking');
 
+Route::get('/public/blogs', function () {
+    return view('test.blogs');
+})->name('public.blogs');
+
+Route::get('/public/blog', function () {
+    return view('test.blog');
+})->name('public.blog');
+
 Route::get('/public/terms', function () {
     return view('test.terms');
 })->name('public.terms');

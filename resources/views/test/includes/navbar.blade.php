@@ -315,7 +315,7 @@
                 <div>
                   <div class="mega-group-title">Global Network</div>
                   <div class="space-y-1">
-                    <a href="#" class="mega-link-card">
+                    <a href="{{ route('public.blogs') }}" class="mega-link-card">
                       <div class="mega-icon-box text-brand-blue"><i data-lucide="newspaper" class="w-4 h-4"></i></div>
                       <div>
                         <div class="mega-item-title flex items-center gap-1.5">
@@ -448,7 +448,7 @@
       </div>
 
       <div class="border-b border-gray-100 pb-3">
-        <a href="#" class="flex items-center justify-between font-bold text-base text-brand-dark py-2 hover:text-brand-blue">
+        <a href="{{ route('public.blogs') }}" class="flex items-center justify-between font-bold text-base text-brand-dark py-2 hover:text-brand-blue">
           <span>Blogs &amp; Adverts</span>
         </a>
       </div>
