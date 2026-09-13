@@ -178,15 +178,15 @@
     <footer class="bg-brand-dark-surface text-gray-400 text-sm border-t border-white/10 pt-16 pb-12 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <!-- Top Row: Brand & Newsletter -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+            <!-- Middle Row: Multi-Column Links -->
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-8 py-12 border-b border-white/10 text-xs sm:text-sm">
 
                 <!-- Brand Summary -->
-                <div class="lg:col-span-5 space-y-4">
+                <div class="col-span-2 space-y-4">
                     <a href="{{ route('public.index') }}" class="flex items-center gap-2.5">
                         <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
                     </a>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                    <p class="text-gray-400 text-sm leading-relaxed">
                     omehub is the digital freight operating system connecting global shippers with verified carriers and logistics providers. Fast, transparent, and sustainable supply chains powered by AI.
                     </p>
                     <div class="flex items-center space-x-3 pt-2">
@@ -212,27 +212,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Newsletter Box -->
-                <div class="lg:col-span-7 flex flex-col justify-center">
-                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
-                    <h4 class="font-heading font-bold text-white text-base mb-1">Subscribe to the omehub Logistics Briefing</h4>
-                    <p class="text-xs text-gray-400 mb-4">Monthly market updates, port congestion indices, and sea freight rate benchmarks.</p>
-                    <form onsubmit="event.preventDefault(); alert('Thank you for subscribing to omehub Logistics Briefing!');" class="flex flex-col sm:flex-row gap-2">
-                        <input type="email" required placeholder="Enter your business email" class="flex-1 bg-white/10 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-brand-blue">
-                        <button type="submit" class="btn-primary py-2.5 px-5 text-sm font-bold whitespace-nowrap">
-                        <span>Subscribe</span>
-                        <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                        </button>
-                    </form>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Middle Row: Multi-Column Links -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-b border-white/10 text-xs sm:text-sm">
-
                 <!-- Column 1: Platform -->
                 <div>
                     <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Services</h5>
@@ -251,7 +230,7 @@
                     <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Resources & Tools</h5>
                     <ul class="space-y-2.5">
                         <li>
-                            <a href="#" class="hover:text-white transition-colors flex items-center gap-1.5 font-medium text-emerald-400">
+                            <a href="{{ route('public.blogs') }}" class="hover:text-white transition-colors flex items-center gap-1.5 font-medium text-emerald-400">
                                 <span>Blogs &amp; Adverts</span>
                                 <span class="text-[9px] bg-emerald-500/20 text-emerald-400 font-bold px-1.5 py-0.2 rounded">Feed</span>
                             </a>
