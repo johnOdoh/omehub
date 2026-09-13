@@ -14,7 +14,7 @@
           Monetize your freight capacity with <span class="text-brand-blue">thousands of shippers.</span>
         </h1>
         <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl">
-          Whether you operate ocean container vessels, air cargo freighters, or regional drayage truck fleets, omehub connects your capacity directly into automated digital buying queues.
+          Whether you operate ocean container vessels, air cargo freighters, or regional drayage truck fleets, {{ config('app.name') }} connects your capacity directly into automated digital buying queues.
         </p>
         <div class="flex flex-wrap gap-4 pt-2">
           <a href="#onboarding" class="btn-primary text-sm py-3.5 px-6 shadow-lg shadow-brand-blue/40">
@@ -80,7 +80,7 @@
     <div class="text-center mb-12 space-y-3">
       <span class="badge-pill badge-pill-blue">Partner Application</span>
       <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-dark tracking-tight">
-        Join the omehub Logistics Provider Network
+        Join the {{ config('app.name') }} Logistics Provider Network
       </h2>
       <p class="text-gray-600 text-sm max-w-xl mx-auto">
         Complete the form below to initiate carrier verification. Our partner onboarding team will review your fleet profile within 24 hours.

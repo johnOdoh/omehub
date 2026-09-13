@@ -14,7 +14,7 @@
           Stress-free global shipping for <span class="text-brand-blue">all freight modes.</span>
         </h1>
         <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-xl">
-          Whether you're an SME exporting goods, an individual shipping personal items, or an enterprise managing supply chains, OmeHub makes cross-border shipping simple, transparent, and affordable.
+          Whether you're an SME exporting goods, an individual shipping personal items, or an enterprise managing supply chains, {{ config('app.name') }} makes cross-border shipping simple, transparent, and affordable.
         </p>
         <ul class="space-y-2 text-sm text-gray-700">
           <li class="flex items-center gap-2.5">
@@ -100,7 +100,7 @@
         Book, track and manage your global shipments in 4 easy steps
       </h2>
       <p class="text-gray-600 text-base leading-relaxed">
-        From booking freight to tracking shipments and resolving disputes — OmeHub puts everything you need in one place.
+        From booking freight to tracking shipments and resolving disputes — {{ config('app.name') }} puts everything you need in one place.
       </p>
     </div>
 
@@ -114,13 +114,13 @@
       <div class="card-sand p-6 rounded-2xl space-y-3">
         <div class="w-10 h-10 rounded-xl bg-brand-blue text-white font-bold flex items-center justify-center font-mono">02</div>
         <h4 class="font-heading font-bold text-lg text-brand-dark">Book Your Shipment</h4>
-        <p class="text-xs text-gray-600 leading-relaxed">Select the best rate, confirm your booking online, and let OmeHub handle the coordination with your logistics provider. No phone calls, no paperwork.</p>
+        <p class="text-xs text-gray-600 leading-relaxed">Select the best rate, confirm your booking online, and let {{ config('app.name') }} handle the coordination with your logistics provider. No phone calls, no paperwork.</p>
       </div>
 
       <div class="card-sand p-6 rounded-2xl space-y-3">
         <div class="w-10 h-10 rounded-xl bg-brand-blue text-white font-bold flex items-center justify-center font-mono">03</div>
         <h4 class="font-heading font-bold text-lg text-brand-dark">Track in Real-Time</h4>
-        <p class="text-xs text-gray-600 leading-relaxed">Follow your cargo in real time through your OmeHub dashboard. Get proactive notifications, customs updates, and ETA alerts automatically.</p>
+        <p class="text-xs text-gray-600 leading-relaxed">Follow your cargo in real time through your {{ config('app.name') }} dashboard. Get proactive notifications, customs updates, and ETA alerts automatically.</p>
       </div>
 
       <div class="card-sand p-6 rounded-2xl space-y-3">

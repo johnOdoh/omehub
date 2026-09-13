@@ -185,7 +185,7 @@
               <div class="grid grid-cols-12 gap-8">
 
                 <div class="col-span-4">
-                  <div class="mega-group-title">Omehub Services</div>
+                  <div class="mega-group-title">{{ config('app.name') }} Services</div>
                   <div class="space-y-1">
                     <a href="{{ route('public.platform') }}#quote-and-book-freight" class="mega-link-card">
                       <div class="mega-icon-box">

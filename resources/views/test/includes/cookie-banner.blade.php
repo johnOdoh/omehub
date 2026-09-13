@@ -1,16 +1,16 @@
 <!-- Cookie Consent Alert Banner & Preferences Modal -->
-<div id="cookieConsentBanner" 
+<div id="cookieConsentBanner"
      class="fixed bottom-4 left-4 right-4 md:left-6 md:right-auto md:max-w-md z-50 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-500 ease-out"
      role="region"
      aria-label="Cookie consent">
   <div class="bg-brand-dark/95 backdrop-blur-xl border border-white/15 text-white shadow-2xl rounded-3xl p-6 relative overflow-hidden">
-    
+
     <!-- Ambient glow inside card -->
     <div class="absolute -right-12 -bottom-12 w-36 h-36 bg-brand-blue/20 rounded-full blur-2xl pointer-events-none"></div>
     <div class="absolute -left-12 -top-12 w-36 h-36 bg-brand-green/10 rounded-full blur-2xl pointer-events-none"></div>
 
     <div class="relative z-10 space-y-4">
-      
+
       <!-- Header with Icon & Compliance Badge -->
       <div class="flex items-center justify-between gap-3">
         <div class="flex items-center gap-2.5">
@@ -34,14 +34,14 @@
 
       <!-- Action Buttons -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1">
-        <button type="button" 
-                onclick="acceptAllCookies()" 
+        <button type="button"
+                onclick="acceptAllCookies()"
                 class="flex-1 btn-primary text-xs py-2.5 px-4 font-bold shadow-md shadow-brand-blue/30 justify-center">
           <span>Accept All</span>
         </button>
 
-        <button type="button" 
-                onclick="acceptEssentialCookies()" 
+        <button type="button"
+                onclick="acceptEssentialCookies()"
                 class="flex-1 bg-white/10 hover:bg-white/20 text-white rounded-full text-xs font-semibold py-2.5 px-4 transition-all text-center">
           <span>Essential Only</span>
         </button>
@@ -63,14 +63,14 @@
 </div>
 
 <!-- Cookie Preferences Modal -->
-<div id="cookiePreferencesModal" 
+<div id="cookiePreferencesModal"
      class="fixed inset-0 z-50 bg-brand-dark/80 backdrop-blur-md hidden items-center justify-center p-4 transition-all duration-300"
      role="dialog"
      aria-modal="true"
      aria-labelledby="cookieModalTitle">
-  
+
   <div class="bg-white text-brand-dark w-full max-w-lg rounded-3xl shadow-2xl border border-sand-border overflow-hidden transform scale-95 transition-transform duration-300">
-    
+
     <!-- Modal Header -->
     <div class="p-6 border-b border-gray-100 flex items-center justify-between bg-sand-light">
       <div class="flex items-center gap-3">
@@ -79,7 +79,7 @@
         </div>
         <div>
           <h3 id="cookieModalTitle" class="font-heading font-bold text-lg text-brand-dark">Cookie &amp; Privacy Preferences</h3>
-          <p class="text-xs text-gray-500">Manage how OmeHub stores and processes your data.</p>
+          <p class="text-xs text-gray-500">Manage how {{ config('app.name') }} stores and processes your data.</p>
         </div>
       </div>
       <button type="button" onclick="closeCookiePreferencesModal()" class="text-gray-400 hover:text-brand-dark p-2 rounded-xl hover:bg-gray-100 transition-colors" aria-label="Close preferences modal">
@@ -89,7 +89,7 @@
 
     <!-- Modal Body: Cookie Categories -->
     <div class="p-6 space-y-4 max-h-[60vh] overflow-y-auto">
-      
+
       <!-- Category 1: Strictly Necessary (Always Active) -->
       <div class="p-4 rounded-2xl bg-sand-light border border-sand-border space-y-2">
         <div class="flex items-center justify-between">
@@ -141,20 +141,20 @@
 
     <!-- Modal Footer -->
     <div class="p-6 bg-sand-light border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <button type="button" 
-              onclick="acceptAllCookies()" 
+      <button type="button"
+              onclick="acceptAllCookies()"
               class="w-full sm:w-auto text-xs font-bold text-brand-blue hover:underline py-2">
         Accept All Cookies
       </button>
 
       <div class="flex items-center gap-2 w-full sm:w-auto">
-        <button type="button" 
-                onclick="closeCookiePreferencesModal()" 
+        <button type="button"
+                onclick="closeCookiePreferencesModal()"
                 class="flex-1 sm:flex-initial btn-outlined text-xs py-2.5 px-4 font-semibold">
           Cancel
         </button>
-        <button type="button" 
-                onclick="saveCustomCookiePreferences()" 
+        <button type="button"
+                onclick="saveCustomCookiePreferences()"
                 class="flex-1 sm:flex-initial btn-primary text-xs py-2.5 px-5 font-bold shadow-md shadow-brand-blue/25">
           Save Preferences
         </button>

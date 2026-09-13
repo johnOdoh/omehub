@@ -369,7 +369,7 @@
             <i data-lucide="megaphone" class="w-5 h-5"></i>
           </div>
           <div>
-            <h4 class="font-heading font-bold text-base text-white">Advertise on OmeHub</h4>
+            <h4 class="font-heading font-bold text-base text-white">Advertise on {{ config('app.name') }}</h4>
             <p class="text-xs text-gray-300 mt-1 leading-relaxed">
               Target 50,000+ verified enterprise cargo owners, freight forwarders, and logistics directors across global corridors.
             </p>
@@ -456,7 +456,7 @@
               </div>
               <div>
                 <div id="authorName" class="font-heading font-bold text-sm text-brand-dark">Dr. Robert Chen</div>
-                <div id="authorRole" class="text-xs text-gray-500">Head of Supply Chain Intelligence &bull; OmeHub Research</div>
+                <div id="authorRole" class="text-xs text-gray-500">Head of Supply Chain Intelligence &bull; {{ config('app.name') }} Research</div>
               </div>
             </div>
 
@@ -511,7 +511,7 @@
           <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm my-6">
             <div class="bg-brand-dark p-4 text-white flex items-center justify-between">
               <span class="font-heading font-bold text-sm">Free-Time vs. Demurrage Risk Comparison</span>
-              <span class="text-[10px] text-brand-green font-mono">OmeHub Intelligence Benchmark</span>
+              <span class="text-[10px] text-brand-green font-mono">{{ config('app.name') }} Intelligence Benchmark</span>
             </div>
             <div class="p-4 overflow-x-auto">
               <table class="w-full text-xs text-left">
@@ -519,7 +519,7 @@
                   <tr>
                     <th class="py-2 px-3">Gateway Corridor</th>
                     <th class="py-2 px-3">Traditional Dwell Time</th>
-                    <th class="py-2 px-3">With OmeHub AI Telemetry</th>
+                    <th class="py-2 px-3">With {{ config('app.name') }} AI Telemetry</th>
                     <th class="py-2 px-3">Cost Savings / FEU</th>
                   </tr>
                 </thead>
@@ -555,7 +555,7 @@
                   ★ Partner Spotlight Offer
                 </span>
                 <h4 class="font-heading font-bold text-lg text-white">Save Up to 15% on Guaranteed Ocean Allocations</h4>
-                <p class="text-xs text-gray-300">Book through OmeHub's verified carrier pool with direct digital customs filing.</p>
+                <p class="text-xs text-gray-300">Book through {{ config('app.name') }}'s verified carrier pool with direct digital customs filing.</p>
               </div>
               <a href="{{ route('public.quote') }}" class="btn-primary py-2.5 px-5 text-xs font-bold whitespace-nowrap shadow-lg shadow-brand-blue/50">
                 <span>Calculate Rate Now</span>
@@ -568,7 +568,7 @@
             2. Real-Time Telemetry and Automated Exception Handling
           </h2>
           <p>
-            By synchronizing vessel AIS geolocation feeds with terminal berth schedules, OmeHub's neural engine calculates estimated vessel berthing times with 99.4% accuracy up to 72 hours before arrival. This allows cargo owners to initiate automated green-lane customs pre-clearance with the Nigeria Customs Service (NCS) and international customs administrations.
+            By synchronizing vessel AIS geolocation feeds with terminal berth schedules, {{ config('app.name') }}'s neural engine calculates estimated vessel berthing times with 99.4% accuracy up to 72 hours before arrival. This allows cargo owners to initiate automated green-lane customs pre-clearance with the Nigeria Customs Service (NCS) and international customs administrations.
           </p>
           <p>
             Once customs approval is granted, inland drayage trucks are dispatched automatically to pick up containers the moment the box touches the terminal quay.
@@ -740,10 +740,10 @@
           <i data-lucide="radio" class="w-3.5 h-3.5"></i> Global Trade Media Network
         </span>
         <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">
-          Showcase Your Fleet, Warehousing &amp; Routes on OmeHub
+          Showcase Your Fleet, Warehousing &amp; Routes on {{ config('app.name') }}
         </h2>
         <p class="text-sm text-gray-300 max-w-2xl leading-relaxed">
-          &ldquo;The OmeHub Blog is more than a feature, it's your voice in the global trade community. Advertise your services, share your updates, and connect with partners worldwide &mdash; all from your dashboard.&rdquo;
+          &ldquo;The {{ config('app.name') }} Blog is more than a feature, it's your voice in the global trade community. Advertise your services, share your updates, and connect with partners worldwide &mdash; all from your dashboard.&rdquo;
         </p>
         <div class="flex flex-wrap items-center gap-6 pt-2 text-xs font-mono text-gray-300">
           <div><strong class="text-brand-green text-lg">50K+</strong> Active Cargo Owners</div>
@@ -787,7 +787,7 @@
 
     <div class="space-y-2 mb-6">
       <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green bg-brand-green/15 px-3 py-1 rounded-full">
-        <i data-lucide="megaphone" class="w-3.5 h-3.5"></i> Post an Advert on OmeHub
+        <i data-lucide="megaphone" class="w-3.5 h-3.5"></i> Post an Advert on {{ config('app.name') }}
       </div>
       <h3 class="font-heading font-extrabold text-2xl text-brand-dark">Promote to 50,000+ Active Shippers</h3>
       <p class="text-xs text-gray-600">
@@ -860,7 +860,7 @@ const blogDatabase = {
     date: "Sept 05, 2026",
     readTime: "6 min read",
     author: "Dr. Robert Chen",
-    role: "Head of Supply Chain Intelligence • OmeHub Research",
+    role: "Head of Supply Chain Intelligence • {{ config('app.name') }} Research",
     avatar: "DR",
     img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1400&q=80",
     content: `
@@ -882,7 +882,7 @@ const blogDatabase = {
           <div class="space-y-1 text-center sm:text-left">
             <span class="bg-brand-green/20 text-brand-green text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">★ Partner Spotlight Offer</span>
             <h4 class="font-heading font-bold text-lg text-white">Save Up to 15% on Guaranteed Ocean Allocations</h4>
-            <p class="text-xs text-gray-300">Book through OmeHub's verified carrier pool with direct digital customs filing.</p>
+            <p class="text-xs text-gray-300">Book through {{ config('app.name') }}'s verified carrier pool with direct digital customs filing.</p>
           </div>
           <a href="../pages/quote.php" class="btn-primary py-2.5 px-5 text-xs font-bold whitespace-nowrap shadow-lg shadow-brand-blue/50">
             <span>Calculate Rate Now</span>
@@ -892,17 +892,17 @@ const blogDatabase = {
       </div>
 
       <h2 class="font-heading font-extrabold text-2xl text-brand-dark pt-3">2. Real-Time Telemetry and Automated Exception Handling</h2>
-      <p>By synchronizing vessel AIS geolocation feeds with terminal berth schedules, OmeHub's neural engine calculates estimated vessel berthing times with 99.4% accuracy up to 72 hours before arrival. This allows cargo owners to initiate automated green-lane customs pre-clearance with the Nigeria Customs Service (NCS) and international customs administrations.</p>
+      <p>By synchronizing vessel AIS geolocation feeds with terminal berth schedules, {{ config('app.name') }}'s neural engine calculates estimated vessel berthing times with 99.4% accuracy up to 72 hours before arrival. This allows cargo owners to initiate automated green-lane customs pre-clearance with the Nigeria Customs Service (NCS) and international customs administrations.</p>
     `
   },
   'post-1': {
-    title: "How OmeHub's Machine Learning Pipeline Predicts Port Delays Before Vessel Berth",
+    title: "How {{ config('app.name') }}'s Machine Learning Pipeline Predicts Port Delays Before Vessel Berth",
     category: "AI & Technology",
     subTag: "Machine Learning • Port ETAs",
     date: "Sept 04, 2026",
     readTime: "4 min read",
     author: "Tariq Al-Mansoor",
-    role: "Logistics Tech Architect • OmeHub AI Labs",
+    role: "Logistics Tech Architect • {{ config('app.name') }} AI Labs",
     avatar: "TA",
     img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80",
     content: `
@@ -912,7 +912,7 @@ const blogDatabase = {
           <span>AI Architecture Breakdown</span>
         </div>
         <p class="text-sm font-medium text-brand-dark leading-relaxed">
-          Predicting container vessel arrivals with precision is a core breakthrough of the modern logistics stack. OmeHub processes over 2 million historical voyage waypoints daily to update confidence intervals dynamically.
+          Predicting container vessel arrivals with precision is a core breakthrough of the modern logistics stack. {{ config('app.name') }} processes over 2 million historical voyage waypoints daily to update confidence intervals dynamically.
         </p>
       </div>
 
@@ -943,7 +943,7 @@ const blogDatabase = {
       </div>
 
       <h2 class="font-heading font-extrabold text-2xl text-brand-dark pt-3">Eliminating Traditional Clearance Bottlenecks</h2>
-      <p>By pre-filing Form M, PAAR documentation, and SONCAP certificates directly into OmeHub digital vaults, cargo owners reduce physical inspection delays and achieve green-lane customs clearance directly upon container discharge.</p>
+      <p>By pre-filing Form M, PAAR documentation, and SONCAP certificates directly into {{ config('app.name') }} digital vaults, cargo owners reduce physical inspection delays and achieve green-lane customs clearance directly upon container discharge.</p>
     `
   },
   'post-3': {
@@ -995,7 +995,7 @@ const promoDatabase = {
     service: "Instant All-Risk Marine Cargo Insurance (ICC 'A')",
     badge: "Lloyd's Syndicate Coverholder",
     price: "From 0.18% Cargo Invoice Value",
-    details: "Full general average, door-to-door transit, and automated paperless claims reimbursement within 48 hours for verified OmeHub shipments worldwide.",
+    details: "Full general average, door-to-door transit, and automated paperless claims reimbursement within 48 hours for verified {{ config('app.name') }} shipments worldwide.",
     link: "../pages/contact.php?inquiry=MarineInsurance"
   },
   'apexair': {
@@ -1126,7 +1126,7 @@ function shareArticle(platform) {
   if (platform === 'linkedin') {
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
   } else if (platform === 'twitter') {
-    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent('Read this briefing on OmeHub Blogs & Adverts')}`, '_blank');
+    window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent('Read this briefing on {{ config('app.name') }} Blogs & Adverts')}`, '_blank');
   }
 }
 

@@ -13,7 +13,7 @@
           Reliable, multimodal freight forwarding built for <span class="text-brand-blue">global trade.</span>
         </h1>
         <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl">
-          From full ocean container allocations to expedited air charters and automated customs clearance, omehub orchestrates every mile of your cargo with precision and live visibility.
+          From full ocean container allocations to expedited air charters and automated customs clearance, {{ config('app.name') }} orchestrates every mile of your cargo with precision and live visibility.
         </p>
         <div class="flex flex-wrap gap-4 pt-2">
           <a href="{{ route('public.quote') }}" class="btn-primary text-sm py-3.5 px-6 shadow-lg shadow-brand-blue/25">

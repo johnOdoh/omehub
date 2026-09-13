@@ -133,7 +133,7 @@
                     </h2>
 
                     <p class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-                    Join over 3,400+ forward-thinking global brands and logistics providers who trust omehub to automate freight procurement, eliminate customs delays, and track cargo worldwide.
+                    Join over 3,400+ forward-thinking global brands and logistics providers who trust {{ config('app.name') }} to automate freight procurement, eliminate customs delays, and track cargo worldwide.
                     </p>
 
                     <div class="flex flex-wrap gap-4 pt-2">
@@ -187,7 +187,7 @@
                         <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
                     </a>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                    omehub is the digital freight operating system connecting global shippers with verified carriers and logistics providers. Fast, transparent, and sustainable supply chains powered by AI.
+                    {{ config('app.name') }} is the digital freight operating system connecting global shippers with verified carriers and logistics providers. Fast, transparent, and sustainable supply chains powered by AI.
                     </p>
                     <div class="flex items-center space-x-3 pt-2">
                         <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-brand-blue hover:text-white flex items-center justify-center text-gray-400 transition-all" aria-label="LinkedIn">
@@ -293,7 +293,7 @@
                 <div class="text-center md:text-left space-y-1">
                     <div>&copy; {{ date('Y') }} <strong>{{ config('app.name') }}</strong> &bull; Powered by OmeFreight. All rights
                     reserved.</div>
-                    <div class="text-[11px] text-gray-400">Omefreight Logistics Ltd (Omehub) is certified by the Nigeria
+                    <div class="text-[11px] text-gray-400">Omefreight Logistics Ltd ({{ config('app.name') }}) is certified by the Nigeria
                     Data Protection Commission (NDPC) as a Data Controller of Major Importance (Ultra-High Level) &bull;
                     REG ID: NDPC/DCP/09043</div>
                 </div>

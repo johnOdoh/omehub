@@ -23,7 +23,7 @@
       Real-Time Container & Freight Radar
     </h1>
     <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
-      Enter your omehub tracking ID, Master Bill of Lading (MBL), or Container number to monitor live satellite coordinates and milestone timestamps.
+      Enter your {{ config('app.name') }} tracking ID, Master Bill of Lading (MBL), or Container number to monitor live satellite coordinates and milestone timestamps.
     </p>
 
     <!-- Tracking Input Bar -->

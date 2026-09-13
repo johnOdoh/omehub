@@ -1,6 +1,6 @@
 @extends('public.layout.public')
 
-@section('title', 'Contact & Support | OmeHub Global Trade Platform')
+@section('title', 'Contact & Support | '. config('app.name') .' Global Trade Platform')
 @section('content')
 
 <!-- Contact Hero -->
@@ -31,7 +31,7 @@
       <!-- Hero Visual on Right -->
       <div class="lg:col-span-5">
         <div class="hero-image-wrapper aspect-[4/3] group relative">
-          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80" alt="OmeHub Support Team" loading="eager">
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80" alt="{{ config('app.name') }} Support Team" loading="eager">
           <div class="hero-overlay-gradient"></div>
 
           <!-- Floating Support Desk Badge -->
@@ -41,7 +41,7 @@
                 <i data-lucide="headphones" class="w-5 h-5"></i>
               </div>
               <div>
-                <div class="text-xs font-extrabold text-brand-dark">OmeHub Support</div>
+                <div class="text-xs font-extrabold text-brand-dark">{{ config('app.name') }} Support</div>
                 <div class="text-[11px] text-gray-500">Your gateway to global trade assistance</div>
               </div>
             </div>
@@ -64,7 +64,7 @@
         <div class="card-sand p-8 sm:p-10 rounded-3xl border border-sand-border shadow-sm">
           <h3 class="font-heading font-bold text-2xl text-brand-dark mb-6">Send an Inquiry</h3>
 
-          <form onsubmit="event.preventDefault(); alert('Inquiry received! An omehub freight coordinator will respond within 2 business hours.');" class="space-y-5">
+          <form onsubmit="event.preventDefault(); alert('Inquiry received! An {{ config('app.name') }} freight coordinator will respond within 2 business hours.');" class="space-y-5">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">First & Last Name</label>
@@ -135,9 +135,9 @@
 <!-- Office Hubs & Regulatory Accreditation Section -->
 <section id="locations" class="py-20 bg-sand-light">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-      
+
       <!-- Accreditation Note -->
       <div class="lg:col-span-6 bg-white p-8 rounded-3xl border border-sand-border space-y-4 shadow-sm">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
@@ -156,7 +156,7 @@
 
       <!-- Locations -->
       <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        
+
         <!-- Lagos Hub -->
         <div class="bg-white p-6 rounded-3xl border border-sand-border space-y-3 shadow-sm">
           <div class="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">

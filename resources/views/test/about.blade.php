@@ -1,6 +1,6 @@
 @extends('public.layout.public')
 
-@section('title', 'About Us - Global Freight Forwarding & Logistics Solutions | omehub')
+@section('title', 'About Us - Global Freight Forwarding & Logistics Solutions | '. config('app.name'))
 @section('content')
 
 <!-- About Hero -->

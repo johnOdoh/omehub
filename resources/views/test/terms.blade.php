@@ -6,7 +6,7 @@
 <!-- Terms Page Header -->
 <section class="relative bg-gradient-to-b from-white via-sand-light to-sand/40 py-16 border-b border-sand-border overflow-hidden">
   <div class="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
-  
+
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4 text-center">
     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold uppercase tracking-wider">
       <i data-lucide="scale" class="w-3.5 h-3.5"></i>
@@ -18,7 +18,7 @@
     </h1>
 
     <p class="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-      Please read these terms carefully before registering or using the OmeHub digital logistics marketplace and trade support services.
+      Please read these terms carefully before registering or using the {{ config('app.name') }} digital logistics marketplace and trade support services.
     </p>
 
     <div class="flex items-center justify-center gap-4 text-xs text-gray-500 pt-2 flex-wrap">
@@ -35,7 +35,7 @@
 <section class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-      
+
       <!-- Sticky Navigation Sidebar -->
       <aside class="hidden lg:block lg:col-span-4 sticky top-28 space-y-6">
         <div class="card-sand p-6 rounded-3xl bg-sand-light border border-sand-border space-y-4">
@@ -77,7 +77,7 @@
 
       <!-- Main Legal Articles -->
       <main class="lg:col-span-8 space-y-10 text-gray-700 leading-relaxed font-sans">
-        
+
         <!-- Article 1 -->
         <article id="acceptance" class="p-8 rounded-3xl bg-sand-light border border-sand-border space-y-3">
           <div class="flex items-center gap-3">
@@ -85,7 +85,7 @@
             <h2 class="font-heading font-bold text-xl text-brand-dark">Acceptance of Terms</h2>
           </div>
           <p class="text-sm leading-relaxed text-gray-600 pl-11">
-            By registering on OmeHub, creating an account, accessing our website, or using any of our logistics services, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, you may not access or use the platform.
+            By registering on {{ config('app.name') }}, creating an account, accessing our website, or using any of our logistics services, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, you may not access or use the platform.
           </p>
         </article>
 
@@ -106,7 +106,7 @@
             <span class="w-8 h-8 rounded-xl bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-sm flex-shrink-0">3</span>
             <h2 class="font-heading font-bold text-xl text-brand-dark">Platform Use</h2>
           </div>
-          
+
           <div class="pl-11 space-y-4">
             <div>
               <h4 class="font-heading font-bold text-sm text-brand-dark mb-2 text-emerald-700 flex items-center gap-1.5">
@@ -141,7 +141,7 @@
             <h2 class="font-heading font-bold text-xl text-brand-dark">Payments</h2>
           </div>
           <p class="text-sm leading-relaxed text-gray-600 pl-11">
-            All payments are processed securely post-completion of services unless otherwise specified (e.g. upon confirmed delivery or verified policy activation). OmeHub is not responsible for financial disputes or transactions conducted outside the platform’s official payment escrow system.
+            All payments are processed securely post-completion of services unless otherwise specified (e.g. upon confirmed delivery or verified policy activation). {{ config('app.name') }} is not responsible for financial disputes or transactions conducted outside the platform’s official payment escrow system.
           </p>
         </article>
 
@@ -152,7 +152,7 @@
             <h2 class="font-heading font-bold text-xl text-brand-dark">Refund Policy</h2>
           </div>
           <p class="text-sm leading-relaxed text-gray-600 pl-11">
-            OmeHub provides refunds only in cases where a paid service has not been rendered or where a duplicate payment was made in error. Refund requests must be submitted in writing to <a href="mailto:support@ome-hub.com" class="text-brand-blue underline font-bold">support@ome-hub.com</a> within <strong>7 business days</strong> of payment. Services that have already commenced, including booked freight container allocations, active customs processing, or third-party handling, are non-refundable.
+            {{ config('app.name') }} provides refunds only in cases where a paid service has not been rendered or where a duplicate payment was made in error. Refund requests must be submitted in writing to <a href="mailto:support@ome-hub.com" class="text-brand-blue underline font-bold">support@ome-hub.com</a> within <strong>7 business days</strong> of payment. Services that have already commenced, including booked freight container allocations, active customs processing, or third-party handling, are non-refundable.
           </p>
         </article>
 
@@ -163,7 +163,7 @@
             <h2 class="font-heading font-bold text-xl text-brand-dark">Trade Finance &amp; Insurance</h2>
           </div>
           <p class="text-sm leading-relaxed text-gray-600 pl-11">
-            Services offered by third-party financial institutions and insurance underwriters are subject to their own respective terms, conditions, and underwriting approvals. OmeHub facilitates the structured digital transaction but does not directly underwrite, issue loans, or guarantee financing approvals.
+            Services offered by third-party financial institutions and insurance underwriters are subject to their own respective terms, conditions, and underwriting approvals. {{ config('app.name') }} facilitates the structured digital transaction but does not directly underwrite, issue loans, or guarantee financing approvals.
           </p>
         </article>
 
@@ -173,9 +173,9 @@
             <span class="w-8 h-8 rounded-xl bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-sm flex-shrink-0">7</span>
             <h2 class="font-heading font-bold text-xl text-brand-dark">User Responsibilities</h2>
           </div>
-          
+
           <div class="pl-11 space-y-2">
-            <p class="text-sm text-gray-600">By booking shipments on OmeHub, you formally confirm that:</p>
+            <p class="text-sm text-gray-600">By booking shipments on {{ config('app.name') }}, you formally confirm that:</p>
             <ul class="space-y-2 text-xs sm:text-sm text-gray-600">
               <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue flex-shrink-0 mt-0.5"></i> <span>The declared goods are legal, non-restricted, and comply with international maritime/aviation safety codes.</span></li>
               <li class="flex items-start gap-2.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue flex-shrink-0 mt-0.5"></i> <span>You will fully comply with all national and international export/import regulations, customs duties, and HS code declarations.</span></li>
@@ -191,7 +191,7 @@
             <h2 class="font-heading font-bold text-xl text-brand-dark">Disputes and Claims</h2>
           </div>
           <p class="text-sm leading-relaxed text-gray-600 pl-11">
-            All shipment discrepancies, damages, delays, or contract disputes must be submitted directly through the platform’s legal support feature within your dashboard. Dispute resolution will follow OmeHub’s formal escalation protocol and mediation windows.
+            All shipment discrepancies, damages, delays, or contract disputes must be submitted directly through the platform’s legal support feature within your dashboard. Dispute resolution will follow {{ config('app.name') }}’s formal escalation protocol and mediation windows.
           </p>
         </article>
 
@@ -202,7 +202,7 @@
             <h2 class="font-heading font-bold text-xl text-brand-dark">Intellectual Property</h2>
           </div>
           <p class="text-sm leading-relaxed text-gray-600 pl-11">
-            OmeHub, its software algorithms, rate calculation engines, vessel tracking radar interfaces, logos, designs, visuals, and tools are the proprietary intellectual property of Omefreight Logistics Ltd. You may not copy, reverse-engineer, modify, scrape, or reuse any platform content without prior written permission.
+            {{ config('app.name') }}, its software algorithms, rate calculation engines, vessel tracking radar interfaces, logos, designs, visuals, and tools are the proprietary intellectual property of Omefreight Logistics Ltd. You may not copy, reverse-engineer, modify, scrape, or reuse any platform content without prior written permission.
           </p>
         </article>
 
@@ -213,7 +213,7 @@
             <h2 class="font-heading font-bold text-xl text-brand-dark">Termination</h2>
           </div>
           <p class="text-sm leading-relaxed text-gray-600 pl-11">
-            OmeHub reserves the exclusive right to suspend or permanently terminate user or corporate accounts that violate these Terms and Conditions, engage in fraudulent bookings, or breach trade compliance rules, with or without prior notice.
+            {{ config('app.name') }} reserves the exclusive right to suspend or permanently terminate user or corporate accounts that violate these Terms and Conditions, engage in fraudulent bookings, or breach trade compliance rules, with or without prior notice.
           </p>
         </article>
 

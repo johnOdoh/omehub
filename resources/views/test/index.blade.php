@@ -224,7 +224,7 @@
           3.4k
         </div>
         <div class="text-sm sm:text-base font-bold text-brand-green mt-2">Active Shippers</div>
-        <p class="text-xs text-gray-400 mt-1">Shipping with omehub digital solutions</p>
+        <p class="text-xs text-gray-400 mt-1">Shipping with {{ config('app.name') }} digital solutions</p>
       </div>
 
       <div class="p-6">
@@ -460,7 +460,7 @@
             </li>
             <li class="flex items-center gap-2">
               <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>
-              <span>Zero credit risk with omehub Guaranteed Payouts</span>
+              <span>Zero credit risk with {{ config('app.name') }} Guaranteed Payouts</span>
             </li>
             <li class="flex items-center gap-2">
               <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green"></i>
@@ -751,7 +751,7 @@
             <i data-lucide="star" class="w-4 h-4 fill-current"></i>
           </div>
           <p class="text-sm text-gray-700 italic leading-relaxed">
-            "omehub cut our supply chain exception response times from hours to seconds. The automated customs filing and live container telemetry give us full peace of mind."
+            "{{ config('app.name') }} cut our supply chain exception response times from hours to seconds. The automated customs filing and live container telemetry give us full peace of mind."
           </p>
         </div>
         <div class="pt-6 border-t border-gray-100 mt-6 flex items-center gap-3">
@@ -776,7 +776,7 @@
             <i data-lucide="star" class="w-4 h-4 fill-current"></i>
           </div>
           <p class="text-sm text-gray-700 italic leading-relaxed">
-            "As a freight forwarder, omehub has allowed us to fill empty backhaul container space on Asia-Europe corridors with zero credit risk and automated invoicing."
+            "As a freight forwarder, {{ config('app.name') }} has allowed us to fill empty backhaul container space on Asia-Europe corridors with zero credit risk and automated invoicing."
           </p>
         </div>
         <div class="pt-6 border-t border-gray-100 mt-6 flex items-center gap-3">

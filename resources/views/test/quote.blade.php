@@ -1,12 +1,12 @@
 @extends('public.layout.public')
 
-@section('title', 'Instant Freight Quote Calculation | OmeHub Global Trade Platform')
+@section('title', 'Instant Freight Quote Calculation | '. config('app.name') .' Global Trade Platform')
 @section('content')
 
 <!-- Quote Tool Header -->
 <section class="relative bg-gradient-to-b from-white via-sand-light to-sand/40 py-16 border-b border-sand-border overflow-hidden">
   <div class="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
-  
+
   <!-- Subtle Freight Container Backdrop -->
   <div class="absolute right-0 top-0 w-full lg:w-1/3 h-full opacity-10 pointer-events-none overflow-hidden">
     <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1000&q=80" alt="Freight Container Cargo" class="w-full h-full object-cover">
@@ -18,7 +18,7 @@
       <i data-lucide="zap" class="w-3.5 h-3.5"></i>
       <span>Real-Time Spot & Contract Rates</span>
     </div>
-    
+
     <h1 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-dark tracking-tight">
       Instant Multi-Modal <span class="text-brand-blue">Freight Calculator</span>
     </h1>
@@ -44,11 +44,11 @@
 <!-- Interactive Multi-Step Quote Engine -->
 <section class="py-16 bg-white min-h-[600px]">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
     <div class="card-sand p-6 sm:p-10 rounded-3xl border border-sand-border shadow-lg">
-      
+
       <form id="fullQuoteForm" onsubmit="event.preventDefault(); calculateFullQuote();" class="space-y-8">
-        
+
         <!-- Step 1: Mode Selection -->
         <div>
           <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">1. Select Freight Mode</label>
@@ -203,9 +203,9 @@
 
         <!-- Estimated Charge Display Card -->
         <div class="bg-white rounded-3xl border-2 border-brand-blue p-6 sm:p-8 shadow-xl relative overflow-hidden font-sans">
-          
+
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
+
             <!-- Left Side: Main Total & Route Details -->
             <div class="lg:col-span-7 space-y-4">
               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold uppercase tracking-wider">
