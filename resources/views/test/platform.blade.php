@@ -64,7 +64,8 @@
         </p>
       </div>
       <div class="lg:col-span-6">
-        <img src="{{ asset('assets/img/services/quote-and-book.webp') }}" alt="quote and book freight" loading="eager">
+        <!-- <img src="{{ asset('assets/img/services/quote-and-book.webp') }}" alt="quote and book freight" loading="eager"> -->
+        <img src="https://placehold.co/600x560?text=600x560" alt="quote and book freight" loading="eager" width="600" height="560" class="w-full rounded-3xl shadow-xl border border-sand-border">
       </div>
     </div>
   </div>
@@ -75,7 +76,8 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-6 order-2 lg:order-1">
-        <img src="{{ asset('assets/img/services/track.webp') }}" alt="track shipment" loading="eager">
+        <!-- <img src="{{ asset('assets/img/services/track.webp') }}" alt="track shipment" loading="eager"> -->
+        <img src="https://placehold.co/600x1000?text=600x1000" alt="track shipment" loading="eager" width="600" height="1000" class="w-full rounded-3xl shadow-xl border border-sand-border">
       </div>
       <div class="lg:col-span-6 order-1 lg:order-2 space-y-6">
         <div class="w-12 h-12 rounded-2xl bg-brand-dark/15 flex items-center justify-center text-gray-600">
@@ -143,18 +145,20 @@
         </p>
       </div>
       <div class="lg:col-span-6">
-        <img src="{{ asset('assets/img/services/finance.webp') }}" alt="trade finance" loading="eager">
+        <!-- <img src="{{ asset('assets/img/services/finance.webp') }}" alt="trade finance" loading="eager"> -->
+        <img src="https://placehold.co/600x540?text=600x540" alt="trade finance" loading="eager" width="600" height="540" class="w-full rounded-3xl shadow-xl border border-sand-border">
       </div>
     </div>
   </div>
 </section>
 
-<!-- Feature 2: Resolve Disputes -->
+<!-- Feature 4: Resolve Disputes -->
 <section id="resolve-disputes" class="py-24 bg-sand-light border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-6 order-2 lg:order-1">
-        <img src="{{ asset('assets/img/services/resolve-disputes.webp') }}" alt="resolve disputes" loading="eager">
+        <!-- <img src="{{ asset('assets/img/services/resolve-disputes.webp') }}" alt="resolve disputes" loading="eager"> -->
+        <img src="https://placehold.co/600x700?text=600x700" alt="resolve disputes" loading="eager" width="600" height="700" class="w-full rounded-3xl shadow-xl border border-sand-border">
       </div>
       <div class="lg:col-span-6 order-1 lg:order-2 space-y-6">
         <div class="w-12 h-12 rounded-2xl bg-brand-blue/15 flex items-center justify-center text-yellow-600">
@@ -184,7 +188,7 @@
   </div>
 </section>
 
-<!-- Feature 3: Carbon Offset -->
+<!-- Feature 5: Carbon Offset -->
 <section id="offset" class="py-24 bg-white border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -210,18 +214,20 @@
         </p>
       </div>
       <div class="lg:col-span-6">
-        <img src="{{ asset('assets/img/services/offset.webp') }}" alt="carbon offset" loading="eager">
+        <!-- <img src="{{ asset('assets/img/services/offset.webp') }}" alt="carbon offset" loading="eager"> -->
+        <img src="https://placehold.co/600x500?text=600x500" alt="carbon offset" loading="eager" width="600" height="500" class="w-full rounded-3xl shadow-xl border border-sand-border">
       </div>
     </div>
   </div>
 </section>
 
-<!-- Feature 2: Resolve Disputes -->
+<!-- Feature 6: Community Feed -->
 <section id="community" class="py-24 bg-sand-light border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-6 order-2 lg:order-1">
-        <img src="{{ asset('assets/img/services/community.webp') }}" alt="resolve disputes" loading="eager">
+        <!-- <img src="{{ asset('assets/img/services/community.webp') }}" alt="resolve disputes" loading="eager"> -->
+        <img src="https://placehold.co/600x460?text=600x460" alt="community feed" loading="eager" width="600" height="460" class="w-full rounded-3xl shadow-xl border border-sand-border">
       </div>
       <div class="lg:col-span-6 order-1 lg:order-2 space-y-6">
         <div class="w-12 h-12 rounded-2xl bg-brand-dark/15 flex items-center justify-center text-red-600">

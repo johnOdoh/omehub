@@ -7,8 +7,8 @@
 <section class="relative bg-gradient-to-b from-white via-sand-light to-sand/30 py-20 border-b border-sand-border overflow-hidden">
   <div class="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+
       <!-- Hero Content -->
       <div class="lg:col-span-7 space-y-6">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue-light text-brand-blue text-xs font-bold uppercase tracking-wider">
@@ -79,18 +79,22 @@
       </div>
 
       <!-- Hero Visual with Video Modal Link -->
-      <div class="lg:col-span-5">
-        <div class="hero-image-wrapper aspect-[4/3] group relative shadow-2xl">
-          <img src="{{ asset('assets/img/story.jpg') }}" 
-               onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80'" 
-               alt="{{ config('app.name') }} Global Logistics Story" 
-               class="w-full h-full object-cover">
+      <div class="lg:col-span-5 flex">
+        <div class="hero-image-wrapper w-full h-full min-h-[420px] group relative shadow-2xl rounded-3xl overflow-hidden">
+          <!-- <img src="{{ asset('assets/img/story.jpg') }}"
+               onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80'"
+               alt="{{ config('app.name') }} Global Logistics Story"
+               class="w-full h-full object-cover"> -->
+          <img src="https://placehold.co/600x480?text=600x480+Story+Visual"
+               alt="{{ config('app.name') }} Global Logistics Story"
+               width="600" height="480"
+               class="w-full rounded-3xl">
           <div class="hero-overlay-gradient"></div>
 
           <!-- Video Play Button Overlay -->
-          <a href="https://youtube.com/embed/3WeeLhKguEY" 
-             target="_blank" 
-             rel="noopener noreferrer" 
+          <a href="https://youtube.com/embed/3WeeLhKguEY"
+             target="_blank"
+             rel="noopener noreferrer"
              class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-brand-blue/90 hover:bg-brand-blue text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all z-20 group-hover:bg-brand-blue"
              aria-label="Watch {{ config('app.name') }} Story Video">
             <i data-lucide="play" class="w-7 h-7 fill-white ml-1"></i>
@@ -120,17 +124,21 @@
 <section id="story" class="py-24 bg-white border-b border-sand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-      
+
       <!-- Visual Column -->
       <div class="lg:col-span-5 order-2 lg:order-1">
         <div class="relative">
           <div class="rounded-3xl overflow-hidden shadow-2xl border border-sand-border relative aspect-[4/3] group">
-            <img src="{{ asset('assets/img/features-6.jpg') }}" 
-                 onerror="this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80'" 
-                 alt="{{ config('app.name') }} Logistics Architecture" 
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <!-- <img src="{{ asset('assets/img/features-6.jpg') }}"
+                 onerror="this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80'"
+                 alt="{{ config('app.name') }} Logistics Architecture"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"> -->
+            <img src="https://placehold.co/800x600?text=800x600+Architecture"
+                 alt="{{ config('app.name') }} Logistics Architecture"
+                 width="800" height="600"
+                 class="w-full group-hover:scale-105 transition-transform duration-700">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/70 via-brand-dark/20 to-transparent"></div>
-            
+
             <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
               <span class="text-xs font-bold uppercase tracking-widest text-brand-green">Founded On Purpose</span>
               <h4 class="font-heading font-bold text-xl text-white">Making international trade easier and more human</h4>
@@ -201,7 +209,7 @@
 <!-- Why Choose {{ config('app.name') }} Section -->
 <section id="why-choose" class="py-24 bg-sand-light border-b border-sand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
     <div class="max-w-3xl mx-auto text-center mb-16 space-y-4">
       <span class="badge-pill badge-pill-blue">Why Choose {{ config('app.name') }}</span>
       <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-dark tracking-tight">
@@ -214,7 +222,7 @@
 
     <!-- 4 Core Pillars Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      
+
       <!-- Card 1 -->
       <div class="card-sand p-6 rounded-3xl bg-white border border-sand-border space-y-4 shadow-sm hover:shadow-md transition-all">
         <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue">
@@ -282,14 +290,14 @@
 <section id="sustainability" class="py-24 bg-white border-b border-sand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-      
+
       <!-- Left Content -->
-      <div class="lg:col-span-6 space-y-6">
+      <div class="lg:col-span-6 space-y-6 ">
         <span class="badge-pill badge-pill-green">Sustainability &amp; Security</span>
         <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-dark tracking-tight leading-tight">
           Driving sustainable trade with unwavering integrity
         </h2>
-        
+
         <p class="text-brand-blue font-medium text-sm sm:text-base italic border-l-4 border-brand-blue pl-4">
           &ldquo;We are building a platform grounded in security, transparency, and compliance.&rdquo;
         </p>
@@ -301,7 +309,7 @@
         <!-- Our 4-Point Promise List -->
         <div class="space-y-4 pt-2">
           <h4 class="font-heading font-bold text-lg text-brand-dark">Our Security &amp; Trust Promise</h4>
-          
+
           <div class="space-y-3">
             <div class="flex items-start gap-3 p-3.5 rounded-2xl bg-sand-light border border-sand-border">
               <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -348,12 +356,16 @@
       </div>
 
       <!-- Right Visual Column -->
-      <div class="lg:col-span-6">
-        <div class="hero-image-wrapper aspect-[4/3] relative rounded-3xl overflow-hidden shadow-2xl border border-sand-border group">
-          <img src="{{ asset('assets/img/features-4.jpg') }}" 
-               onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80'" 
-               alt="{{ config('app.name') }} Green Logistics & Sustainability" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      <div class="lg:col-span-6 flex">
+        <div class="hero-image-wrapper w-full h-full min-h-[480px] relative rounded-3xl overflow-hidden shadow-2xl border border-sand-border group">
+          <!-- <img src="{{ asset('assets/img/features-4.jpg') }}"
+               onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80'"
+               alt="{{ config('app.name') }} Green Logistics & Sustainability"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"> -->
+          <img src="https://placehold.co/600x800?text=600x800+Sustainability"
+               alt="{{ config('app.name') }} Green Logistics & Sustainability"
+               width="600" height="800"
+               class="w-full group-hover:scale-105 transition-transform duration-700">
           <div class="hero-overlay-gradient"></div>
 
           <!-- Inset Carbon Certificate Floating Card -->
@@ -384,7 +396,7 @@
 <!-- Where We Operate & Built For All Section -->
 <section id="where-we-operate" class="py-24 bg-sand-light border-b border-sand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
       <div class="lg:col-span-7 space-y-4">
         <span class="badge-pill badge-pill-blue">Global Reach</span>
@@ -407,7 +419,7 @@
 
     <!-- Built For All: 4 Groups -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      
+
       <div class="bg-white rounded-3xl p-6 border border-sand-border space-y-3 shadow-sm">
         <div class="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center font-bold">
           <i data-lucide="user" class="w-5 h-5"></i>
@@ -456,10 +468,10 @@
 <!-- Who Is It For Section -->
 <section id="who-is-it-for" class="py-24 bg-white border-b border-sand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-      
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch">
+
       <!-- Content Left -->
-      <div class="lg:col-span-6 space-y-8">
+      <div class="lg:col-span-6 space-y-8 flex flex-col justify-center">
         <div>
           <span class="badge-pill badge-pill-blue">Who Is It For</span>
           <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-dark tracking-tight mt-2">
@@ -471,7 +483,7 @@
         </div>
 
         <div class="space-y-6">
-          
+
           <!-- Item 1 -->
           <div class="flex items-start gap-4">
             <div class="w-12 h-12 rounded-2xl bg-brand-blue-light text-brand-blue flex items-center justify-center flex-shrink-0 font-bold text-xl">
@@ -528,12 +540,16 @@
       </div>
 
       <!-- Right Visual -->
-      <div class="lg:col-span-6">
-        <div class="hero-image-wrapper aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-sand-border group">
-          <img src="{{ asset('assets/img/features-7.jpg') }}" 
-               onerror="this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80'" 
-               alt="{{ config('app.name') }} Trade Ecosystem" 
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+      <div class="lg:col-span-6 flex">
+        <div class="hero-image-wrapper w-full h-full min-h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-sand-border group relative">
+          <!-- <img src="{{ asset('assets/img/features-7.jpg') }}"
+               onerror="this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80'"
+               alt="{{ config('app.name') }} Trade Ecosystem"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"> -->
+          <img src="https://placehold.co/600x520?text=600x520+Trade+Ecosystem"
+               alt="{{ config('app.name') }} Trade Ecosystem"
+               width="600" height="520"
+               class="w-full group-hover:scale-105 transition-transform duration-700">
           <div class="hero-overlay-gradient"></div>
 
           <!-- Floating Ecosystem Tag -->
@@ -551,7 +567,7 @@
 <!-- Leadership Team Section -->
 <section id="leadership" class="py-24 bg-sand-light border-b border-sand-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
     <div class="max-w-3xl mx-auto text-center mb-16 space-y-3">
       <span class="badge-pill badge-pill-blue">Leadership Team</span>
       <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-dark tracking-tight">
@@ -563,15 +579,15 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      
+
       <!-- Team Member 1: Omeh Ifeanyi -->
       <div class="bg-white rounded-3xl p-8 border border-sand-border shadow-sm hover:shadow-lg transition-all space-y-6 flex flex-col justify-between">
         <div class="space-y-4">
           <div class="flex items-center gap-4">
             <div class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-brand-blue/20 flex-shrink-0 bg-brand-blue/5">
-              <img src="{{ asset('assets/img/team/team-1.png') }}" 
-                   onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'" 
-                   alt="Omeh Ifeanyi" 
+              <img src="{{ asset('assets/img/team/team-1.png') }}"
+                   onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'"
+                   alt="Omeh Ifeanyi"
                    class="w-full h-full object-cover">
             </div>
             <div>
@@ -588,9 +604,9 @@
 
         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
           <span class="text-xs text-gray-500 font-medium">Trade Law &amp; Operations</span>
-          <a href="https://www.linkedin.com/in/ifeanyi-omeh-73498b9a/?utm_source=share&utm_campaign=share_via&utm_content=profile" 
-             target="_blank" 
-             rel="noopener noreferrer" 
+          <a href="https://www.linkedin.com/in/ifeanyi-omeh-73498b9a/?utm_source=share&utm_campaign=share_via&utm_content=profile"
+             target="_blank"
+             rel="noopener noreferrer"
              class="w-9 h-9 rounded-xl bg-sand-light hover:bg-brand-blue hover:text-white flex items-center justify-center text-gray-600 transition-colors"
              aria-label="LinkedIn Profile">
             <i data-lucide="linkedin" class="w-4 h-4"></i>
@@ -603,9 +619,9 @@
         <div class="space-y-4">
           <div class="flex items-center gap-4">
             <div class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-emerald-500/20 flex-shrink-0 bg-emerald-50">
-              <img src="{{ asset('assets/img/team/team-3.jpg') }}" 
-                   onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'" 
-                   alt="Mama Godfrey" 
+              <img src="{{ asset('assets/img/team/team-3.jpg') }}"
+                   onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'"
+                   alt="Mama Godfrey"
                    class="w-full h-full object-cover">
             </div>
             <div>
@@ -635,9 +651,9 @@
 <!-- Brand Highlights & Testimonials Section -->
 <section id="community-voice" class="py-24 bg-brand-dark text-white relative overflow-hidden">
   <div class="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none"></div>
-  
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    
+
     <div class="max-w-3xl mx-auto text-center mb-16 space-y-3">
       <span class="badge-pill bg-white/10 text-brand-green border border-white/15">Community Voice</span>
       <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
@@ -649,7 +665,7 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
+
       <!-- Quote 1 -->
       <div class="bg-white/5 backdrop-blur-md p-6 rounded-3xl border border-white/10 space-y-4 hover:border-brand-blue/50 transition-colors">
         <div class="w-10 h-10 rounded-xl bg-brand-blue/20 text-brand-blue flex items-center justify-center">
@@ -744,9 +760,9 @@
 <!-- Office Hubs & Regulatory Accreditation Section -->
 <section id="locations" class="py-20 bg-sand-light">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-      
+
       <!-- Accreditation Note -->
       <div class="lg:col-span-6 bg-white p-8 rounded-3xl border border-sand-border space-y-4 shadow-sm">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
@@ -765,7 +781,7 @@
 
       <!-- Locations -->
       <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        
+
         <!-- Lagos Hub -->
         <div class="bg-white p-6 rounded-3xl border border-sand-border space-y-3 shadow-sm">
           <div class="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
