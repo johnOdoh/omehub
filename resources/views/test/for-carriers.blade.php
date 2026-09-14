@@ -27,7 +27,7 @@
       <!-- Right Column: Hero Visual & Benefits -->
       <div class="lg:col-span-6 space-y-6">
         <div class="hero-image-wrapper aspect-[16/9] group relative shadow-2xl border-white/10">
-          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Global Shipping Fleet and Modern Air Cargo Freighter" loading="eager">
+          <img src="https://images.unsplash.com/photo-1606185540834-d6e7483ee1a4" alt="Global Shipping Fleet and Modern Air Cargo Freighter" loading="eager">
           <div class="hero-overlay-gradient"></div>
 
           <div class="absolute bottom-4 left-4 right-4 hero-glass-card-dark p-3.5 flex items-center justify-between gap-3 shadow-lg">

@@ -43,22 +43,14 @@
 
       <!-- Right Column: Hero Visual & Shipper Guarantees Overlay -->
       <div class="lg:col-span-6 space-y-6">
-        <div class="hero-image-wrapper aspect-[16/9] group relative shadow-xl">
-          <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80" alt="Global Container Terminal and Freight Fleet Operations" loading="eager">
-          <div class="hero-overlay-gradient"></div>
+        <div class="relative">
 
-          <div class="absolute bottom-4 left-4 right-4 hero-glass-card p-3.5 flex items-center justify-between gap-3 shadow-lg">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-xl bg-brand-blue text-white flex items-center justify-center">
-                <i data-lucide="check-circle" class="w-5 h-5"></i>
-              </div>
-              <div>
-                <div class="text-xs font-bold text-brand-dark">Guaranteed Container Allocations</div>
-                <div class="text-[11px] text-gray-500">Tier-1 Shipping Lines • 0% Rolled Guarantee</div>
-              </div>
-            </div>
-            <span class="text-xs font-bold text-brand-blue bg-brand-blue-light px-2.5 py-1 rounded-full whitespace-nowrap">Protected</span>
-          </div>
+          <!-- Decorative Background Aura -->
+          <div class="absolute -inset-1 bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-green rounded-3xl blur opacity-25"></div>
+
+          <!-- Widget Include -->
+          @include('test.includes.quote-widget')
+
         </div>
 
         <!-- Shipper Guarantee Highlights -->

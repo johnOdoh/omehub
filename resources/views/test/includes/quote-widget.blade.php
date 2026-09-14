@@ -1,6 +1,6 @@
 <!-- Quick Freight Rate & Tracking Card Widget -->
 <div class="bg-white rounded-2xl shadow-xl shadow-brand-dark/5 border border-gray-100 p-2 sm:p-3 relative z-20 backdrop-blur-md">
-  
+
   <!-- Tabs Header -->
   <div class="flex items-center gap-1 border-b border-gray-100 p-1 mb-3">
     <button type="button" id="tabRateBtn" class="flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all bg-brand-blue text-white shadow-sm" onclick="switchWidgetTab('rate')">
@@ -16,7 +16,7 @@
   <!-- Tab 1: Instant Rate Calculator -->
   <div id="rateTabContent" class="p-3 sm:p-4">
     <form id="heroQuoteForm" onsubmit="event.preventDefault(); handleQuickQuote();" class="space-y-4">
-      
+
       <!-- Freight Mode Selector Buttons -->
       <div class="grid grid-cols-3 gap-2">
         <label class="cursor-pointer">
@@ -141,13 +141,13 @@
 
   <!-- Tab 2: Live Tracking Radar -->
   <div id="trackTabContent" class="hidden p-3 sm:p-4">
-    <form onsubmit="event.preventDefault(); handleHeroTracking();" class="space-y-4">
+    <form action="{{ route('public.tracking') }}" class="space-y-4">
       <div>
-        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Shipment Tracking Number / B/L / Container No.</label>
+        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Shipment Tracking Number</label>
         <div class="flex gap-2">
           <div class="relative flex-1">
             <i data-lucide="package" class="w-4 h-4 text-gray-400 absolute left-3 top-3.5"></i>
-            <input type="text" id="heroTrackingInput" value="OME-884920" placeholder="e.g. OME-884920, MSCU938102, HLCU981023" class="w-full bg-sand/60 border border-gray-200 rounded-xl pl-9 pr-4 py-2.5 text-xs sm:text-sm font-semibold uppercase text-brand-dark focus:outline-none focus:border-brand-blue focus:bg-white transition-all font-mono">
+            <input type="text" name="track" value="OME-884920" placeholder="tracking number" class="w-full bg-sand/60 border border-gray-200 rounded-xl pl-9 pr-4 py-2.5 text-xs sm:text-sm font-semibold uppercase text-brand-dark focus:outline-none focus:border-brand-blue focus:bg-white transition-all font-mono">
           </div>
           <button type="submit" class="btn-primary px-5 text-xs sm:text-sm font-bold shadow-md shadow-brand-blue/20">
             <span>Track</span>
@@ -155,7 +155,7 @@
           </button>
         </div>
       </div>
-      
+
       <!-- Sample Quick Tracking Chips -->
       <div class="flex items-center gap-2 pt-1 flex-wrap">
         <span class="text-[11px] text-gray-500 font-bold">Try Sample Tracking:</span>

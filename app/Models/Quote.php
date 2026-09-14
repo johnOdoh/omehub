@@ -9,7 +9,8 @@ class Quote extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'departure_date' => 'date'
+        'departure_date' => 'date',
+        'duration' => 'integer',
     ];
 
     public function user()

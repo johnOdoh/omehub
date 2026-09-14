@@ -1,39 +1,42 @@
 <?php
 
-use App\Livewire\Shipper\Dashboard;
-use App\Livewire\Common\Profile\Main;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PublicController;
+use App\Livewire\Admin\Admins\AdminList;
+use App\Livewire\Admin\Bulletin;
 use App\Livewire\Admin\Users\UserInfo;
+use App\Livewire\Admin\Users\UsersList;
+use App\Livewire\Common\Blog\CreatePost;
 use App\Livewire\Common\Blog\PostList;
 use App\Livewire\Common\Blog\ViewPost;
-use App\Livewire\Admin\Users\UsersList;
-use App\Livewire\Admin\Admins\AdminList;
-use App\Livewire\Common\Blog\CreatePost;
-use App\Livewire\Common\Support\Tickets;
-use App\Http\Controllers\PublicController;
-use App\Livewire\Common\Financing\Request;
-use App\Http\Controllers\PaymentController;
-use App\Livewire\Admin\Bulletin;
-use App\Livewire\Logistics\Quotes\Requests;
+use App\Livewire\Common\Dispute\CreateDispute;
 use App\Livewire\Common\Dispute\DisputeList;
 use App\Livewire\Common\Dispute\LegalAdvice;
-use App\Livewire\Common\Support\CreateTicket;
-use App\Livewire\Logistics\Quotes\QuotesSent;
-use App\Livewire\Shipper\Quotes\RequestQuote;
-use App\Livewire\Common\Dispute\CreateDispute;
-use App\Livewire\Common\Financing\RequestList;
-use App\Livewire\Shipper\Quotes\QuoteRequests;
-use App\Livewire\Common\Profile\DocumentUpload;
 use App\Livewire\Common\Documents\CommercialInvoice;
 use App\Livewire\Common\Documents\PackingList;
+use App\Livewire\Common\Financing\Request as FinancingRequest;
+use App\Livewire\Common\Financing\RequestList;
+use App\Livewire\Common\Profile\DocumentUpload;
+use App\Livewire\Common\Profile\Main;
+use App\Livewire\Common\Support\CreateTicket;
+use App\Livewire\Common\Support\Tickets;
 use App\Livewire\Common\Sustainability\Invoices;
 use App\Livewire\Finance\Dashboard as FinanceDashboard;
 use App\Livewire\Finance\Requests as FinanceRequests;
-use App\Livewire\Logistics\Shipments\Shipments;
-use App\Livewire\Shipper\Shipments\ShipmentList;
 use App\Livewire\Logistics\Dashboard as LogisticsDashboard;
+use App\Livewire\Logistics\Quotes\QuotesSent;
+use App\Livewire\Logistics\Quotes\Requests;
+use App\Livewire\Logistics\Shipments\Shipments;
+use App\Livewire\Shipper\Dashboard;
+use App\Livewire\Shipper\Quotes\QuoteRequests;
+use App\Livewire\Shipper\Quotes\RequestQuote;
+use App\Livewire\Shipper\Shipments\ShipmentList;
 use App\Livewire\Sustainability\Dashboard as SustainabilityDashboard;
 use App\Livewire\Sustainability\Offsets;
+use App\Models\Financing;
+use App\Models\Shipment;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'index'])->name('home');
 Route::get('/about', [PublicController::class, 'about'])->name('about');
@@ -79,8 +82,10 @@ Route::get('/public/quotes', function () {
     return view('test.quote');
 })->name('public.quote');
 
-Route::get('/public/tracking', function () {
-    return view('test.tracking');
+Route::get('/public/tracking', function (Request $request) {
+    $code = $request->query('track');
+    $shipment = $code ? Shipment::where('tracking_number', $code)->first() : null;;
+    return view('test.tracking', compact('code', 'shipment'));
 })->name('public.tracking');
 
 Route::get('/public/blogs', function () {
@@ -152,7 +157,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('user/disputes/against', DisputeList::class)->name('user.dispute.against');
     Route::get('user/legal/advice', LegalAdvice::class)->name('user.legal.advice');
 
-    Route::get('user/financing/request', Request::class)->name('user.financing.request');
+    Route::get('user/financing/request', FinancingRequest::class)->name('user.financing.request');
     Route::get('user/financing/requests', RequestList::class)->name('user.financing.list');
 
     Route::get('user/offsets/invoices', Invoices::class)->name('user.offsets.invoices');
