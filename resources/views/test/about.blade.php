@@ -80,15 +80,15 @@
 
       <!-- Hero Visual with Video Modal Link -->
       <div class="lg:col-span-5 flex">
-        <div class="hero-image-wrapper w-full h-full min-h-[420px] group relative shadow-2xl rounded-3xl overflow-hidden">
-          <!-- <img src="{{ asset('assets/img/story.jpg') }}"
+        <div class="hero-image-wrapper w-full h-full min-h-[420px] group relative shadow-2xl rounded-3xl">
+          {{-- <img src="{{ asset('assets/img/story.jpg') }}"
                onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80'"
                alt="{{ config('app.name') }} Global Logistics Story"
-               class="w-full h-full object-cover"> -->
-          <img src="https://placehold.co/600x480?text=600x480+Story+Visual"
+               class="w-full h-full object-cover"> --}}
+          <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=600&h=480&q=80"
                alt="{{ config('app.name') }} Global Logistics Story"
                width="600" height="480"
-               class="w-full rounded-3xl">
+               class="w-full h-full object-cover rounded-3xl">
           <div class="hero-overlay-gradient"></div>
 
           <!-- Video Play Button Overlay -->
@@ -133,10 +133,10 @@
                  onerror="this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80'"
                  alt="{{ config('app.name') }} Logistics Architecture"
                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"> -->
-            <img src="https://placehold.co/800x600?text=800x600+Architecture"
+            <img src="https://plus.unsplash.com/premium_photo-1661880923162-cccaf4814c03"
                  alt="{{ config('app.name') }} Logistics Architecture"
                  width="800" height="600"
-                 class="w-full group-hover:scale-105 transition-transform duration-700">
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/70 via-brand-dark/20 to-transparent"></div>
 
             <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
@@ -362,10 +362,10 @@
                onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80'"
                alt="{{ config('app.name') }} Green Logistics & Sustainability"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"> -->
-          <img src="https://placehold.co/600x800?text=600x800+Sustainability"
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&h=800&q=80"
                alt="{{ config('app.name') }} Green Logistics & Sustainability"
                width="600" height="800"
-               class="w-full group-hover:scale-105 transition-transform duration-700">
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="hero-overlay-gradient"></div>
 
           <!-- Inset Carbon Certificate Floating Card -->
@@ -546,10 +546,10 @@
                onerror="this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80'"
                alt="{{ config('app.name') }} Trade Ecosystem"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"> -->
-          <img src="https://placehold.co/600x520?text=600x520+Trade+Ecosystem"
+          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&h=520&q=80"
                alt="{{ config('app.name') }} Trade Ecosystem"
                width="600" height="520"
-               class="w-full group-hover:scale-105 transition-transform duration-700">
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="hero-overlay-gradient"></div>
 
           <!-- Floating Ecosystem Tag -->

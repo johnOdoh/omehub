@@ -65,7 +65,7 @@
       </div>
       <div class="lg:col-span-6">
         <!-- <img src="{{ asset('assets/img/services/quote-and-book.webp') }}" alt="quote and book freight" loading="eager"> -->
-        <img src="https://placehold.co/600x560?text=600x560" alt="quote and book freight" loading="eager" width="600" height="560" class="w-full rounded-3xl shadow-xl border border-sand-border">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&h=560&q=80" alt="quote and book freight" loading="eager" width="600" height="560" class="w-full rounded-3xl shadow-xl border border-sand-border object-cover">
       </div>
     </div>
   </div>
@@ -77,7 +77,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-6 order-2 lg:order-1">
         <!-- <img src="{{ asset('assets/img/services/track.webp') }}" alt="track shipment" loading="eager"> -->
-        <img src="https://placehold.co/600x1000?text=600x1000" alt="track shipment" loading="eager" width="600" height="1000" class="w-full rounded-3xl shadow-xl border border-sand-border">
+        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=600&h=1000&q=80" alt="track shipment" loading="eager" width="600" height="1000" class="w-full rounded-3xl shadow-xl border border-sand-border object-cover">
       </div>
       <div class="lg:col-span-6 order-1 lg:order-2 space-y-6">
         <div class="w-12 h-12 rounded-2xl bg-brand-dark/15 flex items-center justify-center text-gray-600">
@@ -146,7 +146,7 @@
       </div>
       <div class="lg:col-span-6">
         <!-- <img src="{{ asset('assets/img/services/finance.webp') }}" alt="trade finance" loading="eager"> -->
-        <img src="https://placehold.co/600x540?text=600x540" alt="trade finance" loading="eager" width="600" height="540" class="w-full rounded-3xl shadow-xl border border-sand-border">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&h=540&q=80" alt="trade finance" loading="eager" width="600" height="540" class="w-full rounded-3xl shadow-xl border border-sand-border object-cover">
       </div>
     </div>
   </div>
@@ -158,7 +158,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-6 order-2 lg:order-1">
         <!-- <img src="{{ asset('assets/img/services/resolve-disputes.webp') }}" alt="resolve disputes" loading="eager"> -->
-        <img src="https://placehold.co/600x700?text=600x700" alt="resolve disputes" loading="eager" width="600" height="700" class="w-full rounded-3xl shadow-xl border border-sand-border">
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&h=700&q=80" alt="resolve disputes" loading="eager" width="600" height="700" class="w-full rounded-3xl shadow-xl border border-sand-border object-cover">
       </div>
       <div class="lg:col-span-6 order-1 lg:order-2 space-y-6">
         <div class="w-12 h-12 rounded-2xl bg-brand-blue/15 flex items-center justify-center text-yellow-600">
@@ -215,7 +215,7 @@
       </div>
       <div class="lg:col-span-6">
         <!-- <img src="{{ asset('assets/img/services/offset.webp') }}" alt="carbon offset" loading="eager"> -->
-        <img src="https://placehold.co/600x500?text=600x500" alt="carbon offset" loading="eager" width="600" height="500" class="w-full rounded-3xl shadow-xl border border-sand-border">
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&h=500&q=80" alt="carbon offset" loading="eager" width="600" height="500" class="w-full rounded-3xl shadow-xl border border-sand-border object-cover">
       </div>
     </div>
   </div>
@@ -227,7 +227,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       <div class="lg:col-span-6 order-2 lg:order-1">
         <!-- <img src="{{ asset('assets/img/services/community.webp') }}" alt="resolve disputes" loading="eager"> -->
-        <img src="https://placehold.co/600x460?text=600x460" alt="community feed" loading="eager" width="600" height="460" class="w-full rounded-3xl shadow-xl border border-sand-border">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&h=460&q=80" alt="community feed" loading="eager" width="600" height="460" class="w-full rounded-3xl shadow-xl border border-sand-border object-cover">
       </div>
       <div class="lg:col-span-6 order-1 lg:order-2 space-y-6">
         <div class="w-12 h-12 rounded-2xl bg-brand-dark/15 flex items-center justify-center text-red-600">

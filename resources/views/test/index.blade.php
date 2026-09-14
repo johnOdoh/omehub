@@ -269,10 +269,10 @@
                onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80'"
                alt="About {{ config('app.name') }} Platform"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"> -->
-          <img src="https://placehold.co/600x520?text=600x520+About+Platform"
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&h=520&q=80"
                alt="About {{ config('app.name') }} Platform"
                width="600" height="520"
-               class="w-full group-hover:scale-105 transition-transform duration-700">
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="hero-overlay-gradient"></div>
 
           <!-- Video Play Button -->
@@ -386,10 +386,10 @@
                onerror="this.src='https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80'"
                alt="How {{ config('app.name') }} Works"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"> -->
-          <img src="https://placehold.co/600x480?text=600x480+How+It+Works"
+          <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&h=480&q=80"
                alt="How {{ config('app.name') }} Works"
                width="600" height="480"
-               class="w-full group-hover:scale-105 transition-transform duration-700">
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="hero-overlay-gradient"></div>
 
           <div class="absolute bottom-6 left-6 right-6 hero-glass-card p-4 space-y-1 shadow-xl">
@@ -641,10 +641,10 @@
                onerror="this.src='https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80'"
                alt="Professional Logistics Support"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"> -->
-          <img src="https://placehold.co/600x550?text=600x550+Logistics+Support"
+          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=600&h=550&q=80"
                alt="Professional Logistics Support"
                width="600" height="550"
-               class="w-full group-hover:scale-105 transition-transform duration-700">
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="hero-overlay-gradient"></div>
 
           <div class="absolute bottom-6 left-6 right-6 hero-glass-card p-4 space-y-1 shadow-xl">
