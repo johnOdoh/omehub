@@ -184,4 +184,30 @@
             })
         </script>
     @endscript
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script>
+        function makePayment() {
+            document.querySelector('#loadingOverlay').classList.remove('d-none');
+            FlutterwaveCheckout({
+                public_key: '{{ env('FLUTTERWAVE_PUBLIC_KEY') }}',
+                tx_ref: '{{ uniqid('ome_', true) }}',
+                amount: {{ $isPersonal ? 1.00 : 1.00 }},
+                currency: 'USD',
+                payment_options: 'card',
+                redirect_url: '{{ route('payment.verification') }}',
+                customer: {
+                    email: '{{ $user->email }}',
+                    name: '{{ $user->name }}',
+                },
+                customizations: {
+                    title: '{{ config('app.name') }}',
+                    description: 'One time administration fee',
+                    logo: '{{ asset('assets/img/favicon.png') }}',
+                },
+                meta: {
+                    req: {{ $request->id }}
+                }
+            });
+        }
+    </script>
 </div>

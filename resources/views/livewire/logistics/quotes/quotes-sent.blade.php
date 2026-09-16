@@ -52,7 +52,7 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="card-actions float-end">
-                            <button class="btn btn-primary btn-sm" wire:click="deleteQuote()" wire:confirm="Are you sure you want to delete this quote?">Delete Quote</button>
+                            <button class="btn btn-danger btn-sm" wire:click="deleteQuote()" wire:confirm="Are you sure you want to delete this quote?">Delete Quote</button>
                         </div>
                         <h5 class="card-title mb-0">Quote Details</h5>
                     </div>

@@ -7,11 +7,15 @@ use Livewire\Attributes\On;
 
 class QuoteList extends Component
 {
+    public $user;
+    public $isPersonal;
     public $request;
     public $current_quote = [];
 
     public function mount($request)
     {
+        $this->user = request()->user();
+        $this->isPersonal = $this->user->profile->account_type == 'Personal';
         $this->request = $request;
         $this->current_quote = [
             'custom' => 0,

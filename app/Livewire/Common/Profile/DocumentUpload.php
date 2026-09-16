@@ -23,7 +23,10 @@ class DocumentUpload extends Component
     public function mount()
     {
         $this->user = request()->user();
-        if (!$this->user->verification_payment || $this->user->profile->document) {
+        // if (!$this->user->verification_payment || $this->user->profile->document) {
+        //     return $this->redirect(route('user.profile'), true);
+        // }
+        if ($this->user->profile->document) {
             return $this->redirect(route('user.profile'), true);
         }
     }

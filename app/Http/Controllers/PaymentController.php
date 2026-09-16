@@ -9,29 +9,16 @@ use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
 {
-    /**
-     * Handle the payment verification.
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    private function verifyPayment($amount, $transaction_id): bool
-    {
-        $response = Http::withToken(env('FLUTTERWAVE_SECRET_KEY'))
-            ->get("https://api.flutterwave.com/v3/transactions/$transaction_id/verify");
-        $transaction = $response->json()['data'];
-        if ($transaction['status'] === 'successful' && $transaction['charged_amount'] >= $amount && $transaction['currency'] === 'USD')
-            return true;
-        else
-            return false;
-    }
-
     public function verification(Request $request): RedirectResponse
     {
         $amount = $request->user()->role == 'Shipper' && $request->user()->profile->account_type == 'Personal' ? 1.00 : 1.00;
-        if ($this->verifyPayment($amount, $request->transaction_id)) {
+        $response = Http::withToken(env('FLUTTERWAVE_SECRET_KEY'))
+            ->get("https://api.flutterwave.com/v3/transactions/$request->transaction_id/verify");
+        $transaction = $response->json()['data'];
+
+        if ($transaction['status'] === 'successful' && $transaction['charged_amount'] >= $amount && $transaction['currency'] === 'USD') {
             $request->user()->update(['verification_payment' => true]);
-            return redirect()->route('user.upload-document');
+            return redirect()->route('shipper.quote-requests', ['req' => $transaction['meta']['req']]);
         } else {
             return back()->with('error', 'Payment verification failed. Please try again. If you have been charged, please contact support.');
         }
@@ -40,9 +27,9 @@ class PaymentController extends Controller
     public function advert(Request $request): RedirectResponse
     {
         $response = Http::withToken(env('FLUTTERWAVE_SECRET_KEY'))
-        ->get("https://api.flutterwave.com/v3/transactions/$request->transaction_id/verify");
+            ->get("https://api.flutterwave.com/v3/transactions/$request->transaction_id/verify");
         $transaction = $response->json()['data'];
-        $data = match($transaction['meta']['plan']) {
+        $data = match ($transaction['meta']['plan']) {
             'monthly' => ['amount' => 5, 'ends' => Carbon::now()->addMonth()],
             'biannual' => ['amount' => 28, 'ends' => Carbon::now()->addMonths(6)],
             'annual' => ['amount' => 50, 'ends' => Carbon::now()->addYear()],
@@ -65,9 +52,9 @@ class PaymentController extends Controller
     public function document(Request $request): RedirectResponse
     {
         $response = Http::withToken(env('FLUTTERWAVE_SECRET_KEY'))
-        ->get("https://api.flutterwave.com/v3/transactions/$request->transaction_id/verify");
+            ->get("https://api.flutterwave.com/v3/transactions/$request->transaction_id/verify");
         $transaction = $response->json()['data'];
-        $data = match($transaction['meta']['plan']) {
+        $data = match ($transaction['meta']['plan']) {
             'monthly' => ['amount' => 5, 'ends' => Carbon::now()->addMonth()],
             'biannual' => ['amount' => 28, 'ends' => Carbon::now()->addMonths(6)],
             'annual' => ['amount' => 50, 'ends' => Carbon::now()->addYear()],

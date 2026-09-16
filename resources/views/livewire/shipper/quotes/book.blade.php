@@ -37,7 +37,7 @@
                         <div class="row g-3 px-2">
                             @foreach ($quote->request->insurance_quotes as $insurance)
                                 <div class="col-12 cursor-pointer p-0 {{ $selectedInsurance && $insurance->id == $selectedInsurance->id ? 'bg-light' : '' }}" wire:click="toggleInsurance({{ $insurance->id }})">
-                                    <div class="iq p-2 border border-1">
+                                    <div class="iq p-2 border-1">
                                         <div class="d-flex align-items-center gap-2">
                                             <div class="d-flex align-items-center">
                                                 <img src="{{ asset('storage/'.$insurance->user->profile->logo) ?? '' }}"  width="50" height="50" class="rounded-circle me-2" alt="logo">
@@ -82,7 +82,7 @@
             </div>
         </div>
         <div class="col-xl-4">
-            <div class="card">
+            <div class="card mb-0">
                 <div class="card-header pb-0">
                     <h5 class="card-title mb-0 text-dark fw-bold">Charge Summary</h5>
                 </div>
@@ -136,12 +136,34 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex w-100 mt-3">
-                <button class="btn btn-success w-100 py-2 fw-bold" wire:click="book" wire:confirm="Are you sure you want to proceed?">Book Shipment</button>
-            </div>
+            @if ($user->verification_payment)
+                <div class="d-flex w-100 mt-3">
+                    <button class="btn btn-success w-100 py-2 fw-bold rounded-pill" wire:click="book" wire:confirm="Are you sure you want to proceed?">Book Shipment</button>
+                </div>
+            @else
+                <div class="d-flex w-100 mt-3" style="cursor: not-allowed !important;">
+                    <button class="btn btn-success w-100 py-2 fw-bold rounded-pill" disabled>Book Shipment</button>
+                </div>
+                <div class="my-3">
+                    <div class="alert alert-warning" role="alert">
+                        <div class="alert-message small p-2">
+                            {{-- <h5 class="alert-heading">Please Note</h5> --}}
+                            <p class="fst-italic m-0">You have to pay a one-time administration fee of ${{ $isPersonal ? '1' : '1' }} before you can book shipment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex w-100 mt-3">
+                    <button type="button" class="btn btn-primary w-100 py-2 fw-bold rounded-pill" onclick="makePayment()">Pay Now</button>
+                </div>
+            @endif
         </div>
     </div>
     <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:1000;" wire:loading>
+        <div class="spinner-grow text-info me-2" role="status" style="position:absolute;top:50%;left:50%">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:100000;" id="loadingOverlay" class="d-none">
         <div class="spinner-grow text-info me-2" role="status" style="position:absolute;top:50%;left:50%">
             <span class="visually-hidden">Loading...</span>
         </div>

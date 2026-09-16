@@ -38,12 +38,12 @@
                                             @endif
                                             <td>{{ $quote_request->quotes->count() }}</td>
                                             <td class="d-flex gap-2">
-                                                <button class="btn btn-info btn-sm" wire:click="viewRequest({{ $quote_request->id }})">View</button>
+                                                <a href="{{ route('shipper.quote-requests') }}?req={{ $quote_request->id }}" class="btn btn-info btn-sm" wire:navigate>View</a>
                                                 <button class="btn btn-danger btn-sm" wire:confirm="Are you sure you want to delete this request?" wire:click="deleteRequest({{ $quote_request->id }})">Delete</button>
                                             </td>
                                         </tr>
                                     @empty
-                                        <tr><td colspan="5"><h5>No Requests Yet</h5></td></tr>
+                                        <tr><td colspan="7"><h5>No Requests Yet</h5></td></tr>
                                     @endforelse
                                 </tbody>
                             </table>

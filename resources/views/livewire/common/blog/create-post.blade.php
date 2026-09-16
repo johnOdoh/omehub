@@ -317,7 +317,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card text-center h-100 border border-primary border-3">
+                        <div class="card text-center h-100 border-primary border-3">
                             <div class="position-absolute top-0 start-50 translate-middle">
                                 <span class="badge bg-primary px-3 py-2">Most Popular</span>
                             </div>

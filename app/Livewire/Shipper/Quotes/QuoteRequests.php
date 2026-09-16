@@ -2,13 +2,12 @@
 
 namespace App\Livewire\Shipper\Quotes;
 
-use App\Models\Quote;
 use App\Models\Request;
 use Livewire\Component;
-use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\Url;
 
 class QuoteRequests extends Component
 {
@@ -16,10 +15,20 @@ class QuoteRequests extends Component
 
     protected $paginationTheme = "bootstrap";
     // private $filter = false;
+    #[Url]
+    public $req;
     public $request;
     public $quote_id;
     public $dimensions = [];
     public $codes = [];
+
+    public function mount()
+    {
+        if (!empty($this->req)) {
+            $req = Request::findOrFail($this->req);
+            $this->viewRequest($req);
+        }
+    }
 
     public function viewRequest(Request $request)
     {
@@ -37,9 +46,10 @@ class QuoteRequests extends Component
 
     public function closeRequest()
     {
-        if($this->quote_id) $this->quote_id = null;
+        if ($this->quote_id) $this->quote_id = null;
         else {
             $this->request = null;
+            $this->req = null;
             $this->codes = [];
         }
     }

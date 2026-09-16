@@ -8,6 +8,8 @@ use Livewire\Component;
 
 class Book extends Component
 {
+    public $user;
+    public $isPersonal;
     public $quote;
     public $selectedInsurance;
     public $total;
@@ -17,11 +19,13 @@ class Book extends Component
 
     public function mount(Quote $quote)
     {
+        $this->user = request()->user();
+        $this->isPersonal = $this->user->profile->account_type == 'Personal';
         $this->quote = $quote;
         if ($quote->request->currency == 'NGN') {
             $this->processing_fee = 100000;
             $this->carbon_offset = 10000;
-        }else {
+        } else {
             $this->processing_fee = 100;
             $this->carbon_offset = config('app.offset');
         }
@@ -63,7 +67,7 @@ class Book extends Component
             'amount' => $this->total,
             'status' => 'processing',
             'processing_fee' => $this->processing_fee,
-            'tracking_number' => date('Y').rand(10000, 99999).request()->user()->initials(),
+            'tracking_number' => date('Y') . rand(10000, 99999) . request()->user()->initials(),
             'updates' => [
                 [
                     'message' => 'Your shipment is being processed.',
@@ -72,7 +76,7 @@ class Book extends Component
             ]
         ]);
         $this->quote->request()->update(['is_closed' => true]);
-        $this->redirect(route('shipper.shipments',['booked' => true] , absolute: false), navigate: true);
+        $this->redirect(route('shipper.shipments', ['booked' => true], absolute: false), navigate: true);
     }
 
     public function render()
