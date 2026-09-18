@@ -425,34 +425,38 @@
           <div class="flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center gap-2">
               <span id="articleCategoryBadge" class="bg-brand-blue text-white text-xs font-extrabold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm">
-                {{ $post->category }}
+                Market Intelligence
+              </span>
+              <span class="bg-sand text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full border border-sand-border flex items-center gap-1">
+                <i data-lucide="tag" class="w-3 h-3 text-brand-blue"></i>
+                <span id="articleSubTag">Ocean Freight &bull; AI Routing</span>
               </span>
             </div>
 
             <!-- Social Share Bar & Estimated Reading Time -->
             <div class="flex items-center gap-2 text-xs text-gray-500">
               <span id="articleReadTime" class="flex items-center gap-1 font-semibold">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-green"></i> {{ rand(2, 6) }} min read
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-green"></i> 6 min read
               </span>
               <span>&bull;</span>
-              <span id="articleDate">{{ $post->created_at->format('M d, Y') }}</span>
+              <span id="articleDate">Sept 05, 2026</span>
             </div>
           </div>
 
           <!-- Main Headline -->
           <h1 id="articleTitle" class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-brand-dark tracking-tight leading-tight">
-            {{ $post->title }}
+            Navigating Ocean Freight Volatility: How Real-Time Telemetry &amp; AI Routing Cut Demurrage Fees by 44%
           </h1>
 
           <!-- Author Bio Bar -->
           <div class="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-gray-100">
             <div class="flex items-center gap-3">
               <div id="authorAvatar" class="w-11 h-11 rounded-2xl bg-brand-blue text-white font-bold flex items-center justify-center text-sm shadow-md shadow-brand-blue/30">
-                {{ $post->user->initials() }}
+                DR
               </div>
               <div>
-                <div id="authorName" class="font-heading font-bold text-sm text-brand-dark">{{ $post->user->name }}</div>
-                {{-- <div id="authorRole" class="text-xs text-gray-500">Head of Supply Chain Intelligence &bull; {{ config('app.name') }} Research</div> --}}
+                <div id="authorName" class="font-heading font-bold text-sm text-brand-dark">Dr. Robert Chen</div>
+                <div id="authorRole" class="text-xs text-gray-500">Head of Supply Chain Intelligence &bull; {{ config('app.name') }} Research</div>
               </div>
             </div>
 
@@ -460,19 +464,10 @@
             <div class="flex items-center gap-2">
               <span class="text-xs text-gray-400 font-medium mr-1 hidden sm:inline">Share:</span>
               <button type="button" onclick="shareArticle('linkedin')" class="p-2 rounded-xl bg-sand-light hover:bg-brand-blue hover:text-white text-gray-600 border border-gray-200 transition-colors" title="Share on LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.601 0 4.263 2.37 4.263 5.455v6.288zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.994 20.452H3.675V9h3.319v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-                </svg>
+                <i data-lucide="linkedin" class="w-4 h-4"></i>
               </button>
               <button type="button" onclick="shareArticle('twitter')" class="p-2 rounded-xl bg-sand-light hover:bg-brand-blue hover:text-white text-gray-600 border border-gray-200 transition-colors" title="Share on Twitter / X">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24" fill="currentColor" class="w-6 h-6">
-                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.4.36a9.1 9.1 0 01-2.88 1.1  4.52 4.52 0 00-7.7 4.12A12.8 12.8 0 013 2.1a4.52 4.52 0 001.4 6.04A4.48 4.48 0 012 7.1v.06a4.52 4.52 0 003.63 4.43 4.52 4.52 0 01-2.05.08 4.52 4.52 0 004.22 3.14A9.05 9.05 0 012 19.54 12.8 12.8 0 008.29 21c7.55 0 11.68-6.26.68-11.68 0-.18-.01-.35-.02-.53A8.36 8.36 0 0023 3z"/>
-                </svg>
-              </button>
-              <button type="button" onclick="shareArticle('facebook')" class="p-2 rounded-xl bg-sand-light hover:bg-brand-blue hover:text-white text-gray-600 border border-gray-200 transition-colors" title="Share on Facebook">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-                    <path d="M22.675 0H1.325C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24h-1.918c-1.505 0-1.797.716-1.797 1.767v2.317h3.59l-.467 3.622h-3.123V24h6.116C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.675 0z"/>
-                </svg>
+                <i data-lucide="twitter" class="w-4 h-4"></i>
               </button>
               <button type="button" onclick="copyArticleLink()" class="p-2 rounded-xl bg-sand-light hover:bg-brand-green hover:text-brand-dark text-gray-600 border border-gray-200 transition-colors" title="Copy Article Link">
                 <i data-lucide="link" class="w-4 h-4"></i>
@@ -483,32 +478,142 @@
 
         <!-- Featured Article Hero Media Banner -->
         <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/9] bg-brand-dark group">
-          <img id="articleFeaturedImg" src="{{ asset('storage/'.$post->file) }}"
-            alt="{{ $post->title }}" class="w-full h-full object-cover">
+          <img id="articleFeaturedImg" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1400&q=80"
+            alt="Container port operations" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-6 right-6 text-white text-xs flex items-center justify-between">
+            <span class="bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">AIS Satellite Telemetry &bull; Port Congestion Index 2026</span>
+            <span class="text-gray-300 text-[11px] hidden sm:inline">Photo: Global Logistics Port Operations</span>
+          </div>
         </div>
 
         <!-- Full Formatted Article Body -->
         <div id="articleBodyContent" class="space-y-6 text-gray-700 text-base leading-relaxed">
-          {!! $post->body !!}
+
+          <div class="p-6 bg-sand-light rounded-3xl border border-sand-border space-y-2">
+            <div class="font-heading font-bold text-xs uppercase tracking-wider text-brand-blue flex items-center gap-1.5">
+              <i data-lucide="lightbulb" class="w-4 h-4 text-brand-blue"></i>
+              <span>Executive Summary</span>
+            </div>
+            <p class="text-sm font-medium text-brand-dark leading-relaxed">
+              Global maritime supply chains in 2026 are experiencing unprecedented rate swings, canal detours, and rapid terminal turn-around shifts. This research briefing analyzes how forward-looking enterprise cargo owners are integrating live satellite AIS positioning with automated customs classification to eliminate terminal demurrage penalties before container grounding.
+            </p>
+          </div>
+
+          <h2 class="font-heading font-extrabold text-2xl text-brand-dark pt-3">
+            1. The Real Root Causes of Container Demurrage &amp; Detention
+          </h2>
+          <p>
+            Demurrage charges are rarely caused by physical cargo failure. Rather, they stem from an <strong>information latency gap</strong> between carrier estimated arrivals, customs PAAR validation, and drayage truck dispatch. When milestone notifications are delayed by even 12 hours, shippers easily cross the free-time threshold at major global terminals.
+          </p>
+
+          <!-- In-Article Data Card / Comparison Table -->
+          <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm my-6">
+            <div class="bg-brand-dark p-4 text-white flex items-center justify-between">
+              <span class="font-heading font-bold text-sm">Free-Time vs. Demurrage Risk Comparison</span>
+              <span class="text-[10px] text-brand-green font-mono">{{ config('app.name') }} Intelligence Benchmark</span>
+            </div>
+            <div class="p-4 overflow-x-auto">
+              <table class="w-full text-xs text-left">
+                <thead class="text-gray-500 uppercase border-b border-gray-100">
+                  <tr>
+                    <th class="py-2 px-3">Gateway Corridor</th>
+                    <th class="py-2 px-3">Traditional Dwell Time</th>
+                    <th class="py-2 px-3">With {{ config('app.name') }} AI Telemetry</th>
+                    <th class="py-2 px-3">Cost Savings / FEU</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 font-medium">
+                  <tr>
+                    <td class="py-2.5 px-3 font-bold text-brand-dark">Shanghai &rarr; Lagos Apapa</td>
+                    <td class="py-2.5 px-3 text-red-600">6.8 Days</td>
+                    <td class="py-2.5 px-3 text-emerald-600 font-bold">2.4 Days</td>
+                    <td class="py-2.5 px-3 text-brand-blue font-mono font-bold">$780</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 px-3 font-bold text-brand-dark">Ningbo &rarr; Rotterdam</td>
+                    <td class="py-2.5 px-3 text-red-600">4.5 Days</td>
+                    <td class="py-2.5 px-3 text-emerald-600 font-bold">1.8 Days</td>
+                    <td class="py-2.5 px-3 text-brand-blue font-mono font-bold">$420</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 px-3 font-bold text-brand-dark">Singapore &rarr; Tin Can Island</td>
+                    <td class="py-2.5 px-3 text-red-600">7.2 Days</td>
+                    <td class="py-2.5 px-3 text-emerald-600 font-bold">2.6 Days</td>
+                    <td class="py-2.5 px-3 text-brand-blue font-mono font-bold">$920</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- IN-ARTICLE SPONSORED NATIVE ADVERT BREAK -->
+          <div class="my-8 p-6 bg-gradient-to-r from-brand-dark via-brand-dark-soft to-brand-dark text-white rounded-3xl border border-white/15 relative overflow-hidden shadow-xl">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-5 relative z-10">
+              <div class="space-y-1 text-center sm:text-left">
+                <span class="bg-brand-green/20 text-brand-green text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                  ★ Partner Spotlight Offer
+                </span>
+                <h4 class="font-heading font-bold text-lg text-white">Save Up to 15% on Guaranteed Ocean Allocations</h4>
+                <p class="text-xs text-gray-300">Book through {{ config('app.name') }}'s verified carrier pool with direct digital customs filing.</p>
+              </div>
+              <a href="{{ route('public.quote') }}" class="btn-primary py-2.5 px-5 text-xs font-bold whitespace-nowrap shadow-lg shadow-brand-blue/50">
+                <span>Calculate Rate Now</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <h2 class="font-heading font-extrabold text-2xl text-brand-dark pt-3">
+            2. Real-Time Telemetry and Automated Exception Handling
+          </h2>
+          <p>
+            By synchronizing vessel AIS geolocation feeds with terminal berth schedules, {{ config('app.name') }}'s neural engine calculates estimated vessel berthing times with 99.4% accuracy up to 72 hours before arrival. This allows cargo owners to initiate automated green-lane customs pre-clearance with the Nigeria Customs Service (NCS) and international customs administrations.
+          </p>
+          <p>
+            Once customs approval is granted, inland drayage trucks are dispatched automatically to pick up containers the moment the box touches the terminal quay.
+          </p>
+
+          <!-- Key Takeaways Checklist -->
+          <div class="p-6 bg-emerald-50/70 rounded-3xl border border-emerald-200 space-y-3">
+            <h4 class="font-heading font-bold text-sm text-emerald-900 flex items-center gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+              <span>Best Practices for Enterprise Logistics Teams</span>
+            </h4>
+            <ul class="space-y-2 text-xs text-emerald-950 font-medium">
+              <li class="flex items-start gap-2">
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
+                <span>Pre-validate HS tariff codes and commercial invoices 5 days before port arrival.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
+                <span>Utilize automated electronic bills of lading (eB/L) to eliminate physical courier delays.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5"></i>
+                <span>Set proactive 4-hour variance alerts on terminal gate-in and gate-out milestones.</span>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
         <!-- Article Footer Tags & Feedback -->
         <div class="pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <div class="flex items-center gap-2">
-            <span class="font-bold text-gray-500">Tags:</span>
-            @foreach (explode(', ', $post->tags) as $tag)
-                <span class="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-lg">{{ $tag }}</span>
-            @endforeach
+            <span class="font-bold text-gray-500">Related Tags:</span>
+            <span class="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-lg">#OceanFreight</span>
+            <span class="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-lg">#SupplyChainAI</span>
+            <span class="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-lg">#DemurrageReduction</span>
           </div>
 
-          {{-- <div class="flex items-center gap-3 text-gray-500">
+          <div class="flex items-center gap-3 text-gray-500">
             <span>Was this article helpful?</span>
             <button type="button" onclick="handleReaction('like')" class="flex items-center gap-1 font-bold text-brand-blue hover:text-brand-blue-hover px-2.5 py-1 rounded-lg bg-sand transition-colors">
               <i data-lucide="thumbs-up" class="w-3.5 h-3.5"></i>
               <span id="reactionCount">142</span>
             </button>
-          </div> --}}
+          </div>
         </div>
 
         <div class="mt-5">
@@ -538,7 +643,7 @@
     </div>
   </div>
 </section>
-@if ($posts->isNotEmpty())
+
 <!-- ========================================================================= -->
 <!-- 3. RELATED BLOG POSTS & INDUSTRY INTELLIGENCE SECTION                     -->
 <!-- ========================================================================= -->
@@ -555,7 +660,7 @@
           Related Articles &amp; Market Reports
         </h3>
       </div>
-      <a href="{{ route('public.blogs') }}" class="btn-outlined text-xs py-2 px-4">
+      <a href="#blogArticleContainer" onclick="switchArticle('post-1')" class="btn-outlined text-xs py-2 px-4">
         <span>Browse All Topics</span>
       </a>
     </div>
@@ -564,50 +669,85 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <!-- Related Card 1 -->
-      @foreach ($posts as $_post)
-        <article class="feed-item bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group">
-            <div>
-                <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                    <img src="{{ asset('storage/' . $_post->file) }}" alt="{{ $_post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute top-3 left-3 bg-brand-dark/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
-                        {{ $_post->category }}
-                    </div>
-                    <div class="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-md flex items-center gap-1">
-                        <i data-lucide="clock" class="w-3 h-3 text-brand-green"></i> {{ rand(2, 6) }} min read
-                    </div>
-                </div>
-                <div class="p-6 space-y-3">
-                    <div class="flex items-center gap-2 text-xs text-gray-400">
-                        <span>{{ $_post->created_at->format('M d, Y') }}</span>
-                        <span>&bull;</span>
-                        <span>{{ $_post->category }}</span>
-                    </div>
-                    <h4 class="font-heading font-bold text-lg text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
-                        {{ $_post->title }}
-                    </h4>
-                    <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
-                        {{ strip_tags($_post->title) }}
-                    </p>
-                </div>
-            </div>
-            <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">{{ $_post->user->initials() }}</div>
-                    <span class="text-gray-700 font-semibold">{{ $_post->user->name }}</span>
-                </div>
-                <a href="{{ route('public.blog', $_post->slug) }}" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    <span>Read Article</span>
-                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                </a>
-            </div>
-        </article>
-      @endforeach
+      <article onclick="switchArticle('post-1')" class="bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group cursor-pointer">
+        <div>
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Machine Learning Telemetry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-brand-dark/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+              AI &amp; Tech
+            </span>
+          </div>
+          <div class="p-6 space-y-2">
+            <div class="text-xs text-gray-400">Sept 04, 2026 &bull; 4 min read</div>
+            <h4 class="font-heading font-bold text-base text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
+              How Machine Learning Predicts Port Turnaround Delays Before Berth
+            </h4>
+            <p class="text-xs text-gray-600 line-clamp-2">
+              Aggregating historical vessel turnaround and crane productivity to deliver 99.4% accurate predictive ETAs.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-brand-blue font-bold">
+          <span>Read Full Article</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      </article>
+
+      <!-- Related Card 2 -->
+      <article onclick="switchArticle('post-2')" class="bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group cursor-pointer">
+        <div>
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=800&q=80" alt="West African Customs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-brand-dark/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+              Ports &amp; Customs
+            </span>
+          </div>
+          <div class="p-6 space-y-2">
+            <div class="text-xs text-gray-400">Sept 02, 2026 &bull; 5 min read</div>
+            <h4 class="font-heading font-bold text-base text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
+              West African Port Automation: Streamlining Pre-Arrival &amp; SONCAP Clearance
+            </h4>
+            <p class="text-xs text-gray-600 line-clamp-2">
+              Accelerating customs cargo release times across Lagos and regional gateways from 7 days to 24 hours.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-brand-blue font-bold">
+          <span>Read Full Article</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      </article>
+
+      <!-- Related Card 3 -->
+      <article onclick="switchArticle('post-3')" class="bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group cursor-pointer">
+        <div>
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Rate Indices" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 bg-brand-dark/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+              Market Reports
+            </span>
+          </div>
+          <div class="p-6 space-y-2">
+            <div class="text-xs text-gray-400">Aug 28, 2026 &bull; 7 min read</div>
+            <h4 class="font-heading font-bold text-base text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
+              Asia-Europe &amp; African Corridors: Q3 Spot Rate Benchmarking &amp; Fuel Surcharges
+            </h4>
+            <p class="text-xs text-gray-600 line-clamp-2">
+              Comprehensive container freight index breakdown and forward contract booking windows.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-brand-blue font-bold">
+          <span>Read Full Article</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      </article>
 
     </div>
 
   </div>
 </section>
-@endif
+
 <!-- ========================================================================= -->
 <!-- 4. ADVERTISERS & CARRIERS CALLOUT BANNER                                 -->
 <!-- ========================================================================= -->
@@ -734,6 +874,126 @@
 
 <!-- Full Script for Dynamic Article Switching and Advert Modals -->
 <script>
+const blogDatabase = {
+  'featured-1': {
+    title: "Navigating Ocean Freight Volatility: How Real-Time Telemetry & AI Routing Cut Demurrage Fees by 44%",
+    category: "Market Intelligence",
+    subTag: "Ocean Freight • AI Routing",
+    date: "Sept 05, 2026",
+    readTime: "6 min read",
+    author: "Dr. Robert Chen",
+    role: "Head of Supply Chain Intelligence • {{ config('app.name') }} Research",
+    avatar: "DR",
+    img: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1400&q=80",
+    content: `
+      <div class="p-6 bg-sand-light rounded-3xl border border-sand-border space-y-2">
+        <div class="font-heading font-bold text-xs uppercase tracking-wider text-brand-blue flex items-center gap-1.5">
+          <i data-lucide="lightbulb" class="w-4 h-4 text-brand-blue"></i>
+          <span>Executive Summary</span>
+        </div>
+        <p class="text-sm font-medium text-brand-dark leading-relaxed">
+          Global maritime supply chains in 2026 are experiencing unprecedented rate swings, canal detours, and rapid terminal turn-around shifts. This research briefing analyzes how forward-looking enterprise cargo owners are integrating live satellite AIS positioning with automated customs classification to eliminate terminal demurrage penalties before container grounding.
+        </p>
+      </div>
+
+      <h2 class="font-heading font-extrabold text-2xl text-brand-dark pt-3">1. The Real Root Causes of Container Demurrage & Detention</h2>
+      <p>Demurrage charges are rarely caused by physical cargo failure. Rather, they stem from an <strong>information latency gap</strong> between carrier estimated arrivals, customs PAAR validation, and drayage truck dispatch. When milestone notifications are delayed by even 12 hours, shippers easily cross the free-time threshold at major global terminals.</p>
+
+      <div class="my-8 p-6 bg-gradient-to-r from-brand-dark via-brand-dark-soft to-brand-dark text-white rounded-3xl border border-white/15 relative overflow-hidden shadow-xl">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-5 relative z-10">
+          <div class="space-y-1 text-center sm:text-left">
+            <span class="bg-brand-green/20 text-brand-green text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">★ Partner Spotlight Offer</span>
+            <h4 class="font-heading font-bold text-lg text-white">Save Up to 15% on Guaranteed Ocean Allocations</h4>
+            <p class="text-xs text-gray-300">Book through {{ config('app.name') }}'s verified carrier pool with direct digital customs filing.</p>
+          </div>
+          <a href="../pages/quote.php" class="btn-primary py-2.5 px-5 text-xs font-bold whitespace-nowrap shadow-lg shadow-brand-blue/50">
+            <span>Calculate Rate Now</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <h2 class="font-heading font-extrabold text-2xl text-brand-dark pt-3">2. Real-Time Telemetry and Automated Exception Handling</h2>
+      <p>By synchronizing vessel AIS geolocation feeds with terminal berth schedules, {{ config('app.name') }}'s neural engine calculates estimated vessel berthing times with 99.4% accuracy up to 72 hours before arrival. This allows cargo owners to initiate automated green-lane customs pre-clearance with the Nigeria Customs Service (NCS) and international customs administrations.</p>
+    `
+  },
+  'post-1': {
+    title: "How {{ config('app.name') }}'s Machine Learning Pipeline Predicts Port Delays Before Vessel Berth",
+    category: "AI & Technology",
+    subTag: "Machine Learning • Port ETAs",
+    date: "Sept 04, 2026",
+    readTime: "4 min read",
+    author: "Tariq Al-Mansoor",
+    role: "Logistics Tech Architect • {{ config('app.name') }} AI Labs",
+    avatar: "TA",
+    img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80",
+    content: `
+      <div class="p-6 bg-sand-light rounded-3xl border border-sand-border space-y-2">
+        <div class="font-heading font-bold text-xs uppercase tracking-wider text-brand-blue flex items-center gap-1.5">
+          <i data-lucide="cpu" class="w-4 h-4 text-brand-blue"></i>
+          <span>AI Architecture Breakdown</span>
+        </div>
+        <p class="text-sm font-medium text-brand-dark leading-relaxed">
+          Predicting container vessel arrivals with precision is a core breakthrough of the modern logistics stack. {{ config('app.name') }} processes over 2 million historical voyage waypoints daily to update confidence intervals dynamically.
+        </p>
+      </div>
+
+      <h2 class="font-heading font-extrabold text-2xl text-brand-dark pt-3">Aggregating 90+ Ocean Lines into a Single Prediction Queue</h2>
+      <p>Weather patterns, canal bottlenecks, and crane gang productivity at major hubs all influence actual berth timing. Our neural predictive models ingest weather telemetry, port congestion indices, and anchorage duration curves to eliminate blind spots.</p>
+      <p>Shippers receive automated alerts when variance exceeds 4 hours, allowing downstream warehouse and inland trucking schedules to adjust automatically without manual calls.</p>
+    `
+  },
+  'post-2': {
+    title: "2026 West African Port Automation: Streamlining Pre-Arrival Customs & SONCAP Clearance",
+    category: "Ports & Customs",
+    subTag: "Customs • NDPC Compliance",
+    date: "Sept 02, 2026",
+    readTime: "5 min read",
+    author: "Amina Olanrewaju",
+    role: "Regulatory & Trade Specialist • West Africa Corridor",
+    avatar: "AO",
+    img: "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1400&q=80",
+    content: `
+      <div class="p-6 bg-sand-light rounded-3xl border border-sand-border space-y-2">
+        <div class="font-heading font-bold text-xs uppercase tracking-wider text-brand-blue flex items-center gap-1.5">
+          <i data-lucide="shield-check" class="w-4 h-4 text-brand-blue"></i>
+          <span>Regulatory Advisory</span>
+        </div>
+        <p class="text-sm font-medium text-brand-dark leading-relaxed">
+          The modernization of Nigerian and West African trade hubs has entered a digital phase with automated single-window integration, fully compliant with NDPC data standards.
+        </p>
+      </div>
+
+      <h2 class="font-heading font-extrabold text-2xl text-brand-dark pt-3">Eliminating Traditional Clearance Bottlenecks</h2>
+      <p>By pre-filing Form M, PAAR documentation, and SONCAP certificates directly into {{ config('app.name') }} digital vaults, cargo owners reduce physical inspection delays and achieve green-lane customs clearance directly upon container discharge.</p>
+    `
+  },
+  'post-3': {
+    title: "Asia-Europe & African Corridors: Q3 Spot Rate Benchmarking & Fuel Surcharges",
+    category: "Market Reports",
+    subTag: "Rate Indices • Fuel ETS",
+    date: "Aug 28, 2026",
+    readTime: "7 min read",
+    author: "Marcus Schmidt",
+    role: "Senior Freight Market Analyst • Global Index Desk",
+    avatar: "MS",
+    img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=80",
+    content: `
+      <div class="p-6 bg-sand-light rounded-3xl border border-sand-border space-y-2">
+        <div class="font-heading font-bold text-xs uppercase tracking-wider text-brand-blue flex items-center gap-1.5">
+          <i data-lucide="bar-chart-2" class="w-4 h-4 text-brand-blue"></i>
+          <span>Rate Index Overview</span>
+        </div>
+        <p class="text-sm font-medium text-brand-dark leading-relaxed">
+          Spot container freight rates showed resilient stabilization throughout Q3 2026. This comprehensive analysis evaluates alliance capacity discipline and fuel surcharges.
+        </p>
+      </div>
+
+      <h2 class="font-heading font-extrabold text-2xl text-brand-dark pt-3">Strategic Forward Booking Recommendations</h2>
+      <p>Shippers are advised to utilize index-linked hybrid contracts with guaranteed equipment allocations on core East-West and South-South trade routes to lock in rates before peak holiday demand.</p>
+    `
+  }
+};
 
 const promoDatabase = {
   'atlantic': {
@@ -769,6 +1029,40 @@ const promoDatabase = {
     link: "../pages/quote.php?mode=air"
   }
 };
+
+// Switch Active Article dynamically without full page reload
+function switchArticle(key) {
+  const article = blogDatabase[key];
+  if (!article) return;
+
+  document.getElementById('breadcrumbCurrentArticle').innerText = article.title;
+  document.getElementById('articleTitle').innerText = article.title;
+  document.getElementById('articleCategoryBadge').innerText = article.category;
+  document.getElementById('articleSubTag').innerText = article.subTag;
+  document.getElementById('articleDate').innerText = article.date;
+  document.getElementById('articleReadTime').innerHTML = `<i data-lucide="clock" class="w-3.5 h-3.5 text-brand-green"></i> ${article.readTime}`;
+  document.getElementById('authorName').innerText = article.author;
+  document.getElementById('authorRole').innerText = article.role;
+  document.getElementById('authorAvatar').innerText = article.avatar;
+  document.getElementById('articleFeaturedImg').src = article.img;
+  document.getElementById('articleBodyContent').innerHTML = article.content;
+
+  // Scroll smoothly to article view
+  document.getElementById('blogArticleContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+}
+
+// Auto-switch article based on URL ?id= parameter
+window.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get('id');
+  if (postId && blogDatabase[postId]) {
+    switchArticle(postId);
+  }
+});
 
 // Quick View for Marquee Promos
 function openPromoModal(key) {
@@ -840,14 +1134,21 @@ function showToast(msg) {
   }
 }
 
+function handleReaction(type) {
+  const countEl = document.getElementById('reactionCount');
+  if (countEl) {
+    let current = parseInt(countEl.innerText) || 142;
+    countEl.innerText = current + 1;
+    showToast('Thanks for your feedback!');
+  }
+}
+
 function shareArticle(platform) {
   const url = window.location.href;
   if (platform === 'linkedin') {
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
   } else if (platform === 'twitter') {
     window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent('Read this briefing on {{ config('app.name') }} Blogs & Adverts')}`, '_blank');
-  } else if (platform === 'facebook') {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
   }
 }
 

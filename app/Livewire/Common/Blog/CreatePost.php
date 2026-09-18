@@ -19,7 +19,7 @@ class CreatePost extends Component
     public $paid;
     public $body = '';
     public $title;
-    public $description;
+    public $category;
     public $tags;
     public $file;
     public $edit = false;
@@ -30,7 +30,7 @@ class CreatePost extends Component
             $this->post = $post;
             $this->body = $post->body;
             $this->title = $post->title;
-            $this->description = $post->description;
+            $this->category = $post->category;
             $this->tags = $post->tags;
             $this->edit = true;
         }
@@ -41,12 +41,13 @@ class CreatePost extends Component
         if (!request()->user()->profile?->is_verified) return;
         $validated = $this->validate([
             'title' => 'required|string|max:191',
-            'description' => 'required|string|max:200',
+            'category' => 'required|string|max:30',
             'body' => 'required|string',
             'tags' => 'required|string|max:100',
             'file' => 'required|image|mimes:jpeg,png,jpg|max:5120',
         ]);
         $this->tags = preg_replace('/,\s*/', ', ', $this->tags); // Remove spaces from tags
+        $validated['slug'] = str($validated['title'])->slug();
         if ($this->edit) {
             $this->post->update($validated);
             session()->flash('updated');

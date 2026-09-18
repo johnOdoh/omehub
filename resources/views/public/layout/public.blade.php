@@ -332,7 +332,6 @@
     <!-- Scripts -->
     <script src="{{ asset('home-assets/js/main.js') }}"></script>
     <script src="{{ asset('home-assets/js/quote-calculator.js') }}"></script>
-    <script src="{{ asset('home-assets/js/tracker.js') }}"></script>
     <script>
     // Initialize Lucide vector icons
     if (typeof lucide !== 'undefined') {

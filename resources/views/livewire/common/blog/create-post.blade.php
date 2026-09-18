@@ -44,6 +44,7 @@
                             <form wire:submit="createPost">
                                 <div>
                                     <div class="form-group">
+                                        <label class="form-label">Title</label>
                                         <input type="text" class="form-control" placeholder="Title" aria-label="Title" required wire:model="title">
                                     </div>
                                     @error('title')
@@ -52,10 +53,10 @@
                                 </div>
                                 <div class="my-3">
                                     <div class="form-group">
-                                        <label class="form-label">Description <i class="small">(200 characters max)</i></label>
-                                        <textarea rows="2" maxlength="200" class="form-control" placeholder="Briefly describe the content of your post. This will help readers find your post faster." wire:model="description" required></textarea>
+                                        <label class="form-label">Category <i class="small">(30 characters max)</i></label>
+                                        <input type="text" class="form-control" placeholder="Category that best describes your post" aria-label="Category that best describes your post" required wire:model="category">
                                     </div>
-                                    @error('description')
+                                    @error('category')
                                         <div class="text-danger"><small><i>{{ $message }}</i></small></div>
                                     @enderror
                                 </div>
@@ -86,8 +87,8 @@
                                                 <button class="ql-script" value="super" title="superscript"></button>
                                             </span>
                                             <span class="ql-formats">
-                                                {{-- <button class="ql-header" value="1" title="Heading"></button> --}}
-                                                <button class="ql-header" value="2" title="Heading"></button>
+                                                <button class="ql-header" value="1" title="Heading"></button>
+                                                <button class="ql-header" value="2" title="Subheading"></button>
                                                 {{-- <button class="ql-header" value="3" title="Heading"></button>
                                                 <button class="ql-header" value="4" title="Heading"></button>
                                                 <button class="ql-header" value="5" title="Subheading"></button> --}}
@@ -104,7 +105,7 @@
                                             </span>
                                             <span class="ql-formats">
                                                 <button class="ql-link" title="Link"></button>
-                                                <button class="ql-image" title="Image"></button>
+                                                {{-- <button class="ql-image" title="Image"></button> --}}
                                             </span>
                                             <span class="ql-formats">
                                                 <button class="ql-clean" title="Clear formatting"></button>

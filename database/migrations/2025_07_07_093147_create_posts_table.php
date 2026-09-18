@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('title')->index();
+            $table->string('title')->unique();
             $table->longText('body');
             $table->string('file');
+            $table->string('slug')->unique();
             $table->boolean('is_video')->default(false);
             $table->enum('status', ['pending', 'approved', 'declined'])->default('pending');
             $table->string('tags')->index()->nullable();
-            $table->string('description')->index();
+            $table->string('category')->index();
             $table->timestamps();
         });
     }

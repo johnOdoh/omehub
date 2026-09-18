@@ -301,7 +301,7 @@
         </p>
 
         <div class="pt-2 flex flex-wrap items-center gap-4">
-          <a href="#" class="btn-primary text-xs sm:text-sm py-2.5 px-6 shadow-lg shadow-brand-blue/40">
+          <a href="{{ route('public.blog') }}?id=featured-1" class="btn-primary text-xs sm:text-sm py-2.5 px-6 shadow-lg shadow-brand-blue/40">
             <span>Read Full Article &amp; Analysis</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
@@ -350,63 +350,256 @@
       </div>
     </div>
 
-    @if ($posts->isNotEmpty())
-        <!-- The Feed Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7" id="directoryGrid">
-            @foreach ($posts as $post)
-                <!-- ================= LIST ITEM 1: BLOG ================= -->
-                <article class="feed-item bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group">
-                <div>
-                    <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                        <img src="{{ asset('storage/' . $post->file) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-3 left-3 bg-brand-dark/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
-                            {{ $post->category }}
-                        </div>
-                        <div class="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-md flex items-center gap-1">
-                            <i data-lucide="clock" class="w-3 h-3 text-brand-green"></i> {{ rand(2, 6) }} min read
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-3">
-                    <div class="flex items-center gap-2 text-xs text-gray-400">
-                        <span>{{ $post->created_at->format('M d, Y') }}</span>
-                        <span>&bull;</span>
-                        <span>{{ $post->category }}</span>
-                    </div>
-                    <h4 class="font-heading font-bold text-lg text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
-                        {{ $post->title }}
-                    </h4>
-                    <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
-                        {{ strip_tags($post->title) }}
-                    </p>
-                    </div>
-                </div>
-                <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
-                    <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">{{ $post->user->initials() }}</div>
-                    <span class="text-gray-700 font-semibold">{{ $post->user->name }}</span>
-                    </div>
-                    <a href="{{ route('public.blog', $post->slug) }}" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    <span>Read Article</span>
-                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                    </a>
-                </div>
-                </article>
-            @endforeach
-        </div>
-    @else
-        <!-- Empty Search State -->
-        <div id="emptyDirectoryState" class="hidden text-center py-16 bg-white rounded-3xl border border-sand-border p-8 mt-6">
-            <div class="w-12 h-12 rounded-2xl bg-gray-100 text-gray-400 flex items-center justify-center mx-auto mb-3">
-                <i data-lucide="search-x" class="w-6 h-6"></i>
-            </div>
-            <h4 class="font-heading font-bold text-lg text-brand-dark mb-1">No matching articles found</h4>
-            <p class="text-xs text-gray-500 max-w-sm mx-auto mb-4">Try clearing the search keywords or switching filters.</p>
-            <button type="button" onclick="resetDirectoryFilters()" class="btn-primary text-xs py-2 px-4">
-                <span>Reset Filters</span>
-            </button>
-        </div>
-    @endif
+    <!-- The Feed Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7" id="directoryGrid">
 
+      <!-- ================= LIST ITEM 1: BLOG ================= -->
+      <article class="feed-item bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
+        data-type="blog" data-topic="tech-ai" data-keywords="ai machine learning telemetry eta port predictive tracking algorithms">
+        <div>
+          <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="AI Container Telemetry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-brand-dark/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+              AI &amp; Tech
+            </div>
+            <div class="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-md flex items-center gap-1">
+              <i data-lucide="clock" class="w-3 h-3 text-brand-green"></i> 4 min read
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+              <span>Sept 04, 2026</span>
+              <span>&bull;</span>
+              <span>Logistics Tech</span>
+            </div>
+            <h4 class="font-heading font-bold text-lg text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
+              How {{ config('app.name') }}'s Machine Learning Pipeline Predicts Port Delays Before Vessel Berth
+            </h4>
+            <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
+              Aggregating 2 million historical voyage waypoints, AIS satellite positioning, and crane productivity curves to deliver 99.4% accurate predictive ETAs.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">TA</div>
+            <span class="text-gray-700 font-semibold">Tariq Al-Mansoor</span>
+          </div>
+          <a href="{{ route('public.blog') }}?id=post-1" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ================= LIST ITEM 3: BLOG ================= -->
+      <article class="feed-item bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
+        data-type="blog" data-topic="ports-customs" data-keywords="ports customs nigeria apapa tincan paar form m soncap ndpc tariff compliance">
+        <div>
+          <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=800&q=80" alt="Customs and Port Operations" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-brand-dark/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+              Ports &amp; Customs
+            </div>
+            <div class="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-md flex items-center gap-1">
+              <i data-lucide="clock" class="w-3 h-3 text-brand-green"></i> 5 min read
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+              <span>Sept 02, 2026</span>
+              <span>&bull;</span>
+              <span>Regulatory Advisory</span>
+            </div>
+            <h4 class="font-heading font-bold text-lg text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
+              2026 West African Port Automation: Streamlining Pre-Arrival &amp; SONCAP Clearance
+            </h4>
+            <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
+              How single-window digital integration between {{ config('app.name') }} and Nigerian port terminals is accelerating release times from 7 days down to 24 hours.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">AO</div>
+            <span class="text-gray-700 font-semibold">Amina Olanrewaju</span>
+          </div>
+          <a href="{{ route('public.blog') }}?id=post-2" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ================= LIST ITEM 5: BLOG ================= -->
+      <article class="feed-item bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
+        data-type="blog" data-topic="market-reports" data-keywords="rates index transpacific spot container surcharges benchmarking">
+        <div>
+          <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Freight Rates Benchmark" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-brand-dark/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+              Market Reports
+            </div>
+            <div class="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-md flex items-center gap-1">
+              <i data-lucide="clock" class="w-3 h-3 text-brand-green"></i> 7 min read
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+              <span>Aug 28, 2026</span>
+              <span>&bull;</span>
+              <span>Rate Indices</span>
+            </div>
+            <h4 class="font-heading font-bold text-lg text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
+              Asia-Europe &amp; African Corridors: Q3 Spot Rate Benchmarking &amp; Fuel Surcharges
+            </h4>
+            <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
+              Comprehensive container index breakdown analyzing ETS emissions surcharges, blank sailings ratios, and recommended forward booking windows.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">MS</div>
+            <span class="text-gray-700 font-semibold">Marcus Schmidt</span>
+          </div>
+          <a href="{{ route('public.blog') }}?id=post-3" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ================= LIST ITEM 7: BLOG ================= -->
+      <article class="feed-item bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
+        data-type="blog" data-topic="sustainability" data-keywords="sustainability carbon biofuel scope 3 green shipping esg glec insetting">
+        <div>
+          <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=800&q=80" alt="Green Shipping & Decarbonization" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-emerald-700 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+              Green Logistics
+            </div>
+            <div class="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-md flex items-center gap-1">
+              <i data-lucide="clock" class="w-3 h-3 text-brand-green"></i> 5 min read
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+              <span>Aug 21, 2026</span>
+              <span>&bull;</span>
+              <span>Decarbonization</span>
+            </div>
+            <h4 class="font-heading font-bold text-lg text-brand-dark group-hover:text-emerald-600 transition-colors leading-snug">
+              Scope 3 Transparency: Insetting Biofuels to Reduce Ocean Container Footprint by 84%
+            </h4>
+            <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
+              How {{ config('app.name') }}'s verified carbon reporting ledger allows global brand owners to audit their supply chain emissions according to GLEC Framework standards.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-[10px]">EL</div>
+            <span class="text-gray-700 font-semibold">Elena Lindqvist</span>
+          </div>
+          <a href="{{ route('public.blog') }}?id=post-4" class="text-emerald-600 font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ================= LIST ITEM 9: BLOG ================= -->
+      <article class="feed-item bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
+        data-type="blog" data-topic="market-reports" data-keywords="rail road intermodal drayage corridors inland cross-border freight africa">
+        <div>
+          <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=800&q=80" alt="Rail and Intermodal Logistics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-brand-dark/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+              Intermodal
+            </div>
+            <div class="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-md flex items-center gap-1">
+              <i data-lucide="clock" class="w-3 h-3 text-brand-green"></i> 6 min read
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+              <span>Aug 14, 2026</span>
+              <span>&bull;</span>
+              <span>Corridor Infrastructure</span>
+            </div>
+            <h4 class="font-heading font-bold text-lg text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
+              Cross-Border Rail &amp; Intermodal Corridors: Accelerating Inland Freight in 2026
+            </h4>
+            <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
+              Examining modern rail links from maritime gateways to dry ports across West Africa, cutting highway congestion and transit costs by 35%.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">DR</div>
+            <span class="text-gray-700 font-semibold">Dr. Robert Chen</span>
+          </div>
+          <a href="{{ route('public.blog') }}?id=featured-1" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+      <!-- ================= LIST ITEM 11: BLOG ================= -->
+      <article class="feed-item bg-white rounded-3xl border border-sand-border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group"
+        data-type="blog" data-topic="tech-ai" data-keywords="ai generative automated tariff hs code customs compliance classification duty">
+        <div>
+          <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Generative AI Customs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-3 left-3 bg-brand-blue text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">
+              AI &amp; Customs
+            </div>
+            <div class="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-md flex items-center gap-1">
+              <i data-lucide="clock" class="w-3 h-3 text-brand-green"></i> 5 min read
+            </div>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center gap-2 text-xs text-gray-400">
+              <span>Aug 08, 2026</span>
+              <span>&bull;</span>
+              <span>Tariff AI</span>
+            </div>
+            <h4 class="font-heading font-bold text-lg text-brand-dark group-hover:text-brand-blue transition-colors leading-snug">
+              Automating 6-Digit HS Tariff Codes with Multilingual Vision OCR
+            </h4>
+            <p class="text-xs text-gray-600 leading-relaxed line-clamp-3">
+              How {{ config('app.name') }}'s document vault scans commercial invoices in English, Mandarin, and French to classify global customs tariffs with zero audit errors.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 pb-6 pt-2 border-t border-gray-100 flex items-center justify-between text-xs">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-[10px]">TA</div>
+            <span class="text-gray-700 font-semibold">Tariq Al-Mansoor</span>
+          </div>
+          <a href="{{ route('public.blog') }}?id=post-1" class="text-brand-blue font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Empty Search State -->
+    <div id="emptyDirectoryState" class="hidden text-center py-16 bg-white rounded-3xl border border-sand-border p-8 mt-6">
+      <div class="w-12 h-12 rounded-2xl bg-gray-100 text-gray-400 flex items-center justify-center mx-auto mb-3">
+        <i data-lucide="search-x" class="w-6 h-6"></i>
+      </div>
+      <h4 class="font-heading font-bold text-lg text-brand-dark mb-1">No matching articles found</h4>
+      <p class="text-xs text-gray-500 max-w-sm mx-auto mb-4">Try clearing the search keywords or switching filters.</p>
+      <button type="button" onclick="resetDirectoryFilters()" class="btn-primary text-xs py-2 px-4">
+        <span>Reset Filters</span>
+      </button>
+    </div>
 
     <!-- ========================================================================= -->
     <!-- PAGINATION UI CONTAINER                                                   -->

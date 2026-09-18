@@ -90,11 +90,14 @@ Route::get('/public/tracking', function (Request $request) {
 })->name('public.tracking');
 
 Route::get('/public/blogs', function () {
-    return view('test.blogs');
+    $posts = App\Models\Post::latest()->get();
+    return view('test.blogs', compact('posts'));
 })->name('public.blogs');
 
-Route::get('/public/blog', function () {
-    return view('test.blog');
+Route::get('/public/blog/{slug}', function ($slug) {
+    $post = App\Models\Post::where('slug', $slug)->firstOrFail();
+    $posts = App\Models\Post::whereNot('id', $post->id)->latest()->limit(3)->get();
+    return view('test.blog', compact('post', 'posts'));
 })->name('public.blog');
 
 Route::get('/public/terms', function () {
