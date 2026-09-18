@@ -23,7 +23,7 @@
           </div>
           <div class="flex items-center gap-2">
             <i data-lucide="mail" class="w-4 h-4 text-brand-blue"></i>
-            <span class="text-sm font-bold text-gray-700">info@ome-hub.com</span>
+            <span class="text-sm font-bold text-gray-700">{{ config('app.email') }}</span>
           </div>
         </div>
       </div>
@@ -64,38 +64,72 @@
         <div class="card-sand p-8 sm:p-10 rounded-3xl border border-sand-border shadow-sm">
           <h3 class="font-heading font-bold text-2xl text-brand-dark mb-6">Send an Inquiry</h3>
 
-          <form onsubmit="event.preventDefault(); alert('Inquiry received! An {{ config('app.name') }} freight coordinator will respond within 2 business hours.');" class="space-y-5">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">First & Last Name</label>
-                <input type="text" required placeholder="Jane Doe" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none focus:border-brand-blue">
+          @if (session('success'))
+            <div class="mb-6 p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-start gap-3.5 shadow-sm" role="alert">
+              <div class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
               </div>
-              <div>
-                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Company Name</label>
-                <input type="text" required placeholder="Global Retail Corp" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none focus:border-brand-blue">
+              <div class="flex-1 pt-0.5">
+                <div class="flex items-center justify-between">
+                  <h4 class="font-heading font-bold text-sm text-emerald-950">Message Sent Successfully!</h4>
+                  <button type="button" onclick="this.closest('[role=alert]').remove()" class="text-emerald-700 hover:text-emerald-950 p-1 rounded-lg transition-colors" aria-label="Dismiss">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                  </button>
+                </div>
+                <p class="text-xs text-emerald-800 mt-1 leading-relaxed">{{ session('success') }}</p>
+                <div class="mt-2 text-[11px] font-semibold text-emerald-700 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span>Our operations desk will review and reply within 24 hours.</span>
+                </div>
               </div>
             </div>
+          @endif
 
+          <form action="{{ route('contact-us') }}" class="space-y-5" method="POST">
+            @csrf
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Work Email</label>
-                <input type="email" required placeholder="jane.doe@company.com" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none focus:border-brand-blue">
+                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Full Name</label>
+                <input type="text" name="name" value="{{ old('name') }}" required placeholder="Jane Doe" class="w-full bg-white border @error('name') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none">
+                @error('name')
+                  <p class="text-xs text-rose-600 mt-1 font-medium flex items-center gap-1">
+                    <i data-lucide="alert-circle" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                    <span>{{ $message }}</span>
+                  </p>
+                @enderror
               </div>
               <div>
-                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Inquiry Type</label>
-                <select class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none focus:border-brand-blue">
-                  <option value="shipper-quote">Enterprise Freight Quote / RFQ</option>
-                  <option value="carrier-partner">Logistics Provider / Carrier Onboarding</option>
-                  <option value="tech-api">API Integration & Developer Key</option>
-                  <option value="customs">Customs Clearance Consultation</option>
-                  <option value="press">Press & Media Inquiries</option>
-                </select>
+                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Email</label>
+                <input type="email" name="email" value="{{ old('email') }}" required placeholder="jane.doe@company.com" class="w-full bg-white border @error('email') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none">
+                @error('email')
+                  <p class="text-xs text-rose-600 mt-1 font-medium flex items-center gap-1">
+                    <i data-lucide="alert-circle" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                    <span>{{ $message }}</span>
+                  </p>
+                @enderror
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Message / Shipment Details</label>
-              <textarea rows="4" required placeholder="Provide origin, destination, estimated TEU volume, or your specific requirements..." class="w-full bg-white border border-gray-200 rounded-xl p-4 text-sm text-brand-dark focus:outline-none focus:border-brand-blue"></textarea>
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Subject</label>
+              <input type="text" name="subject" value="{{ old('subject') }}" required placeholder="Global Retail Corp" class="w-full bg-white border @error('subject') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none">
+              @error('subject')
+                <p class="text-xs text-rose-600 mt-1 font-medium flex items-center gap-1">
+                  <i data-lucide="alert-circle" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                  <span>{{ $message }}</span>
+                </p>
+              @enderror
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Message</label>
+              <textarea name="message" rows="4" required placeholder="Provide your specific requirements..." class="w-full bg-white border @error('message') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror rounded-xl p-4 text-sm text-brand-dark focus:outline-none">{{ old('message') }}</textarea>
+              @error('message')
+                <p class="text-xs text-rose-600 mt-1 font-medium flex items-center gap-1">
+                  <i data-lucide="alert-circle" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                  <span>{{ $message }}</span>
+                </p>
+              @enderror
             </div>
 
             <button type="submit" class="w-full btn-primary py-3.5 text-sm font-bold shadow-lg shadow-brand-blue/30 justify-center">
@@ -118,76 +152,46 @@
           <div class="space-y-3 pt-2 text-xs">
             <div class="flex items-center gap-3">
               <i data-lucide="mail" class="w-4 h-4 text-brand-green"></i>
-              <span class="text-white font-bold">info@ome-hub.com</span>
+              <span class="text-white font-bold">{{ config('app.email') }}</span>
             </div>
             <div class="flex items-center gap-3">
-              <i data-lucide="globe" class="w-4 h-4 text-brand-green"></i>
-              <span class="text-white font-bold">ome-hub.com</span>
+              <i data-lucide="map-pin" class="w-4 h-4 text-brand-green"></i>
+              <span class="text-white font-bold">{{ config('app.address') }}</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="map-pin" class="w-4 h-4 text-brand-green"></i>
+              <span class="text-white font-bold">{{ config('app.address2') }}</span>
             </div>
           </div>
         </div>
 
-        <div class="card-sand p-6 rounded-2xl border border-sand-border space-y-3">
-          <h4 class="font-heading font-bold text-base text-brand-dark">Join as a Logistics Provider</h4>
-          <p class="text-xs text-gray-600">
+        <div class="bg-white p-8 rounded-3xl border border-sand-border space-y-4 shadow-sm">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                <span>Official Data Protection Certification</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-brand-dark">Certified Data Controller</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+                Omefreight Logistics Ltd () is duly registered and certified by the <strong>Nigeria Data Protection Commission (NDPC)</strong> as a Data Controller of Major Importance (Ultra-High Level).
+            </p>
+            <div class="p-4 rounded-xl bg-sand-light border border-sand-border flex items-center justify-between">
+                <span class="text-xs text-gray-500 font-medium">Official NDPC Registration</span>
+                <span class="text-xs font-mono font-bold text-brand-blue bg-brand-blue-light px-2.5 py-1 rounded-lg">REGISTRATION ID: NDPC/DCP/09043</span>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- Office Hubs & Regulatory Accreditation Section -->
 <section id="locations" class="py-20 bg-sand-light">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-
-      <!-- Accreditation Note -->
-      <div class="lg:col-span-6 bg-white p-8 rounded-3xl border border-sand-border space-y-4 shadow-sm">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-          <i data-lucide="shield-check" class="w-4 h-4"></i>
-          <span>Official Data Protection Certification</span>
-        </div>
-        <h3 class="font-heading font-bold text-2xl text-brand-dark">Certified Data Controller</h3>
-        <p class="text-gray-600 text-sm leading-relaxed">
-          Omefreight Logistics Ltd () is duly registered and certified by the <strong>Nigeria Data Protection Commission (NDPC)</strong> as a Data Controller of Major Importance (Ultra-High Level).
-        </p>
-        <div class="p-4 rounded-xl bg-sand-light border border-sand-border flex items-center justify-between">
-          <span class="text-xs text-gray-500 font-medium">Official NDPC Registration</span>
-          <span class="text-xs font-mono font-bold text-brand-blue bg-brand-blue-light px-2.5 py-1 rounded-lg">REGISTRATION ID: NDPC/DCP/09043</span>
-        </div>
+      <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11211.354381233472!2d3.3297740655792443!3d6.545363083229936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8e7545e1069f%3A0xfed691739a3abc5e!2sToyota%20Bus%20Stop!5e0!3m2!1sen!2sng!4v1753340497788!5m2!1sen!2sng" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-
-      <!-- Locations -->
-      <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-        <!-- Lagos Hub -->
-        <div class="bg-white p-6 rounded-3xl border border-sand-border space-y-3 shadow-sm">
-          <div class="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
-            <i data-lucide="map-pin" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-heading font-bold text-base text-brand-dark">Lagos Hub, Nigeria</h4>
-          <p class="text-xs text-gray-600 leading-relaxed">
-            17th Floor Elephant House,<br>
-            214 Broad Street, Marina,<br>
-            Lagos, Nigeria.
-          </p>
-          <div class="text-xs text-brand-blue font-bold pt-1">support@ome-hub.com</div>
-        </div>
-
-        <!-- Enugu Hub -->
-        <div class="bg-white p-6 rounded-3xl border border-sand-border space-y-3 shadow-sm">
-          <div class="w-10 h-10 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
-            <i data-lucide="map-pin" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-heading font-bold text-base text-brand-dark">Enugu Hub, Nigeria</h4>
-          <p class="text-xs text-gray-600 leading-relaxed">
-            Zone C New Market Express,<br>
-            Enugu, Nigeria.
-          </p>
-          <div class="text-xs text-brand-blue font-bold pt-1">support@ome-hub.com</div>
-        </div>
-
-      </div>
-
-    </div>
-
   </div>
 </section>
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactUs;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller
 {
@@ -31,7 +33,7 @@ class PublicController extends Controller
     {
         $loc = request()->query('loc', 'blog');
         $query = $loc == 'ads' ? Post::where('tags', null)
-                               : Post::whereNot('tags', null);
+            : Post::whereNot('tags', null);
         $posts = $query->where('status', 'approved')
             ->latest()
             ->paginate(12)
@@ -44,13 +46,13 @@ class PublicController extends Controller
         $q = $request->query('q', config('app.name'));
         $loc = request()->query('loc', 'blog');
         $query = $loc == 'ads' ? Post::where('tags', null)
-                               : Post::whereNot('tags', null);
+            : Post::whereNot('tags', null);
         $posts = $query->where(function ($query) use ($q) {
             $query->where('title', 'like', "%$q%")
                 ->orWhere('body', 'like', "%$q%")
                 ->orWhere('description', 'like', "%$q%")
                 ->orWhere('tags', 'like', "%$q%");
-            })
+        })
             ->latest()
             ->paginate(1)
             ->withQueryString();
@@ -66,6 +68,19 @@ class PublicController extends Controller
     {
         return view('public.contact');
     }
+
+    public function contactUs(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required'
+        ]);
+        Mail::to(config('app.email'))->send(new ContactUs($request->name, $request->email, $request->message, $request->subject));
+        return redirect()->back()->with('success', 'Your message has been sent. Thank you!');
+    }
+
     public function terms()
     {
         return view('public.terms');

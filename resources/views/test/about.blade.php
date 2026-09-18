@@ -81,10 +81,6 @@
       <!-- Hero Visual with Video Modal Link -->
       <div class="lg:col-span-5 flex">
         <div class="hero-image-wrapper w-full h-full min-h-[420px] group relative shadow-2xl rounded-3xl">
-          {{-- <img src="{{ asset('assets/img/story.jpg') }}"
-               onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80'"
-               alt="{{ config('app.name') }} Global Logistics Story"
-               class="w-full h-full object-cover"> --}}
           <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=600&h=480&q=80"
                alt="{{ config('app.name') }} Global Logistics Story"
                width="600" height="480"
@@ -92,7 +88,7 @@
           <div class="hero-overlay-gradient"></div>
 
           <!-- Video Play Button Overlay -->
-          <a href="https://youtube.com/embed/3WeeLhKguEY"
+          <a href="https://youtu.be/F8PCAB3OwC8?si=tmWWFSOs8px6XzeZ"
              target="_blank"
              rel="noopener noreferrer"
              class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-brand-blue/90 hover:bg-brand-blue text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all z-20 group-hover:bg-brand-blue"

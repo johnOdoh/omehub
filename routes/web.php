@@ -46,6 +46,7 @@ Route::get('/blog', [PublicController::class, 'bulletin'])->name('bulletin');
 Route::get('/bulletin/search', [PublicController::class, 'bulletinSearch'])->name('search');
 Route::get('/bulletin/{post}', [PublicController::class, 'bulletinSingle'])->name('bulletin.single');
 Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
+Route::post('/contact', [PublicController::class, 'contactUs'])->name('contact-us');
 Route::get('/our-terms', [PublicController::class, 'terms'])->name('terms');
 Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
 Route::get('/advert-and-blog-policy', [PublicController::class, 'advertPolicy'])->name('advert-policy');

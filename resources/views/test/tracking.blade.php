@@ -25,7 +25,7 @@
       Real-Time Container &amp; Freight Tracker
     </h1>
     <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
-      Enter your {{ config('app.name') }} tracking number to get your shipment information and track you shipment's milestone timestamps.
+      Enter your tracking number to get your shipment information and track you shipment's milestone timestamps.
     </p>
 
     <!-- Tracking Input Bar (pure HTML form, no JS required) -->
@@ -39,20 +39,6 @@
         <i data-lucide="search" class="w-4 h-4"></i>
       </button>
     </form>
-
-    <!-- Demo Chips (plain anchor links, no JS) -->
-    {{-- <div class="flex items-center justify-center gap-2 pt-2 text-xs flex-wrap">
-      <span class="text-gray-400">Sample Tracking IDs:</span>
-      <a href="tracking.php?track=OME-884920"
-        class="bg-white/10 hover:bg-white/20 text-white font-mono px-2.5 py-1 rounded border border-white/10 transition-colors">OME-884920
-        (Ocean FCL)</a>
-      <a href="tracking.php?track=OME-392011"
-        class="bg-white/10 hover:bg-white/20 text-white font-mono px-2.5 py-1 rounded border border-white/10 transition-colors">OME-392011
-        (Customs Cleared)</a>
-      <a href="tracking.php?track=OME-771802"
-        class="bg-white/10 hover:bg-white/20 text-white font-mono px-2.5 py-1 rounded border border-white/10 transition-colors">OME-771802
-        (Air Express)</a>
-    </div> --}}
   </div>
 </section>
 
@@ -99,7 +85,7 @@
                         <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
                         <span>Search Again</span>
                     </a>
-                    <a href="contact.php" class="btn-outlined py-2.5 px-6 text-sm font-bold">
+                    <a href="{{ route('public.contact') }}" class="btn-outlined py-2.5 px-6 text-sm font-bold">
                         <i data-lucide="headphones" class="w-4 h-4"></i>
                         <span>Contact Support</span>
                     </a>
@@ -117,8 +103,8 @@
                         <h2 class="font-heading font-extrabold text-2xl text-brand-dark font-mono">{{ $shipment->tracking_number }}</h2>
                         <span class="badge-pill badge-pill-blue text-xs font-bold">{{ $shipment->status }}</span>
                     </div>
-                    <p class="text-xs text-gray-500 mt-1">Satellite Telemetry Last Sync:
-                        <strong>Now</strong>
+                    <p class="text-xs text-gray-500 mt-1">Current Location:
+                        <strong>{{ $shipment->current_location ?? 'N/A' }}</strong>
                     </p>
                 </div>
                 {{-- <div class="flex items-center gap-3">
@@ -187,50 +173,22 @@
         <div class="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200 shadow-sm space-y-6">
             <h3 class="font-heading font-bold text-xl text-brand-dark">Milestone Telemetry &amp; Customs Progress</h3>
 
-            {{-- <div class="py-4">
-                <?php foreach ($data['milestones'] as $idx => $m):
-                $isLast   = ($idx === count($data['milestones']) - 1);
-                $state    = $m['state'];
-
-                if ($state === 'completed') {
-                    $iconWrap  = 'bg-brand-green text-white shadow-sm';
-                    $lineClass = 'border-brand-green';
-                    $titleCls  = 'text-brand-dark font-bold';
-                    $icon      = 'check';
-                } elseif ($state === 'current') {
-                    $iconWrap  = 'bg-brand-blue text-white ring-4 ring-brand-blue/20 animate-pulse';
-                    $lineClass = 'border-gray-200';
-                    $titleCls  = 'text-brand-blue font-extrabold';
-                    $icon      = 'navigation';
-                } else {
-                    $iconWrap  = 'bg-gray-200 text-gray-400';
-                    $lineClass = 'border-gray-200';
-                    $titleCls  = 'text-gray-500';
-                    $icon      = 'clock';
-                }
-                ?>
-                <div class="flex gap-4 relative">
-                    <?php if (!$isLast): ?>
-                    <div class="absolute left-4 top-8 -bottom-2 w-0.5 border-l-2 <?php echo $lineClass; ?>"></div>
-                    <?php endif; ?>
-
-                    <div
-                    class="w-8 h-8 rounded-full <?php echo $iconWrap; ?> flex items-center justify-center flex-shrink-0 z-10">
-                    <i data-lucide="<?php echo $icon; ?>" class="w-4 h-4"></i>
+            <div class="py-4">
+                @foreach (collect($shipment->updates)->sortBy('timestamp')->toArray() as $update)
+                    <div class="flex gap-4 relative">
+                        <div class="w-8 h-8 rounded-full {{ $loop->last ? 'bg-brand-blue text-white ring-4 ring-brand-blue/20 animate-pulse' : 'bg-brand-green text-white shadow-sm' }} flex items-center justify-center flex-shrink-0 z-10">
+                            <i data-lucide="{{ $loop->last ? 'navigation' : 'check' }}" class="w-4 h-4"></i>
+                        </div>
+                        <div class="pb-6">
+                            <h4 class="text-sm {{ $loop->last ? 'text-brand-blue font-extrabold' : 'text-brand-dark font-bold' }}">{{ $update['message'] }}</h4>
+                            <div class="text-xs text-gray-500 flex items-center gap-2 mt-0.5">
+                                <span><i data-lucide="clock" class="w-3 h-3 inline mr-0.5"></i>
+                                <span>{{ $update['timestamp'] }}</span>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="pb-6">
-                    <h4 class="text-sm <?php echo $titleCls; ?>"><?php echo htmlspecialchars($m['title']); ?></h4>
-                    <div class="text-xs text-gray-500 flex items-center gap-2 mt-0.5">
-                        <span><i data-lucide="map-pin" class="w-3 h-3 inline mr-0.5"></i>
-                        <?php echo htmlspecialchars($m['location']); ?></span>
-                        <span>&bull;</span>
-                        <span><?php echo htmlspecialchars($m['time']); ?></span>
-                    </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            </div> --}}
+                @endforeach
+            </div>
         </div><!-- /Milestone Card -->
     @endif
   </div>
