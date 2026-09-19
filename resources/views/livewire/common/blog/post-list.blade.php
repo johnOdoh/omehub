@@ -126,58 +126,54 @@
                 </div>
             @else
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th class="text-center" style="width: 50px;">#</th>
-                                <th style="min-width: 280px;">{{ $loc == 'ad' ? 'Ad Details' : 'Post Details' }}</th>
-                                @if ($loc == 'blog')
-                                    <th>Tags</th>
-                                @else
-                                    <th>Format</th>
-                                @endif
-                                <th>Date Created</th>
-                                <th>Status</th>
-                                <th class="text-end pe-4" style="min-width: 180px;">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($posts as $post)
+                    @if ($loc == 'blog')
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
                                 <tr>
-                                    <td class="text-center text-muted fw-semibold">{{ $loop->iteration }}</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <!-- Thumbnail preview -->
-                                            <div class="me-3 position-relative flex-shrink-0" style="width: 56px; height: 42px;">
-                                                @if ($post->is_video)
-                                                    <div class="w-100 h-100 rounded bg-dark d-flex align-items-center justify-content-center text-white">
-                                                        <i class="align-middle" data-feather="video" style="width: 18px; height: 18px;"></i>
-                                                    </div>
-                                                @elseif ($post->file)
-                                                    <img src="{{ asset('storage/' . $post->file) }}" 
-                                                         alt="{{ $post->title }}" 
-                                                         class="w-100 h-100 rounded object-fit-cover border"
-                                                         onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'56\' height=\'42\' fill=\'%23dee2e6\'><rect width=\'100%\' height=\'100%\'/></svg>';">
-                                                @else
-                                                    <div class="w-100 h-100 rounded bg-light border d-flex align-items-center justify-content-center text-muted">
-                                                        <i class="align-middle" data-feather="image" style="width: 18px; height: 18px;"></i>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <!-- Title & Category -->
-                                            <div class="overflow-hidden">
-                                                <a href="{{ route('user.bulletin.post', $post->id) }}" class="fw-semibold text-dark text-decoration-none d-block text-truncate mb-1" style="max-width: 380px;" title="{{ $post->title }}" wire:navigate>
-                                                    {{ $post->title }}
-                                                </a>
-                                                <div class="d-flex align-items-center gap-1">
-                                                    @if ($post->category)
-                                                        <span class="badge bg-light text-secondary border small">{{ $post->category }}</span>
+                                    <th class="text-center" style="width: 50px;">#</th>
+                                    <th style="min-width: 280px;">Post Details</th>
+                                    <th>Tags</th>
+                                    <th>Status</th>
+                                    <th>Date Created</th>
+                                    <th class="text-end pe-4" style="min-width: 180px;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($posts as $post)
+                                    <tr>
+                                        <td class="text-center text-muted fw-semibold">{{ $loop->iteration }}</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <!-- Thumbnail preview -->
+                                                <div class="me-3 position-relative flex-shrink-0" style="width: 56px; height: 42px;">
+                                                    @if ($post->is_video)
+                                                        <div class="w-100 h-100 rounded bg-dark d-flex align-items-center justify-content-center text-white">
+                                                            <i class="align-middle" data-feather="video" style="width: 18px; height: 18px;"></i>
+                                                        </div>
+                                                    @elseif ($post->file)
+                                                        <img src="{{ asset('storage/' . $post->file) }}"
+                                                            alt="{{ $post->title }}"
+                                                            class="w-100 h-100 rounded object-fit-cover border"
+                                                            onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'56\' height=\'42\' fill=\'%23dee2e6\'><rect width=\'100%\' height=\'100%\'/></svg>';">
+                                                    @else
+                                                        <div class="w-100 h-100 rounded bg-light border d-flex align-items-center justify-content-center text-muted">
+                                                            <i class="align-middle" data-feather="image" style="width: 18px; height: 18px;"></i>
+                                                        </div>
                                                     @endif
                                                 </div>
+                                                <!-- Title & Category -->
+                                                <div class="overflow-hidden">
+                                                    <a href="{{ route('user.bulletin.post', $post->id) }}" class="fw-semibold text-dark text-decoration-none d-block text-truncate mb-1" style="max-width: 380px;" title="{{ $post->title }}" wire:navigate>
+                                                        {{ $post->title }}
+                                                    </a>
+                                                    <div class="d-flex align-items-center gap-1">
+                                                        @if ($post->category)
+                                                            <span class="badge bg-light text-secondary border small">{{ $post->category }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    @if ($loc == 'blog')
+                                        </td>
                                         <td>
                                             @if ($post->tags)
                                                 <div class="d-flex flex-wrap gap-1" style="max-width: 220px;">
@@ -191,71 +187,152 @@
                                                 <span class="text-muted small">&mdash;</span>
                                             @endif
                                         </td>
-                                    @else
                                         <td>
-                                            @if ($post->is_video)
-                                                <span class="badge bg-info-subtle text-info border border-info-subtle small">
-                                                    <i class="align-middle me-1" data-feather="video" style="width: 12px; height: 12px;"></i> Video
+                                            @if ($post->status === 'approved')
+                                                <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">
+                                                    <i class="align-middle me-1" data-feather="check" style="width: 12px; height: 12px;"></i> Approved
+                                                </span>
+                                            @elseif ($post->status === 'pending')
+                                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle px-2 py-1">
+                                                    <i class="align-middle me-1" data-feather="clock" style="width: 12px; height: 12px;"></i> Pending
                                                 </span>
                                             @else
-                                                <span class="badge bg-primary-subtle text-primary border border-primary-subtle small">
-                                                    <i class="align-middle me-1" data-feather="image" style="width: 12px; height: 12px;"></i> Image
+                                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">
+                                                    <i class="align-middle me-1" data-feather="alert-circle" style="width: 12px; height: 12px;"></i> Declined
                                                 </span>
                                             @endif
                                         </td>
-                                    @endif
-                                    <td>
-                                        <div class="text-dark fw-medium small">{{ $post->created_at->format('d M, Y') }}</div>
-                                        <div class="text-muted small">{{ $post->created_at->diffForHumans() }}</div>
-                                    </td>
-                                    <td>
-                                        @if ($post->status === 'approved')
-                                            <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">
-                                                <i class="align-middle me-1" data-feather="check" style="width: 12px; height: 12px;"></i> Approved
-                                            </span>
-                                        @elseif ($post->status === 'pending')
-                                            <span class="badge bg-warning-subtle text-warning border border-warning-subtle px-2 py-1">
-                                                <i class="align-middle me-1" data-feather="clock" style="width: 12px; height: 12px;"></i> Pending
-                                            </span>
-                                        @else
-                                            <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">
-                                                <i class="align-middle me-1" data-feather="alert-circle" style="width: 12px; height: 12px;"></i> Declined
-                                            </span>
-                                        @endif
-                                    </td>
-                                    <td class="text-end pe-4">
-                                        <div class="d-inline-flex align-items-center gap-1">
-                                            <!-- View Button -->
-                                            <a href="{{ route('user.bulletin.post', $post->id) }}" 
-                                               class="btn btn-sm btn-outline-primary" 
-                                               title="View Post" 
-                                               wire:navigate>
-                                                <i class="align-middle" data-feather="eye" style="width: 14px; height: 14px;"></i>
-                                                <span class="d-none d-md-inline ms-1">View</span>
-                                            </a>
-                                            <!-- Edit Button -->
-                                            <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => $loc]) }}" 
-                                               class="btn btn-sm btn-outline-secondary" 
-                                               title="Edit Post" 
-                                               wire:navigate>
-                                                <i class="align-middle" data-feather="edit-2" style="width: 14px; height: 14px;"></i>
-                                                <span class="d-none d-md-inline ms-1">Edit</span>
-                                            </a>
-                                            <!-- Delete Button -->
-                                            <button type="button" 
-                                                    class="btn btn-sm btn-outline-danger" 
-                                                    title="Delete" 
-                                                    wire:confirm="Are you sure you want to permanently delete this {{ $loc == 'ad' ? 'ad' : 'post' }}?" 
-                                                    wire:click="deletePost({{ $post->id }})">
-                                                <i class="align-middle" data-feather="trash-2" style="width: 14px; height: 14px;"></i>
-                                                <span class="d-none d-md-inline ms-1">Delete</span>
-                                            </button>
-                                        </div>
-                                    </td>
+                                        <td>
+                                            <div class="text-dark fw-medium small">{{ $post->created_at->format('d M, Y') }}</div>
+                                            <div class="text-muted small">{{ $post->created_at->diffForHumans() }}</div>
+                                        </td>
+                                        <td class="text-end pe-4">
+                                            <div class="d-inline-flex align-items-center gap-1">
+                                                <!-- View Button -->
+                                                <a href="{{ route('user.bulletin.post', ['post' => $post->id, 'loc' => 'ad']) }}"
+                                                class="btn btn-sm btn-outline-primary"
+                                                title="View Post"
+                                                wire:navigate>
+                                                    <i class="align-middle" data-feather="eye" style="width: 14px; height: 14px;"></i>
+                                                    <span class="d-none d-md-inline ms-1">View</span>
+                                                </a>
+                                                <!-- Edit Button -->
+                                                <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => 'blog']) }}"
+                                                class="btn btn-sm btn-outline-secondary"
+                                                title="Edit Post"
+                                                wire:navigate>
+                                                    <i class="align-middle" data-feather="edit-2" style="width: 14px; height: 14px;"></i>
+                                                    <span class="d-none d-md-inline ms-1">Edit</span>
+                                                </a>
+                                                <!-- Delete Button -->
+                                                <button type="button"
+                                                        class="btn btn-sm btn-outline-danger"
+                                                        title="Delete"
+                                                        wire:confirm="Are you sure you want to permanently delete this post?"
+                                                        wire:click="deletePost({{ $post->id }})">
+                                                    <i class="align-middle" data-feather="trash-2" style="width: 14px; height: 14px;"></i>
+                                                    <span class="d-none d-md-inline ms-1">Delete</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center" style="width: 50px;">#</th>
+                                    <th style="min-width: 280px;">Ad Details</th>
+                                    <th>CTA</th>
+                                    <th>Status</th>
+                                    <th>Date Created</th>
+                                    <th class="text-end pe-4" style="min-width: 180px;">Actions</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($posts as $post)
+                                    <tr>
+                                        <td class="text-center text-muted fw-semibold">{{ $loop->iteration }}</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <!-- Thumbnail preview -->
+                                                <div class="me-3 position-relative flex-shrink-0" style="width: 56px; height: 42px;">
+                                                    <img src="{{ asset('storage/' . $post->file) }}"
+                                                        alt="{{ $post->title }}"
+                                                        class="w-100 h-100 rounded object-fit-cover border"
+                                                        onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'56\' height=\'42\' fill=\'%23dee2e6\'><rect width=\'100%\' height=\'100%\'/></svg>';">
+                                                </div>
+                                                <!-- Title & Category -->
+                                                <div class="overflow-hidden">
+                                                    <a href="{{ route('user.bulletin.post', $post->id) }}" class="fw-semibold text-dark text-decoration-none d-block text-truncate mb-1" style="max-width: 380px;" title="{{ $post->title }}" wire:navigate>
+                                                        {{ $post->title }}
+                                                    </a>
+                                                    <div class="d-flex align-items-center gap-1">
+                                                        @if ($post->category)
+                                                            <span class="badge bg-light text-secondary border small">{{ $post->category }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-light text-secondary border small">{{ $post->cta }}</span>
+                                        </td>
+                                        <td>
+                                            @if ($post->status === 'approved')
+                                                <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">
+                                                    <i class="align-middle me-1" data-feather="check" style="width: 12px; height: 12px;"></i> Approved
+                                                </span>
+                                            @elseif ($post->status === 'pending')
+                                                <span class="badge bg-warning-subtle text-warning border border-warning-subtle px-2 py-1">
+                                                    <i class="align-middle me-1" data-feather="clock" style="width: 12px; height: 12px;"></i> Pending
+                                                </span>
+                                            @else
+                                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">
+                                                    <i class="align-middle me-1" data-feather="alert-circle" style="width: 12px; height: 12px;"></i> Declined
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="text-dark fw-medium small">{{ $post->created_at->format('d M, Y') }}</div>
+                                            <div class="text-muted small">{{ $post->created_at->diffForHumans() }}</div>
+                                        </td>
+                                        <td class="text-end pe-4">
+                                            <div class="d-inline-flex align-items-center gap-1">
+                                                <!-- View Button -->
+                                                <a href="{{ route('user.bulletin.post', ['post' => $post->id, 'loc' => 'ad']) }}"
+                                                class="btn btn-sm btn-outline-primary"
+                                                title="View Ad"
+                                                wire:navigate>
+                                                    <i class="align-middle" data-feather="eye" style="width: 14px; height: 14px;"></i>
+                                                    <span class="d-none d-md-inline ms-1">View</span>
+                                                </a>
+                                                <!-- Edit Button -->
+                                                <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => 'ad']) }}"
+                                                class="btn btn-sm btn-outline-secondary"
+                                                title="Edit Ad"
+                                                wire:navigate>
+                                                    <i class="align-middle" data-feather="edit-2" style="width: 14px; height: 14px;"></i>
+                                                    <span class="d-none d-md-inline ms-1">Edit</span>
+                                                </a>
+                                                <!-- Delete Button -->
+                                                <button type="button"
+                                                        class="btn btn-sm btn-outline-danger"
+                                                        title="Delete"
+                                                        wire:confirm="Are you sure you want to permanently delete this ad?"
+                                                        wire:click="deletePost({{ $post->id }})">
+                                                    <i class="align-middle" data-feather="trash-2" style="width: 14px; height: 14px;"></i>
+                                                    <span class="d-none d-md-inline ms-1">Delete</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
                 </div>
             @endif
         </div>

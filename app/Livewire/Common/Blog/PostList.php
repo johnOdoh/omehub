@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Common\Blog;
 
-use Livewire\Component;
-use Livewire\Attributes\Url;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Title;
-use Illuminate\Support\Facades\File;
+use Livewire\Attributes\Url;
+use Livewire\Component;
 
 class PostList extends Component
 {
@@ -15,28 +15,18 @@ class PostList extends Component
 
     public function mount()
     {
-        if (!$this->loc) {
-            $this->loc = 'blog';
+        if ($this->loc == 'blog') {
+            $this->posts = request()->user()->posts()->latest()->get();
+        } else {
+            $this->posts = request()->user()->ads()->latest()->get();
         }
-        $this->loadPosts();
-    }
-
-    public function loadPosts()
-    {
-        $query = $this->loc == 'ad'
-            ? request()->user()->posts()->whereNull('tags')
-            : request()->user()->posts()->whereNotNull('tags');
-
-        $this->posts = $query->latest()->get();
     }
 
     public function deletePost($postId)
     {
         $post = request()->user()->posts()->findOrFail($postId);
-        
-        if ($post->file && File::exists(public_path('storage/' . $post->file))) {
-            File::delete(public_path('storage/' . $post->file));
-        }
+
+        Storage::disk('public')->delete($post->file);
 
         $post->delete();
         $this->loadPosts();

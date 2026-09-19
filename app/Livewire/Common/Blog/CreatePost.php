@@ -2,52 +2,57 @@
 
 namespace App\Livewire\Common\Blog;
 
+use App\Models\Ad;
 use App\Models\Post;
-use Livewire\Component;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Url;
-use Livewire\WithFileUploads;
 use Livewire\Attributes\Title;
-use Illuminate\Support\Facades\File;
+use Livewire\Attributes\Url;
+use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreatePost extends Component
 {
     use WithFileUploads;
 
-    public ?Post $post = null;
+    public $post = null;
+    public $ad = null;
     #[Url]
-    public $loc;
+    public string $loc = 'blog';
     #[Url(as: 'p')]
-    public $paid;
-    public $body = '';
-    public $title;
-    public $category;
-    public $tags;
-    public $description;
+    public string $paid;
+    public string $body = '';
+    public string $title;
+    public string $category;
+    public string $tags;
+    public string $cta;
+    public string $url;
     public $file;
-    public $edit = false;
+    public bool $edit = false;
 
     public function mount($post = null)
     {
         if ($post) {
-            $this->post = $post instanceof Post ? $post : Post::findOrFail($post);
-
-            if ($this->post->user_id !== auth()->id()) {
-                abort(403, 'Unauthorized action.');
-            }
-
-            $this->body = $this->post->body;
-            $this->title = $this->post->title;
-            $this->category = $this->post->category;
-            $this->tags = $this->post->tags;
             $this->edit = true;
-
-            if (!$this->loc) {
-                $this->loc = empty($this->post->tags) ? 'ad' : 'blog';
-            }
-        } else {
-            if (!$this->loc) {
-                $this->loc = 'blog';
+            if ($this->loc == 'blog') {
+                $this->post = Post::findOrFail($post);
+                // if ($this->post->user_id !== auth()->id() || auth()->user()->role != 'Admin') {
+                //     abort(403, 'Unauthorized action.');
+                // }
+                $this->tags = $this->post->tags;
+                $this->body = $this->post->body;
+                $this->title = $this->post->title;
+                $this->category = $this->post->category;
+            } else {
+                $this->ad = Ad::findOrFail($post);
+                // if ($this->ad->user_id !== auth()->id() || auth()->user()->role != 'Admin') {
+                //     abort(403, 'Unauthorized action.');
+                // }
+                $this->cta = $this->ad->cta;
+                $this->url = $this->ad->url;
+                $this->body = $this->ad->body;
+                $this->title = $this->ad->title;
+                $this->category = $this->ad->category;
             }
         }
     }
@@ -57,7 +62,7 @@ class CreatePost extends Component
         if (!request()->user()->profile?->is_verified) return;
 
         $rules = [
-            'title' => 'required|string|max:191',
+            'title' => 'required|string|max:191|unique:posts,title,' . ($this->post?->id ?? 'null'),
             'category' => 'required|string|max:30',
             'body' => 'required|string',
             'tags' => 'required|string|max:100',
@@ -72,8 +77,8 @@ class CreatePost extends Component
         if ($this->edit) {
             if ($this->file) {
                 $validated['file'] = $this->file->store('bulletin/posts', 'public');
-                if ($this->post->file && File::exists(public_path('storage/' . $this->post->file))) {
-                    File::delete(public_path('storage/' . $this->post->file));
+                if ($this->post->file && Storage::disk('public')->exists($this->post->file)) {
+                    Storage::disk('public')->delete($this->post->file);
                 }
             } else {
                 unset($validated['file']);
@@ -101,41 +106,39 @@ class CreatePost extends Component
         if (!request()->user()->profile?->is_verified) return;
 
         $rules = [
-            'title' => 'required|string|max:191',
-            'description' => 'nullable|string|max:200',
+            'title' => 'required|string|max:191|unique:ads,title,' . ($this->ad?->id ?? 'null'),
+            'category' => 'required|string|max:30',
             'body' => 'required|string',
-            'file' => $this->edit ? 'nullable|file|mimes:jpeg,png,jpg,mp4,webm|max:20480' : 'required|file|mimes:jpeg,png,jpg,mp4,webm|max:20480',
+            'url' => 'required|url|max:191',
+            'cta' => 'required|max:20',
+            'file' => $this->edit ? 'nullable|file|mimes:jpeg,png,jpg|max:5124' : 'required|file|mimes:jpeg,png,jpg|max:5124',
         ];
 
         $validated = $this->validate($rules);
-        $validated['slug'] = str($validated['title'])->slug();
-        $validated['category'] = 'Advertisement';
-        unset($validated['description']);
-
         if ($this->edit) {
             if ($this->file) {
                 $validated['file'] = $this->file->store('bulletin/ads', 'public');
-                $validated['is_video'] = str_starts_with($this->file->getMimeType(), 'video/');
-                if ($this->post->file && File::exists(public_path('storage/' . $this->post->file))) {
-                    File::delete(public_path('storage/' . $this->post->file));
+                // $validated['is_video'] = str_starts_with($this->file->getMimeType(), 'video/');
+                if ($this->ad->file && Storage::disk('public')->exists($this->ad->file)) {
+                    Storage::disk('public')->delete($this->ad->file);
                 }
             } else {
                 unset($validated['file']);
             }
 
-            if ($this->post->status === 'declined') {
+            if ($this->ad->status === 'declined') {
                 $validated['status'] = 'pending';
             }
 
-            $this->post->update($validated);
+            $this->ad->update($validated);
             session()->flash('success', 'Ad updated successfully.');
             return $this->redirect(route('user.bulletin.list', ['loc' => 'ad']), navigate: true);
         } else {
             $validated['file'] = $this->file->store('bulletin/ads', 'public');
-            if (str_starts_with($this->file->getMimeType(), 'video/')) {
-                $validated['is_video'] = true;
-            }
-            request()->user()->posts()->create($validated);
+            // if (str_starts_with($this->file->getMimeType(), 'video/')) {
+            //     $validated['is_video'] = true;
+            // }
+            request()->user()->ads()->create($validated);
             $this->resetExcept('edit', 'post', 'loc');
             session()->flash('success', 'Ad created successfully.');
             $this->dispatch('clear');

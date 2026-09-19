@@ -58,7 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     {
         return Str::of($this->name)
             ->explode(' ', 2)
-            ->map(fn (string $name) => Str::of($name)->substr(0, 1))
+            ->map(fn(string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
     }
 
@@ -115,6 +115,11 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function ads()
+    {
+        return $this->hasMany(Ad::class);
     }
 
     public function tickets()

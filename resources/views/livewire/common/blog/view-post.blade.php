@@ -2,24 +2,24 @@
     <!-- Header & Navigation -->
     <div class="row mb-3 align-items-center">
         <div class="col-md-7">
-            <nav aria-label="breadcrumb">
+            {{-- <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-1">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}" wire:navigate>Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('user.bulletin.list', ['loc' => $post->tags ? 'blog' : 'ad']) }}" wire:navigate>{{ $post->tags ? 'Bulletin' : 'Advertisements' }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ Str::limit($post->title, 35) }}</li>
                 </ol>
-            </nav>
-            <h1 class="h3 d-inline align-middle fw-bold">Post Details</h1>
+            </nav> --}}
+            <h1 class="h3 d-inline align-middle fw-bold">{{ $loc == 'blog' ? 'Post' : 'Ad' }} Details</h1>
         </div>
         <div class="col-md-5 text-md-end mt-3 mt-md-0 d-flex justify-content-md-end gap-2">
-            <a href="{{ route('user.bulletin.list', ['loc' => $post->tags ? 'blog' : 'ad']) }}" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center shadow-sm" wire:navigate>
+            <a href="{{ route('user.bulletin.list', ['loc' => $loc ]) }}" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center shadow-sm" wire:navigate>
                 <i class="align-middle me-1" data-feather="arrow-left"></i>
                 <span>Back to List</span>
             </a>
             @if ($post->user_id === auth()->id())
-                <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => $post->tags ? 'blog' : 'ad']) }}" class="btn btn-primary btn-sm d-inline-flex align-items-center shadow-sm" wire:navigate>
+                <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => $loc]) }}" class="btn btn-primary btn-sm d-inline-flex align-items-center shadow-sm" wire:navigate>
                     <i class="align-middle me-1" data-feather="edit-2"></i>
-                    <span>Edit {{ $post->tags ? 'Post' : 'Ad' }}</span>
+                    <span>Edit {{ $loc == 'blog' ? 'Post' : 'Ad' }}</span>
                 </a>
             @endif
         </div>
@@ -51,8 +51,8 @@
                     </div>
                 @elseif ($post->file)
                     <div class="w-100 bg-light text-center" style="max-height: 440px; overflow: hidden;">
-                        <img class="img-fluid w-100" 
-                             src="{{ asset('storage/' . $post->file) }}" 
+                        <img class="img-fluid w-100"
+                             src="{{ asset('storage/' . $post->file) }}"
                              alt="{{ $post->title }}"
                              style="object-fit: cover; max-height: 440px;">
                     </div>
@@ -82,14 +82,6 @@
                         {{ $post->title }}
                     </h1>
 
-                    @if ($post->description)
-                        <div class="p-3 bg-light rounded border-start border-4 border-primary mb-4">
-                            <p class="mb-0 text-muted fst-italic small">
-                                {{ $post->description }}
-                            </p>
-                        </div>
-                    @endif
-
                     <hr class="my-4">
 
                     <!-- Rendered HTML Content -->
@@ -98,7 +90,7 @@
                     </div>
 
                     <!-- Article Tags Footer -->
-                    @if ($post->tags)
+                    @if (!empty($post->tags))
                         <div class="mt-5 pt-4 border-top">
                             <div class="d-flex flex-wrap align-items-center gap-2">
                                 <span class="text-muted fw-semibold small text-uppercase me-1">
@@ -155,12 +147,14 @@
                     </div>
 
                     @if ($post->status === 'approved')
-                        <a href="{{ route('public.blog', $post->slug) }}" target="_blank" class="btn btn-outline-primary btn-sm w-100 d-inline-flex align-items-center justify-content-center mt-2">
-                            <i class="align-middle me-1" data-feather="external-link"></i>
-                            <span>View Public Page</span>
-                        </a>
-                    @elseif ($post->user_id === auth()->id())
-                        <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => $post->tags ? 'blog' : 'ad']) }}" class="btn btn-outline-primary btn-sm w-100 d-inline-flex align-items-center justify-content-center mt-2" wire:navigate>
+                        @if ($loc == 'blog')
+                            <a href="{{ route('public.blog', $post->slug) }}" target="_blank" class="btn btn-outline-primary btn-sm w-100 d-inline-flex align-items-center justify-content-center mt-2">
+                                <i class="align-middle me-1" data-feather="external-link"></i>
+                                <span>View Public Page</span>
+                            </a>
+                        @endif
+                    @elseif ($post->user_id === auth()->id() || auth()->user()->role == 'Admin')
+                        <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => $loc]) }}" class="btn btn-outline-primary btn-sm w-100 d-inline-flex align-items-center justify-content-center mt-2" wire:navigate>
                             <i class="align-middle me-1" data-feather="edit-2"></i>
                             <span>Edit Submission</span>
                         </a>
@@ -171,19 +165,30 @@
             <!-- Post Meta Details Card -->
             <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-transparent py-3 border-bottom">
-                    <h5 class="card-title mb-0 fw-bold">Post Information</h5>
+                    <h5 class="card-title mb-0 fw-bold">{{ $loc == 'blog' ? 'Post' : 'Ad' }} Information</h5>
                 </div>
                 <div class="card-body">
                     <dl class="row mb-0 small">
                         <dt class="col-5 text-muted">Author:</dt>
-                        <dd class="col-7 fw-semibold text-dark">{{ $post->user->name ?? 'You' }}</dd>
+                        <dd class="col-7 fw-semibold text-dark">{{ $post->user?->name ?? 'N/A' }}</dd>
 
                         <dt class="col-5 text-muted">Category:</dt>
-                        <dd class="col-7 text-dark">{{ $post->category ?? 'General' }}</dd>
+                        <dd class="col-7 text-dark">{{ $post->category }}</dd>
 
                         <dt class="col-5 text-muted">Format:</dt>
-                        <dd class="col-7 text-dark">{{ $post->is_video ? 'Video Ad' : ($post->tags ? 'Blog Article' : 'Image Ad') }}</dd>
+                        <dd class="col-7 text-dark">{{ $loc == 'blog' ? 'Blog Article' : 'Ad Campaign' }}</dd>
 
+                        @if ($loc == 'ad')
+                            <dt class="col-5 text-muted">CTA Button:</dt>
+                            <dd class="col-7 text-dark">
+                                <span class="py-1 px-2 badge bg-primary">{{ $post->cta }}</span>
+                            </dd>
+
+                            <dt class="col-5 text-muted">External URL:</dt>
+                            <dd class="col-7 text-dark">
+                                <a href="{{ $post->url }}" target="_blank" rel="noopener noreferrer">{{ $post->url }}</a>
+                            </dd>
+                        @endif
                         <dt class="col-5 text-muted">Submitted:</dt>
                         <dd class="col-7 text-dark">{{ $post->created_at->format('d M, Y \a\t h:i A') }}</dd>
 

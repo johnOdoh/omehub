@@ -2,13 +2,13 @@
     <!-- Header Section with Breadcrumb -->
     <div class="row mb-3 align-items-center">
         <div class="col-md-7">
-            <nav aria-label="breadcrumb">
+            {{-- <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-1">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}" wire:navigate>Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('user.bulletin.list', ['loc' => $loc]) }}" wire:navigate>{{ $loc == 'ad' ? 'Advertisements' : 'Bulletin' }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $edit ? 'Edit' : 'Create' }}</li>
                 </ol>
-            </nav>
+            </nav> --}}
             <h1 class="h3 d-inline align-middle fw-bold">
                 {{ $edit ? 'Edit ' . ($loc == 'ad' ? 'Advertisement' : 'Post') : 'Create New ' . ($loc == 'ad' ? 'Advertisement' : 'Post') }}
             </h1>
@@ -49,14 +49,14 @@
     @if (true)
         <!-- Review Notice Banner -->
         <div class="alert alert-info alert-dismissible shadow-sm border-0 mb-4" role="alert">
-            <div class="d-flex align-items-start">
+            <div class="d-flex align-items-start p-3">
                 <div class="me-3 mt-1">
                     <i class="align-middle" data-feather="info"></i>
                 </div>
                 <div class="flex-grow-1">
                     <strong class="d-block mb-1">Editorial Guidelines & Review Notice</strong>
                     <div class="small">
-                        All submissions are subject to review by the OmeHub compliance and editorial team. Please ensure content complies with our 
+                        All submissions are subject to review by the OmeHub compliance and editorial team. Please ensure content complies with our
                         <a href="{{ route('terms') }}" target="_blank" class="alert-link text-decoration-underline">Terms & Conditions</a> and professional posting standards.
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="d-flex align-items-center">
                     <i class="align-middle me-2" data-feather="alert-triangle"></i>
                     <div>
-                        <strong>Incomplete Profile:</strong> You must complete your account profile before submitting posts. 
+                        <strong>Incomplete Profile:</strong> You must complete your account profile before submitting posts.
                         <a href="{{ route('user.profile') }}" class="alert-link fw-semibold" wire:navigate>Complete your profile here</a>.
                     </div>
                 </div>
@@ -104,10 +104,10 @@
                                     <label class="form-label fw-semibold">
                                         Post Title <span class="text-danger">*</span>
                                     </label>
-                                    <input type="text" 
-                                           class="form-control form-control-lg @error('title') is-invalid @enderror" 
-                                           placeholder="e.g. 2026 West African Port Automation: Streamlining Pre-Arrival Customs" 
-                                           wire:model="title" 
+                                    <input type="text"
+                                           class="form-control form-control-lg @error('title') is-invalid @enderror"
+                                           placeholder="e.g. 2026 West African Port Automation: Streamlining Pre-Arrival Customs"
+                                           wire:model="title"
                                            required>
                                     @error('title')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -203,10 +203,10 @@
 
                                 <!-- File Input Control -->
                                 <div class="mb-2">
-                                    <input type="file" 
-                                           class="form-control form-control-sm @error('file') is-invalid @enderror" 
-                                           accept="image/jpeg,image/png,image/jpg" 
-                                           wire:model="file" 
+                                    <input type="file"
+                                           class="form-control form-control-sm @error('file') is-invalid @enderror"
+                                           accept="image/jpeg,image/png,image/jpg"
+                                           wire:model="file"
                                            {{ $edit ? '' : 'required' }}>
                                     @error('file')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -228,11 +228,11 @@
                                 <!-- Category -->
                                 <div class="mb-3">
                                     <label class="form-label fw-semibold">Category <span class="text-danger">*</span></label>
-                                    <input type="text" 
-                                           class="form-control @error('category') is-invalid @enderror" 
-                                           placeholder="e.g. Ports & Customs, Freight Logistics" 
-                                           maxlength="30" 
-                                           wire:model="category" 
+                                    <input type="text"
+                                           class="form-control @error('category') is-invalid @enderror"
+                                           placeholder="e.g. Ports & Customs, Freight Logistics"
+                                           maxlength="30"
+                                           wire:model="category"
                                            required>
                                     @error('category')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -243,10 +243,10 @@
                                 <!-- Tags -->
                                 <div class="mb-2">
                                     <label class="form-label fw-semibold">Tags <span class="text-danger">*</span></label>
-                                    <input type="text" 
-                                           class="form-control @error('tags') is-invalid @enderror" 
-                                           placeholder="e.g. shipping, customs, clearance" 
-                                           wire:model="tags" 
+                                    <input type="text"
+                                           class="form-control @error('tags') is-invalid @enderror"
+                                           placeholder="e.g. shipping, customs, clearance"
+                                           wire:model="tags"
                                            required>
                                     @error('tags')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -268,16 +268,16 @@
                                     </div>
                                 @endif
 
-                                <button type="submit" 
-                                        class="btn btn-primary w-100 py-2 d-inline-flex align-items-center justify-content-center fw-semibold shadow-sm mb-2" 
-                                        @if (!auth()->user()->profile || !auth()->user()->profile->is_verified) disabled @endif 
-                                        wire:loading.remove 
-                                        wire:target="file, body, createPost">
+                                <button type="submit"
+                                        class="btn btn-primary w-100 py-2 d-inline-flex align-items-center justify-content-center fw-semibold shadow-sm mb-2"
+                                        @if (!auth()->user()->profile || !auth()->user()->profile->is_verified) disabled @endif
+                                        wire:loading.remove
+                                        wire:target="file, createPost">
                                     <i class="align-middle me-1" data-feather="{{ $edit ? 'save' : 'send' }}"></i>
                                     <span>{{ $edit ? 'Save Changes' : 'Publish Article' }}</span>
                                 </button>
 
-                                <button class="btn btn-primary w-100 py-2" wire:loading wire:target="file, body, createPost" disabled>
+                                <button class="btn btn-primary w-100 py-2" wire:loading wire:target="file, createPost" disabled>
                                     <div class="spinner-border spinner-border-sm text-light me-1" role="status">
                                         <span class="visually-hidden">Loading...</span>
                                     </div>
@@ -306,10 +306,10 @@
                                 <!-- Title -->
                                 <div class="mb-4">
                                     <label class="form-label fw-semibold">Ad Campaign Title <span class="text-danger">*</span></label>
-                                    <input type="text" 
-                                           class="form-control form-control-lg @error('title') is-invalid @enderror" 
-                                           placeholder="e.g. Direct Air Cargo Charters from Frankfurt to Lagos" 
-                                           wire:model="title" 
+                                    <input type="text"
+                                           class="form-control form-control-lg @error('title') is-invalid @enderror"
+                                           placeholder="e.g. Direct Air Cargo Charters from Frankfurt to Lagos"
+                                           wire:model="title"
                                            required>
                                     @error('title')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -318,16 +318,14 @@
 
                                 <!-- Brief Description -->
                                 <div class="mb-4">
-                                    <label class="form-label fw-semibold">Short Summary / Teaser</label>
-                                    <textarea rows="3" 
-                                              maxlength="200" 
-                                              class="form-control @error('description') is-invalid @enderror" 
-                                              placeholder="Provide a concise 1-2 sentence overview of your commercial offer." 
-                                              wire:model="description"></textarea>
-                                    @error('description')
+                                    <label class="form-label fw-semibold">External Url <span class="text-danger">*</span></label>
+                                    <input type="url" class="form-control @error('url') is-invalid @enderror"
+                                              placeholder="eg: https://www.example.com"
+                                              wire:model="url">
+                                    @error('url')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                    <div class="form-text small text-muted">Up to 200 characters. Displays on preview cards and search results.</div>
+                                    <div class="form-text small text-muted">The link to your website or resource.</div>
                                 </div>
 
                                 <!-- Rich Content Body -->
@@ -354,11 +352,11 @@
                                             </span>
                                             <span class="ql-formats">
                                                 <select class="ql-align" title="Align"></select>
-                                                <button class="ql-link" title="Link"></button>
+                                                {{-- <button class="ql-link" title="Link"></button> --}}
                                                 <button class="ql-clean" title="Clear"></button>
                                             </span>
                                         </div>
-                                        <div id="quill-editor" style="min-height: 280px; font-size: 15px; line-height: 1.7;">{!! $body !!}</div>
+                                        <div id="quill-editor" style="min-height: 150px; font-size: 15px; line-height: 1.7;">{!! $body !!}</div>
                                     </div>
                                     <input type="hidden" wire:model="body" required>
                                     @error('body')
@@ -395,13 +393,9 @@
                                             @endif
                                             <span class="badge bg-primary mt-2">New Media Selected</span>
                                         </div>
-                                    @elseif ($edit && $post && $post->file)
+                                    @elseif ($edit && $ad && $ad->file)
                                         <div class="position-relative mb-2">
-                                            @if ($post->is_video)
-                                                <video src="{{ asset('storage/' . $post->file) }}" class="w-100 rounded border mb-1" style="max-height: 180px;" controls></video>
-                                            @else
-                                                <img src="{{ asset('storage/' . $post->file) }}" alt="{{ $post->title }}" class="img-fluid rounded border w-100 shadow-sm" style="max-height: 190px; object-fit: cover;">
-                                            @endif
+                                            <img src="{{ asset('storage/' . $ad->file) }}" alt="{{ $ad->title }}" class="img-fluid rounded border w-100 shadow-sm" style="max-height: 190px; object-fit: cover;">
                                             <span class="badge bg-dark mt-1">Current Media</span>
                                         </div>
                                         <p class="text-muted small mb-2">Leave blank to keep existing media or select new file.</p>
@@ -409,16 +403,18 @@
                                         <div class="border rounded p-4 text-muted bg-light mb-2">
                                             <i class="align-middle mb-2" data-feather="film" style="width: 36px; height: 36px;"></i>
                                             <div class="small fw-semibold">No media attached</div>
-                                            <div class="small text-muted">Supports Images or MP4/WebM (Max 20MB)</div>
+                                            {{-- <div class="small text-muted">Supports Images or MP4/WebM (Max 20MB)</div> --}}
+                                            <div class="small text-muted">Supports Images (Max 20MB)</div>
                                         </div>
                                     @endif
                                 </div>
 
                                 <div class="mb-2">
-                                    <input type="file" 
-                                           class="form-control form-control-sm @error('file') is-invalid @enderror" 
-                                           accept="image/*,video/mp4,video/webm" 
-                                           wire:model="file" 
+                                    <input type="file"
+                                           class="form-control form-control-sm @error('file') is-invalid @enderror"
+                                           {{-- accept="image/*,video/mp4,video/webm" --}}
+                                           accept="image/*"
+                                           wire:model="file"
                                            {{ $edit ? '' : 'required' }}>
                                     @error('file')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -431,28 +427,64 @@
                             </div>
                         </div>
 
+                        <!-- Taxonomy & Category Card -->
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-header bg-transparent py-3 border-bottom">
+                                <h5 class="card-title mb-0 fw-bold">Classification</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Category -->
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Category <span class="text-danger">*</span></label>
+                                    <input type="text"
+                                           class="form-control @error('category') is-invalid @enderror"
+                                           placeholder="e.g. Shipping, Education, Lifestyle"
+                                           maxlength="30"
+                                           wire:model="category"
+                                           required>
+                                    @error('category')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-text small text-muted">Maximum 30 characters.</div>
+                                </div>
+
+                                <!-- Tags -->
+                                <div class="mb-2">
+                                    <label class="form-label fw-semibold">Call to Action button <span class="text-danger">*</span></label>
+                                    <input type="text"
+                                           class="form-control @error('cta') is-invalid @enderror"
+                                           placeholder="e.g. Learn more, Book now, Contact us"
+                                           wire:model="cta"
+                                           required>
+                                    @error('cta')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Publishing Card -->
                         <div class="card border-0 shadow-sm mb-4">
                             <div class="card-body">
-                                @if ($edit && $post)
+                                @if ($edit && $ad)
                                     <div class="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
                                         <span class="text-muted small">Status</span>
-                                        <span class="badge text-capitalize px-2 py-1 bg-{{ $post->status == 'approved' ? 'success' : ($post->status == 'pending' ? 'warning' : 'danger') }}">
-                                            {{ $post->status }}
+                                        <span class="badge text-capitalize px-2 py-1 bg-{{ $ad->status == 'approved' ? 'success' : ($ad->status == 'pending' ? 'warning' : 'danger') }}">
+                                            {{ $ad->status }}
                                         </span>
                                     </div>
                                 @endif
 
-                                <button type="submit" 
-                                        class="btn btn-primary w-100 py-2 d-inline-flex align-items-center justify-content-center fw-semibold shadow-sm mb-2" 
-                                        @if (!auth()->user()->profile?->is_verified) disabled @endif 
-                                        wire:loading.remove 
-                                        wire:target="file, body, createAd">
+                                <button type="submit"
+                                        class="btn btn-primary w-100 py-2 d-inline-flex align-items-center justify-content-center fw-semibold shadow-sm mb-2"
+                                        @if (!auth()->user()->profile?->is_verified) disabled @endif
+                                        wire:loading.remove
+                                        wire:target="file, createAd">
                                     <i class="align-middle me-1" data-feather="{{ $edit ? 'save' : 'send' }}"></i>
                                     <span>{{ $edit ? 'Save Changes' : 'Launch Advertisement' }}</span>
                                 </button>
 
-                                <button class="btn btn-primary w-100 py-2" wire:loading wire:target="file, body, createAd" disabled>
+                                <button class="btn btn-primary w-100 py-2" wire:loading wire:target="file, createAd" disabled>
                                     <div class="spinner-border spinner-border-sm text-light me-1" role="status">
                                         <span class="visually-hidden">Loading...</span>
                                     </div>

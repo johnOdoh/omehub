@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('title')->unique();
+            $table->string('title')->index();
+            $table->string('category')->index();
             $table->longText('body');
             $table->string('file');
-            $table->string('slug')->unique();
-            $table->boolean('is_video')->default(false);
+            $table->string('cta');
+            $table->string('url');
             $table->enum('status', ['pending', 'approved', 'declined'])->default('pending');
-            $table->string('tags')->index()->nullable();
-            $table->string('category')->index();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('ads');
     }
 };
