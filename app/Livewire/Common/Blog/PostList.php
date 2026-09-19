@@ -11,25 +11,40 @@ class PostList extends Component
 {
     public $posts;
     #[Url]
-    public $loc;
+    public $loc = 'blog';
 
     public function mount()
     {
-        $query = $this->loc == 'ad' ? request()->user()->posts()->where('tags', null)
-                                    : request()->user()->posts()->whereNot('tags', null);
+        if (!$this->loc) {
+            $this->loc = 'blog';
+        }
+        $this->loadPosts();
+    }
+
+    public function loadPosts()
+    {
+        $query = $this->loc == 'ad'
+            ? request()->user()->posts()->whereNull('tags')
+            : request()->user()->posts()->whereNotNull('tags');
+
         $this->posts = $query->latest()->get();
     }
 
     public function deletePost($postId)
     {
         $post = request()->user()->posts()->findOrFail($postId);
+        
+        if ($post->file && File::exists(public_path('storage/' . $post->file))) {
+            File::delete(public_path('storage/' . $post->file));
+        }
+
         $post->delete();
-        File::delete(public_path('storage/'.$post->file));
-        session()->flash('deleted');
+        $this->loadPosts();
+        session()->flash('success', ($this->loc == 'ad' ? 'Ad' : 'Post') . ' successfully deleted.');
         $this->dispatch('postDeleted');
     }
 
-    #[Title('Posts')]
+    #[Title('My Posts & Ads')]
     public function render()
     {
         return view('livewire.common.blog.post-list');
