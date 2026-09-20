@@ -25,7 +25,7 @@
       <div class="flex-shrink-0 flex items-center gap-3">
         <a href="{{ route('home') }}" class="flex items-center gap-2.5 group">
           <div class="flex flex-col">
-            <img src="{{ asset('assets/img/logo.png') }}" alt="logo" class="img-fluid" width="150">
+            <img src="{{ asset('home-assets/img/logo.png') }}" alt="logo" class="img-fluid" width="150">
           </div>
         </a>
       </div>

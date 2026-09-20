@@ -69,7 +69,7 @@
 
         <!-- Brand Name -->
         <div class="font-heading font-extrabold text-2xl tracking-tight text-white mb-2">
-            <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
+            <img src="{{ asset('home-assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
         </div>
         <p class="text-xs text-gray-400 font-mono uppercase tracking-widest mb-6 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
@@ -181,7 +181,7 @@
                 <!-- Brand Summary -->
                 <div class="col-span-2 space-y-4">
                     <a href="{{ route('home') }}" class="flex items-center gap-2.5">
-                        <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
+                        <img src="{{ asset('home-assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
                     </a>
                     <p class="text-gray-400 text-sm leading-relaxed">
                     {{ config('app.name') }} is the digital freight operating system connecting global shippers with verified carriers and logistics providers. Fast, transparent, and sustainable supply chains powered by AI.

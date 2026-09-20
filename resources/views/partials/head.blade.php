@@ -3,7 +3,7 @@
 
 <title>{{ config('app.name') .' | '. $title ?? config('app.name') }}</title>
 
-<link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/svg+xml">
+<link rel="icon" href="{{ asset('home-assets/img/favicon.png') }}" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{{ asset('home-assets/img/favicon.png') }}">
 
 <link rel="preconnect" href="https://fonts.bunny.net">

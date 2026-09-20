@@ -581,7 +581,7 @@
         <div class="space-y-4">
           <div class="flex items-center gap-4">
             <div class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-brand-blue/20 flex-shrink-0 bg-brand-blue/5">
-              <img src="{{ asset('assets/img/team/team-1.png') }}"
+              <img src="{{ asset('home-assets/img/team/team-1.png') }}"
                    onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'"
                    alt="Omeh Ifeanyi"
                    class="w-full h-full object-cover">
@@ -615,7 +615,7 @@
         <div class="space-y-4">
           <div class="flex items-center gap-4">
             <div class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-emerald-500/20 flex-shrink-0 bg-emerald-50">
-              <img src="{{ asset('assets/img/team/team-3.jpg') }}"
+              <img src="{{ asset('home-assets/img/team/team-3.jpg') }}"
                    onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80'"
                    alt="Mama Godfrey"
                    class="w-full h-full object-cover">
