@@ -1,196 +1,339 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ config('app.name') }} | @yield('title')</title>
+        <meta name="description" content="decentralized freight forwarding and logistics platform connecting global shippers with verified carriers and providers.">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>{{ config('app.name') }} | @yield('title')</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+          <!-- Favicons -->
+        <link href="{{ asset('home-assets/img/favicon.png') }}" rel="icon">
+        {{-- <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon"> --}}
 
-  <!-- Favicons -->
-  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+            theme: {
+                extend: {
+                colors: {
+                    brand: {
+                    blue: '#0226F4',
+                    'blue-hover': '#001ECC',
+                    'blue-light': '#EEF2FF',
+                    dark: '#0e1d34',
+                    'dark-soft': '#142744',
+                    'dark-surface': '#0a1526',
+                    sand: '#F6F4F0',
+                    'sand-light': '#FAF9F6',
+                    'sand-border': '#E8E5DD',
+                    green: '#00D084',
+                    'green-light': '#E6FBF3',
+                    cyan: '#0693E3',
+                    amber: '#FCB900',
+                    }
+                },
+                fontFamily: {
+                    sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    heading: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
+                    mono: ['"JetBrains Mono"', 'monospace'],
+                }
+                }
+            }
+            }
+        </script>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!-- Lucide Icons -->
+        <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Vendor CSS Files -->
-  <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+        <!-- Custom Main CSS -->
+        <link rel="stylesheet" href="{{ asset('home-assets/css/main.css') }}">
+    </head>
+    <body class="min-h-screen flex flex-col bg-white text-brand-dark antialiased">
 
-  <!-- Main CSS File -->
-  <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Logis
-  * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-  <!-- Smartsupp Live Chat script -->
-<script type="text/javascript">
-var _smartsupp = _smartsupp || {};
-_smartsupp.key = '4bd5bda4330bf14c7358b9c2923fd361fe9b07fe';
-window.smartsupp||(function(d) {
-  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-  c.type='text/javascript';c.charset='utf-8';c.async=true;
-  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-})(document);
-</script>
-<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
-
-</head>
-
-<body class="index-page">
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
-        {{-- <h1 class="sitename">{{ config('app.name') }}</h1> --}}
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="{{ route('home') }}" class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home<br></a></li>
-          <li><a href="{{ route('about') }}" class="{{ Route::currentRouteName() == 'about' ? 'active' : '' }}">About</a></li>
-          <li><a href="{{ route('stakeholders') }}" class="{{ Route::currentRouteName() == 'stakeholders' ? 'active' : '' }}">Our Stakeholders</a></li>
-          <li class="dropdown">
-            <a href="#" class="{{ Route::currentRouteName() == 'bulletin' ? 'active' : '' }}"><span>Our Bulletin</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="{{ route('bulletin', ['loc' => 'ads']) }}">Ads</a></li>
-              <li><a href="{{ route('bulletin', ['loc' => 'blog']) }}">Blog</a></li>
-            </ul>
-          </li>
-          <li><a href="{{ route('contact') }}" class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact Us</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-      @auth
-        <a class="btn-getstarted" href="{{ route(auth()->user()->dashboard()) }}">Dashboard</a>
-      @else
-        <a class="btn-getstarted" href="{{ route('register') }}">Sign Up</a>
-        <a class="ct-btn" href="{{ route('login') }}">Sign In</a>
-      @endauth
-    </div>
-  </header>
-
-  @yield('content')
-
-  <footer id="footer" class="footer dark-background">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">
-                <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
-            </span>
-          </a>
-          <p>We have a vision to become the world’s most trusted digital gateway for international trade, where logistics, finance, compliance, and sustainability converge — simply and seamlessly.</p>
-          <div class="social-links d-flex mt-4">
-            <a href="https://tiktok.com/@omefreight" target="_blank"><i class="bi bi-tiktok"></i></a>
-            <a href="https://facebook.com/share/1Aue653uWW" target="_blank" noreferrer><i class="bi bi-facebook"></i></a>
-            <a href="https://instagram.com/ome.freight" target="_blank" noreferrer><i class="bi bi-instagram"></i></a>
-            <a href="https://linkedin.com/company/omefreight" target="_blank"><i class="bi bi-linkedin" noreferrer></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="{{ route('home') }}">Home</a></li>
-            <li><a href="{{ route('about') }}">About us</a></li>
-            <li><a href="{{ route('stakeholders') }}">Our Stakeholders</a></li>
-            <li><a href="{{ route('bulletin', ['loc' => 'ads']) }}">Ads</a></li>
-            <li><a href="{{ route('bulletin', ['loc' => 'blog']) }}">Blog</a></li>
-            <li><a href="{{ route('terms') }}">Terms of service</a></li>
-            <li><a href="{{ route('privacy') }}">Privacy policy</a></li>
-            <li><a href="{{ route('advert-policy') }}">Advertising & Blog policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="{{ route('service', ['service' => 'book-freight']) }}">Quote & Book Freight</a></li>
-            <li><a href="{{ route('service', ['service' => 'track-shipment']) }}">Track Shipment</a></li>
-            <li><a href="{{ route('service', ['service' => 'trade-finance']) }}">Trade Finance</a></li>
-            {{-- <li><a href="{{ route('service', ['service' => 'access-insurance']) }}">Access Insurance</a></li> --}}
-            <li><a href="{{ route('service', ['service' => 'resolve-disputes']) }}">Resolve Disputes & Claims</a></li>
-            <li><a href="{{ route('service', ['service' => 'offset-carbon-emission']) }}">Offset CO₂ Emissions</a></li>
-            <li><a href="{{ route('service', ['service' => 'community-feed']) }}">Community Feed</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
-          <div class="mb-4">
-              <p>17th Floor Elephant House, 214 Broad Street, Marina,</p>
-              <p>Lagos, Nigeria.</p>
-          </div>
-          <div class="mb-4">
-              <p>Zone C New Market Express,</p>
-              <p>Enugu, Nigeria.</p>
-          </div>
-          {{-- <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p> --}}
-          <p><strong>Email:</strong> <span>{{ config('app.email') }}</span></p>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-        <div class="row">
-            <div class="col-md-6 mb-3 md-mb-0">
-                <p>
-                    <small>Omefreight Logistics Ltd (Omehub) is duly registered and certified by the Nigeria Data Protection Commission (NDPC) as a Data Controller of Major Importance (Ultra-High Level). REGISTRATION ID: NDPC/DCP/09043
-                    </small>
-                </p>
-            </div>
-            <div class="col-md-6">
-                <p>
-                  &copy; {{ date('Y') }} <strong>{{ config('app.name') }}</strong>. All rights reserved.
-                  <span>Powered by
-                      <a href="https://omefreight.com" target="_blank" class="text-decoration-none fw-semibold">
-                          OmeFreight
-                      </a>
-                  </span>
-                </p>
+    <!-- Global Page Preloader -->
+    <div id="sitePreloader" class="site-preloader fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-brand-dark-surface text-white transition-all duration-500 ease-out">
+        <div class="relative flex flex-col items-center">
+        <!-- Animated Logo Icon -->
+        <div class="relative w-20 h-20 mb-6 flex items-center justify-center">
+            <!-- Glowing Pulse Rings -->
+            <div class="absolute inset-0 rounded-2xl bg-brand-blue/30 animate-ping opacity-50"></div>
+            <div class="absolute -inset-2 rounded-3xl border border-brand-blue/40 animate-pulse"></div>
+            <div class="relative w-16 h-16 rounded-2xl bg-brand-blue shadow-xl shadow-brand-blue/50 flex items-center justify-center transform hover:scale-105 transition-transform">
+                <svg class="w-9 h-9 animate-bounce-subtle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 17L9 5L15 17L21 9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 17L15 17" stroke="#00D084" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
             </div>
         </div>
+
+        <!-- Brand Name -->
+        <div class="font-heading font-extrabold text-2xl tracking-tight text-white mb-2">
+            <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
+        </div>
+        <p class="text-xs text-gray-400 font-mono uppercase tracking-widest mb-6 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+            Digital Freight Operating System
+        </p>
+
+        <!-- Sleek Progress Bar -->
+        <div class="w-48 h-1 bg-white/10 rounded-full overflow-hidden relative">
+            <div class="preloader-progress-bar h-full bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-green rounded-full"></div>
+        </div>
+        </div>
     </div>
+    <script>
+        (function() {
+        function dismissSitePreloader() {
+            var pl = document.getElementById('sitePreloader');
+            if (pl) {
+            pl.classList.add('loaded');
+            pl.style.opacity = '0';
+            pl.style.pointerEvents = 'none';
+            setTimeout(function() {
+                if (pl && pl.parentNode) pl.parentNode.removeChild(pl);
+            }, 400);
+            }
+        }
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            setTimeout(dismissSitePreloader, 100);
+        } else {
+            window.addEventListener('load', dismissSitePreloader);
+            document.addEventListener('DOMContentLoaded', dismissSitePreloader);
+            setTimeout(dismissSitePreloader, 600);
+        }
+        })();
+    </script>
+    @include('public.includes.navbar')
 
-  </footer>
+    @yield('content')
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Global Enterprise CTA Banner -->
+    <section class="py-20 bg-brand-dark text-white relative overflow-hidden">
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+        <!-- Background Ambient Glows & Cubes -->
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-blue/30 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-brand-green/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute inset-0 bg-grid-pattern-dark opacity-40 pointer-events-none"></div>
 
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-  <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-  <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-  <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-  <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
-  <!-- Main JS File -->
-  <script src="{{ asset('assets/js/main.js') }}"></script>
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-green border border-white/10 text-xs font-bold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-brand-green animate-ping"></span>
+                    Ready to scale your supply chain?
+                    </div>
 
+                    <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
+                    Ship smarter, faster, and with <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue-light via-white to-brand-green">100% visibility</span>.
+                    </h2>
+
+                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                    Join over 3,400+ forward-thinking global brands and logistics providers who trust {{ config('app.name') }} to automate freight procurement, eliminate customs delays, and track cargo worldwide.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="{{ route('public.quote') }}" class="btn-primary text-sm sm:text-base py-3 px-6 shadow-lg shadow-brand-blue/40">
+                        <span>Get an Instant Quote</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="{{ route('public.contact') }}" class="btn-outlined-white text-sm sm:text-base py-3 px-6">
+                        <span>Talk with a Logistics Specialist</span>
+                    </a>
+                    </div>
+                </div>
+
+                <!-- Quick Trust Metric Badges -->
+                <div class="lg:col-span-4 grid grid-cols-2 gap-4">
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div class="text-2xl sm:text-3xl font-heading font-extrabold text-white">99.4%</div>
+                    <div class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-wider">On-Time Arrival Rate</div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-green">15 Sec</div>
+                    <div class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-wider">Instant Quote Time</div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div class="text-2xl sm:text-3xl font-heading font-extrabold text-white">120+</div>
+                    <div class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-wider">Global Ports & Hubs</div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div class="text-2xl sm:text-3xl font-heading font-extrabold text-brand-cyan">$0</div>
+                    <div class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-wider">Zero Hidden Surcharges</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Footer -->
+    <footer class="bg-brand-dark-surface text-gray-400 text-sm border-t border-white/10 pt-16 pb-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Middle Row: Multi-Column Links -->
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-8 py-12 border-b border-white/10 text-xs sm:text-sm">
+
+                <!-- Brand Summary -->
+                <div class="col-span-2 space-y-4">
+                    <a href="{{ route('home') }}" class="flex items-center gap-2.5">
+                        <img src="{{ asset('assets/img/logo-horizontal.png') }}" alt="logo" class="img-fluid" width="150">
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                    {{ config('app.name') }} is the digital freight operating system connecting global shippers with verified carriers and logistics providers. Fast, transparent, and sustainable supply chains powered by AI.
+                    </p>
+                    <div class="flex items-center space-x-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-brand-blue hover:text-white flex items-center justify-center text-gray-400 transition-all" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.601 0 4.263 2.37 4.263 5.455v6.288zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.994 20.452H3.675V9h3.319v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-brand-blue hover:text-white flex items-center justify-center text-gray-400 transition-all" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.794.143v3.24h-1.918c-1.505 0-1.797.716-1.797 1.767v2.317h3.59l-.467 3.622h-3.123V24h6.116C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.675 0z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-brand-blue hover:text-white flex items-center justify-center text-gray-400 transition-all" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.35 3.608 1.325.975.975 1.263 2.242 1.325 3.608.058 1.266.07 1.646.07 4.834s-.012 3.568-.07 4.834c-.062 1.366-.35 2.633-1.325 3.608-.975.975-2.242 1.263-3.608 1.325-1.266.058-1.646.07-4.834.07s-3.568-.012-4.834-.07c-1.366-.062-2.633-.35-3.608-1.325-.975-.975-1.263-2.242-1.325-3.608C2.175 15.568 2.163 15.188 2.163 12s.012-3.568.07-4.834c.062-1.366.35-2.633 1.325-3.608.975-.975 2.242-1.263 3.608-1.325C8.432 2.175 8.812 2.163 12 2.163zm0 1.837c-3.17 0-3.548.012-4.795.07-1.042.048-1.61.218-1.985.364-.5.194-.86.426-1.237.803-.377.377-.609.737-.803 1.237-.146.375-.316.943-.364 1.985-.058 1.247-.07 1.625-.07 4.795s.012 3.548.07 4.795c.048 1.042.218 1.61.364 1.985.194.5.426.86.803 1.237.377.377.737.609 1.237.803.375.146.943.316 1.985.364 1.247.058 1.625.07 4.795.07s3.548-.012 4.795-.07c1.042-.048 1.61-.218 1.985-.364.5-.194.86-.426 1.237-.803.377-.377.609-.737.803-1.237.146-.375.316-.943.364-1.985.058-1.247.07-1.625.07-4.795s-.012-3.548-.07-4.795c-.048-1.042-.218-1.61-.364-1.985-.194-.5-.426-.86-.803-1.237-.377-.377-.737-.609-1.237-.803-.375-.146-.943-.316-1.985-.364-1.247-.058-1.625-.07-4.795-.07zm0 3.838a5.162 5.162 0 1 0 0 10.324 5.162 5.162 0 0 0 0-10.324zm0 8.525a3.363 3.363 0 1 1 0-6.726 3.363 3.363 0 0 1 0 6.726zm4.833-9.87a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-brand-blue hover:text-white flex items-center justify-center text-gray-400 transition-all" aria-label="Tiktok">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path d="M12 2c1.1 0 2 .9 2 2v12.5a3.5 3.5 0 1 1-3.5-3.5c.17 0 .34.02.5.05V9.5c-.16-.03-.33-.05-.5-.05a7.5 7.5 0 1 0 7.5 7.5V8.5c.63.48 1.39.82 2.22.95V6.5c-.79-.23-1.5-.68-2.03-1.3-.54-.62-.89-1.39-.97-2.2H14c0-1.1-.9-2-2-2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Column 1: Platform -->
+                <div>
+                    <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Services</h5>
+                        <ul class="space-y-2.5">
+                        <li><a href="{{ route('public.platform') }}#quote-and-book-freight" class="hover:text-white transition-colors">Quote & Book Freight</a></li>
+                        <li><a href="{{ route('public.platform') }}#track-shipment" class="hover:text-white transition-colors">Track Shipment</a></li>
+                        <li><a href="{{ route('public.platform') }}#trade-finance" class="hover:text-white transition-colors">Trade Finance</a></li>
+                        <li><a href="{{ route('public.platform') }}#resolve-disputes" class="hover:text-white transition-colors">Resolve Disputes & Claims</a></li>
+                        <li><a href="{{ route('public.platform') }}#offset" class="hover:text-white transition-colors">Carbon Offset</a></li>
+                        <li><a href="{{ route('public.platform') }}#community" class="hover:text-white transition-colors">Community Feed</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Resources -->
+                <div>
+                    <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Resources & Tools</h5>
+                    <ul class="space-y-2.5">
+                        <li>
+                            <a href="{{ route('public.blogs') }}" class="hover:text-white transition-colors flex items-center gap-1.5 font-medium text-emerald-400">
+                                <span>Blogs &amp; Adverts</span>
+                                <span class="text-[9px] bg-emerald-500/20 text-emerald-400 font-bold px-1.5 py-0.2 rounded">Feed</span>
+                            </a>
+                        </li>
+                        <li><a href="{{ route('public.quote') }}" class="hover:text-white transition-colors">Quote Calculator</a></li>
+                        <li><a href="{{ route('public.tracking') }}" class="hover:text-white transition-colors">Shipment Tracker</a></li>
+                        <li><a href="{{ route('public.about') }}#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="{{ route('public.for-shippers') }}" class="hover:text-white transition-colors">For Shippers</a></li>
+                        <li><a href="{{ route('public.for-carriers') }}" class="hover:text-white transition-colors">For Logistic Providers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Company -->
+                <div>
+                    <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Company</h5>
+                    <ul class="space-y-2.5">
+                        <li><a href="{{ route('public.about') }}" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="{{ route('public.about') }}#leadership" class="hover:text-white transition-colors">Leadership</a></li>
+                        <li><a href="{{ route('public.contact') }}#locations" class="hover:text-white transition-colors">Global Hubs</a></li>
+                        <li><a href="{{ route('public.contact') }}" class="hover:text-white transition-colors">Contact Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Address & Contact -->
+                <div>
+                    <h5 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Contact & Address</h5>
+                    <ul class="space-y-3 text-xs">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-white shrink-0 mt-0.5"></i>
+                            <span class="text-gray-400 leading-relaxed">
+                                17th Floor Elephant House,<br>
+                                214 Broad Street, Marina,<br>
+                                Lagos, Nigeria
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-white shrink-0 mt-0.5"></i>
+                            <span class="text-gray-400 leading-relaxed">
+                                Zone C New Market Express,<br>
+                                Enugu, Nigeria
+                            </span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-white shrink-0"></i>
+                            <a href="mailto:info@ome-hub.com" class="text-gray-400 hover:text-white transition-colors">info@ome-hub.com</a>
+                        </li>
+                        <li class="pt-1">
+                            <a href="{{ route('public.contact') }}" class="inline-flex items-center gap-1 text-xs font-bold text-brand-white hover:text-white transition-colors">
+                                <span>Get in Touch</span>
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Row: Copyright & Legal -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 text-xs text-gray-500 border-t border-white/5">
+                <div class="text-center md:text-left space-y-1">
+                    <div>&copy; {{ date('Y') }} <strong>{{ config('app.name') }}</strong> &bull; Powered by OmeFreight. All rights
+                    reserved.</div>
+                    <div class="text-[11px] text-gray-400">Omefreight Logistics Ltd ({{ config('app.name') }}) is certified by the Nigeria
+                    Data Protection Commission (NDPC) as a Data Controller of Major Importance (Ultra-High Level) &bull;
+                    REG ID: NDPC/DCP/09043</div>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-6">
+                    <a href="{{ route('public.privacy') }}" class="hover:text-gray-400 transition-colors">Privacy Policy</a>
+                    <a href="{{ route('public.terms') }}" class="hover:text-gray-400 transition-colors">Terms of Service</a>
+                    <a href="{{ route('public.advertising') }}" class="hover:text-gray-400 transition-colors">Advertising & Blog Policy</a>
+                    <button type="button" onclick="openCookiePreferencesModal()"
+                        class="hover:text-white transition-colors text-xs text-gray-400 underline inline-flex items-center gap-1">
+                        <i data-lucide="cookie" class="w-3.5 h-3.5 text-brand-green"></i>
+                        <span>Cookie Settings</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Global Cookie Consent Alert & Preferences Modal -->
+    @include('public.includes.cookie-banner')
+
+    <!-- Floating Scroll-To-Top Button -->
+    <button id="scrollToTopBtn" type="button" aria-label="Scroll to top" class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-brand-blue text-white shadow-xl shadow-brand-blue/35 flex items-center justify-center transition-all duration-300 opacity-0 invisible translate-y-4 hover:scale-110 hover:bg-brand-blue-hover focus:outline-none focus:ring-4 focus:ring-brand-blue/30 group">
+    <!-- Progress Ring Indicator -->
+    <svg class="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="21" class="stroke-white/20" stroke-width="2.5" fill="none"></circle>
+        <circle id="scrollProgressRing" cx="24" cy="24" r="21" class="stroke-brand-green transition-all duration-75" stroke-width="2.5" stroke-linecap="round" fill="none" stroke-dasharray="131.95" stroke-dashoffset="131.95"></circle>
+    </svg>
+    <i data-lucide="arrow-up" class="w-5 h-5 relative z-10 transition-transform group-hover:-translate-y-0.5"></i>
+    <!-- Tooltip -->
+    <span class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-brand-dark text-white text-xs font-semibold whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg">
+        Back to top
+    </span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="{{ asset('home-assets/js/main.js') }}"></script>
+    <script src="{{ asset('home-assets/js/quote-calculator.js') }}"></script>
+    <script>
+    // Initialize Lucide vector icons
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    </script>
 </body>
-
 </html>

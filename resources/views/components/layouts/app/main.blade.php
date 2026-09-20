@@ -8,7 +8,7 @@
         <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 
         <link rel="preconnect" href="https://fonts.gstatic.com/">
-        <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}" />
+        <link rel="shortcut icon" href="{{ asset('home-assets/img/favicon.png') }}" />
 
         <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
@@ -126,10 +126,10 @@
                             <div class="col-6 text-end">
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
-                                        <a class="text-muted" href="{{ route('privacy') }}" target="_blank">Privacy</a>
+                                        <a class="text-muted" href="{{ route('public.privacy') }}" target="_blank">Privacy</a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <a class="text-muted" href="{{ route('terms') }}" target="_blank">Terms</a>
+                                        <a class="text-muted" href="{{ route('public.terms') }}" target="_blank">Terms</a>
                                     </li>
                                 </ul>
                             </div>

@@ -51,66 +51,66 @@ Route::post('/contact', [PublicController::class, 'contactUs'])->name('contact-u
 // Route::get('/advert-and-blog-policy', [PublicController::class, 'advertPolicy'])->name('advert-policy');
 
 Route::get('/', function () {
-    return view('test.index');
-})->name('public.index');
+    return view('public.index');
+})->name('home');
 
 Route::get('/about', function () {
-    return view('test.about');
+    return view('public.about');
 })->name('public.about');
 
 Route::get('/for-carriers', function () {
-    return view('test.for-carriers');
+    return view('public.for-carriers');
 })->name('public.for-carriers');
 
 Route::get('/for-shippers', function () {
-    return view('test.for-shippers');
+    return view('public.for-shippers');
 })->name('public.for-shippers');
 
 Route::get('/contact', function () {
-    return view('test.contact');
+    return view('public.contact');
 })->name('public.contact');
 
 Route::get('/platform', function () {
-    return view('test.platform');
+    return view('public.platform');
 })->name('public.platform');
 
 Route::get('/solutions', function () {
-    return view('test.solutions');
+    return view('public.solutions');
 })->name('public.solutions');
 
 Route::get('/quotes', function () {
-    return view('test.quote');
+    return view('public.quote');
 })->name('public.quote');
 
 Route::get('/tracking', function (Request $request) {
     $code = $request->query('track');
     $shipment = $code ? Shipment::where('tracking_number', $code)->first() : null;;
-    return view('test.tracking', compact('code', 'shipment'));
+    return view('public.tracking', compact('code', 'shipment'));
 })->name('public.tracking');
 
 Route::get('/blogs', function () {
     $posts = App\Models\Post::latest()->paginate(9);
     $ads   = App\Models\Ad::where('status', 'approved')->latest()->get();
-    return view('test.blogs', compact('posts', 'ads'));
+    return view('public.blogs', compact('posts', 'ads'));
 })->name('public.blogs');
 
 Route::get('/blog/{slug}', function ($slug) {
     $post  = App\Models\Post::where('slug', $slug)->firstOrFail();
     $posts = App\Models\Post::whereNot('id', $post->id)->latest()->limit(3)->get();
     $ads   = App\Models\Ad::where('status', 'approved')->latest()->get();
-    return view('test.blog', compact('post', 'posts', 'ads'));
+    return view('public.blog', compact('post', 'posts', 'ads'));
 })->name('public.blog');
 
 Route::get('/terms', function () {
-    return view('test.terms');
+    return view('public.terms');
 })->name('public.terms');
 
 Route::get('/privacy', function () {
-    return view('test.privacy');
+    return view('public.privacy');
 })->name('public.privacy');
 
 Route::get('/advertising', function () {
-    return view('test.advert-policy');
+    return view('public.advert-policy');
 })->name('public.advertising');
 
 Route::middleware(['auth', 'verified'])->group(function () {

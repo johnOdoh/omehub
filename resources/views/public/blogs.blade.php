@@ -1,4 +1,4 @@
-@extends('public.layout.public')
+@extends('public.layout.main')
 
 @section('title', 'Blogs & Adverts Directory')
 @section('content')
@@ -25,7 +25,7 @@
 <div class="bg-sand-light border-b border-sand-border py-4">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
     <nav class="flex items-center gap-2 text-gray-500" aria-label="Breadcrumb">
-      <a href="{{ route('public.index') }}" class="hover:text-brand-blue transition-colors flex items-center gap-1">
+      <a href="{{ route('home') }}" class="hover:text-brand-blue transition-colors flex items-center gap-1">
         <i data-lucide="home" class="w-3.5 h-3.5"></i> Home
       </a>
       <span>/</span>

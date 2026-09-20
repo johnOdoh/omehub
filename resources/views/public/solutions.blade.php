@@ -1,4 +1,4 @@
-@extends('public.layout.public')
+@extends('public.layout.main')
 
 @section('title', 'Logistics & Transport Solutions')
 @section('content')

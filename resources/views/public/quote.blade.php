@@ -1,4 +1,4 @@
-@extends('public.layout.public')
+@extends('public.layout.main')
 
 @section('title', 'Instant Freight Quote Calculation | '. config('app.name') .' Global Trade Platform')
 @section('content')

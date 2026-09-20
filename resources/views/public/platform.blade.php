@@ -1,4 +1,4 @@
-@extends('public.layout.public')
+@extends('public.layout.main')
 
 @section('title', 'Platform | '. config('app.name') .' Digital Freight Platform')
 @section('content')

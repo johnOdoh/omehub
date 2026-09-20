@@ -1,4 +1,4 @@
-@extends('public.layout.public')
+@extends('public.layout.main')
 
 @section('title', 'For Logistics Providers | '. config('app.name') .' Global Trade Platform')
 @section('content')

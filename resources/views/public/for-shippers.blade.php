@@ -1,4 +1,4 @@
-@extends('public.layout.public')
+@extends('public.layout.main')
 
 @section('title', 'For Shippers | '. config('app.name') .' Global Trade Platform')
 @section('content')
@@ -49,7 +49,7 @@
           <div class="absolute -inset-1 bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-green rounded-3xl blur opacity-25"></div>
 
           <!-- Widget Include -->
-          @include('test.includes.quote-widget')
+          @include('public.includes.quote-widget')
 
         </div>
 
