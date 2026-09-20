@@ -23,17 +23,14 @@
 
     <!-- Notification Messages -->
     @if (session('success'))
+        <span x-show="notify('{{ session('success') }}')"></span>
         <div class="alert alert-success alert-dismissible shadow-sm fade show" role="alert">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center p-3">
                 <i class="align-middle me-2" data-feather="check-circle"></i>
                 <div>{{ session('success') }}</div>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <span x-show="notify('{{ session('success') }}')"></span>
-    @endif
-    @if (session('deleted'))
-        <span x-show="notify('{{ session('deleted') }}')"></span>
     @endif
 
     <!-- Stat Summary Cards -->
@@ -44,7 +41,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <span class="text-muted text-uppercase fw-semibold small">Approved</span>
-                            <h2 class="my-2 fw-bold text-dark">{{ $posts->where('status', 'approved')->count() }}</h2>
+                            <h2 class="my-2 fw-bold text-dark">{{ $this->posts->where('status', 'approved')->count() }}</h2>
                             <small class="text-success d-inline-flex align-items-center">
                                 <i class="align-middle me-1" data-feather="check"></i> Live on platform
                             </small>
@@ -62,7 +59,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <span class="text-muted text-uppercase fw-semibold small">Pending Review</span>
-                            <h2 class="my-2 fw-bold text-dark">{{ $posts->where('status', 'pending')->count() }}</h2>
+                            <h2 class="my-2 fw-bold text-dark">{{ $this->posts->where('status', 'pending')->count() }}</h2>
                             <small class="text-warning d-inline-flex align-items-center">
                                 <i class="align-middle me-1" data-feather="clock"></i> Under review
                             </small>
@@ -80,7 +77,7 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <span class="text-muted text-uppercase fw-semibold small">Declined</span>
-                            <h2 class="my-2 fw-bold text-dark">{{ $posts->where('status', 'declined')->count() }}</h2>
+                            <h2 class="my-2 fw-bold text-dark">{{ $this->posts->where('status', 'declined')->count() }}</h2>
                             <small class="text-danger d-inline-flex align-items-center">
                                 <i class="align-middle me-1" data-feather="alert-circle"></i> Needs changes
                             </small>
@@ -99,9 +96,9 @@
         <div class="card-header bg-transparent py-3 border-bottom d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <h5 class="card-title mb-0 fw-bold">All {{ $loc == 'ad' ? 'Advertisements' : 'Articles' }}</h5>
-                <span class="badge bg-secondary-subtle text-secondary rounded-pill ms-2 px-2 py-1 small">{{ $posts->count() }} Total</span>
+                <span class="badge bg-secondary-subtle text-secondary rounded-pill ms-2 px-2 py-1 small">{{ $this->posts->count() }} Total</span>
             </div>
-            @if ($posts->isNotEmpty())
+            @if ($this->posts->isNotEmpty())
                 <div class="text-muted small">
                     Showing latest entries
                 </div>
@@ -109,7 +106,7 @@
         </div>
 
         <div class="card-body p-0">
-            @if ($posts->isEmpty())
+            @if ($this->posts->isEmpty())
                 <div class="text-center py-5 px-3">
                     <div class="mb-3 text-muted">
                         <div class="stat d-inline-block rounded-circle bg-light p-3">
@@ -139,7 +136,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($posts as $post)
+                                @foreach ($this->posts as $post)
                                     <tr>
                                         <td class="text-center text-muted fw-semibold">{{ $loop->iteration }}</td>
                                         <td>
@@ -252,7 +249,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($posts as $post)
+                                @foreach ($this->posts as $post)
                                     <tr>
                                         <td class="text-center text-muted fw-semibold">{{ $loop->iteration }}</td>
                                         <td>

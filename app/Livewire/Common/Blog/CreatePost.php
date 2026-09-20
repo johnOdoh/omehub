@@ -20,13 +20,13 @@ class CreatePost extends Component
     #[Url]
     public string $loc = 'blog';
     #[Url(as: 'p')]
-    public string $paid;
-    public string $body = '';
-    public string $title;
-    public string $category;
-    public string $tags;
-    public string $cta;
-    public string $url;
+    public ?string $paid;
+    public ?string $body = '';
+    public ?string $title;
+    public ?string $category;
+    public ?string $tags;
+    public ?string $cta;
+    public ?string $url;
     public $file;
     public bool $edit = false;
 

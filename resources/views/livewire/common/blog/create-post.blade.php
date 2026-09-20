@@ -57,7 +57,7 @@
                     <strong class="d-block mb-1">Editorial Guidelines & Review Notice</strong>
                     <div class="small">
                         All submissions are subject to review by the OmeHub compliance and editorial team. Please ensure content complies with our
-                        <a href="{{ route('terms') }}" target="_blank" class="alert-link text-decoration-underline">Terms & Conditions</a> and professional posting standards.
+                        <a href="{{ route('public.terms') }}" target="_blank" class="alert-link text-decoration-underline">Terms & Conditions</a> and professional posting standards.
                     </div>
                 </div>
             </div>
