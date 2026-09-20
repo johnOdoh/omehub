@@ -163,7 +163,7 @@
                                                 </div>
                                                 <!-- Title & Category -->
                                                 <div class="overflow-hidden">
-                                                    <a href="{{ route('user.bulletin.post', $post->id) }}" class="fw-semibold text-dark text-decoration-none d-block text-truncate mb-1" style="max-width: 380px;" title="{{ $post->title }}" wire:navigate>
+                                                    <a href="{{ route('user.bulletin.post', ['post' => $post->id, 'loc' => $loc]) }}" class="fw-semibold text-dark text-decoration-none d-block text-truncate mb-1" style="max-width: 380px;" title="{{ $post->title }}" wire:navigate>
                                                         {{ $post->title }}
                                                     </a>
                                                     <div class="d-flex align-items-center gap-1">
@@ -209,7 +209,7 @@
                                         <td class="text-end pe-4">
                                             <div class="d-inline-flex align-items-center gap-1">
                                                 <!-- View Button -->
-                                                <a href="{{ route('user.bulletin.post', ['post' => $post->id, 'loc' => 'ad']) }}"
+                                                <a href="{{ route('user.bulletin.post', ['post' => $post->id, 'loc' => $loc]) }}"
                                                 class="btn btn-sm btn-outline-primary"
                                                 title="View Post"
                                                 wire:navigate>
@@ -217,7 +217,7 @@
                                                     <span class="d-none d-md-inline ms-1">View</span>
                                                 </a>
                                                 <!-- Edit Button -->
-                                                <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => 'blog']) }}"
+                                                <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => $loc]) }}"
                                                 class="btn btn-sm btn-outline-secondary"
                                                 title="Edit Post"
                                                 wire:navigate>
@@ -266,7 +266,7 @@
                                                 </div>
                                                 <!-- Title & Category -->
                                                 <div class="overflow-hidden">
-                                                    <a href="{{ route('user.bulletin.post', $post->id) }}" class="fw-semibold text-dark text-decoration-none d-block text-truncate mb-1" style="max-width: 380px;" title="{{ $post->title }}" wire:navigate>
+                                                    <a href="{{ route('user.bulletin.post', ['post' => $post->id, 'loc' => $loc]) }}" class="fw-semibold text-dark text-decoration-none d-block text-truncate mb-1" style="max-width: 380px;" title="{{ $post->title }}" wire:navigate>
                                                         {{ $post->title }}
                                                     </a>
                                                     <div class="d-flex align-items-center gap-1">
@@ -302,7 +302,7 @@
                                         <td class="text-end pe-4">
                                             <div class="d-inline-flex align-items-center gap-1">
                                                 <!-- View Button -->
-                                                <a href="{{ route('user.bulletin.post', ['post' => $post->id, 'loc' => 'ad']) }}"
+                                                <a href="{{ route('user.bulletin.post', ['post' => $post->id, 'loc' => $loc]) }}"
                                                 class="btn btn-sm btn-outline-primary"
                                                 title="View Ad"
                                                 wire:navigate>
@@ -310,7 +310,7 @@
                                                     <span class="d-none d-md-inline ms-1">View</span>
                                                 </a>
                                                 <!-- Edit Button -->
-                                                <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => 'ad']) }}"
+                                                <a href="{{ route('user.bulletin.edit', ['post' => $post->id, 'loc' => $loc]) }}"
                                                 class="btn btn-sm btn-outline-secondary"
                                                 title="Edit Ad"
                                                 wire:navigate>

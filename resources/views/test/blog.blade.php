@@ -1,6 +1,6 @@
 @extends('public.layout.public')
 
-@section('title', 'Advertising & Blog Policy')
+@section('title', $post->title)
 @section('content')
 
 <style>
@@ -43,13 +43,13 @@
         Blogs &amp; Adverts
       </a>
       <span>/</span>
-      <span id="breadcrumbCurrentArticle" class="text-brand-blue font-bold truncate max-w-xs sm:max-w-md">Article Details</span>
+      <span id="breadcrumbCurrentArticle" class="text-brand-blue font-bold truncate max-w-xs sm:max-w-md">{{ $post->title }}</span>
     </nav>
     <div class="flex items-center gap-3">
-      <button type="button" onclick="openAdModal()" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:text-brand-blue-hover bg-brand-blue/10 hover:bg-brand-blue/15 px-3 py-1.5 rounded-full transition-all">
+      <a href="{{ route('user.bulletin.create', ['loc' => 'ad']) }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-blue hover:text-brand-blue-hover bg-brand-blue/10 hover:bg-brand-blue/15 px-3 py-1.5 rounded-full transition-all">
         <i data-lucide="megaphone" class="w-3.5 h-3.5"></i>
         <span>Place an Advert</span>
-      </button>
+      </a>
       <div class="h-4 w-px bg-gray-200 hidden sm:block"></div>
       <span class="text-gray-400 hidden sm:inline-flex items-center gap-1">
         <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
@@ -59,201 +59,7 @@
   </div>
 </div>
 
-<!-- ========================================================================= -->
-<!-- 1. SLIDING MARQUEE CAROUSEL (SPONSORED ADVERTS & PARTNER PROMOTIONS)     -->
-<!-- ========================================================================= -->
-<section class="bg-brand-dark text-white py-4 border-b border-white/10 overflow-hidden relative select-none">
-  <!-- Left/Right Fading Gradients for Smooth Carousel Effect -->
-  <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-brand-dark to-transparent z-10 pointer-events-none"></div>
-  <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-brand-dark to-transparent z-10 pointer-events-none"></div>
-
-  <div class="max-w-7xl mx-auto px-4 mb-2.5 flex items-center justify-between">
-    <div class="flex items-center gap-2">
-      <span class="bg-brand-green/20 text-brand-green text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full flex items-center gap-1">
-        <span class="w-1.5 h-1.5 rounded-full bg-brand-green animate-ping"></span> Sponsored Ticker
-      </span>
-      <span class="text-xs text-gray-300 font-medium hidden sm:inline">Featured Carrier &amp; Logistics Service Adverts (Hover to Pause)</span>
-    </div>
-    <div class="text-[11px] text-gray-400 font-mono">
-      <span class="text-brand-green font-bold">50k+</span> Shippers Reached
-    </div>
-  </div>
-
-  <!-- Infinite Marquee Track (Duplicated set of cards for continuous seamless looping) -->
-  <div class="marquee-track flex items-center gap-4 py-1">
-
-    <!-- Advert Card 1 -->
-    <div onclick="openPromoModal('atlantic')" class="bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-brand-blue text-white flex items-center justify-center shrink-0">
-        <i data-lucide="ship" class="w-5 h-5"></i>
-      </div>
-      <div class="overflow-hidden flex-1">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider">Atlantic Express Line</span>
-          <span class="text-[10px] font-mono bg-white/10 px-1.5 py-0.2 rounded text-gray-300">22 Days</span>
-        </div>
-        <div class="text-xs font-bold text-white truncate">Shanghai &rarr; Lagos Direct Slots</div>
-        <div class="text-[11px] text-gray-300 flex items-center justify-between mt-0.5">
-          <span class="font-mono text-brand-green font-bold">$3,150 / 40HC</span>
-          <span class="text-[10px] text-brand-blue-light underline">Book Slot &rarr;</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Advert Card 2 -->
-    <div onclick="openPromoModal('eurocold')" class="bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
-        <i data-lucide="warehouse" class="w-5 h-5"></i>
-      </div>
-      <div class="overflow-hidden flex-1">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">EuroCold Terminals</span>
-          <span class="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-1.5 py-0.2 rounded">Rotterdam</span>
-        </div>
-        <div class="text-xs font-bold text-white truncate">Pharma &amp; Reefer Cold Storage</div>
-        <div class="text-[11px] text-gray-300 flex items-center justify-between mt-0.5">
-          <span>15,000 m² Ready</span>
-          <span class="text-[10px] text-emerald-400 underline">10% Off &rarr;</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Advert Card 3 -->
-    <div onclick="openPromoModal('nautical')" class="bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-cyan-600 text-white flex items-center justify-center shrink-0">
-        <i data-lucide="shield-check" class="w-5 h-5"></i>
-      </div>
-      <div class="overflow-hidden flex-1">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-cyan-300 uppercase tracking-wider">Nautical Underwriters</span>
-          <span class="text-[10px] font-mono bg-cyan-500/20 text-cyan-200 px-1.5 py-0.2 rounded">Lloyd's</span>
-        </div>
-        <div class="text-xs font-bold text-white truncate">Instant All-Risk Cargo Cover</div>
-        <div class="text-[11px] text-gray-300 flex items-center justify-between mt-0.5">
-          <span class="font-mono text-cyan-300">From 0.18% Val</span>
-          <span class="text-[10px] text-cyan-300 underline">Get Policy &rarr;</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Advert Card 4 -->
-    <div onclick="openPromoModal('apexair')" class="bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0">
-        <i data-lucide="plane" class="w-5 h-5"></i>
-      </div>
-      <div class="overflow-hidden flex-1">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-amber-300 uppercase tracking-wider">Apex Air Charter</span>
-          <span class="text-[10px] font-mono bg-amber-500/20 text-amber-200 px-1.5 py-0.2 rounded">Express</span>
-        </div>
-        <div class="text-xs font-bold text-white truncate">Dubai (DXB) &rarr; West Africa Air Cargo</div>
-        <div class="text-[11px] text-gray-300 flex items-center justify-between mt-0.5">
-          <span>72-Hr Delivery</span>
-          <span class="text-[10px] text-amber-300 underline">Book Air &rarr;</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Advert Card 5: Call to Action for Advertisers -->
-    <div onclick="openAdModal()" class="bg-gradient-to-r from-brand-blue/40 to-brand-green/30 border border-brand-green/40 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-brand-green text-brand-dark flex items-center justify-center shrink-0 font-extrabold">
-        <i data-lucide="plus" class="w-5 h-5"></i>
-      </div>
-      <div class="overflow-hidden flex-1">
-        <div class="text-[10px] font-bold text-brand-green uppercase tracking-wider">Your Advert Here</div>
-        <div class="text-xs font-bold text-white truncate">Reach 50,000+ Cargo Owners</div>
-        <div class="text-[11px] text-gray-200 flex items-center justify-between mt-0.5">
-          <span>Featured in Marquee &amp; Sidebars</span>
-          <span class="text-[10px] font-bold text-brand-green underline">Post Now &rarr;</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DUPLICATE SET FOR SEAMLESS 100% INFINITE SCROLL -->
-    <div onclick="openPromoModal('atlantic')" class="bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-brand-blue text-white flex items-center justify-center shrink-0">
-        <i data-lucide="ship" class="w-5 h-5"></i>
-      </div>
-      <div class="overflow-hidden flex-1">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-brand-green uppercase tracking-wider">Atlantic Express Line</span>
-          <span class="text-[10px] font-mono bg-white/10 px-1.5 py-0.2 rounded text-gray-300">22 Days</span>
-        </div>
-        <div class="text-xs font-bold text-white truncate">Shanghai &rarr; Lagos Direct Slots</div>
-        <div class="text-[11px] text-gray-300 flex items-center justify-between mt-0.5">
-          <span class="font-mono text-brand-green font-bold">$3,150 / 40HC</span>
-          <span class="text-[10px] text-brand-blue-light underline">Book Slot &rarr;</span>
-        </div>
-      </div>
-    </div>
-
-    <div onclick="openPromoModal('eurocold')" class="bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
-        <i data-lucide="warehouse" class="w-5 h-5"></i>
-      </div>
-      <div class="overflow-hidden flex-1">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">EuroCold Terminals</span>
-          <span class="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-1.5 py-0.2 rounded">Rotterdam</span>
-        </div>
-        <div class="text-xs font-bold text-white truncate">Pharma &amp; Reefer Cold Storage</div>
-        <div class="text-[11px] text-gray-300 flex items-center justify-between mt-0.5">
-          <span>15,000 m² Ready</span>
-          <span class="text-[10px] text-emerald-400 underline">10% Off &rarr;</span>
-        </div>
-      </div>
-    </div>
-
-    <div onclick="openPromoModal('nautical')" class="bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-cyan-600 text-white flex items-center justify-center shrink-0">
-        <i data-lucide="shield-check" class="w-5 h-5"></i>
-      </div>
-      <div class="overflow-hidden flex-1">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-cyan-300 uppercase tracking-wider">Nautical Underwriters</span>
-          <span class="text-[10px] font-mono bg-cyan-500/20 text-cyan-200 px-1.5 py-0.2 rounded">Lloyd's</span>
-        </div>
-        <div class="text-xs font-bold text-white truncate">Instant All-Risk Cargo Cover</div>
-        <div class="text-[11px] text-gray-300 flex items-center justify-between mt-0.5">
-          <span class="font-mono text-cyan-300">From 0.18% Val</span>
-          <span class="text-[10px] text-cyan-300 underline">Get Policy &rarr;</span>
-        </div>
-      </div>
-    </div>
-
-    <div onclick="openPromoModal('apexair')" class="bg-white/10 hover:bg-white/15 border border-white/15 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0">
-        <i data-lucide="plane" class="w-5 h-5"></i>
-      </div>
-      <div class="overflow-hidden flex-1">
-        <div class="flex items-center justify-between">
-          <span class="text-[10px] font-bold text-amber-300 uppercase tracking-wider">Apex Air Charter</span>
-          <span class="text-[10px] font-mono bg-amber-500/20 text-amber-200 px-1.5 py-0.2 rounded">Express</span>
-        </div>
-        <div class="text-xs font-bold text-white truncate">Dubai (DXB) &rarr; West Africa Air Cargo</div>
-        <div class="text-[11px] text-gray-300 flex items-center justify-between mt-0.5">
-          <span>72-Hr Delivery</span>
-          <span class="text-[10px] text-amber-300 underline">Book Air &rarr;</span>
-        </div>
-      </div>
-    </div>
-
-    <div onclick="openAdModal()" class="bg-gradient-to-r from-brand-blue/40 to-brand-green/30 border border-brand-green/40 rounded-2xl p-3.5 flex items-center gap-3 w-80 shrink-0 cursor-pointer transition-all hover:scale-[1.02] shadow-lg">
-      <div class="w-10 h-10 rounded-xl bg-brand-green text-brand-dark flex items-center justify-center shrink-0 font-extrabold">
-        <i data-lucide="plus" class="w-5 h-5"></i>
-      </div>
-      <div class="overflow-hidden flex-1">
-        <div class="text-[10px] font-bold text-brand-green uppercase tracking-wider">Your Advert Here</div>
-        <div class="text-xs font-bold text-white truncate">Reach 50,000+ Cargo Owners</div>
-        <div class="text-[11px] text-gray-200 flex items-center justify-between mt-0.5">
-          <span>Featured in Marquee &amp; Sidebars</span>
-          <span class="text-[10px] font-bold text-brand-green underline">Post Now &rarr;</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
+<x-ad-marquee-carousel :ads="$ads" />
 
 <!-- ========================================================================= -->
 <!-- 2. MAIN BLOG DETAIL LAYOUT WITH LEFT-HAND ADVERT SIDEBAR                  -->
@@ -273,13 +79,13 @@
             <i data-lucide="badge-percent" class="w-4 h-4 text-brand-blue"></i>
             <span>Partner Adverts &amp; Offers</span>
           </div>
-          <button type="button" onclick="openAdModal()" class="text-[11px] text-brand-blue hover:underline font-bold">
+          <a href="{{ route('user.bulletin.create', ['loc' => 'ad']) }}" class="text-[11px] text-brand-blue hover:underline font-bold">
             Post Ad +
-          </button>
+          </a>
         </div>
 
         <!-- ADVERT 1: High-Impact Carrier Vessel Slot Offer -->
-        <div class="group bg-gradient-to-br from-brand-blue-light via-white to-blue-50/50 rounded-3xl p-5 border-2 border-brand-blue/25 shadow-md hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+        {{-- <div class="group bg-gradient-to-br from-brand-blue-light via-white to-blue-50/50 rounded-3xl p-5 border-2 border-brand-blue/25 shadow-md hover:shadow-xl transition-all duration-300 relative overflow-hidden">
           <div class="flex items-center justify-between mb-3">
             <span class="bg-brand-blue text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-sm">
               Sponsored Slot
@@ -361,7 +167,7 @@
           <a href="{{ route('public.quote') }}?inquiry=MarineInsurance" class="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-700 hover:text-cyan-900 underline">
             <span>Calculate insurance premium &rarr;</span>
           </a>
-        </div>
+        </div> --}}
 
         <!-- ADVERT 4: "Advertise Your Logistics Business Here" Promo Callout -->
         <div class="bg-brand-dark text-white rounded-3xl p-6 border border-white/10 shadow-xl relative overflow-hidden text-center space-y-3">
@@ -374,10 +180,10 @@
               Target 50,000+ verified enterprise cargo owners, freight forwarders, and logistics directors across global corridors.
             </p>
           </div>
-          <button type="button" onclick="openAdModal()" class="w-full btn-primary text-xs py-2.5 font-bold justify-center shadow-lg shadow-brand-blue/30">
+          <a href="{{ route('user.bulletin.create', ['loc' => 'ad']) }}" class="w-full btn-primary text-xs py-2.5 font-bold justify-center shadow-lg shadow-brand-blue/30">
             <i data-lucide="plus-circle" class="w-4 h-4"></i>
             <span>Submit Your Advert</span>
-          </button>
+          </a>
           <div class="text-[10px] text-gray-400">
             Rates from $150/mo &bull; Live Analytics Dashboard
           </div>
@@ -635,96 +441,14 @@
       </div>
 
       <div class="lg:col-span-4 text-center sm:text-right">
-        <button type="button" onclick="openAdModal()" class="w-full sm:w-auto btn-primary py-3.5 px-8 text-sm font-bold shadow-xl shadow-brand-blue/40">
+        <a href="{{ route('user.bulletin.create', ['loc' => 'ad']) }}" class="w-full sm:w-auto btn-primary py-3.5 px-8 text-sm font-bold shadow-xl shadow-brand-blue/40">
           <span>Book an Advert Slot</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </button>
+        </a>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ========================================================================= -->
-<!-- 5. INTERACTIVE MODALS & SCRIPTS                                           -->
-<!-- ========================================================================= -->
-
-<!-- Quick Promo / Advert Details Modal -->
-<div id="promoDetailsModal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-4 bg-brand-dark/80 backdrop-blur-md transition-opacity duration-300">
-  <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-sand-border relative animate-in fade-in zoom-in-95">
-    <button type="button" onclick="closePromoModal()" class="absolute top-5 right-5 z-20 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition-colors">
-      <i data-lucide="x" class="w-4 h-4"></i>
-    </button>
-    <div id="promoModalBody" class="space-y-4">
-      <!-- Injected via JavaScript -->
-    </div>
-  </div>
-</div>
-
-<!-- Advert Submission Modal -->
-<div id="advertModal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-4 bg-brand-dark/80 backdrop-blur-md transition-opacity duration-300">
-  <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-sand-border relative p-6 sm:p-8">
-    <button type="button" onclick="closeAdModal()" class="absolute top-5 right-5 z-20 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition-colors">
-      <i data-lucide="x" class="w-5 h-5"></i>
-    </button>
-
-    <div class="space-y-2 mb-6">
-      <div class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-green bg-brand-green/15 px-3 py-1 rounded-full">
-        <i data-lucide="megaphone" class="w-3.5 h-3.5"></i> Post an Advert on {{ config('app.name') }}
-      </div>
-      <h3 class="font-heading font-extrabold text-2xl text-brand-dark">Promote to 50,000+ Active Shippers</h3>
-      <p class="text-xs text-gray-600">
-        Feature in our top sliding marquee carousel, left-hand sidebar slots, and newsletter briefings.
-      </p>
-    </div>
-
-    <form onsubmit="handleAdSubmission(event)" class="space-y-4">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Company / Carrier Name</label>
-          <input type="text" required placeholder="e.g. Apex Marine Freight Ltd" class="w-full bg-sand-light border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-brand-dark focus:outline-none focus:border-brand-blue">
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Business Email</label>
-          <input type="email" required placeholder="contact@company.com" class="w-full bg-sand-light border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-brand-dark focus:outline-none focus:border-brand-blue">
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Placement Type</label>
-          <select class="w-full bg-sand-light border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-brand-dark focus:outline-none focus:border-brand-blue">
-            <option value="marquee">Top Sliding Marquee Ticker (Featured)</option>
-            <option value="sidebar-left">Left-Hand Sidebar Banner Slot</option>
-            <option value="in-article">In-Article Native Sponsored Story</option>
-            <option value="bundle">Full Omnichannel Bundle (Marquee + Sidebar)</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Target Corridor / Service</label>
-          <input type="text" placeholder="e.g. Asia-Africa, Reefer, Air Cargo" class="w-full bg-sand-light border border-gray-200 rounded-xl px-4 py-2.5 text-xs text-brand-dark focus:outline-none focus:border-brand-blue">
-        </div>
-      </div>
-
-      <div>
-        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Ad Headline &amp; Offer Details</label>
-        <textarea rows="3" required placeholder="Describe your promo offer, rates, departure schedules, or contact instructions..." class="w-full bg-sand-light border border-gray-200 rounded-xl p-3 text-xs text-brand-dark focus:outline-none focus:border-brand-blue"></textarea>
-      </div>
-
-      <div class="bg-sand p-4 rounded-2xl border border-sand-border text-xs flex items-center justify-between">
-        <div>
-          <div class="font-bold text-brand-dark">Standard 30-Day Verified Campaign</div>
-          <div class="text-[11px] text-gray-500">Includes verified line badge, direct quote links, and impression tracking.</div>
-        </div>
-        <span class="font-mono font-bold text-brand-blue">$150 / mo</span>
-      </div>
-
-      <button type="submit" class="w-full btn-primary py-3 text-xs font-bold justify-center shadow-lg shadow-brand-blue/30">
-        <i data-lucide="send" class="w-4 h-4"></i>
-        <span>Submit Advert for Rapid Review</span>
-      </button>
-    </form>
-  </div>
-</div>
 
 <!-- Toast Notification -->
 <div id="toastNotification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[10000] hidden bg-brand-dark text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-2xl items-center gap-2 transition-all">
@@ -734,97 +458,6 @@
 
 <!-- Full Script for Dynamic Article Switching and Advert Modals -->
 <script>
-
-const promoDatabase = {
-  'atlantic': {
-    partner: "Atlantic Line Global",
-    service: "Shanghai &rarr; Lagos Direct Express Container Slots",
-    badge: "Verified Carrier",
-    price: "$3,150 / 40ft High Cube",
-    details: "Weekly direct express vessel departures with zero rollover guarantee. Integrated Apapa & Tin Can pre-arrival customs sync. Free 14 days demurrage time included.",
-    link: "../pages/quote.php?promo=ATLANTIC26"
-  },
-  'eurocold': {
-    partner: "EuroCold Terminals BV",
-    service: "Pharma & Reefer Cold Storage (Port of Rotterdam)",
-    badge: "Verified Facility",
-    price: "From €14.50 / pallet / week (10% Off Promo)",
-    details: "15,000 m² temperature-controlled storage right at Maasvlakte II. Rapid cross-docking, EU veterinary inspection bay, and cross-border temperature-monitored reefer trucking.",
-    link: "../pages/contact.php?inquiry=EuroCold-Ad"
-  },
-  'nautical': {
-    partner: "Nautical Shield Underwriters",
-    service: "Instant All-Risk Marine Cargo Insurance (ICC 'A')",
-    badge: "Lloyd's Syndicate Coverholder",
-    price: "From 0.18% Cargo Invoice Value",
-    details: "Full general average, door-to-door transit, and automated paperless claims reimbursement within 48 hours for verified {{ config('app.name') }} shipments worldwide.",
-    link: "../pages/contact.php?inquiry=MarineInsurance"
-  },
-  'apexair': {
-    partner: "Apex Air Charter Express",
-    service: "Dubai (DXB) & Europe &rarr; West Africa Scheduled Cargo Flights",
-    badge: "Express Freight Line",
-    price: "From $4.85 / kg",
-    details: "Guaranteed 72-hour delivery, daily scheduled freight flights, hazardous materials certification, and direct airport bonded customs transfer.",
-    link: "../pages/quote.php?mode=air"
-  }
-};
-
-// Quick View for Marquee Promos
-function openPromoModal(key) {
-  const promo = promoDatabase[key];
-  if (!promo) return;
-
-  const html = `
-    <div class="space-y-3">
-      <div class="flex items-center justify-between">
-        <span class="bg-brand-blue text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">${promo.badge}</span>
-        <span class="text-xs font-bold text-brand-green bg-brand-green/10 px-2 py-0.5 rounded-full">Partner Offer</span>
-      </div>
-      <h3 class="font-heading font-bold text-xl text-brand-dark">${promo.partner}</h3>
-      <div class="text-xs font-bold text-brand-blue font-mono text-sm">${promo.service}</div>
-      <div class="p-3.5 bg-sand rounded-2xl border border-sand-border">
-        <div class="text-[10px] text-gray-500 uppercase font-semibold">Special Rate / Pricing</div>
-        <div class="text-base font-mono font-bold text-brand-dark">${promo.price}</div>
-      </div>
-      <p class="text-xs text-gray-600 leading-relaxed">${promo.details}</p>
-      <div class="pt-3 border-t border-gray-100 flex items-center gap-3">
-        <a href="${promo.link}" class="w-full btn-primary text-xs py-3 justify-center shadow-lg shadow-brand-blue/30 font-bold">
-          <span>Claim Rate / Book Service</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </div>
-    </div>
-  `;
-  document.getElementById('promoModalBody').innerHTML = html;
-  document.getElementById('promoDetailsModal').classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-}
-
-function closePromoModal() {
-  document.getElementById('promoDetailsModal').classList.add('hidden');
-  document.body.style.overflow = 'auto';
-}
-
-function openAdModal() {
-  document.getElementById('advertModal').classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeAdModal() {
-  document.getElementById('advertModal').classList.add('hidden');
-  document.body.style.overflow = 'auto';
-}
-
-function handleAdSubmission(e) {
-  e.preventDefault();
-  closeAdModal();
-  showToast('Advert submitted successfully! Our media coordinator will verify your listing.');
-}
 
 function showToast(msg) {
   const toast = document.getElementById('toastNotification');
@@ -859,19 +492,6 @@ function copyArticleLink() {
   });
 }
 
-// Close modals on escape or backdrop click
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closePromoModal();
-    closeAdModal();
-  }
-});
-document.getElementById('promoDetailsModal')?.addEventListener('click', (e) => {
-  if (e.target.id === 'promoDetailsModal') closePromoModal();
-});
-document.getElementById('advertModal')?.addEventListener('click', (e) => {
-  if (e.target.id === 'advertModal') closeAdModal();
-});
 </script>
 
 @endsection

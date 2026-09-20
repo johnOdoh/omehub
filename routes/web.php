@@ -33,82 +33,83 @@ use App\Livewire\Shipper\Quotes\RequestQuote;
 use App\Livewire\Shipper\Shipments\ShipmentList;
 use App\Livewire\Sustainability\Dashboard as SustainabilityDashboard;
 use App\Livewire\Sustainability\Offsets;
-use App\Models\Financing;
 use App\Models\Shipment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [PublicController::class, 'index'])->name('home');
-Route::get('/about', [PublicController::class, 'about'])->name('about');
-Route::get('/stakeholders', [PublicController::class, 'stakeholders'])->name('stakeholders');
-Route::get('/services/{service}', [PublicController::class, 'service'])->name('service');
-Route::get('/blog', [PublicController::class, 'bulletin'])->name('bulletin');
-Route::get('/bulletin/search', [PublicController::class, 'bulletinSearch'])->name('search');
-Route::get('/bulletin/{post}', [PublicController::class, 'bulletinSingle'])->name('bulletin.single');
-Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
+// Route::get('/', [PublicController::class, 'index'])->name('home');
+// Route::get('/about', [PublicController::class, 'about'])->name('about');
+// Route::get('/stakeholders', [PublicController::class, 'stakeholders'])->name('stakeholders');
+// Route::get('/services/{service}', [PublicController::class, 'service'])->name('service');
+// Route::get('/blog', [PublicController::class, 'bulletin'])->name('bulletin');
+// Route::get('/bulletin/search', [PublicController::class, 'bulletinSearch'])->name('search');
+// Route::get('/bulletin/{post}', [PublicController::class, 'bulletinSingle'])->name('bulletin.single');
+// Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
 Route::post('/contact', [PublicController::class, 'contactUs'])->name('contact-us');
-Route::get('/our-terms', [PublicController::class, 'terms'])->name('terms');
-Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
-Route::get('/advert-and-blog-policy', [PublicController::class, 'advertPolicy'])->name('advert-policy');
+// Route::get('/our-terms', [PublicController::class, 'terms'])->name('terms');
+// Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
+// Route::get('/advert-and-blog-policy', [PublicController::class, 'advertPolicy'])->name('advert-policy');
 
-Route::get('/public/', function () {
+Route::get('/', function () {
     return view('test.index');
 })->name('public.index');
 
-Route::get('/public/about', function () {
+Route::get('/about', function () {
     return view('test.about');
 })->name('public.about');
 
-Route::get('/public/for-carriers', function () {
+Route::get('/for-carriers', function () {
     return view('test.for-carriers');
 })->name('public.for-carriers');
 
-Route::get('/public/for-shippers', function () {
+Route::get('/for-shippers', function () {
     return view('test.for-shippers');
 })->name('public.for-shippers');
 
-Route::get('/public/contact', function () {
+Route::get('/contact', function () {
     return view('test.contact');
 })->name('public.contact');
 
-Route::get('/public/platform', function () {
+Route::get('/platform', function () {
     return view('test.platform');
 })->name('public.platform');
 
-Route::get('/public/solutions', function () {
+Route::get('/solutions', function () {
     return view('test.solutions');
 })->name('public.solutions');
 
-Route::get('/public/quotes', function () {
+Route::get('/quotes', function () {
     return view('test.quote');
 })->name('public.quote');
 
-Route::get('/public/tracking', function (Request $request) {
+Route::get('/tracking', function (Request $request) {
     $code = $request->query('track');
     $shipment = $code ? Shipment::where('tracking_number', $code)->first() : null;;
     return view('test.tracking', compact('code', 'shipment'));
 })->name('public.tracking');
 
-Route::get('/public/blogs', function () {
-    $posts = App\Models\Post::latest()->get();
-    return view('test.blogs', compact('posts'));
+Route::get('/blogs', function () {
+    $posts = App\Models\Post::latest()->paginate(9);
+    $ads   = App\Models\Ad::where('status', 'approved')->latest()->get();
+    return view('test.blogs', compact('posts', 'ads'));
 })->name('public.blogs');
 
-Route::get('/public/blog/{slug}', function ($slug) {
-    $post = App\Models\Post::where('slug', $slug)->firstOrFail();
+Route::get('/blog/{slug}', function ($slug) {
+    $post  = App\Models\Post::where('slug', $slug)->firstOrFail();
     $posts = App\Models\Post::whereNot('id', $post->id)->latest()->limit(3)->get();
-    return view('test.blog', compact('post', 'posts'));
+    $ads   = App\Models\Ad::where('status', 'approved')->latest()->get();
+    return view('test.blog', compact('post', 'posts', 'ads'));
 })->name('public.blog');
 
-Route::get('/public/terms', function () {
+Route::get('/terms', function () {
     return view('test.terms');
 })->name('public.terms');
 
-Route::get('/public/privacy', function () {
+Route::get('/privacy', function () {
     return view('test.privacy');
 })->name('public.privacy');
 
-Route::get('/public/advertising', function () {
+Route::get('/advertising', function () {
     return view('test.advert-policy');
 })->name('public.advertising');
 

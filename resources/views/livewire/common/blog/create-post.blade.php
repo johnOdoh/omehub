@@ -333,14 +333,14 @@
                                     <label class="form-label fw-semibold">Full Promotional Details <span class="text-danger">*</span></label>
                                     <div class="border rounded @error('body') border-danger @enderror" wire:ignore>
                                         <div id="quill-toolbar" class="border-bottom bg-light">
-                                            <span class="ql-formats">
+                                            {{-- <span class="ql-formats">
                                                 <select class="ql-header" title="Heading Level">
                                                     <option value="" selected>Normal</option>
                                                     <option value="2">Heading</option>
                                                     <option value="3">Subheading</option>
                                                 </select>
                                                 <select class="ql-size" title="Size"></select>
-                                            </span>
+                                            </span> --}}
                                             <span class="ql-formats">
                                                 <button class="ql-bold" title="Bold"></button>
                                                 <button class="ql-italic" title="Italic"></button>
