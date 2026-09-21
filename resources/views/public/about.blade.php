@@ -605,7 +605,9 @@
              rel="noopener noreferrer"
              class="w-9 h-9 rounded-xl bg-sand-light hover:bg-brand-blue hover:text-white flex items-center justify-center text-gray-600 transition-colors"
              aria-label="LinkedIn Profile">
-            <i data-lucide="linkedin" class="w-4 h-4"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.601 0 4.263 2.37 4.263 5.455v6.288zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.994 20.452H3.675V9h3.319v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+            </svg>
           </a>
         </div>
       </div>
@@ -635,7 +637,9 @@
         <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
           <span class="text-xs text-gray-500 font-medium">Platform Infrastructure</span>
           <a href="#" class="w-9 h-9 rounded-xl bg-sand-light hover:bg-brand-blue hover:text-white flex items-center justify-center text-gray-600 transition-colors" aria-label="Twitter Profile">
-            <i data-lucide="twitter" class="w-4 h-4"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="24" width="24" fill="currentColor" class="w-6 h-6">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.4.36a9.1 9.1 0 01-2.88 1.1  4.52 4.52 0 00-7.7 4.12A12.8 12.8 0 013 2.1a4.52 4.52 0 001.4 6.04A4.48 4.48 0 012 7.1v.06a4.52 4.52 0 003.63 4.43 4.52 4.52 0 01-2.05.08 4.52 4.52 0 004.22 3.14A9.05 9.05 0 012 19.54 12.8 12.8 0 008.29 21c7.55 0 11.68-6.26.68-11.68 0-.18-.01-.35-.02-.53A8.36 8.36 0 0023 3z"/>
+            </svg>
           </a>
         </div>
       </div>

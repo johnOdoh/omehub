@@ -1,6 +1,2 @@
-Tooltip resetting in admin users list
-Implement message sending on contact page
-
-request for financing
-finacing company see it and acceps or declines
-if accepted, submit interest rate and payment due date
+make the team social icon show*
+create contact mail for logistic partner registration*

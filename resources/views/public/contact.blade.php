@@ -112,7 +112,7 @@
 
             <div>
               <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Subject</label>
-              <input type="text" name="subject" value="{{ old('subject') }}" required placeholder="Global Retail Corp" class="w-full bg-white border @error('subject') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none">
+              <input type="text" name="subject" value="{{ old('subject') }}" required placeholder="Shipping Inquiry" class="w-full bg-white border @error('subject') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none">
               @error('subject')
                 <p class="text-xs text-rose-600 mt-1 font-medium flex items-center gap-1">
                   <i data-lucide="alert-circle" class="w-3.5 h-3.5 flex-shrink-0"></i>

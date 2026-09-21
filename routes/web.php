@@ -46,6 +46,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/bulletin/{post}', [PublicController::class, 'bulletinSingle'])->name('bulletin.single');
 // Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
 Route::post('/contact', [PublicController::class, 'contactUs'])->name('contact-us');
+Route::post('/provider-request', [PublicController::class, 'providerRequest'])->name('provider-request');
 // Route::get('/our-terms', [PublicController::class, 'terms'])->name('terms');
 // Route::get('/privacy-policy', [PublicController::class, 'privacy'])->name('privacy');
 // Route::get('/advert-and-blog-policy', [PublicController::class, 'advertPolicy'])->name('advert-policy');

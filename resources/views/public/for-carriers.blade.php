@@ -87,39 +87,91 @@
       </p>
     </div>
 
+    @if (session('success'))
+        <div class="mb-6 p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-start gap-3.5 shadow-sm" role="alert">
+            <div class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+            </div>
+            <div class="flex-1 pt-0.5">
+                <div class="flex items-center justify-between">
+                    <h4 class="font-heading font-bold text-sm text-emerald-950">Message Sent Successfully!</h4>
+                    <button type="button" onclick="this.closest('[role=alert]').remove()" class="text-emerald-700 hover:text-emerald-950 p-1 rounded-lg transition-colors" aria-label="Dismiss">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                <p class="text-xs text-emerald-800 mt-1 leading-relaxed">{{ session('success') }}</p>
+                <div class="mt-2 text-[11px] font-semibold text-emerald-700 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Our operations desk will review and reply within 24 hours.</span>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="card-sand p-8 sm:p-10 rounded-3xl border border-sand-border shadow-sm">
-      <form onsubmit="event.preventDefault(); alert('Carrier application submitted successfully! Our onboarding team will contact you within 24 hours.');" class="space-y-6">
+      <form action="{{ route('provider-request') }}" method="POST" class="space-y-6">
+        @csrf
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Company / Carrier Name</label>
-            <input type="text" required placeholder="e.g. Apex Marine Freight Ltd." class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none focus:border-brand-blue">
+            <input type="text" name="name" required placeholder="e.g. Apex Marine Freight Ltd." class="w-full bg-white border @error('name') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror  rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none">
+            @error('name')
+                <p class="text-xs text-rose-600 mt-1 font-medium flex items-center gap-1">
+                    <i data-lucide="alert-circle" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                    <span>{{ $message }}</span>
+                </p>
+            @enderror
           </div>
           <div>
             <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Primary Transport Mode</label>
-            <select class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none focus:border-brand-blue">
+            <select name="mode" class="w-full bg-white border @error('mode') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none">
               <option value="ocean">Ocean Liner / NVOCC</option>
               <option value="air">Air Cargo / Freighter Operator</option>
               <option value="trucking">Drayage / Full Truckload (FTL)</option>
               <option value="rail">Rail Intermodal Operator</option>
               <option value="customs">Customs Broker / Port Terminal</option>
             </select>
+            @error('mode')
+                <p class="text-xs text-rose-600 mt-1 font-medium flex items-center gap-1">
+                    <i data-lucide="alert-circle" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                    <span>{{ $message }}</span>
+                </p>
+            @enderror
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Business Email</label>
-            <input type="email" required placeholder="partner@yourcarrier.com" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none focus:border-brand-blue">
+            <input type="email" name="email" required placeholder="partner@yourcarrier.com" class="w-full bg-white border @error('email') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none">
+            @error('email')
+                <p class="text-xs text-rose-600 mt-1 font-medium flex items-center gap-1">
+                    <i data-lucide="alert-circle" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                    <span>{{ $message }}</span>
+                </p>
+            @enderror
           </div>
           <div>
             <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Phone Number</label>
-            <input type="tel" required placeholder="+1 (555) 019-2834" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none focus:border-brand-blue">
+            <input type="tel" name="phone" required placeholder="+1 (555) 019-2834" class="w-full bg-white border @error('phone') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror rounded-xl px-4 py-2.5 text-sm text-brand-dark focus:outline-none">
+            @error('phone')
+                <p class="text-xs text-rose-600 mt-1 font-medium flex items-center gap-1">
+                    <i data-lucide="alert-circle" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                    <span>{{ $message }}</span>
+                </p>
+            @enderror
           </div>
         </div>
 
         <div>
           <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Primary Trade Corridors & Fleet Capacity</label>
-          <textarea rows="3" placeholder="Specify your active trade routes (e.g. Asia-North Europe, Transpacific, Intra-Europe) and estimated weekly TEU / tonnage capacity..." class="w-full bg-white border border-gray-200 rounded-xl p-4 text-sm text-brand-dark focus:outline-none focus:border-brand-blue"></textarea>
+          <textarea rows="3" name="capacity" placeholder="Specify your active trade routes (e.g. Asia-North Europe, Transpacific, Intra-Europe) and estimated weekly TEU / tonnage capacity..." class="w-full bg-white border @error('capacity') border-rose-500 focus:border-rose-500 @else border-gray-200 focus:border-brand-blue @enderror rounded-xl p-4 text-sm text-brand-dark focus:outline-none"></textarea>
+          @error('capacity')
+              <p class="text-xs text-rose-600 mt-1 font-medium flex items-center gap-1">
+                  <i data-lucide="alert-circle" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                  <span>{{ $message }}</span>
+              </p>
+          @enderror
         </div>
 
         <button type="submit" class="w-full btn-primary py-3.5 text-sm font-bold shadow-lg shadow-brand-blue/30 justify-center">

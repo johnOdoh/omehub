@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactUs;
+use App\Mail\ProviderRequestMail;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -79,6 +80,19 @@ class PublicController extends Controller
         ]);
         Mail::to(config('app.email'))->send(new ContactUs($request->name, $request->email, $request->message, $request->subject));
         return redirect()->back()->with('success', 'Your message has been sent. Thank you!');
+    }
+
+    public function providerRequest(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'mode' => 'required',
+            'phone' => 'required|numeric',
+            'capacity' => 'required'
+        ]);
+        Mail::to(config('app.email'))->send(new ProviderRequestMail($request->all()));
+        return redirect()->back()->with('success', 'Your message has been sent successfully!');
     }
 
     public function terms()
