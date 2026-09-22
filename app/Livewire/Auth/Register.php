@@ -3,7 +3,6 @@
 namespace App\Livewire\Auth;
 
 use App\Mail\AdminAlert;
-use App\Mail\RegistrationNotice;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Title;
@@ -22,7 +21,7 @@ class Register extends Component
 
     public string $email = '';
 
-    public string $role = '';
+    // public string $role = '';
 
     public string $password = '';
 
@@ -35,14 +34,15 @@ class Register extends Component
     {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            // 'role' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
-        if($validated['role'] == 'Admin') $validated['admin_role'] = 'Admin';
-        Mail::to(config('app.email'))->send(new AdminAlert('registration'));
+        $validated['role'] = 'Shipper';
+        // if($validated['role'] == 'Admin') $validated['admin_role'] = 'Admin';
+        Mail::to(config('app.email'))->send(new AdminAlert('registration', null, $validated['name'], $validated['email']));
 
         event(new Registered(($user = User::create($validated))));
 

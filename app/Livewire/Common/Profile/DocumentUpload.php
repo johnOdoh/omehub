@@ -66,7 +66,7 @@ class DocumentUpload extends Component
             ];
         }
         $this->user->profile()->update(['documents' => $document]);
-        Mail::to(config('app.email'))->send(new AdminAlert('verification', $this->user->id));
+        Mail::to(config('app.email'))->send(new AdminAlert('verification', $this->user->id, $this->user->name, $this->user->email));
         $this->redirect(route('user.profile', ['u' => 1]), true);
     }
 

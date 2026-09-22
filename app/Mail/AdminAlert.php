@@ -16,8 +16,12 @@ class AdminAlert extends Mailable implements ShouldQueue
     /**
      * Create a new message instance.
      */
-    public function __construct(public $type, public $id = null)
-    {
+    public function __construct(
+        public $type,
+        public $id = null,
+        public $name = null,
+        public $email = null,
+    ) {
         //
     }
 
