@@ -36,9 +36,9 @@
           <span class="text-brand-blue">shipments instantly 24/7</span>
         </h1>
 
-        <p class="text-gray-600 text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-xl">
+        {{-- <p class="text-gray-600 text-base sm:text-lg lg:text-xl font-normal leading-relaxed max-w-xl">
           {{ config('app.name') }} is a smart, all-in-one digital logistics marketplace designed to make global shipping accessible, transparent, and efficient — without compromising on compliance, sustainability, or user control.
-        </p>
+        </p> --}}
 
         <ul class="space-y-2.5 text-sm text-gray-700 pt-1">
           <li class="flex items-center gap-2.5">

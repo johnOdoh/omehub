@@ -23,7 +23,7 @@
           </div>
           <div class="flex items-center gap-2">
             <i data-lucide="mail" class="w-4 h-4 text-brand-blue"></i>
-            <span class="text-sm font-bold text-gray-700">{{ config('app.email') }}</span>
+            <a href="mailto:{{ config('app.email') }}"><span class="text-sm font-bold text-gray-700">{{ config('app.email') }}</span></a>
           </div>
         </div>
       </div>
@@ -152,7 +152,7 @@
           <div class="space-y-3 pt-2 text-xs">
             <div class="flex items-center gap-3">
               <i data-lucide="mail" class="w-4 h-4 text-brand-green"></i>
-              <span class="text-white font-bold">{{ config('app.email') }}</span>
+              <a href="mailto:{{ config('app.email') }}"><span class="text-white font-bold">{{ config('app.email') }}</span></a>
             </div>
             <div class="flex items-center gap-3">
               <i data-lucide="map-pin" class="w-4 h-4 text-brand-green"></i>
