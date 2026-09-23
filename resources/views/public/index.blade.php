@@ -276,7 +276,7 @@
           <div class="hero-overlay-gradient"></div>
 
           <!-- Video Play Button -->
-          <a href="https://youtube.com/embed/YeOgHg6m1iM"
+          <a href="https://youtu.be/YeOgHg6m1iM"
              target="_blank"
              rel="noopener noreferrer"
              class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-brand-blue/90 hover:bg-brand-blue text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all z-20"
@@ -287,10 +287,10 @@
           <!-- Glass Floating Card -->
           <div class="absolute bottom-4 left-4 right-4 hero-glass-card p-4 flex items-center justify-between gap-3 shadow-lg z-20">
             <div>
-              <div class="text-xs font-bold text-brand-dark">Our Mission &amp; Vision</div>
-              <div class="text-[11px] text-gray-500">Connecting global commerce seamlessly</div>
+              <div class="text-xs font-bold text-brand-dark">Regulatory Compliance</div>
+              <div class="text-[11px] text-gray-500">Shippers &bull; Carriers &bull; Finance &bull; Legal</div>
             </div>
-            <a href="{{ route('public.about') }}" class="text-xs font-bold text-brand-blue hover:underline">Read Story &rarr;</a>
+            {{-- <a href="{{ route('public.about') }}" class="text-xs font-bold text-brand-blue hover:underline">Read Story &rarr;</a> --}}
           </div>
         </div>
       </div>
