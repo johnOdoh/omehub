@@ -4,3 +4,4 @@
 * Implemented endpoints to allow students to move to the new academic session themselves whenever the current session changes.
 * Added the implemantation that automatically enrolls students to the courses available to their current program once they paid their application fee. Before, it was manually done through the LMS portal.
 * Created endpoints that allowed continuing students to pay and vdrify the returning fee for the current academic session
+
