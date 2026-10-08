@@ -1,2 +1,6 @@
-make the team social icon show*
-create contact mail for logistic partner registration*
+- Made some major changes and upgrades to the UNIZIK Sandwich platform
+* Made sure all the current students were tied to the 2024/2025 session, which is their pioneer academic session.
+* Implemented endpoints to allow the admin create new academic sessions and also be able to update the current academic session.
+* Implemented endpoints to allow students to move to the new academic session themselves whenever the current session changes.
+* Added the implemantation that automatically enrolls students to the courses available to their current program once they paid their application fee. Before, it was manually done through the LMS portal.
+* Created endpoints that allowed continuing students to pay and vdrify the returning fee for the current academic session

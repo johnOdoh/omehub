@@ -15,10 +15,10 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+note.txt
 /auth.json
 /.fleet
 /.idea
 /.nova
 /.vscode
 /.zed
-note.txt
